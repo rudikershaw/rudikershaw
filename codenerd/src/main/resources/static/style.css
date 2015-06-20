@@ -12,7 +12,7 @@ blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 table{border-collapse:collapse;border-spacing:0}
 
-/* Declare font-face Aliquam Regular by Álvaro Thomáz.  */
+/* Declare font-face Aliquam Regular by Álvaro Thomáz. */
 @font-face {
   font-family: "Aliquam";
   src: url("fonts/aliquamreg.eot"); 

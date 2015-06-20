@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>Defining a Computational Method - Part 2</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="shortcut icon" href="../images/RK.ico" />
+		<script src="../script.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<a class="rklogo" href="../"></a>
+			<a style="background-image: url('../images/fb.png');" class="sociallink" target="blank_" href="https://www.facebook.com/rudi.kershaw"></a>
+			<a style="background-image: url('../images/li.png');" class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"></a>				
+			<a target="blank_" href="http://stackoverflow.com/users/2182928/rudi" style="float:right;">
+				<img src="http://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+			</a>
+		</div>
+		
+		<p class="date">06/04/2015</p>
+		<h1>Defining an Algorithm - Part 2</h1>
+		<hr />
+		<img class="coverimg" src="../images/taocp_text2.jpg" alt="Let us formally define a computational method" height="150" width="810" />
+		<br />
+		
+		<p>At the end of my <a href="computationalmethod">Defining an Algorithm article</a>, I said that my next instalment would be to go
+		through the example of a mathematical implementation of Euclid's algorithm that is at the end of the 
+		Algorithms section in the first chapter of The Art of Computer Programming - Volume 1. And that is
+		exactly what I am going to do. If you've not already read the previous instalment, I suggest that you 
+		do that first in order to fully understand the example we are describing in this article.</p>
+		<br />
+		<p>So, let's get straight to it. The next line in the chapter, after our last article left off, states 
+		the following;</p>
+		<br />
+		<h5 class="quoteblock">Algorithm E may, for example, be formalized in these terms as follows: Let <i>Q</i> be 
+		the set of all singletons <i>(n)</i>, all ordered pairs <i>(m, n)</i>, and all ordered quadruples <i>(m, n,  r, 1), 
+		(m, n, r, 2)</i>, and <i>(m, n, p, 3)</i>, where <i>m</i>, <i>n</i>, and <i>p</i> are positive integers and <i>r</i> is a nonnegative 
+		integer. Let <i>I</i> be the subset of all pairs <i>(m, n)</i> and let <i>Ω</i> be the subset of all singletons <i>(n)</i>.</h5>
+		<br />
+		<p>Now, first things first, I am going to presume you understood the workings and purpose of Algorithm E 
+		(Euclid's algorithm) explained to us earlier in the chapter. If you haven't already, this would be a 
+		good time to go back and familiarize yourself with it.</p>
+		<br/>
+		<p>So, as we know from the previous article <i>Q</i> represents a collection of all possible states of our algorithm, 
+		including our inputs, outputs and everything between the two. <i>Q</i> contains <i>I</i> and <i>Ω</i>, which are out inputs
+		and outputs respectively. All Knuth is doing at this point is declaring what variables (in groups) 
+		represent the various stages of Euclid's Algorithm. As we know Euclid's Algorithm takes two positive 
+		integers, which are represented together as the pair <i>(m, n)</i>, as our input. When it's done it gives us a 
+		single integer, the smallest common divisor of <i>m</i> and <i>n</i>, which Knuth declares as being represented by the 
+		singleton <i>(n)</i>. So what do we have left unaccounted for at this point? Well, we have the quadruples 
+		<i>(m, n, r, 1), (m, n, r, 2)</i>, and <i>(m, n, p, 3)</i>. They represent the steps in between, the states of our 
+		variables, during the process of working out our largest common divisor. Then the difficult bit, the 
+		computational rule is defined.</p>
+		<br/>
+		<h5 class="quoteblock">
+			<i>f((m, n)) = (m, n, 0, 1); &emsp;	f((n)) = (n);</i><br />
+			<i>f((m, n, r, 1)) = (m, n, </i>remainder of <i>m</i> divided by <i>n, 2);</i><br />
+			<i>f((m, n, r, 2)) = (n)</i> if <i>r = 0,	(m, n, r, 3)</i> otherwise<i>;</i><br />
+			<i>f((m, n, p, 3)) = (n, p, p, 1)</i>.<br />
+		</h5>
+		<br/>
+		<p>When I first looked at the above, I remember thinking that I would never understand it. The only way 
+		I managed to finally get to grips with it was by attempting to use the functions to get an expected 
+		result. Once I've described how it all works and what it means I implore you to try and use it to work 
+		through a few examples yourself until it sticks. Human beings learn through doing, not just through 
+		reading. Each statement, ending in a semicolon (â€˜ ; '), is a definition of what the function will do with 
+		certain arguments. Each argument is of course one of the states of the computation, and as we know from 
+		Knuth's formal definition we pass our states back into our function to get the next state, until we get 
+		our end results or output (which will not change if passed back into the function).</p>
+		<br />
+		<p>Our first statement <i>f((m, n)) = (m, n, 0, 1);</i> defines what our function (or computation rule) 
+		does with the initial input <i>m</i> &amp; <i>n</i>. So this is where we start, and from looking at it we can see 
+		that, taking our input (<i>(m, n)</i> pair from <i>I</i>) our function converts it to one of the quadruples 
+		(one of the intermediate states). Nothing has been done to <i>m</i> and <i>n</i>, so they remain the same, but 
+		now we also have <i>0</i> and <i>1</i>. The <i>0</i> is just filler, and the <i>1</i> seems to represent the step to be 
+		performed next. So, now we have a quadruple which needs to be passed back into our function to 
+		get the next state. At this point, take a look at the formula above, and look for what our 
+		function would do to our result. If we pass our <i>0</i> into the variable <i>r</i> then the statement on the 
+		next line down fits the bill perfectly: <i>f((m, n, r, 1)) = (m, n, remainder of m divided by n, 2);</i>. 
+		You can see at this stage that we've done the division to find the remainder and now, we have a 
+		new intermediate quadruple, which can be passed through our function again using the definition 
+		on the third line of the formula. The third line statement checks whether the remainder calculated 
+		in our last step is <i>0</i>, if so it converts our quadruple into the singleton <i>(n)</i>. If that is the case 
+		then that is the end of our process. Passing the singleton <i>(n)</i> back into the function will not 
+		change it. <i>(n)</i> is our output (the largest common divisor). If our remainder is not <i>0</i> then we get 
+		another quadruple, which is passed into the statement on the last line of the formula. All this 
+		does is re-arrange the variables to pass them back to our function as <i>f((m, n, r, 1))</i>, and we 
+		start again. The re-arranging of the variables is essentially the replacing of <i>m</i> with our old <i>n</i> 
+		value, and then replacing <i>n</i> with the remainder (as per our original definition of Euclid's 
+		Algorithm).</p>
+		<br />
+		<p>Now at this point, in order for it to actually sink in, I think it's prudent to go through an 
+		actual example with our example algorithm. Imagine we want to find the largest common divisor of 
+		our pair <i>(6, 4)</i>. This is our input <i>(m, n)</i>. Passing this into our input gives us <i>f((6, 4)) = 
+		(6, 4, 0, 1);</i>.  This is our second line in the formula. Pass our new quadruple to the third line 
+		and we get <i>f((6, 4, 0, 1)) = (6, 4, 2, 2);</i> where the first <i>2</i> is the remainder of <i>6/4</i>. So now we 
+		pass it back in again and get <i>f((6, 4, 2, 2)) = (6, 4, 2, 3);</i>  because the remainder was not <i>0</i>. 
+		And lastly, it get passed to the bottom line in the formula and we get <i>f((6, 4, 2, 3)) = 
+		(4, 2, 2, 1);</i>. Now we have re-arranged our variables so that <i>m &lt;- n</i> and <i>n &lt;- r</i> and passed it back 
+		to the second line in the formula. And now we go around again. Now we do <i>f((4, 2, 2, 1)) = 
+		(4, 2, 0, 2)</i> because <i>0</i> is the remainder of <i>4/2</i>, and then <i>f((4, 2, 0, 2)) = (2)</i> because our 
+		remainder was <i>0</i> and we therefore have our answer which is <i>2</i>. This all looks a little something 
+		like this;</p>
+		<br />
+		<h5 class="quoteblock"><i>
+			f((6, 4)) = (6, 4, 0, 1);<br />
+			f((6, 4, 0, 1)) = (6, 4, 2, 2);<br />
+			f((6, 4, 2, 2)) = (6, 4, 2, 3);<br />
+			f((6, 4, 2, 3)) = (4, 2, 2, 1);<br />
+			f((4, 2, 2, 1)) = (4, 2, 0, 2);<br />
+			f((4, 2, 0, 2)) = (2);<br />
+			f((2)) = (2);<br />
+		</i></h5>
+		<br />
+		<p>It's worth restating at this point, that the last number in the quadruples indicates how the 
+		function will work on it next. Before we move onto the next bit, sit down and work through a few 
+		of your own examples. If you think you've got it already, try working through something much more 
+		complicated than starting with <i>6</i> and <i>4</i>.</p>
+		<br />
+		<p>I think that's enough for this instalment. Next, Knuth mentions that this system doesn't 
+		restrict defined Algorithms to strictly effective ones, where there are a finite number of steps 
+		or where the steps can always be performed by a human being. He then goes onto describe a second 
+		implementation of Algorithm E, using Markov algorithms that doesn't have this issue. In our next instalment, I will be 
+		describing what those are and how they apply to the next few paragraphs.</p>
+		<br />
+		<p>I hope this was helpful. Thanks for reading. If you have any criticism, corrections, objections, 
+		or (Gods forbid) praise just drop me a comment under the article, and until my next article, happy 
+		reading!</p>
+		<br />
+		
+		
+		<br />
+		<hr />
+		
+		<div class="navigate">
+			<a class="home" href="../index.html">Home</a>
+			<a class="next" ></a>
+			<a class="previous" href="http://rudikershaw.co.nf/subsites/phpadventure/begin.php"></a>
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+		
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Defining an Algorithm - Part 2';
+			var disqus_title = 'Defining an Algorithm  - Part 2';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+	</body>
+</html>
