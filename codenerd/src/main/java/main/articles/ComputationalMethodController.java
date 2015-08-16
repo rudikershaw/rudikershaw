@@ -1,5 +1,7 @@
 package main.articles;
 
+import main.dynamics.ArticleStatisticsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ComputationalMethodController {
 
-    @RequestMapping("articles/computationalmethod")
+    public static final String PATH = "articles/computationalmethod";
+    public static final String NAME = "Defining an Algorithm";
+    private ArticleStatisticsService statisticsService;
+
+    @Autowired
+    public ComputationalMethodController(ArticleStatisticsService statisticsService){
+        this.statisticsService = statisticsService;
+    }
+
+    @RequestMapping(PATH)
     public String article(Model model){
-        return "articles/computationalmethod";
+        Integer views = statisticsService.incrementViews(PATH, NAME);
+        model.addAttribute("views", views);
+        return PATH;
     }
 }

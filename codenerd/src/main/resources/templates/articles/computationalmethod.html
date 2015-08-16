@@ -29,7 +29,7 @@
 		finish with some hard-core-no-holds-barred-maths. I have no formal maths education beyond GCSE 
 		maths (high-school maths for the Americans amongst you), so you can imagine my horror when faced 
 		with an enormous block of text involving set theory, series, functions, and the rest at the end of 
-		the â€˜Basic Concepts' section. This article is essentially my notes as I work my way through the serious maths.</p>
+		the 'Basic Concepts' section. This article is essentially my notes as I work my way through the serious maths.</p>
 		<br />
 		<p>In the first chapter, at the end of the 'Basic Concepts' section is the first time Knuth turns to
 		formal mathematical definitions and notation to describe phenomena that has previously been described 
@@ -65,13 +65,13 @@
 		until we get our output.</p>
 		<br />
 		<h5 class="quoteblock">Each input <i>x</i> in the set <i>I</i> defines a computational sequence, <i>x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, ...</i>, 
-		as follows:     <i>x<sub>0</sub> = x     and    x<sub>k+1</sub> = f(x<sub>k</sub>)    for k â‰¥ 0.</i></h5>
+		as follows:     <i>x<sub>0</sub> = x     and    x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0.</i></h5>
 		<br />
 		<p>I wrestled with the above lines for some time, and had to ask the opinion of a friend with a maths degree what he thought about it before 
 		securely arriving at a consensus. My first thought was to think that each <i>x</i> (or each element) in the set of all inputs ( <i>I</i> ), <i>was</i> a sequence. 
 		But when Knuth says "Each input x in the set I defines a ... sequence", that is not what he appears to mean. The only interpretation that 
 		makes sense here is that for each <i>x</i> in the set of all inputs <i>there exists</i> a corresponding sequence in which the first state in the sequence 
-		is <i>x<sub>0</sub></i> and that this first state is the raw input. Hence, <i>x<sub>0</sub> = x</i>. When he says that <i>x<sub>k+1</sub> = f(x<sub>k</sub>)    for k â‰¥ 0</i> he's saying that for every state 
+		is <i>x<sub>0</sub></i> and that this first state is the raw input. Hence, <i>x<sub>0</sub> = x</i>. When he says that <i>x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0</i> he's saying that for every state
 		in the sequence that has an index of <i>0</i> or more we can get the next state in the sequence by putting it through a function <i>f(x<sub>k</sub>)</i>. So, if you 
 		put <i>x<sub>1</sub></i> into the function, you get <i>x<sub>2</sub></i> out (assuming of course that <i>x<sub>1</sub></i> is not the final state. We'll come to that later) <i>f(x<sub>1</sub>) = x<sub>2</sub></i>. That way, 
 		we can repeatedly apply the function to each new state to get the state that follows. An important note here, when Knuth earlier states 
