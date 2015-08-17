@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Rudi Kershaw on 20/06/2015.
  */
@@ -22,8 +24,8 @@ public class ComputationalMethodController {
     }
 
     @RequestMapping(PATH)
-    public String article(Model model){
-        Integer views = statisticsService.incrementViews(PATH, NAME);
+    public String article(Model model, HttpServletRequest request){
+        Integer views = statisticsService.incrementViews(PATH, NAME, request);
         model.addAttribute("views", views);
         return PATH;
     }

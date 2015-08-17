@@ -145,14 +145,25 @@ img.coverimg {
 }
 
 div.container {
+	min-height: 30px;
 	display: block;
 	width: 810px;
 	margin: auto;
 }
 
-p.date {
+div.container > p.date {
 	position: relative;
 	font-size: 22px;
+	float: left;
+    width: auto;
+	top: 40px;
+}
+
+div.container > p.views {
+	position: relative;
+	font-size: 22px;
+	float: right;
+    width: auto;
 	top: 40px;
 }
 

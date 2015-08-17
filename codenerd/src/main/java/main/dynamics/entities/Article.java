@@ -1,6 +1,7 @@
 package main.dynamics.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /** An article entity representing an article and it's url as well as any statistics against it. */
 @Entity
@@ -15,6 +16,10 @@ public class Article {
     /** The article's name or title. */
     private String name;
 
+    /** Date that the article was first viewed/published. */
+    @Temporal(TemporalType.DATE)
+    private Date published;
+
     /** No-args constructor. */
     public Article(){
         super();
@@ -25,6 +30,7 @@ public class Article {
         this.name = name;
         this.path = path;
         views = 1;
+        published = new Date();
     }
 
     @Id
@@ -59,5 +65,13 @@ public class Article {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getPublished() {
+        return new Date(published.getTime());
+    }
+
+    public void setPublished(Date published) {
+        this.published = published == null ? null : new Date(published.getTime());
     }
 }

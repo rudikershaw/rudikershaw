@@ -1,17 +1,20 @@
 package main;
 
 import main.dynamics.ArticleStatisticsService;
+import main.dynamics.entities.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by Rudi Kershaw on 20/06/2015.
- */
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/** Controller for the home page. */
 @Controller
 public class IndexController {
 
+    public static final String PATH = "index";
     ArticleStatisticsService statisticsService;
 
     @Autowired
@@ -20,8 +23,8 @@ public class IndexController {
     }
 
     @RequestMapping("/")
-    public String index(Model model){
-        statisticsService.getAllArticles();
-        return "index";
+    public String index(Model model, HttpServletRequest request){
+        List<Article> articles = statisticsService.getAllArticles();
+        return PATH;
     }
 }

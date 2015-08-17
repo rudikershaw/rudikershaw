@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>HTTP Basics</title>
 		<meta charset="UTF-8" />
@@ -16,8 +16,11 @@
 				<img src="http://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
 			</a>
 		</div>
-		
-		<p class="date">29/02/2015</p>
+
+		<div class="container">
+			<p class="date">29/02/2015</p>
+			<p class="views"><span th:text="${views}"></span> views</p>
+		</div>
 		<h1>HTTP Basics</h1>
 		<hr />
 		<img class="coverimg" src="../images/httptyped.jpg" alt="http://www." height="150" width="810" />

@@ -5,6 +5,7 @@ import main.dynamics.entities.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -14,20 +15,25 @@ import java.util.List;
 public class ArticleStatisticsService {
 
     ArticleRepository articleRepository;
+    ArticleSessionService sessionService;
 
     @Autowired
-    public ArticleStatisticsService(ArticleRepository articleRepository){
+    public ArticleStatisticsService(ArticleRepository articleRepository, ArticleSessionService sessionService){
        this.articleRepository = articleRepository;
+        this.sessionService = sessionService;
     }
 
-    public Integer incrementViews(String articlePath, String articleName){
+    public Integer incrementViews(String articlePath, String articleName, HttpServletRequest request){
         Article article = articleRepository.findByPath(articlePath);
         if(article == null){
-            articleRepository.save(new Article(articleName, articlePath));
+            article = articleRepository.save(new Article(articleName, articlePath));
+            sessionService.isUniqueSession(request.getSession(), article.getId());
             return 1;
         } else {
-            article.setViews(article.getViews()+1);
-            articleRepository.save(article);
+            if (sessionService.isUniqueSession(request.getSession(), article.getId())){
+                article.setViews(article.getViews()+1);
+                articleRepository.save(article);
+            }
             return article.getViews();
         }
     }
