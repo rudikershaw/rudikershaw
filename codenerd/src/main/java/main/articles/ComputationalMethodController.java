@@ -1,6 +1,7 @@
 package main.articles;
 
-import main.dynamics.ArticleStatisticsService;
+import main.dynamics.ArticleService;
+import main.dynamics.entities.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,21 @@ public class ComputationalMethodController {
 
     public static final String PATH = "articles/computationalmethod";
     public static final String NAME = "Defining an Algorithm";
-    private ArticleStatisticsService statisticsService;
+    public static final String IMAGE_PATH = "images/taocp.jpg";
+    public static final String DESCRIPTION = "The first of a series of posts on interpreting Donald " +
+                                             "Knuth's famous volumes; The Art of Computer Programming.";
+
+    private ArticleService statisticsService;
 
     @Autowired
-    public ComputationalMethodController(ArticleStatisticsService statisticsService){
+    public ComputationalMethodController(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
     @RequestMapping(PATH)
     public String article(Model model, HttpServletRequest request){
-        Integer views = statisticsService.incrementViews(PATH, NAME, request);
-        model.addAttribute("views", views);
+        Article article = statisticsService.initialise(PATH, NAME, IMAGE_PATH, DESCRIPTION, request);
+        model.addAttribute("article", article);
         return PATH;
     }
 }

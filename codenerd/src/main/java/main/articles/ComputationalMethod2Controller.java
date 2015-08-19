@@ -1,6 +1,7 @@
 package main.articles;
 
-import main.dynamics.ArticleStatisticsService;
+import main.dynamics.ArticleService;
+import main.dynamics.entities.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +16,22 @@ import javax.servlet.http.HttpServletRequest;
 public class ComputationalMethod2Controller {
 
     public static final String PATH = "articles/computationalmethod2";
-    public static final String NAME = "Defining an Algorithm";
-    private ArticleStatisticsService statisticsService;
+    public static final String NAME = "Defining an Algorithm 2";
+    public static final String IMAGE_PATH = "images/taocp.jpg";
+    public static final String DESCRIPTION = "The second of a series of posts on interpreting Donald " +
+                                             "Knuth's famous volumes; The Art of Computer Programming.";
+
+    private ArticleService statisticsService;
 
     @Autowired
-    public ComputationalMethod2Controller(ArticleStatisticsService statisticsService){
+    public ComputationalMethod2Controller(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
     @RequestMapping(PATH)
     public String article(Model model, HttpServletRequest request){
-        Integer views = statisticsService.incrementViews(PATH, NAME, request);
-        model.addAttribute("views", views);
+        Article article = statisticsService.initialise(PATH, NAME, IMAGE_PATH, DESCRIPTION, request);
+        model.addAttribute("article", article);
         return PATH;
     }
 }

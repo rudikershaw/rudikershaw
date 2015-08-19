@@ -11,5 +11,6 @@ import java.util.List;
 @Transactional
 public interface ArticleRepository extends CrudRepository<Article, Integer> {
     List<Article> findAll();
+    List<Article> findAllByOrderByPublishedDesc();
     Article findByPath(String path);
 }

@@ -15,6 +15,7 @@ public class ArticleSessionService {
     ArticleSessionRepository sessionRepository;
     private int counter = 0;
     private static final long TWO_DAY_MS = 1000 * 60 * 60 * 24 * 2;
+    private static final int ATTEMPTS_BEFORE_CLEAN = 100;
 
     @Autowired
     public ArticleSessionService(ArticleSessionRepository sessionRepository){
@@ -22,7 +23,7 @@ public class ArticleSessionService {
     }
 
     public boolean isUniqueSession(HttpSession session, Integer articleId){
-        deleteOldSessions();
+        cleanOldSessions();
         ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(session.getId(), articleId);
         if(userSession == null){
             sessionRepository.save(new ArticleSession(session.getId(), articleId));
@@ -31,11 +32,11 @@ public class ArticleSessionService {
         return false;
     }
 
-    private void deleteOldSessions(){
+    private void cleanOldSessions(){
         counter++;
-        if(counter >= 10){
+        if(counter >= ATTEMPTS_BEFORE_CLEAN){
             sessionRepository.deleteOldSessions(new Date(new Date().getTime() - TWO_DAY_MS));
         }
-        counter %= 10;
+        counter %= ATTEMPTS_BEFORE_CLEAN;
     }
 }

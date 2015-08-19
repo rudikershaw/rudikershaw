@@ -63,10 +63,12 @@ p > i {
 a {
 	text-decoration: none;
 	color: #ED5900;
-}
-a:hover{
+} a:hover{
 	font-weight: bold;
 	cursor: pointer;
+} a:hover div img {
+	filter: alpha(opacity=100);
+    opacity: 1;
 }
 
 hr {
@@ -104,30 +106,35 @@ a.sociallink {
 	top: -5px;
 }
 
-div.entry {	
+div.entry {
+    border-color: grey;
 	border-top-color: #ED5900;
-	border-bottom-color: grey;
-	border-bottom-width: 1px;
-	border-top-width: 4px;	
-	border-style: solid;			
+	border-top-width: 4px;
+	border-width: 1px;
+	padding-bottom: 10px;
+	border-style: solid;
+	text-align: center;
+	margin: 50px 50px;
 	min-height: 292px;
-	width: 810px;
-	margin: 50px auto;	
+	width: 290px;
+	float: left;
 } div.entry > h4 {
 	background-color: #222222;
 	text-align: center;
-	margin-bottom: 5px;
 	font-size: 20px;
 	padding: 5px;
 	color: white;
-	width: 800px;
+	width: 280px;
 } div.entry > img {
+    filter: alpha(opacity=80);
 	margin-bottom: 5px;
 	margin-right: 10px;
-	margin-top: 4px;
-	float: left;
+	opacity: 0.8;
 } div.entry > p {
-	display: inline;
+	display: block;
+    width: auto;
+    text-align: center;
+    padding: 10px;
 }
 
 h5.quoteblock {

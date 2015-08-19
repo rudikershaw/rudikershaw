@@ -15,6 +15,10 @@ public class Article {
     private Integer views;
     /** The article's name or title. */
     private String name;
+    /** The article's thumbnail path. */
+    private String imagePath;
+    /** The article's description. */
+    private String description;
 
     /** Date that the article was first viewed/published. */
     @Temporal(TemporalType.DATE)
@@ -26,9 +30,11 @@ public class Article {
     }
 
     /** Constructor for a new article. */
-    public Article(String name, String path){
+    public Article(String name, String path, String imagePath, String description){
         this.name = name;
         this.path = path;
+        this.imagePath = imagePath;
+        this.description = description;
         views = 1;
         published = new Date();
     }
@@ -73,5 +79,21 @@ public class Article {
 
     public void setPublished(Date published) {
         this.published = published == null ? null : new Date(published.getTime());
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

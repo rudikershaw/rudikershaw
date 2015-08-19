@@ -1,6 +1,7 @@
 package main.articles;
 
-import main.dynamics.ArticleStatisticsService;
+import main.dynamics.ArticleService;
+import main.dynamics.entities.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,21 @@ public class TypesettingController {
 
     public static final String PATH = "articles/typesetting";
     public static final String NAME = "Taking Typesetting Seriously";
-    private ArticleStatisticsService statisticsService;
+    public static final String IMAGE_PATH = "images/typesetting.jpg";
+    public static final String DESCRIPTION = "In 'Taking Typesetting Seriously' I talk about the @font-face " +
+                                             "css and how you can declare custom fonts for your website.";
+
+    private ArticleService statisticsService;
 
     @Autowired
-    public TypesettingController(ArticleStatisticsService statisticsService){
+    public TypesettingController(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
     @RequestMapping(PATH)
     public String article(Model model, HttpServletRequest request){
-        Integer views = statisticsService.incrementViews(PATH, NAME, request);
-        model.addAttribute("views", views);
+        Article article = statisticsService.initialise(PATH, NAME, IMAGE_PATH, DESCRIPTION, request);
+        model.addAttribute("article", article);
         return PATH;
     }
 }
