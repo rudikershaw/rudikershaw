@@ -1,5 +1,6 @@
 package main.dynamics.entities;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +11,6 @@ import java.util.List;
  */
 @Transactional
 public interface ArticleRepository extends CrudRepository<Article, Integer> {
-    List<Article> findAll();
-    List<Article> findAllByOrderByPublishedDesc();
+    List<Article> findAllByOrderByPublishedDesc(Pageable pageable);
     Article findByPath(String path);
 }

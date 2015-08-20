@@ -3,9 +3,10 @@
 	<head>
 		<title>Code Nerd</title>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="shortcut icon" href="images/RK.ico" />
-		<script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+        <script src="/scripts/jquery-1.11.3.js"></script>
+		<script src="/scripts/pagination.js"></script>
 	</head>
 	<body>
 		<div class="header">
@@ -22,9 +23,16 @@
 		<br />
 		<p>This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble
 		about geeky things. Geeky things might range from clever code snippets I've enjoyed, open source libraries I've appreciated, and 
-		other such computery things. Or, geeky things could be latest developments in some technology sectors or science genres.</p>		
-		<div class="container">
-			<a th:each="article : ${all}" th:href="${article.path}">
+		other such computery things. Or, geeky things could be latest developments in some technology sectors or science genres.</p>
+        <br />
+        <div class="navigate">
+			<a class="home" href="../">Latest</a>
+			<a class="next"></a>
+			<a class="previous previous-off"></a>
+		</div>
+		<hr style="clear:both;" />
+		<div id="page" class="container">
+			<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
 				<div class="entry">
 					<h4 th:text="${article.name}">Article Title</h4>
 					<img th:src="${article.imagePath}" height="240" width="290" />
@@ -32,6 +40,7 @@
 				</div>
 			</a>
 		</div>
+		<hr />
 		<br style="clear: both;" />
 		<h2>"We are at the very beginning of time for the human race. It is not unreasonable that we grapple with problems. But there are tens of thousands 
 		of years in the future. Our responsibility is to do what we can, learn what we can, improve the solutions, and pass them on."<br /> - <i>Richard P. Feynman</i></h2>

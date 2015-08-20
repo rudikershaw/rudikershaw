@@ -15,12 +15,12 @@ table{border-collapse:collapse;border-spacing:0}
 /* Declare font-face Aliquam Regular by Álvaro Thomáz. */
 @font-face {
   font-family: "Aliquam";
-  src: url("fonts/aliquamreg.eot"); 
-  src: url("fonts/aliquamreg.woff2") format("woff2"), 
-       url("fonts/aliquamreg.woff") format("woff"),   
-	   url("fonts/aliquamreg.ttf") format("truetype"),
-	   url("fonts/aliquamreg.eot?#iefix") format("embedded-opentype"),
-	   url("fonts/aliquamreg.svg#aliquamreg-webfont") format("svg");
+  src: url("/fonts/aliquamreg.eot");
+  src: url("/fonts/aliquamreg.woff2") format("woff2"),
+       url("/fonts/aliquamreg.woff") format("woff"),
+	   url("/fonts/aliquamreg.ttf") format("truetype"),
+	   url("/fonts/aliquamreg.eot?#iefix") format("embedded-opentype"),
+	   url("/fonts/aliquamreg.svg#aliquamreg-webfont") format("svg");
 }
 
 html {
@@ -85,7 +85,7 @@ div.header {
 }
 
 a.rklogo {
-	background-image: url("images/RK.png");	
+	background-image: url("/images/RK.png");
 	background-size: cover;
 	display: block;
 	height: 58px;
@@ -225,6 +225,11 @@ a.previous {
 } a.previous:hover {
 	border-color: transparent #222222 transparent transparent;
 }
+a.previous-off {
+	    border-color: transparent darkgrey transparent transparent;
+} a.previous-off:hover {
+	border-color: transparent darkgrey transparent transparent;
+}
 a.next {
 	border-color: transparent transparent transparent #ED5900;
 	border-width: 30px 0 30px 60px;
@@ -236,4 +241,9 @@ a.next {
 	width: 0;
 } a.next:hover {
 	border-color: transparent transparent transparent #222222;
+}
+a.next-off {
+	    border-color: transparent transparent transparent darkgrey;
+} a.next-off:hover {
+	border-color: transparent transparent transparent darkgrey;
 }

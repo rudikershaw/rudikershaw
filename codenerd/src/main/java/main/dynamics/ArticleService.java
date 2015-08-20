@@ -3,6 +3,7 @@ package main.dynamics;
 import main.dynamics.entities.Article;
 import main.dynamics.entities.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,8 +42,7 @@ public class ArticleService {
         }
     }
 
-    public List<Article> getAllArticles()
-    {
-        return articleRepository.findAllByOrderByPublishedDesc();
+    public List<Article> getPageOfArticles(Pageable pageable){
+        return articleRepository.findAllByOrderByPublishedDesc(pageable);
     }
 }
