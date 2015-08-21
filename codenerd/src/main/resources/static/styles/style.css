@@ -247,3 +247,7 @@ a.next-off {
 } a.next-off:hover {
 	border-color: transparent transparent transparent darkgrey;
 }
+
+#page {
+    min-height: 1000px;
+}

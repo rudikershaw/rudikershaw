@@ -13,34 +13,42 @@ $(document).ready(function(){
         if(waiting || $('.next').hasClass('next-off')) return;
         ++page;
         $('.previous').removeClass('previous-off');
-        getPage(page);
+        pageContainer.fadeTo('fast', 0, function(){
+            getPage(page);
+        });
     });
     // On click for previous page button.
     $('.previous').click(function(){
         if(page == 0 || waiting) return;
         if(--page == 0) $('.previous').addClass('previous-off');
-        getPage(page);
+        pageContainer.fadeTo('fast', 0, function(){
+            getPage(page);
+        });
     });
     // Get a template entry card.
     entryCard = $('.entry-card').first();
     pageContainer = $('#page');
 });
 
+// Get page of articles using AJAX request.
 function getPage(page){
     waiting = true;
     pageContainer.empty();
-
     $.ajax({
         url: '/'+page,
         dataType: 'JSON',
     }).done(function(data){
-
+        // If no data go back a page.
         if(data.length == 0){
             console.log('No data.');
             if(--page == 0) $('.previous').addClass('previous-off');
             $('.next').addClass('next-off');
             getPage(page);
             return;
+        }
+        // If less than 4 entries, disable next button.
+        if(data.length < 4){
+            $('.next').addClass('next-off');
         }
         $.each(data, function(index, article){
             entryCard.attr('href', article['path']);
@@ -49,7 +57,7 @@ function getPage(page){
             entryCard.find('img').attr('src', article['imagePath']);
             pageContainer.append(entryCard.clone());
         });
-
+        pageContainer.fadeTo('fast', 100);
         waiting = false;
     });
 }
