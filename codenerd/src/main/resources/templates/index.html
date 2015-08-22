@@ -25,6 +25,17 @@
 		about geeky things. Geeky things might range from clever code snippets I've enjoyed, open source libraries I've appreciated, and 
 		other such computery things. Or, geeky things could be latest developments in some technology sectors or science genres.</p>
         <br />
+		<div class="black-band">
+			<a th:href="${trending.path}" class="container">
+				<img th:src="${trending.imagePath}" height="144" width="174" style=""/>
+				<div class="box-600" >
+					<h2>Most Viewed - Last 7 Days</h2>
+					<h3 th:text="${trending.name}">Article Title</h3>
+					<p th:text="${trending.description}">Article Description</p>
+				</div>
+				<div style="clear: both;"></div>
+			</a>
+		</div>
         <div class="navigate">
 			<a class="home" href="../">Latest</a>
 			<a class="next"></a>

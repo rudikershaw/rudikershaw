@@ -21,9 +21,11 @@ $(document).ready(function(){
     $('.previous').click(function(){
         if(page == 0 || waiting) return;
         if(--page == 0) $('.previous').addClass('previous-off');
+        $('.next').removeClass('next-off');
         pageContainer.fadeTo('fast', 0, function(){
             getPage(page);
         });
+
     });
     // Get a template entry card.
     entryCard = $('.entry-card').first();
@@ -40,7 +42,6 @@ function getPage(page){
     }).done(function(data){
         // If no data go back a page.
         if(data.length == 0){
-            console.log('No data.');
             if(--page == 0) $('.previous').addClass('previous-off');
             $('.next').addClass('next-off');
             getPage(page);

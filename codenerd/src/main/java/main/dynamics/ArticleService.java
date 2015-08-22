@@ -45,4 +45,8 @@ public class ArticleService {
     public List<Article> getPageOfArticles(Pageable pageable){
         return articleRepository.findAllByOrderByPublishedDesc(pageable);
     }
+
+    public Article getMostViewedThisWeek(){
+        return articleRepository.findOne(sessionService.getMostSessionsThisWeekByArticleId());
+    }
 }

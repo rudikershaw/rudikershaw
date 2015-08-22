@@ -30,8 +30,7 @@ public class IndexController {
     public String index(Model model){
         List<Article> articles = articles(0);
         model.addAttribute("all", articles);
-        model.addAttribute("mostRecent", getMostRecent(articles));
-        model.addAttribute("mostViewed", getMostViewed(articles));
+        model.addAttribute("trending", articleService.getMostViewedThisWeek());
         return PATH;
     }
 
@@ -39,31 +38,7 @@ public class IndexController {
     @ResponseBody
     @RequestMapping("/{page}")
     public List<Article> articles(@PathVariable int page){
-        int start = page * ARTICLES_PER_PAGE;
-        int end = start + ARTICLES_PER_PAGE;
-        Pageable pageable = new PageRequest(start, end);
+        Pageable pageable = new PageRequest(page, ARTICLES_PER_PAGE);
         return articleService.getPageOfArticles(pageable);
-    }
-
-    /** Get the most recently published article from a list of articles. */
-    private Article getMostRecent(List<Article> articles){
-        Article mostRecent = null;
-        for(Article article : articles){
-            if(mostRecent == null || article.getPublished().before(mostRecent.getPublished())){
-                mostRecent = article;
-            }
-        }
-        return mostRecent;
-    }
-
-    /** Get the most viewed article from a list of articles. */
-    private Article getMostViewed(List<Article> articles){
-        Article mostViewed = null;
-        for(Article article : articles){
-            if(mostViewed == null || article.getViews() > mostViewed.getViews()){
-                mostViewed = article;
-            }
-        }
-        return mostViewed;
     }
 }

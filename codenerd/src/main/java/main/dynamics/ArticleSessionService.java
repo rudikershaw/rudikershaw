@@ -12,7 +12,7 @@ import java.util.Date;
 @Service
 public class ArticleSessionService {
 
-    ArticleSessionRepository sessionRepository;
+    private ArticleSessionRepository sessionRepository;
     private int counter = 0;
     private static final long TWO_DAY_MS = 1000 * 60 * 60 * 24 * 2;
     private static final int ATTEMPTS_BEFORE_CLEAN = 100;
@@ -38,5 +38,9 @@ public class ArticleSessionService {
             sessionRepository.deleteOldSessions(new Date(new Date().getTime() - TWO_DAY_MS));
         }
         counter %= ATTEMPTS_BEFORE_CLEAN;
+    }
+
+    public Integer getMostSessionsThisWeekByArticleId(){
+        return sessionRepository.findMostVisitedThisWeekArticleId().get(0);
     }
 }

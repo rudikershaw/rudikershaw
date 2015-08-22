@@ -47,6 +47,8 @@ h2 {
 	margin: auto;	
 }
 
+h3 { font-size: 20px; }
+
 p {
 	text-align: justify;
 	font-size: 19px;
@@ -109,8 +111,8 @@ a.sociallink {
 div.entry {
     border-color: grey;
 	border-top-color: #ED5900;
-	border-top-width: 4px;
 	border-width: 1px;
+	border-top-width: 4px;
 	padding-bottom: 10px;
 	border-style: solid;
 	text-align: center;
@@ -146,12 +148,42 @@ h5.quoteblock {
 	margin: 20px auto;
 }
 
+div.black-band {
+	background-color:#222222;
+	text-align: center;
+	margin: 40px 0;
+	padding: 20px;
+	color: white;
+}
+div.black-band img {
+	border: 8px solid black;
+	float:left;
+}
+div.black-band h2 { font-size: 32px; }
+div.black-band div.box-600 {
+	display: block;
+	width: 600px;
+	float: left;
+}
+div.black-band p, div.black-band h2, div.black-band h3 {
+	padding: 8px 30px;
+	width: auto;
+}
+div.black-band a {
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+} div.black-band a:hover {
+     filter: alpha(opacity=100);
+     font-weight: normal;
+     opacity: 1;
+ }
+
 img.coverimg {
 	display: block;
 	margin: 5px auto;
 }
 
-div.container {
+.container {
 	min-height: 30px;
 	display: block;
 	width: 810px;
@@ -183,24 +215,17 @@ pre.code {
 	margin: auto;
 }
 
-span.purple {
-	color: #71309B;
-}
-span.orange {
-	color: #ED5900;
-}
-span.green {
-	color: #347B34;
-}
-span.jade {
-	color: #347B94;
-}
+span.purple { color: #71309B; }
+span.orange { color: #ED5900; }
+span.green { color: #347B34; }
+span.jade { color: #347B94; }
 
 div.navigate {
 	display: block;
 	width: 800px;
 	margin: auto;
 }
+
 a.home {
 	background-color: #ED5900;
 	font-size: 40px;
@@ -213,6 +238,7 @@ a.home {
 	background-color: #222222;
 	font-weight: normal;
 }
+
 a.previous {
 	border-color: transparent #ED5900 transparent transparent;
 	border-width: 30px 60px 30px 0;
@@ -225,11 +251,9 @@ a.previous {
 } a.previous:hover {
 	border-color: transparent #222222 transparent transparent;
 }
-a.previous-off {
-	    border-color: transparent darkgrey transparent transparent;
-} a.previous-off:hover {
-	border-color: transparent darkgrey transparent transparent;
-}
+a.previous-off { border-color: transparent darkgrey transparent transparent; }
+a.previous-off:hover { border-color: transparent darkgrey transparent transparent; }
+
 a.next {
 	border-color: transparent transparent transparent #ED5900;
 	border-width: 30px 0 30px 60px;
@@ -242,12 +266,7 @@ a.next {
 } a.next:hover {
 	border-color: transparent transparent transparent #222222;
 }
-a.next-off {
-	    border-color: transparent transparent transparent darkgrey;
-} a.next-off:hover {
-	border-color: transparent transparent transparent darkgrey;
-}
+a.next-off { border-color: transparent transparent transparent darkgrey; }
+a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 
-#page {
-    min-height: 1000px;
-}
+#page { min-height: 1000px; }

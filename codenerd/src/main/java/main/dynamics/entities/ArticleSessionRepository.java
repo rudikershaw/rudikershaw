@@ -3,7 +3,6 @@ package main.dynamics.entities;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -23,4 +22,9 @@ public interface ArticleSessionRepository extends CrudRepository<ArticleSession,
     @Transactional
     @Query("DELETE FROM ArticleSession WHERE visited < ?#{[0]}")
     Integer deleteOldSessions(Date date);
+
+    @Query("SELECT articleId FROM ArticleSession " +
+            "WHERE visited > subdate(current_date, 7) GROUP BY articleId " +
+            "ORDER BY COUNT(*) DESC")
+    List<Integer> findMostVisitedThisWeekArticleId();
 }
