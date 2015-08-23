@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /** Service for checking whether views are unique by session. */
 @Service
@@ -41,6 +42,8 @@ public class ArticleSessionService {
     }
 
     public Integer getMostSessionsThisWeekByArticleId(){
-        return sessionRepository.findMostVisitedThisWeekArticleId().get(0);
+        List<Integer> articleIds = sessionRepository.findMostVisitedThisWeekArticleId();
+        if(articleIds.isEmpty()) return null;
+        else return articleIds.get(0);
     }
 }

@@ -47,7 +47,7 @@ h2 {
 	margin: auto;	
 }
 
-h3 { font-size: 20px; }
+h3 { font-size: 24px; }
 
 p {
 	text-align: justify;
@@ -116,7 +116,7 @@ div.entry {
 	padding-bottom: 10px;
 	border-style: solid;
 	text-align: center;
-	margin: 50px 50px;
+	margin: 50px 50px 0px 50px;
 	min-height: 292px;
 	width: 290px;
 	float: left;
@@ -151,15 +151,14 @@ h5.quoteblock {
 div.black-band {
 	background-color:#222222;
 	text-align: center;
-	margin: 40px 0;
-	padding: 20px;
+	margin: 60px 0 40px 0;
+	padding: 40px;
 	color: white;
 }
 div.black-band img {
 	border: 8px solid black;
 	float:left;
 }
-div.black-band h2 { font-size: 32px; }
 div.black-band div.box-600 {
 	display: block;
 	width: 600px;
@@ -167,7 +166,12 @@ div.black-band div.box-600 {
 }
 div.black-band p, div.black-band h2, div.black-band h3 {
 	padding: 8px 30px;
+	color: white;
 	width: auto;
+}
+div.black-band h2 {
+    font-size: 32px;
+    color: #ED5900;
 }
 div.black-band a {
     filter: alpha(opacity=60);
@@ -269,4 +273,4 @@ a.next {
 a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 
-#page { min-height: 1000px; }
+#page { min-height: 970px; }

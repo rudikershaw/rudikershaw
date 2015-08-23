@@ -9,13 +9,16 @@
 		<script src="/scripts/pagination.js"></script>
 	</head>
 	<body>
-		<div class="header">
-			<a class="rklogo" href="/"></a>
-			<a style="background-image: url('images/fb.png');" class="sociallink" target="blank_" href="https://www.facebook.com/rudi.kershaw"></a>
-			<a style="background-image: url('images/li.png');" class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"></a>				
-			<a target="blank_" href="http://stackoverflow.com/users/2182928/rudi" style="float:right;">
-				<img src="http://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
-			</a>
+		<div class="header" th:fragment="header">
+			<div class="container">
+				<a class="rklogo" href="/"></a>
+				<a style="background-image: url('/images/tw.png');" class="sociallink" target="blank_" href="https://twitter.com/RudiKershaw"></a>
+				<a style="background-image: url('/images/fb.png');" class="sociallink" target="blank_" href="https://www.facebook.com/rudi.kershaw"></a>
+				<a style="background-image: url('/images/li.png');" class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"></a>
+				<a target="blank_" href="http://stackoverflow.com/users/2182928/rudi" style="float:right;">
+					<img src="http://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+				</a>
+			</div>
 		</div>
 		
 		<h1>Rudi Kershaw</h1>
@@ -37,7 +40,7 @@
 			</a>
 		</div>
         <div class="navigate">
-			<a class="home" href="../">Latest</a>
+			<a class="home" href="/">Latest</a>
 			<a class="next"></a>
 			<a class="previous previous-off"></a>
 		</div>
