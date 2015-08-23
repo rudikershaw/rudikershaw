@@ -1,2 +1,2 @@
-codenerd/.idea
-codenerd/target
+.idea/*
+target/*
