@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Defining a Computational Method</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+	</head>
+	<body>
+		<div class="header" th:replace="/index :: header"></div>
+		<br />
+        <div class="container">
+            <p class="date">19/02/2015</p>
+            <p class="views"><span th:text="${article.views}"></span> views</p>
+        </div>
+		<h1>Defining an Algorithm</h1>
+		<hr />
+		<img class="coverimg" src="/images/taocp_text.jpg" alt="Let us formally define a computational method" height="150" width="810" />
+		<br />
+		
+		<p>Working your way through the volumes of The Art of Computer Programming is a fairly challenging 
+		task even for many experienced programmers and computer scientists (at least so I'm told). Most of 
+		the text is fairly easy to understand and digest but Knuth is a mathematician, so many sections 
+		finish with some hard-core-no-holds-barred-maths. I have no formal maths education beyond GCSE 
+		maths (high-school maths for the Americans amongst you), so you can imagine my horror when faced 
+		with an enormous block of text involving set theory, series, functions, and the rest at the end of 
+		the 'Basic Concepts' section. This article is essentially my notes as I work my way through the serious maths.</p>
+		<br />
+		<p>In the first chapter, at the end of the 'Basic Concepts' section is the first time Knuth turns to
+		formal mathematical definitions and notation to describe phenomena that has previously been described 
+		in plain text. It's at this point that those without any advanced formal maths education will have difficulty. If the reader is anything like me however, they are a completionist, 
+		and won't want to skip those bits to move forward. They'll want to understand them. Let's make a start 
+		where he does.</p>
+		<br />
+		<h5 class="quoteblock">Let us formally define a computational method to be a quadruple <i>(Q, I, Ω, f)</i>, in 
+		which <i>Q</i> is a set containing subsets <i>I</i> and <i>Ω</i> and <i>f</i> is a function from <i>Q</i> into itself.</h5>
+		<br />
+		<p>When Knuth refers to a <i>computational method</i> as a <i>quadruple</i> he is simply saying that a computational 
+		method is composed of four distinctly defined parts. He labels these four parts as <i>(Q, I, Ω, f)</i>. He 
+		then moves on to briefly describe each component of this quadruple. <i>I</i> and <i>Ω</i> are sets (collections of 
+		things), and <i>Q</i> is also a set which contains the things in the sets <i>I</i> and <i>Ω</i>. At this point it's easy 
+		to mistakenly assume that he means that <i>Q</i> contains only the sets <i>I</i> and <i>Ω</i> and nothing else. But we later 
+		find that this is not the case. Lastly he describes <i>f</i> as a function from <i>Q</i> into itself. What this means 
+		is that <i>f</i> is a process which takes an input which is an element from the set <i>Q</i> and returns or outputs 
+		another element from <i>Q</i>.</p>
+		<br/>
+		<h5 class="quoteblock">Furthermore <i>f</i> should leave <i>Ω</i> pointwise fixed; that is, <i>f(q)</i> should equal <i>q</i> for all elements <i>q</i> of <i>Ω</i>.</h5>
+		<br/>
+		<p>What this essentially means is that, what our function <i>f</i> returns, will be the same as its argument (i.e. the value will 
+		not change) if the argument is a member or element of (thing in) set <i>Ω</i>. This makes more sense when Knuth makes a clarification 
+		in his next statement; Spoiler alert - <i>Ω</i> is the set of possible outputs of our computational method. Once we know this it's a 
+		little easier to understand. Passing an output back into our function will not change it.</p>
+		<br />
+		<h5 class="quoteblock">The four quantities <i>Q, I, Ω, f</i> are intended to represent respectively the states of the computation, the input, 
+		the output, and the computational rule.</h5>
+		<br />
+		<p>So <i>Q</i> is a set that contains all possible states of the computation i.e. all the possible variations of input, output and all the stages in 
+		between. The set <i>I</i> contains all possible inputs. The set <i>Ω</i> contains all possible outputs (sorry if I spoiled that revelation for you earlier). 
+		And finally, <i>f</i> represents the computational rule; that is, the process/es applied to each state to get the next state, eventually (hopefully) 
+		until we get our output.</p>
+		<br />
+		<h5 class="quoteblock">Each input <i>x</i> in the set <i>I</i> defines a computational sequence, <i>x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, ...</i>, 
+		as follows:     <i>x<sub>0</sub> = x     and    x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0.</i></h5>
+		<br />
+		<p>I wrestled with the above lines for some time, and had to ask the opinion of a friend with a maths degree what he thought about it before 
+		securely arriving at a consensus. My first thought was to think that each <i>x</i> (or each element) in the set of all inputs ( <i>I</i> ), <i>was</i> a sequence. 
+		But when Knuth says "Each input x in the set I defines a ... sequence", that is not what he appears to mean. The only interpretation that 
+		makes sense here is that for each <i>x</i> in the set of all inputs <i>there exists</i> a corresponding sequence in which the first state in the sequence 
+		is <i>x<sub>0</sub></i> and that this first state is the raw input. Hence, <i>x<sub>0</sub> = x</i>. When he says that <i>x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0</i> he's saying that for every state
+		in the sequence that has an index of <i>0</i> or more we can get the next state in the sequence by putting it through a function <i>f(x<sub>k</sub>)</i>. So, if you 
+		put <i>x<sub>1</sub></i> into the function, you get <i>x<sub>2</sub></i> out (assuming of course that <i>x<sub>1</sub></i> is not the final state. We'll come to that later) <i>f(x<sub>1</sub>) = x<sub>2</sub></i>. That way, 
+		we can repeatedly apply the function to each new state to get the state that follows. An important note here, when Knuth earlier states 
+		that <i>Q</i> is the set of all computational states, these are the states he is talking about (along-side the inputs and outputs of course).</p>
+		<br />
+		<h5 class="quoteblock">The computational sequence is said to terminate in <i>k</i> steps if <i>k</i> is the smallest integer for which <i>x<sub>k</sub></i> is in <i>Ω</i>, and in this case 
+		it is said to produce the output <i>x<sub>k</sub></i> from <i>x</i>.</h5>
+		<br />
+		<p>The sequence is said to terminate in <i>k</i> steps where <i>k</i> is the first position in the series that exists in <i>Ω</i>. What this means of course, is that a series runs from <i>x<sub>0</sub></i> (the input) to <i>x<sub>k</sub></i> 
+		and <i>x<sub>k</sub></i> is then the output, and therefore a member of <i>Ω</i>.</p>
+		<br />
+		<p>Now here's the clincher, thus far we've been defining a computational method rather than an algorithm.</p>
+		<br />
+		<h5 class="quoteblock">Some computational sequences may never terminate; an algorithm is a computational method that terminates 
+		in finitely many steps for all <i>x</i> in <i>I</i></h5>
+		<br />
+		<p>What we mean here when we say "finitely many steps for all <i>x</i> in <i>I</i>" is that for all the elements ( <i>x</i> ) in <i>I</i> (all our potential inputs) there is a 
+		sequence of computational states that is finite, i.e. does eventually end. Or in layman's terms, no input we put into our algorithm will cause 
+		the algorithm to run forever.</p>
+		<br />
+		<p>And there ends our formal definition. I hope this has been as helpful to you reading this as it was for me to write it. And now, if your brain
+		isn't fried from reading the above my brain is certainly fried from having written it. The only thing left to do at this point is to go through 
+		an example, which is exactly what Knuth does next. In <a href="computationalmethod2">my next instalment</a> I will go through that example.</p>
+		<br />
+		<p>So, until then, happy reading!</p>
+		<br />
+		
+		
+		<br />
+		<hr />
+		
+		<div class="navigate">
+			<a class="home" href="/">Home</a>
+			<a class="next" href="typesetting"></a>
+			<a class="previous" style="display:none;"></a>		
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+		
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Defining an Algorithm';
+			var disqus_title = 'Defining an Algorithm';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+	</body>
+</html>
