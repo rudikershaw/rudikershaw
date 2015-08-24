@@ -66,7 +66,10 @@ a {
 	text-decoration: none;
 	color: #ED5900;
 } a:hover{
-	font-weight: bold;
+	text-shadow: 0 0 1px,
+				 0 0 1px,
+				 0 0 1px,
+				 0 0 1px;
 	cursor: pointer;
 } a:hover div img {
 	filter: alpha(opacity=100);
@@ -178,7 +181,7 @@ div.black-band a {
     opacity: 0.6;
 } div.black-band a:hover {
      filter: alpha(opacity=100);
-     font-weight: normal;
+     text-shadow: none;
      opacity: 1;
  }
 
