@@ -12,19 +12,19 @@ blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 table{border-collapse:collapse;border-spacing:0}
 
-/* Declare font-face Aliquam Regular by Álvaro Thomáz. */
+/* Declare font-face New Haas by Unknown. */
 @font-face {
-  font-family: "Aliquam";
-  src: url("/fonts/aliquamreg.eot");
-  src: url("/fonts/aliquamreg.woff2") format("woff2"),
-       url("/fonts/aliquamreg.woff") format("woff"),
-	   url("/fonts/aliquamreg.ttf") format("truetype"),
-	   url("/fonts/aliquamreg.eot?#iefix") format("embedded-opentype"),
-	   url("/fonts/aliquamreg.svg#aliquamreg-webfont") format("svg");
+  font-family: "NewHaas";
+  src: url("/fonts/NewHaas.eot");
+  src: url("/fonts/NewHaas.woff2") format("woff2"),
+       url("/fonts/NewHaas.woff") format("woff"),
+	   url("/fonts/NewHaas.ttf") format("truetype"),
+	   url("/fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
+	   url("/fonts/NewHaas.svg#aliquamreg-webfont") format("svg");
 }
 
 html {
-	font-family: Aliquam, Arial, Helvetica, sans-serif;
+	font-family: NewHaas, Helvetica, Arial, sans-serif;
 	text-shadow: 0 0 1px rgba(0,0,0,0.02);
 }
 

@@ -31,19 +31,19 @@
 		rest). So, below is what this site uses to declare this font.</p>
 		<br />
 		<pre class="code">
-<span class="green">/* Declare font-face Aliquam Regular by Álvaro Thomáz.  */</span>
+<span class="green">/* Declare font-face New Haas by Unknown.  */</span>
 <span class="purple">@font-face</span> {
-   <span class="orange">font-family</span>: <span class="jade">"Aliquam"</span>;
-   <span class="orange">src</span>: url(<span class="jade">"fonts/aliquamreg.eot"</span>);
-   <span class="orange">src</span>: url(<span class="jade">"fonts/aliquamreg.woff2"</span>) format(<span class="jade">"woff2"</span>),
-        url(<span class="jade">"fonts/aliquamreg.woff"</span>) format(<span class="jade">"woff"</span>),   
-        url(<span class="jade">"fonts/aliquamreg.ttf"</span>) format(<span class="jade">"truetype"</span>),
-        url(<span class="jade">"fonts/aliquamreg.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
-        url(<span class="jade">"fonts/aliquamreg.svg#aliquamreg-webfont"</span>) format(<span class="jade">"svg"</span>);
+   <span class="orange">font-family</span>: <span class="jade">"NewHaas"</span>;
+   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.eot"</span>);
+   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.woff2"</span>) format(<span class="jade">"woff2"</span>),
+        url(<span class="jade">"fonts/NewHaas.woff"</span>) format(<span class="jade">"woff"</span>),
+        url(<span class="jade">"fonts/NewHaas.ttf"</span>) format(<span class="jade">"truetype"</span>),
+        url(<span class="jade">"fonts/NewHaas.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
+        url(<span class="jade">"fonts/NewHaas.svg#NewHaas-webfont"</span>) format(<span class="jade">"svg"</span>);
 }
 
 <span class="purple">html</span> {
-   <span class="orange">font-family</span>: Aliquam, Arial, Helvetica, sans-serif;
+   <span class="orange">font-family</span>: NewHaas, Helvetica, Arial, sans-serif;
    <span class="orange">text-shadow</span>: 0 0 1px rgba(0,0,0,0.01);
 } 		</pre>
 		<br />
@@ -68,9 +68,9 @@
 		above. So, lets go through this a few lines at a time.</p>
 		<br />
 		<pre class="code">
-<span class="green">/* Declare font-face Aliquam Regular by Álvaro Thomáz.  */</span>
+<span class="green">/* Declare font-face New Haas by Unknown.  */</span>
 <span class="purple">@font-face</span> {
-   <span class="orange">font-family</span>: <span class="jade">"Aliquam"</span>;</pre>
+   <span class="orange">font-family</span>: <span class="jade">"NewHaas"</span>;</pre>
 		<br />
 		<p>First things first, give credit where credits due. If someone painstakingly creates a beautiful font, 
 		they deserve the credit. Also, at this point you will want to make sure that you are fulfilling any license 
@@ -81,11 +81,11 @@
 		to that one), we move onto;</p>
 		<br />
 		<pre class="code">
-   <span class="orange">src</span>: url(<span class="jade">"fonts/aliquamreg.woff2"</span>) format(<span class="jade">"woff2"</span>),
-        url(<span class="jade">"fonts/aliquamreg.woff"</span>) format(<span class="jade">"woff"</span>),   
-        url(<span class="jade">"fonts/aliquamreg.ttf"</span>) format(<span class="jade">"truetype"</span>),
-        url(<span class="jade">"fonts/aliquamreg.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
-        url(<span class="jade">"fonts/aliquamreg.svg#aliquamreg-webfont"</span>) format(<span class="jade">"svg"</span>);
+   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.woff2"</span>) format(<span class="jade">"woff2"</span>),
+        url(<span class="jade">"fonts/NewHaas.woff"</span>) format(<span class="jade">"woff"</span>),
+        url(<span class="jade">"fonts/NewHaas.ttf"</span>) format(<span class="jade">"truetype"</span>),
+        url(<span class="jade">"fonts/NewHaas.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
+        url(<span class="jade">"fonts/NewHaas.svg#NewHaas-webfont"</span>) format(<span class="jade">"svg"</span>);
 }</pre>
 		<br />
 		<p>The <i>src</i> descriptor is there to declare where we have stored our fonts. The <a href="http://www.w3.org/TR/css3-fonts/#src-desc">order 
@@ -103,7 +103,7 @@
 		file type that misses some font details. So, what about the line we skipped?</p>
 		<br />
 		<pre class="code">
-   <span class="orange">src</span>: url(<span class="jade">"fonts/aliquamreg.eot"</span>);</pre>
+   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.eot"</span>);</pre>
 		<br />
 		<p>So, what exactly is this for? Well, essentially its there to support Internet Explorer 6-8 as well 
 		as Compatibility mode. Turns out, that in certain situations, older versions of IE have difficulty going
