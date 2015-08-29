@@ -111,6 +111,26 @@ a.sociallink {
 	top: -5px;
 }
 
+a.donatelink {
+	background-color: white;
+	text-align: center;
+	border-radius: 3px;
+	font-weight: bold;
+	margin-top: 25px;
+	margin-left: 8px;
+	line-height: 2;
+	display: block;
+	color: #222222;
+	height: 29px;
+	width: 60px;
+	float: left;
+
+} a.donatelink:hover {
+	position: relative;
+	text-shadow: none;
+	top: -5px;
+}
+
 div.entry {
     border-color: grey;
 	border-top-color: #ED5900;
@@ -246,6 +266,20 @@ a.home {
 	text-shadow: none;
 }
 
+a.home-center {
+	background-color: #ED5900;
+	text-align: center;
+	padding: 10px 20px;
+	margin: 20px auto;
+	font-size: 40px;
+	display: block;
+	width: 160px;
+	color: white;
+} a.home-center:hover {
+	background-color: #222222;
+	text-shadow: none;
+}
+
 a.previous {
 	border-color: transparent #ED5900 transparent transparent;
 	border-width: 30px 60px 30px 0;
@@ -277,3 +311,14 @@ a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 
 #page { min-height: 970px; }
+
+.donate {
+	text-align: center;
+	margin: 50px auto;
+	width: 120px;
+} .donate:hover {
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+} .donate img {
+	background-color: black;
+}

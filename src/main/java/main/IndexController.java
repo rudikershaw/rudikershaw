@@ -26,6 +26,7 @@ public class IndexController {
         this.articleService = articleService;
     }
 
+    /** Mapping for the home page. */
     @RequestMapping("/")
     public String index(Model model){
         List<Article> articles = articles(0);

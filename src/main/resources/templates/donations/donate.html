@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Make a Donation</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+	</head>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+        <br />
+		<h1>Times Are Hard.</h1>
+        <hr />
+        <br />
+		<h2>Unfortunately there is no such thing as a free web hosting service that provides everything I need to keep this site running. So, if you've found my articles helpful and you're feeling especially generous any little you
+			can give helps me pay for hosting, domain names, and database storage.</h2>
+        <br />
+        <br />
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="donate">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="PMK52VBFWMA7N" />
+            <input type="image" src="http://www.rudikershaw.com/images/donate.png" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." />
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+        <br />
+        <hr />
+        <br style="clear: both;" />
+        <h2>"We are at the very beginning of time for the human race. It is not unreasonable that we grapple with problems. But there are tens of thousands
+            of years in the future. Our responsibility is to do what we can, learn what we can, improve the solutions, and pass them on."<br /> - <i>Richard P. Feynman</i></h2>
+        <br />
+    </body>
+</html>

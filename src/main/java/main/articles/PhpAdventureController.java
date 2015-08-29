@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by Rudi Kershaw on 23/08/2015.
- */
+/** Controller for the A PHP Adventure game. */
 @Controller
 public class PhpAdventureController {
 

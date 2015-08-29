@@ -17,6 +17,7 @@
 				<a style="background-image: url('/images/tw.png');" class="sociallink" target="blank_" href="https://twitter.com/RudiKershaw"></a>
 				<a style="background-image: url('/images/fb.png');" class="sociallink" target="blank_" href="https://www.facebook.com/rudi.kershaw"></a>
 				<a style="background-image: url('/images/li.png');" class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"></a>
+				<a class="donatelink" href="/donate">Donate</a>
 				<a target="blank_" href="http://stackoverflow.com/users/2182928/rudi" style="float:right;">
 					<img src="http://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
 				</a>
@@ -32,7 +33,7 @@
         <br />
 		<div class="black-band">
 			<a th:href="${trending.path}" class="container">
-				<img th:src="${trending.imagePath}" height="144" width="174" style=""/>
+				<img th:src="${trending.imagePath}" height="144" width="174"/>
 				<div class="box-600" >
 					<h2>Most Viewed - Last 7 Days</h2>
 					<h3 th:text="${trending.name}">Article Title</h3>

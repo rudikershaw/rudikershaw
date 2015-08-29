@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by Rudi Kershaw on 20/06/2015.
- */
+/** Controller for the HTTP Basics article. */
 @Controller
 public class HttpBasicsController {
 
