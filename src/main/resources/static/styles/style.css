@@ -89,6 +89,13 @@ div.header {
 	min-height: 58px;
 }
 
+div.footer {
+	background-color: #222222;
+	text-align: center;
+	padding: 30px;
+	color: white;
+}
+
 a.rklogo {
 	background-image: url("/images/RK.png");
 	background-size: cover;

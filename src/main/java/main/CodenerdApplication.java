@@ -3,7 +3,7 @@ package main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/** The Code Nerd application controller. */
+/** The Code Nerd application configuration. */
 @SpringBootApplication
 public class CodenerdApplication {
 

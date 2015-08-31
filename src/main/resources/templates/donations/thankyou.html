@@ -9,11 +9,10 @@
 	</head>
 	<body>
 		<div class="header" th:replace="index :: header"></div>
-		<br />
-        <br />
+        <div style="height:60px;" />
 		<h1>Thank you!</h1>
         <hr />
-        <br />
+        <div style="height:50px;" />
 		<h2>Thank you so much for your donation. Your money will go towards monthly hosting fees, database fees, domain name fees or other related costs of
             running this website. In the unlikely event that I end up raising more money than I need for the standard running costs your money will be used
             to add nodes to the server cluster to ensure better up-times, increase storage space in the database or purchase more high level domains for access.</h2>
@@ -21,10 +20,7 @@
         <br />
         <a class="home-center" href="/">Back To Home Page</a>
         <br />
-        <hr />
         <br style="clear: both;" />
-        <h2>"We are at the very beginning of time for the human race. It is not unreasonable that we grapple with problems. But there are tens of thousands
-            of years in the future. Our responsibility is to do what we can, learn what we can, improve the solutions, and pass them on."<br /> - <i>Richard P. Feynman</i></h2>
-        <br />
+        <div class="footer" th:replace="index :: footer"></div>
     </body>
 </html>
