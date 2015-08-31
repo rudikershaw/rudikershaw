@@ -28,10 +28,10 @@ public class ArticleService {
         Article article = articleRepository.findByPath(articlePath);
         if(article == null){
             article = articleRepository.save(new Article(articleName, articlePath, imagePath, description));
-            sessionService.isUniqueSession(request.getSession(), article.getId());
+            sessionService.isUniqueSession(request, article.getId());
             return article;
         } else {
-            if (sessionService.isUniqueSession(request.getSession(), article.getId())){
+            if (sessionService.isUniqueSession(request, article.getId())){
                 article.setName(articleName);
                 article.setImagePath(imagePath);
                 article.setDescription(description);

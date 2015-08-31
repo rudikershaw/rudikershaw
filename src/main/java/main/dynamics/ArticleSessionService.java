@@ -5,7 +5,7 @@ import main.dynamics.entities.ArticleSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -23,14 +23,21 @@ public class ArticleSessionService {
         this.sessionRepository = sessionRepository;
     }
 
-    public boolean isUniqueSession(HttpSession session, Integer articleId){
+    public boolean isUniqueSession(HttpServletRequest request, Integer articleId){
         cleanOldSessions();
-        ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(session.getId(), articleId);
+        if(isBot(request)) return false;
+        ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(request.getSession().getId(), articleId);
         if(userSession == null){
-            sessionRepository.save(new ArticleSession(session.getId(), articleId));
+            sessionRepository.save(new ArticleSession(request.getSession().getId(), articleId));
             return true;
         }
         return false;
+    }
+
+    public Integer getMostSessionsThisWeekByArticleId(){
+        List<Integer> articleIds = sessionRepository.findMostVisitedThisWeekArticleId();
+        if(articleIds.isEmpty()) return null;
+        else return articleIds.get(0);
     }
 
     private void cleanOldSessions(){
@@ -41,9 +48,13 @@ public class ArticleSessionService {
         counter %= ATTEMPTS_BEFORE_CLEAN;
     }
 
-    public Integer getMostSessionsThisWeekByArticleId(){
-        List<Integer> articleIds = sessionRepository.findMostVisitedThisWeekArticleId();
-        if(articleIds.isEmpty()) return null;
-        else return articleIds.get(0);
+    private boolean isBot(HttpServletRequest request)
+    {
+        String userAgent = request.getHeader("User-agent").toLowerCase();
+        if(userAgent.contains("bot") || userAgent.contains("crawler"))
+        {
+            return true;
+        }
+        return false;
     }
 }
