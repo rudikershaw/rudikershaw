@@ -36,7 +36,7 @@ $(document).ready(function(){
 function getPage(page){
     waiting = true;
     pageContainer.empty();
-    setTimeout(addImageIfWaiting, 600);
+    setTimeout(addImageIfWaiting, 500);
     $.ajax({
         url: '/'+page,
         dataType: 'JSON',
