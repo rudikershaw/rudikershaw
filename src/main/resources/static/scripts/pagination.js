@@ -36,6 +36,7 @@ $(document).ready(function(){
 function getPage(page){
     waiting = true;
     pageContainer.empty();
+    setTimeout(addImageIfWaiting, 600);
     $.ajax({
         url: '/'+page,
         dataType: 'JSON',
@@ -51,6 +52,9 @@ function getPage(page){
         if(data.length < 4){
             $('.next').addClass('next-off');
         }
+        waiting = false;
+        pageContainer.empty();
+        pageContainer.fadeTo(0,0);
         $.each(data, function(index, article){
             entryCard.attr('href', article['path']);
             entryCard.find('h4').text(article['name']);
@@ -59,6 +63,14 @@ function getPage(page){
             pageContainer.append(entryCard.clone());
         });
         pageContainer.fadeTo('fast', 100);
-        waiting = false;
     });
+}
+
+function addImageIfWaiting(){
+    if(waiting && $('#waiting') != null){
+        var img = $('<img width="200" height="200" id="waiting">');
+        img.attr('src', '/images/coolloading.gif');
+        pageContainer.append(img);
+        pageContainer.fadeTo('fast',1);
+    }
 }

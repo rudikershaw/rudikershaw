@@ -318,6 +318,11 @@ a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 
 #page { min-height: 970px; }
+#waiting {
+	padding: 250px;
+	display: block;
+	margin: auto;
+}
 
 .donate {
 	text-align: center;
