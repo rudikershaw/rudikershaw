@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Which Search Algorithm?</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="The first of a two part series on the basics of searching algorithms. This article covers exhaustive search and binary search." />
+		<meta name="author" content="Rudi Kershaw" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+	</head>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+		<div class="container">
+			<p class="date">21/09/2015</p>
+			<p class="views"><span th:text="${article.views}"></span> views</p>
+		</div>
+		<h1>Which Search Algorithm? - Part 1</h1>
+		<hr />
+		<img class="coverimg" src="/images/searchbanner.jpg" alt="Let us formally define a computational method" height="150" width="810" />
+		<br />
+		
+		<p>Searching is an enormous topic, so I am not even going to attempt to cover everything there is to cover. This article will be the
+            first in a two part article that will focus on the four most talked about search algorithms, what they are for, when we should
+            use them and how they work. The four algorithms are exhaustive search, binary search, depth-first search, and breadth-first search.
+            In this first article, we will be covering the first two.</p>
+		<br />
+        <p>In order to get the best out of these articles there are a few things you’re going to need a basic understanding of in advanced.
+            You’re going to need a decent knowledge of <a href="https://en.wikipedia.org/wiki/Abstract_data_type">abstract data types</a>,
+            in particular arrays, lists, trees, graphs, stacks, and queues. You’re also going to need some familiarity with programming
+            languages in order to interpret the examples I’ll be giving. The examples I will be giving of various search implementations will
+            be in Java, JavaScript and Python. Lastly, an understanding of <a href="https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/">Big O notation</a>
+            will be an advantage but not essential.</p>
+        <br />
+        <p>From the most basic perspective performing a search simply means checking a collection for the presence of something and getting
+            some very basic information. That information could simply be a boolean true or false value indicating whether the search found
+            what you were looking for, the information could indicate the position of what you were looking for within a collection, or the
+            information could be the entity you were searching for itself.</p>
+        <br />
+        <p>Let’s start with the absolute most basic of our four search types.</p>
+        <br />
+        <br />
+        <h2>Exhaustive Search</h2>
+        <br />
+        <p>An exhaustive search has another, less flattering, name; a <b>brute-force</b> search. If you’re a programmer of any description chances are
+            you have used an exhaustive search whether you knew it or not. That’s because an exhaustive search is simply the process of checking
+            one element of a collection at a time for an element that meets a certain criteria. This means that an exhaustive search may potentially
+            have to check <b>every single</b> element in a collection to find what it is looking for. We say that an exhaustive search has a time
+            complexity of <b>O(n)</b>, which means that the worst case time required for an exhaustive search scales directly with the size of the
+            collection. As such they can become unmanageably slow when working with very large collections. Below are some examples of simple
+            functions demonstrating exhaustive searches that check for the presence of an integer in an array.</p>
+        <br /><br />
+
+        <div class="choices">
+            <ul>
+                <li class="selected">Java</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <div style="clear:both;" />
+            </ul>
+            <pre class="code choice" choice="Java"><span class="orange">boolean</span> exhaustiveSearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">list</span>){
+   <span class="orange">for</span>(<span class="orange">int</span> <span class="green">item</span> : <span class="green">list</span>){
+       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">item</span>) <span class="orange">return true</span>;
+   }
+   <span class="orange">return false</span>;
+}</pre>
+            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>){
+   <span class="orange">for</span>(<span class="orange">var</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">list</span>.length; <span class="green">i</span>++){
+       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">list</span>[<span class="green">i</span>]) <span class="orange">return true</span>;
+   }
+   <span class="orange">return false</span>;
+}</pre>
+            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>):
+    <span class="orange">for</span> <span class="green">x</span> <span class="orange">in</span> <span class="green">list</span>:
+	<span class="orange">if</span> <span class="green">x</span> == <span class="green">find</span>:
+	     <span class="orange">return</span> <span class="jade">True</span>
+    <span class="orange">return</span> <span class="jade">False</span>
+            </pre>
+        </div>
+
+
+        <br /><br />
+        <p>We use exhaustive searches on flat collections (not trees or graphs, we're talking sets or lists) where we know little to nothing about
+            the order or sorting of the collection. As you'll see later we can do some much more clever searching if we know for certain that a
+            collection's elements are ordered and sorted. Take a look at the graphic below for a visual representation of how it works. Try
+            searching for elements in the collection.</p>
+        <br />
+        <br />
+        <div class="container">
+            <input type="number" class="search-for" name="e-search-for" />
+            <input type="button" class="search-go" value="Search" name="e-search-go" />
+            <ul class="search-graphic">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+            </ul>
+            <div style="clear:both" />
+        </div>
+        <br />
+        <br />
+        <h2>Binary Search</h2>
+        <br />
+        <p>The binary search is the big daddy of search. Unfortunately we can only use a binary search in very specific circumstances. What is it that
+            we need? An ordered, sorted collection. That ordered collection can be an array list (afraid a linked list just won't cut it), a binary
+            tree, or a few other niche data types. We often say that a binary search is a <b>divide and conquer</b> approach. What we mean by this is that we
+            start our search in the middle of the collection (or the root of a binary tree) and we check there. Because the collection is ordered we
+            can now determine something very important. Is our first check greater, or less than the value we are looking for? If it's greater, we know
+            that the value must be on the side of the collection that contains the lesser values (or vice versa) thereby excluding the other half from
+            the rest of the search. So we've only made one <b>actual</b> check but effectively checked half of the whole collection. Fantastic. Now all we do
+            is repeat this process with the next half to check, and keep going until we find what we're looking for or we've run out of elements to
+            check. As before, here are some working examples of functions that perform a binary search on lists.</p>
+        <br /><br />
+        <div class="choices">
+            <ul>
+                <li class="selected">Java</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <div style="clear:both;" />
+            </ul>
+            <pre class="code choice" choice="Java"><span class="orange">int</span> binarySearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">ints</span>){
+   <span class="orange">int</span> <span class="green">bottom</span> = <span class="jade">0</span>;
+   <span class="orange">int</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
+   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
+       <span class="orange">int</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span>;
+       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
+           <span class="orange">return</span> <span class="green">middle</span>;
+       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
+           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
+       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
+           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
+       }
+   }
+   <span class="orange">return</span> -<span class="jade">1</span>;
+}</pre>
+            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> binarySearch(<span class="green">find</span>, <span class="green">ints</span>){
+   <span class="orange">var</span> <span class="green">bottom</span> = <span class="jade">0</span>;
+   <span class="orange">var</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
+   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
+       <span class="orange">var</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span> | <span class="jade">0</span>;
+       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
+           <span class="orange">return</span> <span class="green">middle</span>;
+       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
+           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
+       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
+           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
+       }
+   }
+   <span class="orange">return</span> -<span class="jade">1</span>;
+}</pre>
+            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> binarySearch(<span class="green">find</span>, <span class="green">list</span>):
+    <span class="green">bottom</span> = <span class="jade">0</span>
+    <span class="green">top</span> = len(<span class="green">list</span>)-<span class="jade">1</span>
+
+    <span class="orange">while</span> <span class="green">bottom</span> &lt;= <span class="green">top</span>:
+        <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)//<span class="jade">2</span>
+        <span class="orange">if</span> <span class="green">list</span>[<span class="green">middle</span>] == <span class="green">find</span>:
+            <span class="orange">return</span> <span class="green">middle</span>
+        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>:
+            <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>
+        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>:
+            <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>
+
+    <span class="orange">return</span> -<span class="jade">1</span>
+            </pre>
+        </div>
+        <br /><br />
+        <p>Apparently, given an hour, <a href="https://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">only 10% of programmers</a>
+            can write a working, bug free, binary search. Reading the above simple examples you might not think it. They seem fairly simple but you
+            might be surprised how many fringe cases, complications and logical issues there are to account for. I'm not going to lie, my binary
+            search examples took me some time.</p>
+        <br />
+        <p>How great <b>exactly</b> is a binary search compared to a brute-force search? Remember we said a brute-force search has a complexity of
+            <b>O(n)</b>? Well, a binary search has a complexity of <b>O(log<sub>2</sub>n)</b>. What this means is that we'll only have to perform as many checks
+            as times you can half the size the collection. To get a real appreciation of what this means, we could search a collection of <b>one
+                million</b> in <b>twenty checks</b> and a collection of <b>one billion</b> in <b>thirty checks</b> in the worst cases. Pretty fast right?
+            There is a disadvantage of course, we need to be using ordered collections. Adding and removing elements from ordered collections is slow,
+            so you only want to be using binary searches on data that either doesn't change regularly, or can be updated asynchronously by another thread.
+            As before there are working graphical examples to try below;</p>
+        <br />
+        <br />
+        <div class="container">
+            <input type="number" class="search-for" name="b-search-for" />
+            <input type="button" class="search-go" value="Search" name="b-search-go" />
+            <ul class="search-graphic">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+            </ul>
+            <div style="clear:both" />
+        </div>
+        <br />
+        <br />
+        <p>That's it for our first part, I hope it has helped. In the next article we will be covering breadth-first and depth-first searches. Until then,
+            if you have any questions, suggestions, criticism of praise you can pop them in the comments below.</p>
+
+        <br />
+        <br />
+		<hr />
+		
+		<div class="navigate">
+			<a class="home" href="/">Home</a>
+			<a class="next" href=""></a>
+			<a class="previous" href="computationalmethod3"></a>
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+        <script src="/scripts/jquery-1.11.3.js"></script>
+		<script src="/scripts/choices.js"></script>
+        <script src="/scripts/search-graphics.js"></script>
+
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Which Search Algorithm  - Part 1';
+			var disqus_title = 'Which Search Algorithm  - Part 1';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>

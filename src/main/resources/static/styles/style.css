@@ -7,7 +7,7 @@ tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,
 figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
 time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body{line-height:1.2;letter-spacing:-0.02em;}ol,ul{list-style:none}
+body{line-height:1.2;}ol,ul{list-style:none}
 blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 table{border-collapse:collapse;border-spacing:0}
@@ -20,7 +20,7 @@ table{border-collapse:collapse;border-spacing:0}
        url("/fonts/NewHaas.woff") format("woff"),
 	   url("/fonts/NewHaas.ttf") format("truetype"),
 	   url("/fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
-	   url("/fonts/NewHaas.svg#aliquamreg-webfont") format("svg");
+	   url("/fonts/NewHaas.svg#NewHass-webfont") format("svg");
 }
 
 html {
@@ -179,9 +179,9 @@ h5.quoteblock {
 }
 
 div.black-band {
-	background-color:#222222;
+	background-color: #222222;
 	text-align: center;
-	margin: 60px 0 40px 0;
+	margin: 30px 0 40px 0;
 	padding: 40px;
 	color: white;
 }
@@ -224,7 +224,7 @@ img.coverimg {
 	margin: auto;
 }
 
-div.container > p.date {
+p.date {
 	position: relative;
 	font-size: 22px;
 	float: left;
@@ -232,7 +232,7 @@ div.container > p.date {
 	top: 40px;
 }
 
-div.container > p.views {
+p.views {
 	position: relative;
 	font-size: 22px;
 	float: right;
@@ -240,13 +240,38 @@ div.container > p.views {
 	top: 40px;
 }
 
-pre.code {
+.code {
 	font-family: "Courier New", Courier, monospace;
 	background-color: #383838;
+	overflow: auto;
 	color: lightgrey;
 	padding: 20px;
 	width: 700px;
 	margin: auto;
+}
+
+.choices {
+	background-color: #333333;
+	width: 740px;
+    margin: auto;
+    clear: both;
+}
+.choices li {
+ 	background-color: #222222;
+ 	text-align: center;
+ 	margin-left: 2px;
+ 	font-size: 20px;
+ 	padding: 20px 0;
+ 	color: white;
+ 	float: left;
+ 	width: 33%;
+}
+.choices li:hover {
+	background-color: #ED5900;
+	cursor: pointer;
+}
+li.selected {
+	background-color: #ED5900;
 }
 
 span.purple { color: #71309B; }
@@ -334,3 +359,92 @@ a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 } .donate img {
 	background-color: black;
 }
+
+ul.search-graphic {
+	margin: 10px 20px;
+}
+
+ul.search-graphic > li{
+	background: #333333;
+	text-align: center;
+	margin-left: 1px;
+	padding: 10px 0;
+	color: white;
+	float: left;
+	width: 7%
+}
+
+ul.search-graphic > li.checked{
+	background: #777777;
+}
+
+ul.search-graphic > li.found{
+	background: #ED5900;
+}
+
+.search-for {
+	text-align: center;
+	margin-left: 22px;
+	padding: 10px;
+	width: 25%;
+	float: left;
+	display: block;
+}
+
+.search-go {
+	font-family: NewHaas, Helvetica;
+	font-size: 16px;
+	background: #ED5900;
+	font-weight: bold;
+	color: white;
+	border: none;
+	padding: 11px;
+	width: 25%;
+	display: block;
+}
+
+/* Responsive CSS adjustments for mobile devices. */
+
+@media (max-device-width: 420px) {
+    .code {
+        font-size: 30px;
+    }
+
+    p.views, p.date {
+		font-size: 40px;
+		top: 20px;
+    }
+
+    a.sociallink {
+    	margin-top: 2px;
+    	height: 54px;
+    	width: 54px;
+    }
+
+    a.donatelink {
+    	margin-top: 2px;
+    	font-size: 30px;
+        height: 54px;
+        width: 120px;
+    }
+
+    ul.search-graphic > li{
+    	font-size: 28px;
+    	padding: 16px 0;
+    	width: 14%
+    }
+
+    .search-for {
+    	font-size: 24px;
+    	padding: 18px;
+    	width: 44%;
+    }
+
+    .search-go {
+    	font-size: 24px;
+    	padding: 20px;
+    	width: 43%;
+    }
+}
+
+
