@@ -401,6 +401,9 @@ ul.search-graphic > li.found{
 	padding: 11px;
 	width: 25%;
 	display: block;
+} .search-go:hover {
+	background: #222222;
+	cursor: pointer;
 }
 
 /* Responsive CSS adjustments for mobile devices. */
@@ -416,12 +419,14 @@ ul.search-graphic > li.found{
     }
 
     a.sociallink {
+    	margin-left: 18px;
     	margin-top: 2px;
     	height: 54px;
     	width: 54px;
     }
 
     a.donatelink {
+    	margin-left: 18px;
     	margin-top: 2px;
     	font-size: 30px;
         height: 54px;
