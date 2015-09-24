@@ -152,7 +152,10 @@ div.entry {
 	float: left;
 } div.entry > h4 {
 	background-color: #222222;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	text-align: center;
+	overflow: hidden;
 	font-size: 20px;
 	padding: 5px;
 	color: white;
@@ -163,9 +166,12 @@ div.entry {
 	margin-right: 10px;
 	opacity: 0.8;
 } div.entry > p {
+	text-align: center;
+	max-height: 120px;
+	overflow: hidden;
 	display: block;
     width: auto;
-    text-align: center;
+
     padding: 10px;
 }
 
@@ -450,6 +456,9 @@ ul.search-graphic > li.found{
     	padding: 20px;
     	width: 43%;
     }
-}
+
+    div.entry > h4, div.entry > p {
+    	font-size: 28px;
+    }
 
 
