@@ -76,6 +76,18 @@ a {
     opacity: 1;
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
 hr {
 	width: 810px;
 	margin: auto;
@@ -84,7 +96,7 @@ hr {
 div.header {
 	background-color: #222222;
 	border-top-color: #ED5900;
-	border-top-width: 4px;		
+	border-top-width: 5px;
 	border-style: solid;
 	min-height: 58px;
 }
@@ -280,7 +292,8 @@ li.selected {
 	background-color: #ED5900;
 }
 
-span.purple { color: #71309B; }
+span.yellow { color: #E6B800; }
+span.purple { color: #7F36B0; }
 span.orange { color: #ED5900; }
 span.green { color: #347B34; }
 span.jade { color: #347B94; }

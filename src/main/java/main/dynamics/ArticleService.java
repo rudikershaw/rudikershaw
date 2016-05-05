@@ -50,6 +50,8 @@ public class ArticleService {
         Integer id = sessionService.getMostSessionsThisWeekByArticleId();
         if(id == null){
             return new Article("No Articles Viewed", "/", "/images/RK.png", "Apparently no one has viewed ANY of my articles over the last 7 days. Come on people!");
-        } else { return articleRepository.findOne(id); }
+        } else {
+            return articleRepository.findOne(id);
+        }
     }
 }

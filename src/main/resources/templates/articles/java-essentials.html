@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Event Driven Java EE7</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="After discovering event based annotations I talk through a quick review of the ways of using event driven programming in Java EE7" />
+		<meta name="author" content="Rudi Kershaw" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+	</head>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+		<div class="container">
+			<p class="date">05/05/2016</p>
+			<p class="views"><span th:text="${article.views}"></span> views</p>
+		</div>
+		<h1>Event Driven Development in Java EE7</h1>
+		<hr />
+		<img class="coverimg" src="/images/events-banner.jpg" alt="Java EE7 Essentials Cover Image" height="150" width="810" />
+		<br />
+		<p>I recently finished reading Arun Gupta's Java EE7 Essentials and I was struck by how many features of Java EE there are that I had no idea existed. Not
+			least of all are the ways that Java EE enables event driven development through annotations. There are lots of situations that would have been easier and simpler
+			had I known these features existed. As such, I thought I should spread the wealth and share what I have learnt.</p>
+		<br />
+		<p>A first class example of where these annotations could be extremely useful is in <a href="https://en.wikipedia.org/wiki/Enterprise_JavaBeans" target="blank_">EJBs</a>. Session
+			beans can have <span class="italic">@AroundConstruct</span>, <span class="italic">@PostConstruct</span>, <span class="italic">@PreDestroy</span>, <span class="italic">@PostActivate</span>,
+            and <span class="italic">@PrePassivate</span> annotations that mark a method to be called at certain stages of an EJBs <a href="https://docs.oracle.com/javaee/6/tutorial/doc/giplj.html" target="black_">life-cycle</a>.
+            Simply annotate a method in the bean with one of these and it will get called during the associated life-cycle event. Marvelous.</p>
+		<br />
+		<br />
+
+		<div class="choices">
+            <pre class="code choice" choice="Java"><span class="yellow">@Stateless</span>
+<span class="purple">public</span> <span class="orange">class</span> YourStatelessSessionBean {
+    <span class="yellow">@PostConstruct</span>
+    <span class="purple">public</span> <span class="orange">void</span> foo(){
+        // Called after the bean is constructed and
+        // all its dependencies are injected.
+    }
+    <span class="yellow">@PreDestroy</span>
+    <span class="purple">public</span> <span class="orange">void</span> bar(){
+        // Called when the container removes this bean.
+    }
+}</pre>
+		</div>
+		<br />
+		<br />
+
+        <p><span class="italic">@PostActivate</span> and <span class="italic">@PrePassivate</span> can only be used by <a href="https://en.wikipedia.org/wiki/Enterprise_JavaBeans#Stateful_Session_Beans" target="blank_">stateful session beans</a>.
+			Stateful EJBs can be passivated when memory needs freeing up and can then be activated again when they are needed.</p>
+        <br />
+		<p>So what kind of problem can be solved by these annotations? Well, imagine you have a stateful bean that needs some initialisation before it's ready
+			to use. Normally your constructor does this, but imagine you need to use some injected beans to initialise that content. Now you have a problem, because
+			content isn't injected until after the constructor runs. Well, that's where <span class="italic">@PostConstruct</span> saves the day. Put your initialisation in there and it runs
+			after the constructor and after injected objects are instantiated.</p>
+		<br />
+		<p>Seeing as I wasn't previously aware of event based annotations, I thought those were pretty cool. But what I thought were even cooler were the event callback
+			annotations for <a href="https://en.wikipedia.org/wiki/Java_Persistence_API" target="blank_">JPA</a> Entity objects. <span class="italic">@PostLoad</span>,
+            <span class="italic">@PrePersist</span>, <span class="italic">@PostPersist</span>, <span class="italic">@PreUpdate</span>, <span class="italic">@PostUpdate</span>,
+			and <span class="italic">@PreRemove</span> can be added to an entity method to be called when those events are fired. Want a document to always be sent off for indexing
+            after it's been created? No problem, just add a method annotated <span class="italic">@PostPersist</span> and put your logic there to run after the entity is persisted.</p>
+        <br />
+        <br />
+
+        <div class="choices">
+            <pre class="code choice" choice="Java"><span class="yellow">@Entity</span>
+<span class="purple">public</span> <span class="orange">class</span> YourDocumentEntity {
+    <span class="yellow">@Id</span>
+    <span class="purple">private</span> <span class="orange">long</span> id;
+    // Getters and setters etc here.
+    <span class="yellow">@PostPersist</span>
+    <span class="purple">public</span> <span class="orange">void</span> sendForIndexing(){
+        // Called after your entity is persisted.
+    }
+    <span class="yellow">@PreRemove</span>
+    <span class="purple">public</span> <span class="orange">void</span> removeFromIndex(){
+        // Called just before removing this entity from the database.
+    }
+}</pre>
+        </div>
+		<br />
+		<br />
+
+		<p>What if you want some logic that runs after many different entity types are persisted? You don't want to have to annotate a method in every entity and repeat your
+			logic over and over. No problem, declare your annotations against a completely separate non-Entity class. Then you can register this as the listener for
+			your entities with a single annotation, like so;</p>
+
+        <br />
+        <br />
+        <div class="choices">
+            <pre class="code choice" choice="Java"><span class="yellow">@Entity</span>
+<span class="yellow">@EntityListeners</span>(YourClassWithTheAnnotations.<span class="orange">class</span>)
+<span class="purple">public</span> <span class="orange">class</span> YourDocumentEntity {
+    <span class="yellow">@Id</span>
+    <span class="purple">private</span> <span class="orange">long</span> id;
+    // Getters and setters etc here.
+}</pre>
+        </div>
+        <br />
+        <br />
+
+        <p>Events in Java EE aren't just about declaring listeners for existing pre-determined events though. If those weren't enough, you can define your own
+			<a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkhic.html" target="blank_">Events and their Observers</a> and fire those Events yourself from any managed
+			bean in the application. That fired Event can then be observed and dealt with in any manner you like. Your new event can just be defined as a standard
+			<a target="blank_" href="http://stackoverflow.com/questions/3527264/how-to-create-a-pojo">POJO</a> and then injected into a managed bean like so;</p>
+
+		<br />
+		<br />
+		<div class="choices">
+            <pre class="code choice" choice="Java"><span class="yellow">@Stateless</span>
+<span class="purple">public</span> <span class="orange">class</span> EventFiringBean {
+    <span class="yellow">@Inject</span>
+    <span class="purple">private</span> <span class="orange">Event</span>&lt;<span class="orange">YourEvent</span>&gt; event;
+    <span class="purple">public</span> <span class="orange">void</span> doStuff(){
+        event.fire(new <span class="orange">YourEvent</span>(<span class="jade">"Your event fired!"</span>));
+    }
+}
+
+<span class="orange">class</span> YourEvent {
+    <span class="purple">private</span> <span class="orange">String</span> message;
+    <span class="purple">public</span> YourEvent(<span class="orange">String</span> message){
+        this.message = message;
+    }
+    // Getters and setters go here!
+}</pre>
+		</div>
+		<br />
+		<br />
+
+		<p>So you have injected your event by declaring it as the generic type of an injected Event object. You can then use it to fire events by simply creating one
+			of your new POJOs and passing it into a call to the event objects fire method. Now somewhere in another bean a method can observe this event firing. These two
+            beans don't need any knowledge of each other. They're as loosely coupled as they get. To me, this feels incredibly powerful. You can define events and fire them
+            from anywhere and then observe them from anywhere. All without tightly binding the communicating classes together.</p>
+
+        <br />
+        <br />
+        <div class="choices">
+            <pre class="code choice" choice="Java"><span class="purple">public</span> <span class="orange">void</span> beanMethod(<span class="yellow">@Observes</span> YourEvent even) {
+    // Called when a YourEvent event is fired.
+}</pre>
+        </div>
+        <br />
+        <br />
+
+        <p>You can even change the relationship that this receiving method has with the transaction of the method that fired the event. You can declare your <span class="italic">@Observer</span> annotation with
+            a small hand full of parameters such as <span class="italic nowrap">@Observer(during = TransactionPhase.AFTER_SUCCESS)</span>. This example specifies that the method should fire after the transaction of the firing method has
+            completed successfully without rolling back. The default is <span class="italic nowrap">@Observer(during = TransactionPhase.IN_PROGRESS)</span> which causes the method to run immediately after the event has
+            fired during the transaction.</p>
+        <br />
+        <p>Events in Java EE seem really useful and I will be looking forward to putting them to use. I hope this article has helped or given you some ideas for how you can put them to use yourself. If you
+            have any feedback feel free to drop a comment in the comments below. Until next time, keep on reading.</p>
+
+        <br />
+        <br />
+		<hr />
+		
+		<div class="navigate">
+			<a class="home" href="/">Home</a>
+			<a class="next" href=""></a>
+			<a class="previous" href="whichsearch"></a>
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+        <script src="/scripts/jquery-1.11.3.js"></script>
+		<script src="/scripts/choices.js"></script>
+        <script src="/scripts/search-graphics.js"></script>
+
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Java EE7 Essentials Review';
+			var disqus_title = 'Java EE7 Essentials Review';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>
