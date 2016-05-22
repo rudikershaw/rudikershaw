@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/** Controller for the Java EE7 Essentials article. */
+/** Controller for the Trouble with Science article. */
 @Controller
-public class JavaEssentialsController {
+public class TroubleWithScienceController {
 
-    public static final String PATH = "articles/java-essentials";
-    public static final String NAME = "Event Driven Java EE7";
-    public static final String IMAGE_PATH = "images/events.jpg";
-    public static final String DESCRIPTION = "After discovering event based annotations I talk through a quick review " +
-                                             "of the ways to use event driven programming in Java EE7.";
+    public static final String PATH = "articles/science-trouble";
+    public static final String NAME = "The Trouble with Science";
+    public static final String IMAGE_PATH = "images/science-trouble.jpg";
+    public static final String DESCRIPTION = "Science is how we know what is true and what is not. This article covers " +
+                                             "the biggest problems that science faces right now.";
 
     private ArticleService statisticsService;
 
     @Autowired
-    public JavaEssentialsController(ArticleService statisticsService){
+    public TroubleWithScienceController(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
