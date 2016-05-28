@@ -16,7 +16,7 @@ public class ThisWebsiteController {
     public static final String PATH = "articles/website-upgrade";
     public static final String NAME = "Upgrading This Website";
     public static final String IMAGE_PATH = "images/websiteupgrade.jpg";
-    public static final String DESCRIPTION = "After months of inactivity I have upgraded this website to use JavaEE & " +
+    public static final String DESCRIPTION = "After months of inactivity I upgraded this site to use JavaEE, " +
                                              "Spring boot, as well as a MySQL database for some fun extras.";
 
     private ArticleService statisticsService;

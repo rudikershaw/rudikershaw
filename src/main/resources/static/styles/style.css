@@ -7,24 +7,13 @@ tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,
 figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
 time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body{line-height:1.2;}ol,ul{list-style:none}sup{font-size:small;}
+body{line-height:1.2;letter-spacing:-0.1px;}ol,ul{list-style:none}sup{font-size:small;}
 blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 table{border-collapse:collapse;border-spacing:0}
 
-/* Declare font-face New Haas by Unknown. */
-@font-face {
-  font-family: "NewHaas";
-  src: url("/fonts/NewHaas.eot");
-  src: url("/fonts/NewHaas.woff2") format("woff2"),
-       url("/fonts/NewHaas.woff") format("woff"),
-	   url("/fonts/NewHaas.ttf") format("truetype"),
-	   url("/fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
-	   url("/fonts/NewHaas.svg#NewHass-webfont") format("svg");
-}
-
 html {
-	font-family: NewHaas, Helvetica, Arial, sans-serif;
+	font-family: 'Noto Serif', Helvetica, Arial, sans-serif;
 	text-shadow: 0 0 1px rgba(0,0,0,0.02);
 }
 
@@ -37,12 +26,12 @@ body {
 h1 {
 	text-align: center;
 	margin-top: 50px;
-	font-size: 60px;	
+	font-size: 50px;
 }
 
 h2 {
 	text-align: center;
-	font-size: 30px;
+	font-size: 26px;
 	width: 820px;
 	margin: auto;	
 }
@@ -51,13 +40,12 @@ h3 { font-size: 24px; }
 
 p {
 	text-align: justify;
-	font-size: 20px;
+	font-size: 16px;
 	width: 780px;
 	margin: auto;	
 }
 
 p > i {
-	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	font-size: 17px;
 }
@@ -136,6 +124,7 @@ a.sociallink {
 
 a.donatelink {
 	background-color: white;
+	font-family: sans-serif;
 	text-align: center;
 	border-radius: 3px;
 	font-weight: bold;
@@ -145,7 +134,7 @@ a.donatelink {
 	display: block;
 	color: #222222;
 	height: 29px;
-	width: 60px;
+	width: 68px;
 	float: left;
 
 } a.donatelink:hover {
@@ -192,7 +181,6 @@ div.entry {
 }
 
 h5.quoteblock {
-	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
 	font-size: 20px;
 	font-weight: bold;
@@ -248,7 +236,7 @@ img.coverimg {
 
 p.date {
 	position: relative;
-	font-size: 22px;
+	font-size: 20px;
 	float: left;
     width: auto;
 	top: 40px;
@@ -256,7 +244,7 @@ p.date {
 
 p.views {
 	position: relative;
-	font-size: 22px;
+	font-size: 20px;
 	float: right;
     width: auto;
 	top: 40px;
@@ -430,7 +418,7 @@ ul.search-graphic > li.found{
 }
 
 p.reference {
-	font-size: 18px;
+	font-size: 13px;
 	margin: 2px auto;
 }
 
