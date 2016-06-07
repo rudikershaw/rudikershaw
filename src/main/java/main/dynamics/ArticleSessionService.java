@@ -1,7 +1,7 @@
 package main.dynamics;
 
 import main.dynamics.entities.ArticleSession;
-import main.dynamics.entities.ArticleSessionRepository;
+import main.dynamics.repositories.ArticleSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

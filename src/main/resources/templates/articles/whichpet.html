@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Whicpet</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Machine learning and AI have a reputation for being incredibly complicated. But does it really need to be complicated?" />
+		<meta name="author" content="Rudi Kershaw" />
+		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+	</head>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<div class="whichpet">
+			<br />
+			<div class="container">
+				<p class="date">20/05/2016</p>
+				<p class="views"><span th:text="${article.views}"></span> views</p>
+			</div>
+			<h1>Whichpet</h1>
+			<br />
+			<br />
+			<p>Hi I'm Whichpet, a weak AI program that can work out from a description of your pet the kind of animal you are talking about.
+				At the moment I can understand when you're talking about cats, dogs, fish, birds, horses and reptiles. Feel free to describe your
+				pet below and I'll see if I can guess which type of pet it is. If I get it wrong you can tell me what type of pet it was and I can
+				learn from it!</p>
+            <br />
+
+			<div id="whichpet-target">
+                <img style="background:white; margin: 40px auto; padding: 160px 250px;" src="/images/coolloading.gif" alt="Loading..." width="200" height="200" id="waiting" />
+			</div>
+            <h2 id="click-for-more"><a>How Does it Work?</a> <span>&#9658;</span></h2>
+            <br />
+			<div id="they-clicked-for-more" style="display: none;">
+				<p>Whichpet is a Naive Bayes Classifier written in Javascript. What that means is that it works out the probabilities that you are describing a pet of each
+					type by calculating the probability that you would use certain words. How does it know the probabilities? Well, you provide them.
+					Every time someone describes a pet and tells it which type of pet it was, data is added to a large list which it uses to work out the
+					chances.</p>
+				<br />
+				<p>I created Whichpet because I wanted to create a very simple AI or example of Machine Learning. It's easy for machine learning to feel
+					a little like magic, but once you peer beneath the hood machine intelligence is usually just a combination of fairly simple tricks.</p>
+				<br />
+				<p>In my next article I am going to talk about how machine learning and AI needn't feel like magic, and can be simple for everyone to understand.</p>
+				<br />
+				<p>If you would like to see or use the code for Whichpet, you can view the code on GitHub by clicking the GitHub logo in the header at the top of the page.</p>
+			</div>
+			<br />
+			<br />
+			<br />
+		</div>
+		<div class="navigate">
+			<a class="home" href="/">Home</a>
+			<a class="next" href=""></a>
+			<a class="previous" href="science-trouble"></a>
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+        <script src="/scripts/jquery-1.11.3.js"></script>
+        <script src="/scripts/whichpet.js"></script>
+
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Whichpet';
+			var disqus_title = 'Whichpet';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</body>
+</html>

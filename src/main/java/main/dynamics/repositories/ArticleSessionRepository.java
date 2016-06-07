@@ -1,5 +1,6 @@
-package main.dynamics.entities;
+package main.dynamics.repositories;
 
+import main.dynamics.entities.ArticleSession;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -1,7 +1,7 @@
 package main.dynamics;
 
 import main.dynamics.entities.Article;
-import main.dynamics.entities.ArticleRepository;
+import main.dynamics.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

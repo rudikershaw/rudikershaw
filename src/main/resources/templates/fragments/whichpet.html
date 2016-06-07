@@ -1,0 +1,37 @@
+<div id="whichpet-success" class="whichpet-ui container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <img src="/images/whichpet.png" alt="The Whichpet Logo" height="169" width="209" />
+    <h3>Describe your pet in the field below and hit the 'Which Pet' button to see if I can work out which type of pet it is.</h3><br />
+    <form id="which-pet">
+        <textarea name="description" rows="3" maxlength="200" ></textarea><br /><br />
+        <input type="button" value="Which Pet" />
+    </form>
+    <div class="popup">
+        <div class="box">
+            <a style="background-image: url('/images/cross.png');" class="close-link"></a>
+            <div style="clear:both"></div>
+            <br />
+            <h3>Are your describing a </h3>
+            <br />
+            <br />
+            <div class="buttons">
+                <input type="button" value="Yes" name="yes"/> <input type="button" value="No" name="no"/>
+            </div>
+            <form style="display:none" id="input">
+                Looks like I guessed wrong. What was it, by the way? <br /><br />
+                <select name="label">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                    <option value="fish">Fish</option>
+                    <option value="horse">Horse</option>
+                    <option value="bird">Bird</option>
+                    <option value="reptile">Reptile</option>
+                </select>
+                <br /><br />
+                <input type="button" value="This Pet" />
+            </form>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        var pets = [[${pets}]];
+    </script>
+</div>

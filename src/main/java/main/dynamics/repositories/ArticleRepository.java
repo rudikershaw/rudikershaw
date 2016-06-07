@@ -1,5 +1,6 @@
-package main.dynamics.entities;
+package main.dynamics.repositories;
 
+import main.dynamics.entities.Article;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
