@@ -29,7 +29,7 @@ public class WhichpetController {
     public static final String NAME = "Whichpet";
     public static final String IMAGE_PATH = "images/whichpet-orange.png";
     public static final String DESCRIPTION = "Whichpet is a Javascript library for classifying text descriptions into " +
-                                             "pre-registered labels.";
+                                             "labels. In this case pet descriptions and the type of pets.";
 
     private ArticleService statisticsService;
     private WhichpetService whichpetService;
