@@ -25,17 +25,45 @@
             went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth
             first searches, so let's jump straight into the subject.</p>
 		<br />
-        <p>Depth and breadth first searches are searches performed on graph or tree structures. </p>
+        <p>Depth and breadth first searches are searches performed on graph structures. For the purposes of this article I am going to assume we are dealing
+            with a graph in it's most abstract sense. We wont assume that we are using a graph of any particular type. As an example, if we assumed we were
+            only dealing with trees we could make all kind of assumptions about not having to deal with cyclic node structures. By assuming that <b>anything goes</b>
+            in our graph we can theoretically write searches that will work on any kind of graph.</p>
         <br />
-        <p>From the most basic perspective performing a search simply means checking a collection for the presence of something and getting
-            some very basic information. That information could simply be a boolean true or false value indicating whether the search found
-            what you were looking for, the information could indicate the position of what you were looking for within a collection, or the
-            information could be the entity you were searching for itself.</p>
+        <p>Before we talk about both searches we had better define our nodes so that we know what we are dealing with. I will leave out getters and setters
+            for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank">encapsulation</a> in your own code).</p>
         <br />
-        <p>Let's start with the absolute most basic of our four search types.</p>
+        <div class="choices">
+            <ul>
+                <li class="selected">Java</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <div style="clear:both;" />
+            </ul>
+            <pre class="code choice" choice="Java"><span class="orange">public class</span> Node {
+    <span class="orange">public</span> <span class="orange">int</span> <span class="green">value</span>;
+    <span class="orange">public</span> Set&lt;Node&gt; <span class="green">connections</span> = <span class="orange">new</span> HashSet&lt;&gt;();
+}</pre>
+            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> Node() {
+    <span class="orange">this</span>.<span class="green">value</span> = <span class="jade">0</span>;
+    <span class="orange">this</span>.<span class="green">connections</span> = [];
+}</pre>
+            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">class</span> Node(object):
+    <span class="green">value</span> = <span class="jade">0</span>
+    <span class="green">connections</span> = []
+ </pre>
+        </div>
         <br />
+        <p>Determining whether you want to use a depth first or breadth first search depends on the nature of the data you are storing in your graph as well as the kind of
+            information you want to get from the graph. Imagine a family tree expressed in graph form. If you wanted to perform a search for a living but distant relative
+            in the graph you will be wanting to perform a breadth first search. If, on the other hand, you wanted to find an historic but direct ancestor from hundreds of
+            years ago a depth first search makes much more sense.</p>
         <br />
-        <h2>Exhaustive Search</h2>
+        <p>This is what I mean by understanding something about the data and the nature of what you are looking for. If you have completely unstructured data with no pattern
+            to the depth or breadth it doesn't make a great deal of difference which search type you choose. Conversely, knowing a little about the structure of your graph
+            can tell you how you should be searching it. There is no hard and fast rules for choosing, it is about knowing your data, and knowing what you are looking for.</p>
+        <br />
+        <h2>Depth First Search</h2>
         <br />
         <p>An exhaustive search has another, less flattering, name; a <b>brute-force</b> search. If you're a programmer of any description chances are
             you have used an exhaustive search whether you knew it or not. That's because an exhaustive search is simply the process of checking
