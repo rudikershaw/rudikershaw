@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /** Controller for the Which Search Algorithm? - Part 1 article. */
 @Controller
-public class WhichSearchAlgorithm {
+public class WhichSearchController {
 
     public static final String PATH = "articles/whichsearch";
     public static final String NAME = "Which Search Algorithm? - Part 1";
@@ -22,7 +22,7 @@ public class WhichSearchAlgorithm {
     private ArticleService statisticsService;
 
     @Autowired
-    public WhichSearchAlgorithm(ArticleService statisticsService){
+    public WhichSearchController(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
