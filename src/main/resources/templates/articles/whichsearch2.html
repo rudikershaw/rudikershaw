@@ -25,20 +25,22 @@
             went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth
             first searches, so let's jump straight into the subject.</p>
 		<br />
-        <p>Depth and breadth first searches are searches performed on graph structures. For the purposes of this article I am going to assume we are dealing
-            with a graph in it's most abstract sense. We wont assume that we are using a graph of any particular type. As an example, if we assumed we were
-            only dealing with trees we could make all kind of assumptions about not having to deal with cyclic node structures. By assuming that <b>anything goes</b>
-            in our graph we can theoretically write searches that will work on any kind of graph.</p>
+        <p>Depth and breadth first searches are searches performed on <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)" target="_blank">graph</a>
+            structures. For the purposes of this article I am going to assume we are dealing with an undirected graph in it's most abstract sense. We wont assume that we are using
+            a graph of any particular type. As an example, if we assumed we were only dealing with trees we could make all kind of assumptions about not having to deal
+            with cyclic paths. By assuming that <b>anything goes</b> in our graph we can theoretically write searches that will work on any kind of graph.</p>
         <br />
         <p>Before we talk about both searches we had better define our nodes so that we know what we are dealing with. I will leave out getters and setters
-            for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank">encapsulation</a> in your own code).</p>
+            for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank">encapsulation</a> in your own code),
+            as well as any validation we might want to do when constructing the nodes. Also the edges connecting the nodes will be implied by the connected nodes rather than
+            being specifically defined.</p>
         <br />
         <div class="choices">
             <ul>
                 <li class="selected">Java</li>
                 <li>JavaScript</li>
                 <li>Python</li>
-                <div style="clear:both;" />
+                <div style="clear:both;" ></div>
             </ul>
             <pre class="code choice" choice="Java"><span class="orange">public class</span> Node {
     <span class="orange">public</span> <span class="orange">int</span> <span class="green">value</span>;
@@ -54,6 +56,130 @@
  </pre>
         </div>
         <br />
+        <br />
+        <h2>Depth First Search</h2>
+        <br />
+        <p>Performing a depth first search simply means following possible edges (or connections) in the graph to the end of the path first before going back and searching
+            alternative routes. It is the computer science equivalent of looking for your keys by thoroughly searching each cupboard, draw, or shelf in a single room before
+            moving onto the next room. Below are some simple examples of depth first searches.</p>
+        <br />
+        <div class="choices">
+            <ul>
+                <li class="selected">Java</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <div style="clear:both;" ></div>
+            </ul>
+            <pre class="code choice" choice="Java">Node depthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
+    Stack&lt;Node&gt; <span class="green">stack</span> = <span class="orange">new</span> Stack&lt;Node&gt;();
+    Set&lt;Node&gt; <span class="green">visited</span> = <span class="orange">new</span> HashSet&lt;Node&gt;();
+    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>) <span class="orange">return</span> <span class="green">root</span>;
+    <span class="green">stack</span>.add(<span class="green">root</span>);
+    <span class="orange">while</span>(!<span class="green">stack</span>.empty()){
+        Node <span class="green">node</span> = <span class="green">stack</span>.pop();
+        <span class="green">visited</span>.add(<span class="green">node</span>);
+        <span class="orange">for</span>(Node <span class="green">child</span> : <span class="green">node</span>.<span class="green">connections</span>){
+            <span class="orange">if</span>(<span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>){
+                <span class="orange">return</span> <span class="green">child</span>;
+            } <span class="orange">else if</span>(<span class="green">visited</span>.contains(<span class="green">child</span>)){
+                <span class="orange">continue</span>;
+            } <span class="orange">else</span> {
+                <span class="green">stack</span>.add(<span class="green">child</span>);
+            }
+        }
+    }
+    <span class="orange">return null</span>;
+}</pre>
+            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
+    <span class="orange">var</span> <span class="green">stack</span> = [];
+    <span class="orange">var</span> <span class="green">visited</span> = [];
+    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> === <span class="green">value</span>) return <span class="green">root</span>;
+    <span class="green">stack</span>.push(<span class="green">root</span>);
+    <span class="orange">while</span>(<span class="green">stack</span>.length &gt; <span class="jade">0</span>){
+        <span class="orange">var</span> <span class="green">node</span> = <span class="green">stack</span>.pop();
+        <span class="green">visited</span>.push(<span class="green">node</span>);
+        <span class="orange">for</span>(var <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">node</span>.<span class="green">connections</span>.<span class="green">length</span>; <span class="green">i</span>++){
+            <span class="orange">if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>].<span class="green">value</span> === <span class="green">value</span>){
+                <span class="orange">return</span> <span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>];
+            } <span class="orange">else if</span>(<span class="green">visited</span>.indexOf(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]) &gt;= <span class="jade">0</span>){
+                <span class="orange">continue</span>;
+            } <span class="orange">else</span> {
+                <span class="green">stack</span>.push(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]);
+            }
+        }
+    }
+    <span class="orange">return null</span>;
+}</pre>
+            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
+    <span class="green">stack</span> = []
+    <span class="green">visited</span> = set()
+    <span class="orange">if</span> <span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>:
+        <span class="orange">return</span> <span class="green">root</span>
+    <span class="green">stack</span>.append(<span class="green">root</span>)
+
+    <span class="orange">while</span> <span class="green">stack</span>:
+        <span class="green">node</span> = <span class="green">stack</span>.pop()
+        <span class="green">visited</span>.add(<span class="green">node</span>)
+        <span class="orange">for</span> <span class="green">child</span> <span class="orange">in</span> <span class="green">node</span>.<span class="green">connections</span>:
+            <span class="orange">if</span> <span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>:
+                <span class="orange">return</span> <span class="green">child</span>
+            <span class="orange">elif</span> <span class="green">child</span> in <span class="green">visited</span>:
+                <span class="orange">continue</span>
+            <span class="orange">else</span>:
+                <span class="green">stack</span>.append(<span class="green">child</span>)
+
+    <span class="orange">return null</span>
+            </pre>
+        </div>
+        <br />
+        <p>Essentially the way this works is, starting with the root node in the graph, we keep track of each node we've looked at already and then we add the nodes who's
+            connections we'll need to check later into a stack. The effect of this is that because stacks are last-in-first-out (LIFO) we end up dropping down a layer in
+            the graph each time we check the next item in the stack. This is what it means to search <b>depth first</b>. Take a look at the graphic below for a visual
+            representation of how it works. Try searching for a number in the graph and watch how the search is performed.</p>
+        <br />
+        <div class="container">
+            <input type="number" class="search-for" name="d-search-for" />
+            <input type="button" class="search-go" value="Search" name="d-search-go" />
+            <svg width="800" height="250" id="depth-graph">
+                <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="450" y1="100" x2="500" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="350" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="350" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="250" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="350" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="500" y1="160" x2="450" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="500" y1="160" x2="550" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                <line x1="300" y1="160" x2="250" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+
+                <circle class="root" cx="400" cy="40" r="20" stroke="black" stroke-width="4" fill="#333333" ></circle>
+                <circle class="node2" cx="250" cy="100" r="20" fill="#333333" ></circle>
+                <circle class="node3" cx="350" cy="100" r="20" fill="#333333" ></circle>
+                <circle class="node4" cx="450" cy="100" r="20" fill="#333333" ></circle>
+                <circle class="node5" cx="300" cy="160" r="20" fill="#333333" ></circle>
+                <circle class="node7" cx="500" cy="160" r="20" fill="#333333" ></circle>
+                <circle class="node6" cx="400" cy="160" r="20" fill="#333333" ></circle>
+                <circle class="node10" cx="550" cy="220" r="20" fill="#333333" ></circle>
+                <circle class="node9" cx="450" cy="220" r="20" fill="#333333" ></circle>
+                <circle class="node8" cx="250" cy="220" r="20" fill="#333333" ></circle>
+
+                <text x="396" y="45" fill="white">1</text>
+                <text x="246" y="105" fill="white">2</text>
+                <text x="346" y="105" fill="white">3</text>
+                <text x="446" y="105" fill="white">4</text>
+                <text x="296" y="165" fill="white">5</text>
+                <text x="396" y="165" fill="white">6</text>
+                <text x="496" y="165" fill="white">7</text>
+                <text x="246" y="225" fill="white">8</text>
+                <text x="446" y="225" fill="white">9</text>
+                <text x="542" y="225" fill="white">10</text>
+                You are using an awful browser and it does not support inline SVG.
+            </svg>
+        </div>
+        <br />
+        <h2>Breadth First Search</h2>
+        <br />
         <p>Determining whether you want to use a depth first or breadth first search depends on the nature of the data you are storing in your graph as well as the kind of
             information you want to get from the graph. Imagine a family tree expressed in graph form. If you wanted to perform a search for a living but distant relative
             in the graph you will be wanting to perform a breadth first search. If, on the other hand, you wanted to find an historic but direct ancestor from hundreds of
@@ -62,181 +188,6 @@
         <p>This is what I mean by understanding something about the data and the nature of what you are looking for. If you have completely unstructured data with no pattern
             to the depth or breadth it doesn't make a great deal of difference which search type you choose. Conversely, knowing a little about the structure of your graph
             can tell you how you should be searching it. There is no hard and fast rules for choosing, it is about knowing your data, and knowing what you are looking for.</p>
-        <br />
-        <h2>Depth First Search</h2>
-        <br />
-        <p>An exhaustive search has another, less flattering, name; a <b>brute-force</b> search. If you're a programmer of any description chances are
-            you have used an exhaustive search whether you knew it or not. That's because an exhaustive search is simply the process of checking
-            one element of a collection at a time for an element that meets a certain criteria. This means that an exhaustive search may potentially
-            have to check <b>every single</b> element in a collection to find what it is looking for. We say that an exhaustive search has a time
-            complexity of <b>O(n)</b>, which means that the worst case time required for an exhaustive search scales directly with the size of the
-            collection. As such they can become unmanageably slow when working with very large collections. Below are some examples of simple
-            functions demonstrating exhaustive searches that check for the presence of an integer in an array.</p>
-        <br /><br />
-
-        <div class="choices">
-            <ul>
-                <li class="selected">Java</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <div style="clear:both;" />
-            </ul>
-            <pre class="code choice" choice="Java"><span class="orange">boolean</span> exhaustiveSearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">list</span>){
-   <span class="orange">for</span>(<span class="orange">int</span> <span class="green">item</span> : <span class="green">list</span>){
-       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">item</span>) <span class="orange">return true</span>;
-   }
-   <span class="orange">return false</span>;
-}</pre>
-            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>){
-   <span class="orange">for</span>(<span class="orange">var</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">list</span>.length; <span class="green">i</span>++){
-       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">list</span>[<span class="green">i</span>]) <span class="orange">return true</span>;
-   }
-   <span class="orange">return false</span>;
-}</pre>
-            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>):
-    <span class="orange">for</span> <span class="green">x</span> <span class="orange">in</span> <span class="green">list</span>:
-	<span class="orange">if</span> <span class="green">x</span> == <span class="green">find</span>:
-	     <span class="orange">return</span> <span class="jade">True</span>
-    <span class="orange">return</span> <span class="jade">False</span>
-            </pre>
-        </div>
-
-
-        <br /><br />
-        <p>We use exhaustive searches on flat collections (not trees or graphs, we're talking sets or lists) where we know little to nothing about
-            the order or sorting of the collection. As you'll see later we can do some much more clever searching if we know for certain that a
-            collection's elements are ordered and sorted. Take a look at the graphic below for a visual representation of how it works. Try
-            searching for elements in the collection.</p>
-        <br />
-        <br />
-        <div class="container">
-            <input type="number" class="search-for" name="e-search-for" />
-            <input type="button" class="search-go" value="Search" name="e-search-go" />
-            <ul class="search-graphic">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-            </ul>
-            <div style="clear:both" />
-        </div>
-        <br />
-        <br />
-        <h2>Binary Search</h2>
-        <br />
-        <p>The binary search is the big daddy of search. Unfortunately we can only use a binary search in very specific circumstances. What is it that
-            we need? An ordered, sorted collection. That ordered collection can be an array list (afraid a linked list just won't cut it), a binary
-            tree, or a few other niche data types. We often say that a binary search is a <b>divide and conquer</b> approach. What we mean by this is that we
-            start our search in the middle of the collection (or the root of a binary tree) and we check there. Because the collection is ordered we
-            can now determine something very important. Is our first check greater, or less than the value we are looking for? If it's greater, we know
-            that the value must be on the side of the collection that contains the lesser values (or vice versa) thereby excluding the other half from
-            the rest of the search. So we've only made one <b>actual</b> check but effectively checked half of the whole collection. Fantastic. Now all we do
-            is repeat this process with the next half to check, and keep going until we find what we're looking for or we've run out of elements to
-            check. As before, here are some working examples of functions that perform a binary search on lists.</p>
-        <br /><br />
-        <div class="choices">
-            <ul>
-                <li class="selected">Java</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <div style="clear:both;" />
-            </ul>
-            <pre class="code choice" choice="Java"><span class="orange">int</span> binarySearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">ints</span>){
-   <span class="orange">int</span> <span class="green">bottom</span> = <span class="jade">0</span>;
-   <span class="orange">int</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
-   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
-       <span class="orange">int</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span>;
-       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
-           <span class="orange">return</span> <span class="green">middle</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
-           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
-           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
-       }
-   }
-   <span class="orange">return</span> -<span class="jade">1</span>;
-}</pre>
-            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> binarySearch(<span class="green">find</span>, <span class="green">ints</span>){
-   <span class="orange">var</span> <span class="green">bottom</span> = <span class="jade">0</span>;
-   <span class="orange">var</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
-   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
-       <span class="orange">var</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span> | <span class="jade">0</span>;
-       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
-           <span class="orange">return</span> <span class="green">middle</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
-           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
-           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
-       }
-   }
-   <span class="orange">return</span> -<span class="jade">1</span>;
-}</pre>
-            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> binarySearch(<span class="green">find</span>, <span class="green">list</span>):
-    <span class="green">bottom</span> = <span class="jade">0</span>
-    <span class="green">top</span> = len(<span class="green">list</span>)-<span class="jade">1</span>
-
-    <span class="orange">while</span> <span class="green">bottom</span> &lt;= <span class="green">top</span>:
-        <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)//<span class="jade">2</span>
-        <span class="orange">if</span> <span class="green">list</span>[<span class="green">middle</span>] == <span class="green">find</span>:
-            <span class="orange">return</span> <span class="green">middle</span>
-        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>:
-            <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>
-        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>:
-            <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>
-
-    <span class="orange">return</span> -<span class="jade">1</span>
-            </pre>
-        </div>
-        <br /><br />
-        <p>Apparently, given an hour, <a href="https://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">only 10% of programmers</a>
-            can write a working, bug free, binary search. Reading the above simple examples you might not think it. They seem fairly simple but you
-            might be surprised how many fringe cases, complications and logical issues there are to account for. I'm not going to lie, my binary
-            search examples took me some time.</p>
-        <br />
-        <p>How great <b>exactly</b> is a binary search compared to a brute-force search? Remember we said a brute-force search has a complexity of
-            <b>O(n)</b>? Well, a binary search has a complexity of <b>O(log<sub>2</sub>n)</b>. What this means is that we'll only have to perform as many checks
-            as times you can half the size the collection. To get a real appreciation of what this means, we could search a collection of <b>one
-                million</b> in <b>twenty checks</b> and a collection of <b>one billion</b> in <b>thirty checks</b> in the worst cases. Pretty fast right?
-            There is a disadvantage of course, we need to be using ordered collections. Adding and removing elements from ordered collections is slow,
-            so you only want to be using binary searches on data that either doesn't change regularly, or can be updated asynchronously by another thread.
-            As before there are working graphical examples to try below;</p>
-        <br />
-        <br />
-        <div class="container">
-            <input type="number" class="search-for" name="b-search-for" />
-            <input type="button" class="search-go" value="Search" name="b-search-go" />
-            <ul class="search-graphic">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-            </ul>
-            <div style="clear:both" />
-        </div>
-        <br />
-        <br />
-        <p>That's it for our first part, I hope it has helped. In the next article we will be covering breadth-first and depth-first searches. Until then,
-            if you have any questions, suggestions, criticism of praise you can pop them in the comments below.</p>
 
         <br />
         <br />
@@ -251,7 +202,7 @@
 		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
 		<br />
 		<br />
-        <script src="/scripts/jquery-1.11.3.js"></script>
+        <script src="/scripts/jquery-1.7.js"></script>
 		<script src="/scripts/choices.js"></script>
         <script src="/scripts/search-graphics.js"></script>
 
