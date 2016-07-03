@@ -69,12 +69,11 @@ $(document).ready(function(){
                 $('#depth-graph circle.root').attr('fill', '#ED5900');
                 throw "Found";
             }
+            visited.push(root);
             $('#depth-graph circle.root').attr('fill', '#777777');
             stack.push(root);
             while(stack.length > 0){
                 var node = stack.pop();
-                visited.push(node);
-                time++;
                 var nodename = node.name;
                 (function(nodename){
                 setTimeout(function(){
@@ -97,11 +96,62 @@ $(document).ready(function(){
                             $('#depth-graph circle.' + connectionname).attr('fill', '#777777');
                         },500*time)}(connectionname));
                         stack.push(node.connections[i]);
+                        visited.push(node.connections[i]);
                     }
                 }
+                time++;
             }
         },500);
     });
+
+    $('.container input[name="bf-search-go"]').click(function(){
+            var button = $(this);
+            var find = $('.container input[name="bf-search-for"]').val();
+            $('#breadth-graph circle').attr('fill', '#333333').removeAttr('stroke stroke-width');
+            $('#breadth-graph circle.root').attr('stroke', 'black').attr('stroke-width', '4');
+            setTimeout(function(){
+                var root = new GraphFactory().getRoot();
+                var queue = [];
+                var visited = [];
+                var time = 0;
+                if(root.value == find){
+                    $('#breadth-graph circle.root').attr('fill', '#ED5900');
+                    throw "Found";
+                }
+                visited.push(root);
+                $('#breadth-graph circle.root').attr('fill', '#777777');
+                queue.push(root);
+                while(queue.length > 0){
+                    var node = queue.shift();
+                    var nodename = node.name;
+                    (function(nodename){
+                    setTimeout(function(){
+                        $('#breadth-graph circle').removeAttr('stroke stroke-width');
+                        $('#breadth-graph circle.' + nodename).attr('stroke', 'black').attr('stroke-width', '4');
+                    },500*time)}(nodename));
+                    for(var i = 0; i < node.connections.length; i++){
+                        time++;
+                        var connectionname = node.connections[i].name;
+                        if(node.connections[i].value == find){
+                            setTimeout(function(){
+                                $('#breadth-graph circle.' + node.connections[i].name).attr('fill', '#ED5900');
+                            },500*time);
+                            throw "Found";
+                        } else if(visited.indexOf(node.connections[i]) >= 0){
+                            continue;
+                        } else {
+                            (function(connectionname){
+                            setTimeout(function(){
+                                $('#breadth-graph circle.' + connectionname).attr('fill', '#777777');
+                            },500*time)}(connectionname));
+                            queue.push(node.connections[i]);
+                            visited.push(node.connections[i]);
+                        }
+                    }
+                    time++;
+                }
+            },500);
+        });
 });
 
 // Set up graph structure for DFS and BFS examples.
@@ -123,6 +173,10 @@ function GraphFactory() {
         var node8 = new Node(8, "node8");
         var node9 = new Node(9, "node9");
         var node10 = new Node(10, "node10");
+        var node11 = new Node(11, "node11");
+        var node12 = new Node(12, "node12");
+        var node13 = new Node(13, "node13");
+        var node14 = new Node(14, "node14");
         root.connections.push(node3);
         root.connections.push(node4);
         node3.connections.push(node2);
@@ -134,6 +188,11 @@ function GraphFactory() {
         node5.connections.push(node8);
         node7.connections.push(node9);
         node7.connections.push(node10);
+        node8.connections.push(node11);
+        node8.connections.push(node12);
+        node9.connections.push(node13);
+        node9.connections.push(node14);
+        node14.connections.push(node13);
         return root;
     }
 }

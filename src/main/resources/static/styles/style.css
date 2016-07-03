@@ -260,6 +260,16 @@ p.views {
 	margin: auto;
 }
 
+div.info-box {
+	width: 712px;
+	margin: 10px auto;
+	padding: 14px;
+	background: #222;
+	color: white;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
 .choices {
 	background-color: #333333;
 	width: 740px;
