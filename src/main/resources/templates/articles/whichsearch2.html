@@ -80,9 +80,7 @@
         <span class="orange">for</span>(Node <span class="green">child</span> : <span class="green">node</span>.<span class="green">connections</span>){
             <span class="orange">if</span>(<span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>){
                 <span class="orange">return</span> <span class="green">child</span>;
-            } <span class="orange">else if</span>(<span class="green">visited</span>.contains(<span class="green">child</span>)){
-                <span class="orange">continue</span>;
-            } <span class="orange">else</span> {
+            } <span class="orange">else if</span>(!<span class="green">visited</span>.contains(<span class="green">child</span>)){
                 <span class="green">stack</span>.add(<span class="green">child</span>);
                 <span class="green">visited</span>.add(<span class="green">child</span>);
             }
@@ -101,9 +99,7 @@
         <span class="orange">for</span>(var <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">node</span>.<span class="green">connections</span>.<span class="green">length</span>; <span class="green">i</span>++){
             <span class="orange">if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>].<span class="green">value</span> === <span class="green">value</span>){
                 <span class="orange">return</span> <span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>];
-            } <span class="orange">else if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>){
-                <span class="orange">continue</span>;
-            } <span class="orange">else</span> {
+            } <span class="orange">else if</span>(!(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>)){
                 <span class="green">stack</span>.push(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]);
                 <span class="green">visited</span>[<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]];
             }
@@ -124,9 +120,7 @@
         <span class="orange">for</span> <span class="green">child</span> <span class="orange">in</span> <span class="green">node</span>.<span class="green">connections</span>:
             <span class="orange">if</span> <span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>:
                 <span class="orange">return</span> <span class="green">child</span>
-            <span class="orange">elif</span> <span class="green">child</span> in <span class="green">visited</span>:
-                <span class="orange">continue</span>
-            <span class="orange">else</span>:
+            <span class="orange">elif</span> <span class="green">child</span> not in <span class="green">visited</span>:
                 <span class="green">stack</span>.append(<span class="green">child</span>)
                 <span class="green">visited</span>.add(<span class="green">child</span>)
 
@@ -221,9 +215,7 @@
         <span class="orange">for</span>(Node <span class="green">child</span> : <span class="green">node</span>.<span class="green">connections</span>){
             <span class="orange">if</span>(<span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>){
                 <span class="orange">return</span> <span class="green">child</span>;
-            } <span class="orange">else if</span>(<span class="green">visited</span>.contains(<span class="green">child</span>)){
-                <span class="orange">continue</span>;
-            } <span class="orange">else</span> {
+            } <span class="orange">else if</span>(!<span class="green">visited</span>.contains(<span class="green">child</span>)){
                 <span class="green">queue</span>.add(<span class="green">child</span>);
                 <span class="green">visited</span>.add(<span class="green">child</span>);
             }
@@ -242,9 +234,7 @@
         <span class="orange">for</span>(var <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">node</span>.<span class="green">connections</span>.<span class="green">length</span>; <span class="green">i</span>++){
             <span class="orange">if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>].<span class="green">value</span> === <span class="green">value</span>){
                 <span class="orange">return</span> <span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>];
-            } <span class="orange">else if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>){
-                <span class="orange">continue</span>;
-            } <span class="orange">else</span> {
+            } <span class="orange">else if</span>(!(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>)){
                 <span class="green">queue</span>.push(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]);
                 <span class="green">visited</span>[<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]];
             }
@@ -265,9 +255,7 @@
         <span class="orange">for</span> <span class="green">child</span> <span class="orange">in</span> <span class="green">node</span>.<span class="green">connections</span>:
             <span class="orange">if</span> <span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>:
                 <span class="orange">return</span> <span class="green">child</span>
-            <span class="orange">elif</span> <span class="green">child</span> in <span class="green">visited</span>:
-                <span class="orange">continue</span>
-            <span class="orange">else</span>:
+            <span class="orange">elif</span> <span class="green">child</span> not in <span class="green">visited</span>:
                 <span class="green">queue</span>.put(<span class="green">child</span>)
                 <span class="green">visited</span>.add(<span class="green">child</span>)
 

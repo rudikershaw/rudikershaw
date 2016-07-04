@@ -88,9 +88,7 @@ $(document).ready(function(){
                             $('#depth-graph circle.' + node.connections[i].name).attr('fill', '#ED5900');
                         },500*time);
                         throw "Found";
-                    } else if(visited.indexOf(node.connections[i]) >= 0){
-                        continue;
-                    } else {
+                    } else if(visited.indexOf(node.connections[i]) < 0){
                         (function(connectionname){
                         setTimeout(function(){
                             $('#depth-graph circle.' + connectionname).attr('fill', '#777777');
@@ -137,15 +135,13 @@ $(document).ready(function(){
                                 $('#breadth-graph circle.' + node.connections[i].name).attr('fill', '#ED5900');
                             },500*time);
                             throw "Found";
-                        } else if(visited.indexOf(node.connections[i]) >= 0){
-                            continue;
-                        } else {
+                        } else if(visited.indexOf(node.connections[i]) < 0){
                             (function(connectionname){
-                            setTimeout(function(){
-                                $('#breadth-graph circle.' + connectionname).attr('fill', '#777777');
-                            },500*time)}(connectionname));
-                            queue.push(node.connections[i]);
-                            visited.push(node.connections[i]);
+                                setTimeout(function(){
+                                    $('#breadth-graph circle.' + connectionname).attr('fill', '#777777');
+                                },500*time)}(connectionname));
+                                queue.push(node.connections[i]);
+                                visited.push(node.connections[i]);
                         }
                     }
                     time++;
