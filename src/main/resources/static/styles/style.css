@@ -168,6 +168,7 @@ div.entry {
 	color: white;
 	width: 280px;
 } div.entry > img {
+    transition: all 0.2s ease 0s;
     filter: alpha(opacity=80);
 	margin-bottom: 5px;
 	margin-right: 10px;
@@ -216,6 +217,7 @@ div.black-band h2 {
     color: #ED5900;
 }
 div.black-band a {
+    transition: all 0.2s ease 0s;
     filter: alpha(opacity=60);
     opacity: 0.6;
 } div.black-band a:hover {
@@ -309,6 +311,7 @@ div.navigate {
 }
 
 a.home {
+    transition: all 0.2s ease 0s;
 	background-color: #ED5900;
 	font-size: 40px;
 	color: white;
@@ -336,6 +339,7 @@ a.home-center {
 }
 
 a.previous {
+    transition: all 0.2s ease 0s;
 	border-color: transparent #ED5900 transparent transparent;
 	border-width: 30px 60px 30px 0;
 	border-style: solid;
@@ -351,6 +355,7 @@ a.previous-off { border-color: transparent darkgrey transparent transparent; }
 a.previous-off:hover { border-color: transparent darkgrey transparent transparent; }
 
 a.next {
+    transition: all 0.2s ease 0s;
 	border-color: transparent transparent transparent #ED5900;
 	border-width: 30px 0 30px 60px;
 	border-style: solid;
