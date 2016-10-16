@@ -108,7 +108,8 @@ a.rklogo {
 	width: 100px;
 	float: left;		
 }
-a.sociallink {	
+a.sociallink {
+	transition: all 0.2s ease 0s;
 	background-size: cover;
 	margin-top: 25px;
 	margin-left: 8px;
@@ -116,13 +117,14 @@ a.sociallink {
 	height: 29px;
 	width: 29px;
 	float: left;
-		
+	top: 0;
 } a.sociallink:hover {
 	position: relative;
 	top: -5px;
 }
 
 a.donatelink {
+	transition: all 0.2s ease 0s;
 	background-color: white;
 	font-family: sans-serif;
 	text-align: center;
@@ -136,7 +138,7 @@ a.donatelink {
 	height: 29px;
 	width: 68px;
 	float: left;
-
+	top: 0;
 } a.donatelink:hover {
 	position: relative;
 	text-shadow: none;
