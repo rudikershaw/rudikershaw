@@ -1,14 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>HTTP Basics</title>
-		<meta charset="UTF-8" />
-		<meta name="description" content="An explanation of the most important things you need to know about HTTP, how it works, and why it's relevant to your development practices." />
-		<meta name="author" content="Rudi Kershaw" />
-		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
-		<link rel="shortcut icon" href="/images/RK.ico" />
-	</head>
+	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
@@ -18,7 +10,7 @@
 		</div>
 		<h1>HTTP Basics</h1>
 		<hr />
-		<img class="coverimg" src="/images/httptyped.jpg" alt="http://www." height="150" width="810" />
+		<img class="coverimg" src="/images/httptyped.jpg" alt="http://www" height="150" width="810" />
 		<br />
 		
 		<p>It was recently brought to my attention that I really don't know the first thing about <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>, 

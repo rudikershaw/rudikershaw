@@ -254,6 +254,16 @@ p.views {
 	top: 40px;
 }
 
+.code-header {
+	background-color: #111;
+	padding: 10px 20px;
+	font-size: 20px;
+	overflow: auto;
+	color: lightgrey;
+	width: 700px;
+	margin: auto;
+}
+
 .code {
 	font-family: "Courier New", Courier, monospace;
 	background-color: #383838;
@@ -262,6 +272,13 @@ p.views {
 	padding: 20px;
 	width: 700px;
 	margin: auto;
+}
+
+.chart-js {
+    display: block;
+    width: 700px;
+    height: 400px;
+    margin: auto;
 }
 
 div.info-box {

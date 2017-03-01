@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Defining a Computational Method</title>
+	<head class="head" th:fragment="head">
+		<title th:text="${article.name}">Code Nerd</title>
 		<meta charset="UTF-8" />
-		<meta name="description" content="The Basic Concepts section at the beginning of The Art of Computer Programming can be a real pain to understand. Here is part 1 of some extra explanation." />
+		<meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
 		<meta name="author" content="Rudi Kershaw" />
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css?v=2" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
 	</head>
 	<body>
