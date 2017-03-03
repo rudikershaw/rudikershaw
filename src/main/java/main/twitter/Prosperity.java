@@ -42,8 +42,8 @@ public class Prosperity {
         this.service = service;
     }
 
-    /** Run twitter follower rotating every day and one hour. */
-    @Scheduled(fixedRate = 1000 * 60 * 60 * 25)
+    /** Run twitter follower rotating every day at 1am. */
+    @Scheduled(cron = "0 1 1 * * ?")
     public void run() throws TwitterException {
         // Check that keys are set
         if (consumerSecret.startsWith("${")) {
@@ -57,7 +57,7 @@ public class Prosperity {
         twitter.setOAuthAccessToken(accessToken);
 
         TwitterFollow latestFollow = service.getLatestFollow();
-        Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 24));
+        Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 24) - (1000 * 60));
         if (latestFollow == null || latestFollow.getDate().before(yesterday)) {
             // Get the retweets and x favorited y statuses
             Paging paging = new Paging();
