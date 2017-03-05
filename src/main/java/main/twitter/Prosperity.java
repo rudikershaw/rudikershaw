@@ -23,16 +23,16 @@ import twitter4j.auth.AccessToken;
 @Component
 public class Prosperity {
 
-    @Value("${twitter.consumer.key")
+    @Value("${twitter.consumer.key}")
     private String consumerKey;
 
-    @Value("${twitter.consumer.secret")
+    @Value("${twitter.consumer.secret}")
     private String consumerSecret;
 
-    @Value("${twitter.access.key")
+    @Value("${twitter.access.key}")
     private String accessKey;
 
-    @Value("${twitter.access.secret")
+    @Value("${twitter.access.secret}")
     private String accessSecret;
 
     private TwitterFollowService service;
@@ -46,7 +46,8 @@ public class Prosperity {
     @Scheduled(cron = "0 1 1 * * ?")
     public void run() throws TwitterException {
         // Check that keys are set
-        if (consumerSecret.startsWith("${")) {
+        System.out.println("Twitter Prosperity Running");
+        if (consumerSecret.equals("fallback") || consumerKey.equals("fallback")) {
             return;
         }
 
@@ -63,12 +64,13 @@ public class Prosperity {
             Paging paging = new Paging();
             paging.setCount(200);
             List<Status> statuses = twitter.getHomeTimeline(paging);
-            statuses = statuses.stream().filter(s -> !s.isRetweet()).collect(Collectors.toList());
+            statuses = statuses.stream().filter(Status::isRetweet).collect(Collectors.toList());
             // Loop through. Follow first person you don't
             for (Status s : statuses) {
                 Status originalTweet = s.getRetweetedStatus();
-                String author = originalTweet.getUser().getName();
+                String author = originalTweet.getUser().getScreenName();
                 if (service.getFollowByName(author) == null) {
+                    System.out.println("Twitter Prosperity: Added follow - " + author);
                     twitter.createFriendship(author);
                     service.addFollow(new TwitterFollow(author, new Date()));
                     break;
@@ -82,6 +84,7 @@ public class Prosperity {
         for (TwitterFollow follow : follows) {
             if (follow.getDate().before(lastWeek)) {
                 // Remove follow from twitter.
+                System.out.println("Twitter Prosperity: Removed follow - " + follow.getName());
                 twitter.destroyFriendship(follow.getName());
                 // Disable follow in DB.
                 service.disableFollow(follow);
