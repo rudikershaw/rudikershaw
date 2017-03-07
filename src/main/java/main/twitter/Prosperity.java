@@ -58,7 +58,7 @@ public class Prosperity {
         twitter.setOAuthAccessToken(accessToken);
 
         TwitterFollow latestFollow = service.getLatestFollow();
-        Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 24) - (1000 * 60));
+        Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 23));
         if (latestFollow == null || latestFollow.getDate().before(yesterday)) {
             // Get the retweets and x favorited y statuses
             Paging paging = new Paging();
@@ -76,6 +76,8 @@ public class Prosperity {
                     break;
                 }
             }
+        } else {
+            System.out.println("Twitter Prosperity: Follow added too recently");
         }
 
         // Clear up followers older than 7 days.
