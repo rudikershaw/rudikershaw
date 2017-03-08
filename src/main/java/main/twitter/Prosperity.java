@@ -14,6 +14,7 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.User;
 import twitter4j.auth.AccessToken;
 
 /**
@@ -65,11 +66,12 @@ public class Prosperity {
             paging.setCount(200);
             List<Status> statuses = twitter.getHomeTimeline(paging);
             statuses = statuses.stream().filter(Status::isRetweet).collect(Collectors.toList());
-            // Loop through. Follow first person you don't
+            // Loop through. Follow first desirable user you don't already
             for (Status s : statuses) {
                 Status originalTweet = s.getRetweetedStatus();
-                String author = originalTweet.getUser().getScreenName();
-                if (service.getFollowByName(author) == null) {
+                User user = originalTweet.getUser();
+                String author = user.getScreenName();
+                if (service.getFollowByName(author) == null && isDesirable(user, twitter)) {
                     System.out.println("Twitter Prosperity: Added follow - " + author);
                     twitter.createFriendship(author);
                     service.addFollow(new TwitterFollow(author, new Date()));
@@ -92,5 +94,23 @@ public class Prosperity {
                 service.disableFollow(follow);
             }
         }
+    }
+
+    /**
+     * Checks whether the user is desirable as someone for following.
+     * @param user the user to check.
+     * @param twitter the twitter instance for API calls.
+     * @return true if the user is desirable for following.
+     * @throws TwitterException if connection could not be made.
+     */
+    private boolean isDesirable(User user, Twitter twitter) throws TwitterException {
+        // Check whether user follows at least 1/10 as many people as follow them.
+        boolean goodFollowerRatio = user.getFriendsCount() >= (user.getFollowersCount() / 10);
+        // Check whether user tweeted more than 20 times in the last 24 hours.
+        List<Status> statuses = twitter.getUserTimeline(user.getScreenName());
+        statuses.removeIf(s -> s.getCreatedAt().before(new Date(new Date().getTime() - (1000 * 60 * 60 * 24))));
+        boolean tooManyTweets = statuses.size() >= 20;
+        // Desirable if their follower ratio is good and they don't tweet too often.
+        return goodFollowerRatio && !tooManyTweets;
     }
 }
