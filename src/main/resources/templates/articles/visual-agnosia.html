@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head th:replace="articles/computationalmethod :: head"/>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+		<div class="container">
+			<p class="date">2/04/2017</p>
+			<p class="views"><span th:text="${article.views}"></span> views</p>
+		</div>
+		<h1 th:text="${article.name}">Visual Agnosia Hypothesis</h1>
+		<hr />
+		<img class="coverimg" src="/images/visual-agnosia-banner.jpg" alt="Visual Agnosia" height="150" width="810" />
+		<br />
+
+        <p>Recently I picked up Oliver Sacks' <a href="http://www.oliversacks.com/books-by-oliver-sacks/man-mistook-wife-hat/" target="_blank">The Man Who Mistook His Wife for a Hat</a>
+            for the second time. The first chapter, from which the book gets it's name, details the case of Dr P. The story of
+            Dr P is the story of a man with <a href="https://en.wikipedia.org/wiki/Visual_agnosia" target="_blank">visual agnosia</a>.
+            This means that although he can see and understand basic shapes and structures he finds it difficult to see things as
+            <i>wholes</i>. Dr P can see noses, eyes, ears, and mouths but he cannot recognises the faces of those he knows (a
+            phenomenon called prosopagnosia when related specifically to faces). In the book Sacks describes seeing Dr P mistake
+            his foot for the shoe he had taken off, and amusingly mistake his wife's head for the hat he put on the rack when he
+            came in.</p>
+		<br />
+		<p>When I got to the end of this chapter I found myself pausing to think about image recognition and what I knew about
+            the way that artificial neural networks are being used to process complex scenes and objects. I quickly started to
+            draw some parallels between Sacks' description of agnosia and phenomena I had read describing the workings of deep
+            neural nets. This sparked an idea for an extraordinarily simple hypothesis for the root cause of agnosia in people.
+            An idea we could use to build a theoretical model of agnosia.</p>
+        <br />
+        <div class="code bold center">
+            <h3><span class="green">"</span>parallels between Sacks' description of agnosia and phenomena I had read describing
+                the workings of deep neural nets<span class="green">"</span></h3>
+        </div>
+        <br />
+        <p>This article is my way of writing down my thoughts. Hopefully I will find time to test this hypothesis
+            myself, or it will inspire someone else to test it. I write this with the intention of making sure that my thoughts
+            are clear, and that they make some degree of sense. It is also an opertunity for me to fact check some of my
+            assumptions, and maybe even get others to check them over. I will begin with where my thoughts started, with neural
+            networks.</p>
+		<br />
+		<p>In 1957 Frank Rosenblatt created the first artificial neural network, named the Mark 1 <a href="https://en.wikipedia.org/wiki/Perceptron#History" target="_blank">Perceptron</a>.
+            It was designed for image recognition and consisted of only a single intermediate layer of 512 units (or neurons).
+            The Mark 1 Perceptron was capable of differentiating between 8 basic abstract 2D shapes, such as squares, circles,
+            triangles, stars, etc. Although it took a few years, multilayer neural networks with many more neurons started being
+            made that were capable of more robust image recognition. A significant barrier was overcome when neural nets were made
+            that had greater than 8 layers, which we now refer to as <i>deep</i> neural networks. Enormous modern deep neural
+            networks are quite capable of complex scene and object recognition, for example being able to tell that an image is
+            of a cowboy riding a horse rather than just saying that it is a person.</p>
+		<br />
+		<p>At a glance it seems as though the larger the number of layers and neurons (the depth and breadth of a neural network)
+            the more complex the concepts they are able to describe. Smaller networks are only capable of recognising more abstract
+			concepts. At this point my thought pattern should be obvious. Does a generalised loss of functioning neurons in an area of the
+			brain associated with visual processing lead to a loss of ability to process complex models? This sounds like a
+			massive oversimplification, but perhaps it is not. Because the nervous system is <a href="https://en.wikipedia.org/wiki/Neuroplasticity" target="_blank">plastic</a>, functions lost through
+			the cutting of certain pathways or the dying of small numbers of neurons can be learned somewhere else. But,
+			tumours that take up significant space, or permanent loss of perfusion to those areas limit the depth and breadth
+			of the nervous network there.</p>
+		<br />
+        <div class="code bold center">
+            <h3><span class="green">"</span>It seems as though the larger the number of layers and neurons the more complex the
+                concepts they are able to describe<span class="green">"</span></h3>
+        </div>
+        <br />
+		<p>In situations in which a significant number of the neurons in that area have been permanently removed plasticity
+			may still play a part. As that area re-learns to interpret visual information it only has the resources to learn
+			to interpret the more abstract concepts. It may be possible to create a computer model to explore this possibility.
+			By creating a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" target="_blank">convolutional
+            neural network</a> that is able to classify both complex and simple abstract concepts, then
+			progressively retraining it with fewer and fewer neurons, we may be able to plot the accuracy of both
+			complex and more abstract assertions. If this hypothesis is correct then the accuracy of classifying similarly
+			complex objects should start to fall as the number of neurons do, whereas the accuracy of classifying simpler
+			objects should hold steady until the number of neurons falls enough to start affecting them.</p>
+		<br />
+		<p>If this computer model fits the hypothesis it would be time to start asking whether we can observer this behavior
+			in sufferers of agnosia. The question then simply becomes, does the severity of their agnosia scale appropriately
+			with the reduction of functioning neurons? I know very little about our capacity to count neurons in human subjects,
+			so this may be infinitely more difficult than it sounds. If this hypothesis appeared to be true on both sides we
+			could start asking the question, what can we learn from the computer model? Is breadth or depth of a network more
+			important? Is the structure of inter-neuronal connections not important, only the volume of them? It could also
+            tell us something about thresholds for accuracy. How many more neurons would our patient need to get some sense of
+            complex objects back? Answers to these questions could also re-affirm the importance of having machine learning
+            algorithms that are based on our understanding of human anatomy.</p>
+		<br />
+        <div class="code bold center">
+            <h3><span class="green">"</span>Is the structure of inter-neuronal connections not important, only the volume of
+                them?<span class="green">"</span></h3>
+        </div>
+        <br />
+		<p>At this stage, I don't believe I have thought this through in the level of detail it deserves. I am also not
+			familiar enough with the literature to know how plausible this sounds, or even how important. Perhaps this idea
+            is trivial and generally well understood. I have recently been trying to implement a variety of machine learning
+            algorithms from scratch, and need to finish writing up an article on my implementation of an anomaly detection
+            system. After that is finished, it seems like it might be a good time to start writing a neural net. Now I have
+            something that feels important to write it for.</p>
+        <br />
+        <p>If you work in neurology, neuropsychology, neurophysiology, machine learning, or with neural networks I would like
+            to hear your opinion. My relationship with academia is as a hobbyist, and so I have no formal contacts in specialist
+            fields to bounce ideas off. I hope you've found this interesting.</p>
+		<br />
+        <br />
+		<hr />
+		
+		<div class="navigate">
+			<a class="home" href="/">Home</a>
+			<a class="next" href=""></a>
+			<a class="previous" href="tour-of-ai"></a>
+		</div>
+		<h1 style="clear:both;">Rudi Kershaw</h1>
+		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+		<br />
+		<br />
+        <script src="/scripts/jquery-1.7.js"></script>
+
+		<div class="container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Visual Agnosia Hypothesis';
+			var disqus_title = 'Visual Agnosia Hypothesis';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>

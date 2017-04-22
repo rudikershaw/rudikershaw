@@ -13,6 +13,7 @@ public class CodenerdApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// No method content required.
 	}
 
 }

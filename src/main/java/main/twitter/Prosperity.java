@@ -61,12 +61,12 @@ public class Prosperity {
         TwitterFollow latestFollow = service.getLatestFollow();
         Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 23));
         if (latestFollow == null || latestFollow.getDate().before(yesterday)) {
-            // Get the retweets and x favorited y statuses
+            // Get the retweets from the website owner's timeline.
             Paging paging = new Paging();
             paging.setCount(200);
             List<Status> statuses = twitter.getHomeTimeline(paging);
             statuses = statuses.stream().filter(Status::isRetweet).collect(Collectors.toList());
-            // Loop through. Follow first desirable user you don't already
+            // Loop through and follow first desirable user you don't already
             for (Status s : statuses) {
                 Status originalTweet = s.getRetweetedStatus();
                 User user = originalTweet.getUser();
