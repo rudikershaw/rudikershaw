@@ -16,7 +16,7 @@ public class TourOfAIController {
     public static final String NAME = "A Tour of AI";
     public static final String IMAGE_PATH = "images/tour-of-ai.jpg";
     public static final String DESCRIPTION = "It's easy to feel like modern AI is just magic. It isn't, and " +
-                                             "this is how it all works.";
+                                             "here is how it works and what all the buzz words mean.";
 
     private ArticleService statisticsService;
 

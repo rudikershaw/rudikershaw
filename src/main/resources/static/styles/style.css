@@ -517,7 +517,7 @@ a.close-link {
 
 /* Feature - Whichpet specific styling. */
 
-div.whichpet { background: #B35419; margin-top: 3px; color: #EEE; }
+div.whichpet { background: #CC5A13; margin-top: 3px; color: #EEE; }
 div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; width: 550px; }
 div.whichpet select { font-size: 24px; }
 div.whichpet input[type="button"] { background: #ED5900; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; }

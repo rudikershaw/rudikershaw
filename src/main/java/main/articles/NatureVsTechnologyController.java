@@ -16,7 +16,7 @@ public class NatureVsTechnologyController {
     public static final String PATH = "articles/nature-vs-technology";
     public static final String NAME = "Nature vs Technology";
     public static final String IMAGE_PATH = "images/nature.jpg";
-    public static final String DESCRIPTION = "Is nature at odds with technology? The ramblings of a " +
+    public static final String DESCRIPTION = "Is nature really at odds with science and technology? The ramblings of a " +
                                              "science enthusiast gone camping.";
 
     private ArticleService statisticsService;

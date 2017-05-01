@@ -16,7 +16,7 @@ public class WhichSearch2Controller {
     public static final String PATH = "articles/whichsearch2";
     public static final String NAME = "Which Search Algorithm? - Part 2";
     public static final String IMAGE_PATH = "images/search.jpg";
-    public static final String DESCRIPTION = "The second of a two part series on searching algorithms. " +
+    public static final String DESCRIPTION = "The 2nd of a two part series on searching algorithms. " +
                                              "This article covers depth and breadth first searches.";
 
     private ArticleService statisticsService;

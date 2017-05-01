@@ -8,20 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/** Controller for the Visual Agnosia Hypothesis. */
+/** Controller for the Anomaly Detection article. */
 @Controller
-public class VisualAgnosiaHypothesisController {
+public class AnomalyDetectionController {
 
-    public static final String PATH = "articles/visual-agnosia";
-    public static final String NAME = "Visual Agnosia Hypothesis";
-    public static final String IMAGE_PATH = "images/visual-agnosia.jpg";
-    public static final String DESCRIPTION = "Reading Oliver Sacks' on agnosia got me thinking about how artificial " +
-                                             "neural networks process images.";
+    public static final String PATH = "articles/anomaly-detection";
+    public static final String NAME = "Anomaly Detection";
+    public static final String IMAGE_PATH = "images/anomaly-detection.jpg";
+    public static final String DESCRIPTION = "A machine learning example and explanation of an anomaly detection " +
+                                             "system for detecting suspicious user activity.";
 
     private ArticleService statisticsService;
 
     @Autowired
-    public VisualAgnosiaHypothesisController(ArticleService statisticsService){
+    public AnomalyDetectionController(ArticleService statisticsService){
         this.statisticsService = statisticsService;
     }
 
