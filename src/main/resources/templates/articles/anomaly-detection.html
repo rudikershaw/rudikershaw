@@ -22,7 +22,7 @@
 			previous data. Anomaly detection systems are used for tasks such as fraud detection, finding abnormal parts during manufacturing, and
 			detecting suspicious user behavior. For malicious user detection in ITIS, I used <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian (Normal) distribution</a>. When thinking about
 			how Gaussian distribution is used for anomaly detection it is useful to picture a bell curve. Once you have plotted a bell curve
-			with your data you simply mark a distance (or threshold) from the center of your curve on each side. If new data comes in that falls outside
+			with your data you simply mark a distance (or <b>threshold</b>) from the center of your curve on each side. If new data comes in that falls outside
 			of that threshold you say that it is anomalous.</p>
 		<img class="coverimg" src="/images/normal-distribution.png" width="780" />
 		<p>Above and on the left is a bell curve with a single variable. The two red lines represent our threshold. Everything inside those lines is
@@ -247,7 +247,7 @@ estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class
         <br />
         <p>Tuning the system meant playing with different combinations of features and normalizing the data.
             This ensured that the algorithm finds the kind of malicious activity we are looking for. After features
-            were finalized it came time to tune the threshold.</p>
+            were finalized it came time to tune the <b>threshold</b>.</p>
         <br />
         <p>In an ideal world I would have extensive normal and anomalous user examples in advance. With these details
             I could test the algorithm's precision and tune it until it identified each of the examples
