@@ -14,13 +14,12 @@
 		<br />
 
         <p>In one of my previous articles, <a href="tour-of-ai" target="_blank">A Tour of AI</a>, I promised to go over some examples of specific machine learning
-			algorithms. I recently had the opportunity to implement an anomaly detection system for <a href="http://www.cognitran.com/" target="_blank">Cognitran</a>.
-			The anomaly detection system was a malicious user detection feature for <a href="http://www.cognitran.com/products/itis/" target="_blank">ITIS</a>, our
-			product for distributing service, repair, and maintenance documentation for equipment manufacturers.</p>
+			algorithms. I recently had the opportunity to add an anomaly detection system to the <a href="http://www.cognitran.com/" target="_blank">Cognitran</a> service monitoring suite.
+			The anomaly detection system was a malicious user detection feature for finding suspicious user activity.</p>
 		<br />
 		<p>Anomaly detection is a category of <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Unsupervised Learning</a> algorithms. We use it to determine if something is <b>anomalous</b> compared with
 			previous data. Anomaly detection systems are used for tasks such as fraud detection, finding abnormal parts during manufacturing, and
-			detecting suspicious user behavior. For malicious user detection in ITIS, I used <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian (Normal) distribution</a>. When thinking about
+			detecting suspicious user behavior. For malicious user detection, I used <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian (Normal) distribution</a>. When thinking about
 			how Gaussian distribution is used for anomaly detection it is useful to picture a bell curve. Once you have plotted a bell curve
 			with your data you simply mark a distance (or <b>threshold</b>) from the center of your curve on each side. If new data comes in that falls outside
 			of that threshold you say that it is anomalous.</p>
@@ -181,10 +180,10 @@
         <br />
         <h2>Bringing It All Together.</h2>
         <br />
-        <p>For ITIS's suspicious user detection I collected records of the users' activity from our extensive logs. I
+        <p>For Cognitran's suspicious user detection I collected records of the users' activity from our extensive logs. I
             grouped this data by user, and split it into anonymous hour chunks. What we end up with is entries that
-            represent an hour of a user's activity. Although the ITIS implementation includes many features of users' activity,
-            lets use a simple example with three features.</p>
+            represent an hour of a user's activity. Although our implementation includes many features of users' activity,
+            lets use a simplified example with three features.</p>
         <br />
         <p><b><span class="green">[</span>2, 1, 28<span class="green">]</span></b> represents a <b>single user's behavior over an hour</b> with three example features / variables. From
             left-to-right, the times the user viewed their settings, requested a password reset, and searched in
