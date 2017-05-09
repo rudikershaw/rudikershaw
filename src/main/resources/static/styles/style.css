@@ -146,14 +146,14 @@ a.donatelink {
 }
 
 div.entry {
-    border-color: grey;
+	margin: 50px 50px 0px 50px;
 	border-top-color: #ED5900;
+    border-color: grey;
 	border-width: 1px;
 	border-top-width: 4px;
 	padding-bottom: 10px;
 	border-style: solid;
 	text-align: center;
-	margin: 50px 50px 0px 50px;
 	min-height: 292px;
 	width: 290px;
 	float: left;
@@ -185,16 +185,16 @@ div.entry {
 
 h5.quoteblock {
 	text-align: center;
-	font-size: 20px;
 	font-weight: bold;
-	width: 720px;
 	margin: 20px auto;
+	font-size: 20px;
+	width: 720px;
 }
 
 div.black-band {
 	background-color: #222222;
-	text-align: center;
 	margin: 30px 0 40px 0;
+	text-align: center;
 	padding: 40px;
 	color: white;
 }
@@ -335,7 +335,7 @@ a.home {
 	display: block;
 	padding: 10px 20px 6px;
 	margin: 20px;
-	float:left;
+	float: left;
 } a.home:hover {
 	background-color: #222222;
 	text-shadow: none;
@@ -438,14 +438,14 @@ ul.search-graphic > li.found{
 
 .search-go {
 	font-family: NewHaas, Helvetica;
-	font-size: 16px;
 	background: #ED5900;
 	font-weight: bold;
+	font-size: 16px;
+	display: block;
+	padding: 11px;
 	color: white;
 	border: none;
-	padding: 11px;
 	width: 25%;
-	display: block;
 } .search-go:hover {
 	background: #222222;
 	cursor: pointer;
@@ -457,12 +457,53 @@ p.reference {
 }
 
 a.close-link {
+	background-image: url('/images/cross.png');
 	background-size: cover;
 	display: block;
 	height: 29px;
 	width: 29px;
 	float: right;
-	background-image: url('/images/cross.png');
+}
+
+/* Sharing dialog. */
+
+div.faded-background-cover {
+    background-color: rgb(5,5,5);
+    background-color: rgba(5,5,5,0.9);
+    position: fixed;
+    overflow: auto;
+    display: none;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+div.faded-background-cover > div.share-options {
+    background: white;
+    position: relative;
+    display: block;
+    width: 760px;
+    min-height: 300px;
+    margin: auto;
+    top: 100px;
+}
+
+div.share-options > h2, div.share-options > p {
+    margin-top: 15px;
+    width: auto;
+}
+
+div.share-options > p {
+    text-align: center;
+    margin: 30px 60px;
+}
+
+div.faded-background-cover > div.share-options > .home.social-share {
+    text-align: center;
+    margin: 0 50px;
+    width: 50px;
 }
 
 /* Responsive CSS adjustments for mobile devices. */

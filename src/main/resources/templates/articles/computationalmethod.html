@@ -6,8 +6,10 @@
 		<meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
 		<meta name="author" content="Rudi Kershaw" />
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="/styles/style.css?v=2" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css?v=3" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
+		<link href="http://designers.hubspot.com/hs-fs/hub/327485/file-2054199286-css/font-awesome.css" rel="stylesheet" />
+		<script />
 	</head>
 	<body>
 		<div class="header" th:replace="index :: header"></div>
@@ -16,7 +18,7 @@
             <p class="date">19/02/2015</p>
             <p class="views"><span th:text="${article.views}"></span> views</p>
         </div>
-		<h1>Defining an Algorithm</h1>
+		<h1 th:text="${article.name}">Defining an Algorithm</h1>
 		<hr />
 		<img class="coverimg" src="/images/taocp_text.jpg" alt="Let us formally define a computational method" height="150" width="810" />
 		<br />
@@ -100,17 +102,35 @@
 		
 		<br />
 		<hr />
-		
-		<div class="navigate">
-			<a class="home" href="/">Home</a>
-			<a class="next" href="typesetting"></a>
-			<a class="previous" style="display:none;"></a>		
+
+		<div class="article-footer" th:fragment="article-footer">
+			<div class="navigate">
+				<a class="home" href="/">Home</a>
+				<a class="home share" href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+				<a class="next" th:href="${ next == null ? '#' : ('/' + next.path) }" title="Next"></a>
+				<a class="previous" th:style="${ previous == null ? 'display:none' : '' }" th:href="${ previous == null ? '#' : ('/' + previous.path) }" title="Previous"></a>
+			</div>
+			<h1 style="clear:both;">Rudi Kershaw</h1>
+			<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+			<br />
+			<br />
+
+			<div class="faded-background-cover">
+				<div class="share-options">
+					<br />
+					<h2>Sharing is Caring</h2>
+					<p>If you've found my articles helpful or fun, an easy way to help me out is to share. Click on one of the links below to share on your favorite platform.</p>
+					<br />
+					<a class="home social-share twitter" th:href="@{https://twitter.com/intent/tweet?text=@RudiKershaw%20on%20{title}(title=${article.name})}" title="Share"><i class="fa fa-twitter"></i></a>
+					<a class="home social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=" title="Share"><i class="fa fa-facebook"></i></a>
+					<a class="home social-share google-plus" href="https://plus.google.com/share?url=" title="Share"><i class="fa fa-google-plus"></i></a>
+					<a class="home social-share reddit" href="https://www.reddit.com/submit?url="><i class="fa fa-reddit"></i></a>
+				</div>
+			</div>
+			<script src="/scripts/jquery-1.7.js"></script>
+			<script src="/scripts/main.js"></script>
 		</div>
-		<h1 style="clear:both;">Rudi Kershaw</h1>
-		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
-		<br />
-		<br />
-		
+
 		<div class="container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
