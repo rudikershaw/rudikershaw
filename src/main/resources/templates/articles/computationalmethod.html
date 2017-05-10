@@ -121,7 +121,7 @@
 					<h2>Sharing is Caring</h2>
 					<p>If you've found my articles helpful or fun, an easy way to help me out is to share. Click on one of the links below to share on your favorite platform.</p>
 					<br />
-					<a class="home social-share twitter" th:href="@{https://twitter.com/intent/tweet?text=@RudiKershaw%20on%20{title}(title=${article.name})}" title="Share" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+					<a class="home social-share twitter" th:href="@{https://twitter.com/intent/tweet?text={title}%20by%20@RudiKershaw(title=${article.name})}" title="Share" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 					<a class="home social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=" title="Share" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook"></i></a>
 					<a class="home social-share google-plus" href="https://plus.google.com/share?url=" title="Share" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 					<a class="home social-share reddit" href="https://www.reddit.com/submit?url=" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
