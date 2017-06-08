@@ -506,6 +506,10 @@ div.faded-background-cover > div.share-options > .home.social-share {
     width: 50px;
 }
 
+.has-title {
+    cursor: progress;
+}
+
 /* Responsive CSS adjustments for mobile devices. */
 
 @media (max-device-width: 420px) {
