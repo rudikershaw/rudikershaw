@@ -44,7 +44,7 @@
 			your method as their set unicode number or something like that. Imagine for example they want to send the character <b>'B'</b> and they convert it to
 			a <b>2</b>. To encrypt their message they take this number and do the following:</p>
 		<h5 class="quoteblock">2<sup>5</sup> mod 14 = 32 mod 14 = 4</h5>
-		<p>The word <b>mod</b>, in case you are wondering, is an operation for getting the remainder of division by the two numbers. In the above it
+		<p>The word <b>mod</b>, in case you are wondering, is the <a href="https://en.wikipedia.org/wiki/Modular_arithmetic" target="_blank">modulus</a> operation for getting the remainder of division by the two numbers. In the above it
 			is essentially the same as getting the remainder of <b>32</b> divided by <b>14</b>. Our friend then sends us the number <b>4</b> and we
 			use our <b>private key</b>, the pair <b>(11, 14)</b>, to convert it back to its original value. We do that by doing the following;</p>
 		<h5 class="quoteblock">4<sup>11</sup> mod 14 = 4194304 mod 14 = 2</h5>
@@ -136,11 +136,15 @@
 			from earlier, we can get the totient of <b>n</b> because we know its prime factors <b>p</b> and <b>q</b>:</p>
 		<h5 class="quoteblock">&Phi;(n) = &Phi;(p &times; q) = (p - 1) &times; (q - 1)</h5>
 		<p>We can now use our totient <b>&Phi;(n)</b> as to find <b>e</b> for our public key. To find <b>e</b> we just needs some value that is a coprime
-			of <b>&Phi;(n)</b> but that is greater than <b>1</b> and less than <b>&Phi;(n)</b>.</p>
+			of (shares no common divisors but one) <b>&Phi;(n)</b> but that is greater than <b>1</b> and less than <b>&Phi;(n)</b>.</p>
 		<h5 class="quoteblock">e = some coprime of &Phi;(n) where 1 &lt; e &lt; &Phi;(n)</h5>
 		<p>And lastly we need to find <b>d</b> for our private key that we keep to ourselves. To get <b>d</b> we need to find a value that satisfies the
 			following condition:</p>
 		<h5 class="quoteblock">d = some value where de mod &Phi;(n) = 1</h5>
+		<p>The value of <b>d</b> can be quite difficult to find. As such there are a number of different algorithms that are used to find the value of
+			<b>d</b>. Although you can find it manually you will want to use one of these algorithms, for example the
+			<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank">extended Euclidean algorithm</a>.</p>
+		<br />
 		<div class="code">
 			<span class="orange"> p</span>, <span class="orange">q</span> = 2 large primes<br />
 			<span class="orange"> n </span>= pq<br />
@@ -159,7 +163,7 @@
 			have no way of opening it.</p>
 		<br />
 		<p>In RSA the lock is <b>(d, n)</b> and the key is <b>(e, n)</b>. If an impostor wants to find <b>e</b> they would need to work out
-			the prime factors of <b>n</b> and go through the process of generating the keys fresh. But as we discussed this is a very hard
+			the prime factors of <b>n</b> and go through the process of generating the keys fresh. But as we discussed, this is a very hard
 			problem indeed. Chances are they wouldn't live long enough for a computer to give them the answer.</p>
 		<br />
 		<p>I hope you've found this break-down helpful. If you don't grok it and have questions please pop them in the comments below this article and I
