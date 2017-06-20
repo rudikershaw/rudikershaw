@@ -89,7 +89,11 @@ public class Prosperity {
             if (follow.getDate().before(lastWeek)) {
                 // Remove follow from twitter.
                 System.out.println("Twitter Prosperity: Removed follow - " + follow.getName());
-                twitter.destroyFriendship(follow.getName());
+                try {
+                    twitter.destroyFriendship(follow.getName());
+                } catch (TwitterException e) {
+                    System.out.println("Follow '" + follow.getName() + "' not found. Removing from DB and proceeding.");
+                }
                 // Disable follow in DB.
                 service.disableFollow(follow);
             }
