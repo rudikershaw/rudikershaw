@@ -38,7 +38,7 @@
 		<br />
 		<h2>High Level Overview</h2>
 		<br />
-		<p>Our keys take the form of a pair of numbers. For the overview we are going to assume we already have our keys. First we take our <b>public key</b>, the pair
+		<p>We start with two pairs of numbers, and we call each pair our keys. For the overview we are going to assume we already have our keys. First we take our <b>public key</b>, the pair
 			of numbers <b>(5, 14)</b>, and pass it to the person we want to be able to send us messages. They then use this key to encrypt their message. Before
 			they encrypt it however, they will have to turn the message into a number (or a list of numbers). This can be as simple as encoding each character in
 			your method as their set unicode number or something like that. Imagine for example they want to send the character <b>'B'</b> and they convert it to
@@ -80,14 +80,14 @@
 		<br />
 		<p>The process of taking a number and finding its prime factors is called, guess what, prime factorisation. Prime factorisation
 			is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity" target="_blank">very hard</a>
-			problem. So hard in fact that it could take <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO" target="_blank">600,000 years</a>
+			problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO" target="_blank">600,000 years</a>
 			to work out the prime factors of a 300 digit number. If you had the prime factors however, it would only take a tiny fraction of a second to multiply them.</p>
 		<br />
 		<h2>Coprimes</h2>
 		<br />
 		<p>Coprimes are numbers that share no prime factors, or are not divisible by any of the same numbers except <b>1</b>. For example
 			<b>4</b> and <b>9</b> are coprimes because the prime factors of <b>4</b> are <b>2 &times; 2</b> and the prime factors of <b>9</b>
-			are <b>3 &times; 3</b>. Prime numbers themselves are coprime with all other numbers except those that are divisible by itself. This
+			are <b>3 &times; 3</b>. A prime numbers is coprime with all other numbers except those that are divisible by itself. This
 			also means that a prime number is coprime with all numbers below its value. It is also worth noting that <b>1</b> is coprime
 			to all numbers because it cannot share prime factors with other numbers (because it has none) and it is not divisible by any of
 			the same numbers except itself.</p>
@@ -135,7 +135,7 @@
 		<p>Now we need the totient of <b>n</b> to work out the public and private components of our key <b>e</b> and <b>d</b>. Remembering our trick
 			from earlier, we can get the totient of <b>n</b> because we know its prime factors <b>p</b> and <b>q</b>:</p>
 		<h5 class="quoteblock">&Phi;(n) = &Phi;(p &times; q) = (p - 1) &times; (q - 1)</h5>
-		<p>We can now use our totient <b>&Phi;(n)</b> as to find <b>e</b> for our public key. To find <b>e</b> we just needs some value that is a coprime
+		<p>We can now use our totient <b>&Phi;(n)</b> to find <b>e</b> for our public key. To find <b>e</b> we just needs some value that is a coprime
 			of (shares no common divisors but one) <b>&Phi;(n)</b> but that is greater than <b>1</b> and less than <b>&Phi;(n)</b>.</p>
 		<h5 class="quoteblock">e = some coprime of &Phi;(n) where 1 &lt; e &lt; &Phi;(n)</h5>
 		<p>And lastly we need to find <b>d</b> for our private key that we keep to ourselves. To get <b>d</b> we need to find a value that satisfies the
