@@ -5,8 +5,9 @@
 		<meta charset="UTF-8" />
 		<meta name="description" content="My name is Rudi Kershaw and I am a science nerd, research nerd, and software developer (nerd). And this, is where I like to ramble about technical stuff." />
 		<meta name="author" content="Rudi Kershaw" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="/styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.css?v=2" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
 	</head>
 	<body>
@@ -33,10 +34,10 @@
         <br />
 		<h2>My Latest Tweet</h2>
 		<div class="container" style="text-align:center;">
-			<hr style="width:520px;"/>
+			<hr style="max-width:520px;"/>
 			<a style="padding:50px;display:block;" class="twitter-timeline" href="https://twitter.com/RudiKershaw" data-widget-id="645696211949752320" data-tweet-limit="1" data-chrome="nofooter noheader noborder transparent">Latest tweet by @RudiKershaw</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			<hr style="width:520px"/>
+			<hr style="max-width:520px"/>
 		</div>
 		<br />
 		<div class="black-band">
@@ -51,12 +52,14 @@
 			</a>
 		</div>
         <div class="navigate">
-			<a class="home" href="/">Latest</a>
-			<a class="next"></a>
-			<a class="previous previous-off"></a>
+			<a class="home latest" href="/">Latest</a>
+			<div class="next-previous">
+				<a class="next"></a>
+				<a class="previous previous-off"></a>
+			</div>
 		</div>
 		<hr style="clear:both;" />
-		<div id="page" class="container">
+		<div id="page" class="entries container">
 			<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
 				<div class="entry">
 					<h4 th:text="${article.name}">Article Title</h4>
@@ -65,6 +68,13 @@
 				</div>
 			</a>
 		</div>
+		<div class="navigate">
+			<div class="next-previous">
+				<a class="next"></a>
+				<a class="previous previous-off"></a>
+			</div>
+		</div>
+		<br />
 		<br style="clear: both;" />
 		<div class="footer" th:fragment="footer">
 			<div class="container">

@@ -105,6 +105,7 @@ div.header {
 div.footer {
 	background-color: #222222;
 	text-align: center;
+	margin-top: 20px;
 	padding: 30px;
 	color: white;
 }
@@ -154,18 +155,20 @@ a.donatelink {
 	top: -5px;
 }
 
-div.entry {
+div.entries.container {
+    text-align: center;
+} div.entry {
 	margin: 50px 50px 0px 50px;
 	border-top-color: #ED5900;
     border-color: grey;
 	border-width: 1px;
 	border-top-width: 4px;
+	display: inline-block;
 	padding-bottom: 10px;
 	border-style: solid;
 	text-align: center;
 	min-height: 292px;
-	width: 290px;
-	float: left;
+	max-width: 290px;
 } div.entry > h4 {
 	background-color: #222222;
 	text-overflow: ellipsis;
@@ -175,7 +178,7 @@ div.entry {
 	font-size: 20px;
 	padding: 5px;
 	color: white;
-	width: 280px;
+	max-width: 280px;
 } div.entry > img {
     transition: all 0.2s ease 0s;
     filter: alpha(opacity=80);
@@ -209,12 +212,11 @@ div.black-band {
 }
 div.black-band img {
 	border: 8px solid black;
-	float:left;
+	display: inline-block;
 }
 div.black-band div.box-600 {
-	display: block;
-	width: 600px;
-	float: left;
+	display: inline-block;
+	max-width: 600px;
 }
 div.black-band p, div.black-band h2, div.black-band h3 {
 	padding: 8px 30px;
@@ -548,8 +550,15 @@ div.faded-background-cover > div.share-options > .home.social-share {
 }
 
 /* Responsive CSS adjustments for mobile devices. */
+
+@media (max-width: 800px) {
+    div.entry {
+    	margin: 50px 25px 0px 25px;
+    }
+}
+
 @media (max-width: 550px) {
-    .stack-overflow-link {
+    .stack-overflow-link, a.home.latest {
         display:none;
     }
 
@@ -564,10 +573,6 @@ div.faded-background-cover > div.share-options > .home.social-share {
         display: block;
         margin: auto;
         float: none;
-    }
-
-    div.entry > h4, div.entry > p {
-    	font-size: 28px;
     }
 }
 
