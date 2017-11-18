@@ -25,7 +25,7 @@ body {
 
 h1 {
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 10px;
 	font-size: 50px;
 }
 
@@ -47,8 +47,9 @@ h4 {
 
 p {
 	text-align: justify;
-	font-size: 16px;
 	max-width: 780px;
+	font-size: 16px;
+	padding: 0 10px;
 	margin: auto;	
 }
 
@@ -88,7 +89,7 @@ a {
 }
 
 hr {
-	width: 810px;
+	max-width: 810px;
 	margin: auto;
 }
 
@@ -97,6 +98,7 @@ div.header {
 	border-top-color: #ED5900;
 	border-top-width: 5px;
 	border-style: solid;
+	margin-bottom: 40px;
 	min-height: 58px;
 }
 
@@ -195,7 +197,7 @@ h5.quoteblock {
 	font-weight: bold;
 	margin: 20px auto;
 	font-size: 20px;
-	width: 720px;
+	max-width: 720px;
 }
 
 div.black-band {
@@ -234,50 +236,57 @@ div.black-band a {
  }
 
 img.coverimg {
-	display: block;
 	margin: 5px auto;
+	max-width: 810px;
+	display: block;
+	height: auto;
+	width: 100%;
 }
 
 .container {
 	min-height: 30px;
+	max-width: 810px;
 	display: block;
-	width: 810px;
+	margin: auto;
+}
+
+.text-container {
+	min-height: 30px;
+	max-width: 800px;
+	padding: 0 10px;
+	display: block;
 	margin: auto;
 }
 
 p.date {
-	position: relative;
+	display: inline-block;
 	font-size: 20px;
-	float: left;
-    width: auto;
-	top: 40px;
 }
 
 p.views {
-	position: relative;
+	display: inline-block;
+	margin-bottom: 5px;
 	font-size: 20px;
 	float: right;
-    width: auto;
-	top: 40px;
 }
 
 .code-header {
 	background-color: #111;
 	padding: 10px 20px;
+	color: lightgrey;
+	max-width: 700px;
 	font-size: 20px;
 	overflow: auto;
-	color: lightgrey;
-	width: 700px;
 	margin: auto;
 }
 
 .code {
 	font-family: "Courier New", Courier, monospace;
 	background-color: #383838;
-	overflow: auto;
+	max-width: 700px;
 	color: lightgrey;
+	overflow: auto;
 	padding: 20px;
-	width: 700px;
 	margin: auto;
 }
 
@@ -293,24 +302,24 @@ p.views {
 
 .chart-js {
     display: block;
-    width: 700px;
-    height: 400px;
+    max-width: 700px;
+    height: auto;
     margin: auto;
 }
 
 div.info-box {
-	width: 712px;
-	margin: 10px auto;
-	padding: 14px;
-	background: #222;
-	color: white;
 	border-radius: 10px;
+	margin: 10px auto;
+	max-width: 712px;
+	background: #222;
 	font-size: 14px;
+	padding: 14px;
+	color: white;
 }
 
 .choices {
 	background-color: #333333;
-	width: 740px;
+	max-width: 740px;
     margin: auto;
     clear: both;
 }
@@ -322,7 +331,7 @@ div.info-box {
  	padding: 20px 0;
  	color: white;
  	float: left;
- 	width: 33%;
+ 	width: 32.9%;
 }
 .choices li:hover {
 	background-color: #ED5900;
@@ -339,8 +348,8 @@ span.green { color: #347B34; }
 span.jade { color: #347B94; }
 
 div.navigate {
+	max-width: 800px;
 	display: block;
-	width: 800px;
 	margin: auto;
 }
 
@@ -370,6 +379,12 @@ a.home-center {
 } a.home-center:hover {
 	background-color: #222222;
 	text-shadow: none;
+}
+
+div.next-previous {
+    display: inline-block;
+    width: 200px;
+    float: right;
 }
 
 a.previous {
@@ -433,7 +448,7 @@ ul.search-graphic > li{
 	padding: 10px 0;
 	color: white;
 	float: left;
-	width: 7%
+	width: 6.5%
 }
 
 ul.search-graphic > li.checked{
@@ -442,6 +457,11 @@ ul.search-graphic > li.checked{
 
 ul.search-graphic > li.found{
 	background: #ED5900;
+}
+
+svg.graph {
+    margin-top: 20px;
+    width: 100%;
 }
 
 .search-for {
@@ -528,48 +548,22 @@ div.faded-background-cover > div.share-options > .home.social-share {
 }
 
 /* Responsive CSS adjustments for mobile devices. */
-
-@media (max-device-width: 420px) {
-    .code {
-        font-size: 30px;
+@media (max-width: 550px) {
+    .stack-overflow-link {
+        display:none;
     }
 
-    p.views, p.date {
-		font-size: 40px;
-		top: 20px;
+    .choices li {
+     	width: 32.5%;
     }
+}
 
-    a.sociallink {
-    	margin-left: 18px;
-    	margin-top: 2px;
-    	height: 54px;
-    	width: 54px;
-    }
+@media (max-width: 420px) {
 
-    a.donatelink {
-    	margin-left: 18px;
-    	margin-top: 2px;
-    	font-size: 30px;
-        height: 54px;
-        width: 120px;
-    }
-
-    ul.search-graphic > li{
-    	font-size: 28px;
-    	padding: 16px 0;
-    	width: 14%
-    }
-
-    .search-for {
-    	font-size: 24px;
-    	padding: 18px;
-    	width: 44%;
-    }
-
-    .search-go {
-    	font-size: 24px;
-    	padding: 20px;
-    	width: 43%;
+    div.next-previous {
+        display: block;
+        margin: auto;
+        float: none;
     }
 
     div.entry > h4, div.entry > p {
@@ -580,12 +574,12 @@ div.faded-background-cover > div.share-options > .home.social-share {
 /* Feature - Whichpet specific styling. */
 
 div.whichpet { background: #CC5A13; margin-top: 3px; color: #EEE; }
-div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; width: 550px; }
+div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; max-width: 550px; }
 div.whichpet select { font-size: 24px; }
 div.whichpet input[type="button"] { background: #ED5900; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; }
 div.whichpet input[type="button"]:hover { background: #222222; cursor: pointer; color: #ED5900; }
-div.whichpet textarea { font-size: 18px; resize: none; width: 500px; padding: 5px 4px 5px 10px;}
+div.whichpet textarea { font-size: 18px; resize: none; width: 90%; padding: 5px 4px 5px 10px;}
 div.whichpet div.popup { display: none; background: rgba(34,34,34,0.9); position: fixed; width: 100%; height:100%; padding-top: 100px; top: 0; left: 0 }
 div.whichpet div.popup div.box { width: 600px; margin: auto; background: white; padding: 20px 20px; text-align: center;}
 div.whichpet #click-for-more a { text-decoration: underline; cursor: pointer; color: white; }
-div.whichpet #they-clicked-for-more { padding: 30px; color: black; width: 800px; margin: auto; border-radius: 10px; background: white; }
+div.whichpet #they-clicked-for-more { padding: 30px; color: black; max-width: 800px; margin: auto; border-radius: 10px; background: white; }

@@ -4,13 +4,13 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-		<div class="container">
+		<div class="text-container">
 			<p class="date">03/07/2016</p>
 			<p class="views"><span th:text="${article.views}"></span> views</p>
 		</div>
 		<h1>Which Search Algorithm? - Part 2</h1>
 		<hr />
-		<img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" height="150" width="810" />
+		<img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
 		<br />
 		
 		<p>In the <a href="whichsearch">first installation of Which Search Algorithm</a>, I covered exhaustive and binary searches. I also briefly
@@ -128,7 +128,7 @@
         <div class="container">
             <input type="number" class="search-for" name="d-search-for" />
             <input type="button" class="search-go" value="Search" name="d-search-go" />
-            <svg width="800" height="320" id="depth-graph">
+            <svg class="graph" id="depth-graph" viewBox="0 0 800 320">
                 <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
                 <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
                 <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
@@ -265,7 +265,7 @@
         <div class="container">
             <input type="number" class="search-for" name="bf-search-for" />
             <input type="button" class="search-go" value="Search" name="bf-search-go" />
-            <svg width="800" height="320" id="breadth-graph">
+            <svg class="graph" id="breadth-graph" viewBox="0 0 800 320">
                 <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
                 <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
                 <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
@@ -338,7 +338,7 @@
 		<script src="/scripts/choices.js"></script>
         <script src="/scripts/search-graphics.js"></script>
 
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';

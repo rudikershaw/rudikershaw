@@ -4,14 +4,15 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-		<div class="container">
+		<div class="text-container">
 			<p class="date">05/05/2016</p>
 			<p class="views"><span th:text="${article.views}"></span> views</p>
 		</div>
 		<h1>Event Driven Development in Java EE7</h1>
 		<hr />
-		<img class="coverimg" src="/images/events-banner.jpg" alt="Java EE7 Essentials Cover Image" height="150" width="810" />
+        <img class="coverimg" src="/images/events-banner.jpg" alt="Java EE7 Essentials Cover Image" />
 		<br />
+
 		<p>I recently finished reading Arun Gupta's Java EE7 Essentials and I was struck by how many features of Java EE there are that I had no idea existed. Not
 			least of all are the ways that Java EE enables event driven development through annotations. There are lots of situations that would have been easier and simpler
 			had I known these features existed. As such, I thought I should spread the wealth and share what I have learnt.</p>
@@ -137,8 +138,8 @@
         <br />
 
         <p>You can even change the relationship that this receiving method has with the transaction of the method that fired the event. You can declare your <span class="italic">@Observer</span> annotation with
-            a small hand full of parameters such as <span class="italic nowrap">@Observer(during = TransactionPhase.AFTER_SUCCESS)</span>. This example specifies that the method should fire after the transaction of the firing method has
-            completed successfully without rolling back. The default is <span class="italic nowrap">@Observer(during = TransactionPhase.IN_PROGRESS)</span> which causes the method to run immediately after the event has
+            a small hand full of parameters such as <span class="italic bold">@Observer(during = TransactionPhase.AFTER_SUCCESS)</span>. This example specifies that the method should fire after the transaction of the firing method has
+            completed successfully without rolling back. The default is <span class="italic bold">@Observer(during = TransactionPhase.IN_PROGRESS)</span> which causes the method to run immediately after the event has
             fired during the transaction.</p>
         <br />
         <p>Events in Java EE seem really useful and I will be looking forward to putting them to use. I hope this article has helped or given you some ideas for how you can put them to use yourself. If you
@@ -150,7 +151,7 @@
 
         <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
 
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';

@@ -4,13 +4,13 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-		<div class="container">
+		<div class="text-container">
 			<p class="date">21/09/2015</p>
 			<p class="views"><span th:text="${article.views}"></span> views</p>
 		</div>
 		<h1>Which Search Algorithm? - Part 1</h1>
 		<hr />
-		<img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" height="150" width="810" />
+		<img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
 		<br />
 		
 		<p>Searching is an enormous topic, so I am not even going to attempt to cover everything there is to cover. This article will be the
@@ -217,7 +217,7 @@
 		<script src="/scripts/choices.js"></script>
         <script src="/scripts/search-graphics.js"></script>
 
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';

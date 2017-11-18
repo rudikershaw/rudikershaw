@@ -4,13 +4,13 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-		<div class="container">
+		<div class="text-container">
 			<p class="date">16/07/2016</p>
 			<p class="views"><span th:text="${article.views}"></span> views</p>
 		</div>
 		<h1>Nature vs Technology</h1>
 		<hr />
-		<img class="coverimg" src="/images/nature-banner.jpg" alt="Nature vs Technology" height="150" width="810" />
+		<img class="coverimg" src="/images/nature-banner.jpg" alt="Nature vs Technology" />
 		<br />
 		
 		<p>Spending a week in a safari tent in the midst of nine acres of raw unmolested woodland has drawn me to thinking about nature and the divide we see
@@ -25,7 +25,7 @@
         <p>When you glance at the surface of our situation it can seem quite clear that technology is ruining everything. But if you take the time to peer beneath the
             surface a much more disturbing reality presents itself.</p>
         <br />
-        <img src="/images/trees-photo.jpg" width="760" style="display:block;margin:auto;" />
+        <img class="coverimg" src="/images/trees-photo.jpg" style="max-width:760px;" />
         <br />
         <p>Science is just our way of understanding nature. It is not the understanding of waves and the electromagnetic spectrum that littered our airways with gibberish.
             If all the radio transmitters on the planet were to suddenly fall silent I could still turn on a radio and hear something. Static is, amongst
@@ -52,7 +52,7 @@
             profitable. Governments the world over refuse to impose tougher sanctions on the above for fear that their stocks in them will fall in value. Greed, laziness,
             and risk aversion have set us in our ways.</p>
         <br />
-        <img src="/images/grass-photo.jpg" width="760" style="display:block;margin:auto;" />
+        <img class="coverimg" src="/images/grass-photo.jpg" style="max-width:760px;" />
         <br />
 		<p>Technology may have enabled us to get to this point but it is lack of forward planning and personal responsibility that has brought us here and keeps us here.
             Assuming that we can not wait for human beings to grow a responsible collective moral conscience, what gets us out of this mess? The very thing that many cry
@@ -70,7 +70,7 @@
             technology is currently slow, cumbersome, and difficult to manufacture but imagine a far future where all vehicles had this level of mobility. Housing estates could
             be built in woodlands without having to tear down many trees at all and we would need no roads for transport.</p>
         <br />
-        <img src="/images/camp-photo.jpg" width="760" style="display:block;margin:auto;" />
+        <img class="coverimg" src="/images/camp-photo.jpg" style="max-width:760px;" />
         <br />
         <p>It is not just big companies and governments that resist changes that protect our future and our environment. This tendency to brand new technology as
             <b>unnatural</b> is both unhelpful and misleading. Public opinion has been heavily against GM crops more or less since it's inception completely without grounds.
@@ -88,7 +88,7 @@
 
         <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
 
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';

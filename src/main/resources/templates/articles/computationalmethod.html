@@ -3,6 +3,7 @@
 	<head class="head" th:fragment="head">
 		<title th:text="${article.name}">Code Nerd</title>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
 		<meta name="author" content="Rudi Kershaw" />
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
@@ -14,13 +15,13 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-        <div class="container">
+        <div class="text-container">
             <p class="date">19/02/2015</p>
             <p class="views"><span th:text="${article.views}"></span> views</p>
         </div>
 		<h1 th:text="${article.name}">Defining an Algorithm</h1>
 		<hr />
-		<img class="coverimg" src="/images/taocp_text.jpg" alt="Let us formally define a computational method" height="150" width="810" />
+		<img class="coverimg" src="/images/taocp_text.jpg" alt="Let us formally define a computational method" />
 		<br />
 		
 		<p>Working your way through the volumes of The Art of Computer Programming is a fairly challenging 
@@ -107,8 +108,10 @@
 			<div class="navigate">
 				<a class="home" href="/">Home</a>
 				<a class="home share" href="#" title="Share"><i class="fa fa-share-alt"></i></a>
-				<a class="next" th:href="${ next == null ? '#' : ('/' + next.path) }" title="Next"></a>
-				<a class="previous" th:style="${ previous == null ? 'display:none' : '' }" th:href="${ previous == null ? '#' : ('/' + previous.path) }" title="Previous"></a>
+				<div class="next-previous">
+					<a class="next" th:href="${ next == null ? '#' : ('/' + next.path) }" title="Next"></a>
+					<a class="previous" th:style="${ previous == null ? 'display:none' : '' }" th:href="${ previous == null ? '#' : ('/' + previous.path) }" title="Previous"></a>
+				</div>
 			</div>
 			<h1 style="clear:both;">Rudi Kershaw</h1>
 			<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
@@ -131,7 +134,7 @@
 			<script src="/scripts/main.js"></script>
 		</div>
 
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';

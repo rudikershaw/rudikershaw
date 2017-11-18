@@ -4,13 +4,13 @@
 	<body>
 		<div class="header" th:replace="index :: header"></div>
 		<br />
-		<div class="container">
+		<div class="text-container">
 			<p class="date">29/02/2015</p>
 			<p class="views"><span th:text="${article.views}"></span> views</p>
 		</div>
 		<h1>HTTP Basics</h1>
 		<hr />
-		<img class="coverimg" src="/images/httptyped.jpg" alt="http://www" height="150" width="810" />
+		<img class="coverimg" src="/images/httptyped.jpg" alt="http://www" />
 		<br />
 		
 		<p>It was recently brought to my attention that I really don't know the first thing about <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>, 
@@ -31,7 +31,7 @@
 		<br />
 		<pre class="code">
 GET /index.html HTTP/1.1
-Host: www.rudikershaw.co.nf</pre>
+Host: www.rudikershaw.com</pre>
 		<br />
 		<p>And now we have an HTTP Request. It's just a <b>first line</b> which says what we want to do (i.e. 
 		GET the /index.html document), and a single <b>header</b> labelled Host which is the domain we want to
@@ -90,7 +90,7 @@ Content-Length: 77
 		<br />
 		<pre class="code">
 GET /page.php?data=yourdata HTTP/1.1
-Host: www.rudikershaw.co.nf</pre>
+Host: www.rudikershaw.com</pre>
 		<br />
 		<p>This means that the data we're sending is plainly visible in the URL, in the address bar of 
 		our browser. It's also stored in your history as well as your browser cache and probably the logs 
@@ -120,7 +120,7 @@ Host: www.rudikershaw.co.nf</pre>
 		<br />
 		<pre class="code">
 POST /page.php HTTP/1.1
-Host: www.rudikershaw.co.nf
+Host: www.rudikershaw.com
 
 data=yourdata</pre>
 		<br />
@@ -145,7 +145,7 @@ data=yourdata</pre>
 
 		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
 		
-		<div class="container"><div id="disqus_thread"></div></div>
+		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
 			var disqus_shortname = 'codenerd';
