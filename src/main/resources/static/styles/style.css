@@ -513,7 +513,7 @@ div.faded-background-cover {
     position: fixed;
     overflow: auto;
     display: none;
-    padding: 20px;
+    padding: 0 20px;
     height: 100%;
     width: 100%;
     z-index: 2;
@@ -530,8 +530,8 @@ div.faded-background-cover > div.share-options {
     overflow: auto;
     display: block;
     padding: 20px;
-    margin: auto;
-    top: 100px;
+    margin: 10px auto;
+    top: 5%;
 }
 
 div.share-options > h2, div.share-options > p {
