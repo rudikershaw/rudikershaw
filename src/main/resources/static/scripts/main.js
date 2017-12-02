@@ -5,10 +5,12 @@ $(document).ready(function(){
 
     $('a.home.share').click(function(event){
         event.preventDefault();
+        $("body").css({"overflow":"hidden"});
         dialogBackground.fadeIn(200);
     });
 
     dialogBackground.click(function(){
+        $("body").css({"overflow":"visible"});
         dialogBackground.fadeOut(200);
     });
 
@@ -18,6 +20,7 @@ $(document).ready(function(){
 
     $(document).keyup(function(e) {
          if (e.keyCode == 27) { // Esc key
+            $("body").css({"overflow":"visible"});
             dialogBackground.fadeOut(200);
         }
     });
