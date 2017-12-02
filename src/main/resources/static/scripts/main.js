@@ -3,7 +3,7 @@ $(document).ready(function(){
     // Setup share article dialog.
     var dialogBackground = $('div.faded-background-cover');
 
-    $('a.home.share').click(function(){
+    $('a.home.share').click(function(event){
         event.preventDefault();
         dialogBackground.fadeIn(200);
     });
