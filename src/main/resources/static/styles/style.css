@@ -509,9 +509,11 @@ a.close-link {
 div.faded-background-cover {
     background-color: rgb(5,5,5);
     background-color: rgba(5,5,5,0.9);
+    box-sizing: border-box;
     position: fixed;
     overflow: auto;
     display: none;
+    padding: 20px;
     height: 100%;
     width: 100%;
     z-index: 2;
@@ -520,11 +522,14 @@ div.faded-background-cover {
 }
 
 div.faded-background-cover > div.share-options {
-    background: white;
+    text-align: center;
     position: relative;
-    display: block;
-    width: 760px;
     min-height: 300px;
+    background: white;
+    max-width: 600px;
+    overflow: auto;
+    display: block;
+    padding: 20px;
     margin: auto;
     top: 100px;
 }
@@ -536,13 +541,15 @@ div.share-options > h2, div.share-options > p {
 
 div.share-options > p {
     text-align: center;
-    margin: 30px 60px;
+    margin: 30px;
 }
 
 div.faded-background-cover > div.share-options > .home.social-share {
+    display: inline-block;
     text-align: center;
-    margin: 0 50px;
+    margin: 20px 20px;
     width: 50px;
+    float: none;
 }
 
 .has-title {
@@ -568,7 +575,6 @@ div.faded-background-cover > div.share-options > .home.social-share {
 }
 
 @media (max-width: 420px) {
-
     div.next-previous {
         display: block;
         margin: auto;
