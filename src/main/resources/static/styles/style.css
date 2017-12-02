@@ -120,16 +120,21 @@ a.rklogo {
 }
 a.sociallink {
 	transition: all 0.2s ease 0s;
-	background-size: cover;
+	border-radius: 4px;
+	background: white;
+    text-align: center;
 	margin-top: 25px;
 	margin-left: 8px;
-	display: block;		
+    font-size: 25px;
+	display: block;
+	color: #222222;
 	height: 29px;
 	width: 29px;
 	float: left;
 	top: 0;
 } a.sociallink:hover {
 	position: relative;
+	text-shadow: none;
 	top: -5px;
 }
 
@@ -564,13 +569,42 @@ div.faded-background-cover > div.share-options > .home.social-share {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 555px) {
     .stack-overflow-link, a.home.latest {
         display:none;
     }
 
     .choices li {
      	width: 32.5%;
+    }
+
+    a.rklogo {
+        height: 29px;
+        width: 50px;
+    }
+
+    a.sociallink {
+    	margin-top: 0px;
+    } a.sociallink:hover {
+	    top: 0;
+    	text-shadow: 0 0 1px,
+                     0 0 1px,
+                     0 0 1px,
+                     0 0 1px;
+    }
+
+    a.donatelink {
+    	margin-top: 0px;
+    } a.donatelink:hover {
+	    top: 0;
+    	text-shadow: 0 0 1px,
+                     0 0 1px,
+                     0 0 1px,
+                     0 0 1px;
+    }
+
+    div.header {
+        min-height: 0;
     }
 }
 
