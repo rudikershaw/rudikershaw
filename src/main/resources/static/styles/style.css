@@ -579,12 +579,12 @@ div.faded-background-cover > div.share-options > .home.social-share {
     }
 
     a.rklogo {
-        height: 29px;
+        height: 31px;
         width: 50px;
     }
 
     a.sociallink {
-    	margin-top: 0px;
+    	margin-top: 1px;
     } a.sociallink:hover {
 	    top: 0;
     	text-shadow: 0 0 1px,
@@ -594,7 +594,7 @@ div.faded-background-cover > div.share-options > .home.social-share {
     }
 
     a.donatelink {
-    	margin-top: 0px;
+    	margin-top: 1px;
     } a.donatelink:hover {
 	    top: 0;
     	text-shadow: 0 0 1px,
@@ -604,7 +604,7 @@ div.faded-background-cover > div.share-options > .home.social-share {
     }
 
     div.header {
-        min-height: 0;
+        min-height: 31px;
     }
 }
 
