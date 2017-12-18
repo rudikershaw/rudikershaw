@@ -1,15 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head class="head" th:fragment="head">
-		<title th:text="${article.name}">Code Nerd</title>
 		<meta charset="UTF-8" />
+		<title th:text="${article.name}">Code Nerd</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
 		<meta name="author" content="Rudi Kershaw" />
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="/styles/style.css?v=8" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.min.css?v=1" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
-		<link href="http://designers.hubspot.com/hs-fs/hub/327485/file-2054199286-css/font-awesome.css" rel="stylesheet" />
+		<link href="http://designers.hubspot.com/hs-fs/hub/327485/file-2054199286-css/font-awesome.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="header" th:replace="index :: header"></div>
@@ -127,8 +127,8 @@
 					<a class="home social-share reddit" href="https://www.reddit.com/submit?url=" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 				</div>
 			</div>
-			<script src="/scripts/jquery-1.7.js"></script>
-			<script src="/scripts/main.js?v=1"></script>
+			<script src="/scripts/vendor/jquery-1.7.min.js"></script>
+			<script src="/scripts/main.min.js?v=1"></script>
 		</div>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
