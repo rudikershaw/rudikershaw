@@ -4,12 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /** The Code Nerd application configuration. */
 @EnableScheduling
 @SpringBootApplication
-public class CodenerdApplication extends WebMvcConfigurerAdapter {
+public class CodenerdApplication implements WebMvcConfigurer {
 
     private static final int CACHE_TIME = 604800;
 
