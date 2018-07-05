@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PhpAdventureController {
 
-    public static final String PATH = "articles/php-adventure";
+    private static final String PATH = "articles/php-adventure";
 
     private DefaultArticleController articleController;
 

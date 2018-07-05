@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class WhichpetController {
 
-    public static final String PATH = "articles/whichpet";
-    public static final String WHICHPET_DATA_PATH = "fragments/whichpet";
-    public static final String WHICHPET_ADD_PATH = "fragments/whichpet/add";
+    private static final String PATH = "articles/whichpet";
+    private static final String WHICHPET_DATA_PATH = "fragments/whichpet";
+    private static final String WHICHPET_ADD_PATH = "fragments/whichpet/add";
 
     private WhichpetService whichpetService;
     private DefaultArticleController articleController;

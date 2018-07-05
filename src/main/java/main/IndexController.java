@@ -17,9 +17,9 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    public static final String PATH = "index";
-    public static final int ARTICLES_PER_PAGE = 4;
-    ArticleService articleService;
+    private static final String PATH = "index";
+    private static final int ARTICLES_PER_PAGE = 4;
+    private ArticleService articleService;
 
     @Autowired
     public IndexController(ArticleService articleService){
