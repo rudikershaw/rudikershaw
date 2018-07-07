@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * An entity representing someone the site owner follows on
  * twitter when the follow was created automatically by the site.
@@ -33,7 +35,8 @@ public class TwitterFollow {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     public Integer getId() {
         return id;
     }

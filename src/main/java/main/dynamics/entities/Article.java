@@ -3,6 +3,8 @@ package main.dynamics.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /** An article entity representing an article and it's url as well as any statistics against it. */
 @Entity
 public class Article {
@@ -40,7 +42,8 @@ public class Article {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     public Integer getId() {
         return id;
     }

@@ -3,6 +3,8 @@ package main.dynamics.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /** A user session entity representing a single users visit. */
 @Entity
 public class ArticleSession {
@@ -27,7 +29,8 @@ public class ArticleSession {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     public Integer getId() {
         return id;
     }

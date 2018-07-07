@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /** An entity representing a label / description pair entry for the whichpet data-set. */
 @Entity
 public class WhichpetDatum {
@@ -27,7 +29,8 @@ public class WhichpetDatum {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     public Integer getId() {
         return id;
     }
