@@ -5,6 +5,7 @@ import javax.persistence.EntityNotFoundException;
 import main.dynamics.ArticleService;
 import main.dynamics.entities.Article;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,9 @@ public class DefaultArticleController {
     private ArrayList<Article> articles = new ArrayList<>();
 
     private ArticleService statisticsService;
+
+    @Value("${base.url}")
+    private String baseUrl;
 
     @Autowired
     public DefaultArticleController(ArticleService statisticsService){
@@ -51,7 +55,7 @@ public class DefaultArticleController {
     @RequestMapping("articles/{path}")
     public String article(@PathVariable String path, Model model, HttpServletRequest request) {
         // Retrieve article from list.
-        Article a = articles.stream().filter(art -> art.getPath().equals("articles/"+path)).findAny().orElseThrow(EntityNotFoundException::new);
+        Article a = articles.stream().filter(art -> art.getPath().equals("articles/" + path)).findAny().orElseThrow(EntityNotFoundException::new);
         Article article = statisticsService.initialise(a.getPath(), a.getName(), a.getImagePath(), a.getDescription(), request);
         // Get next & previous article if any.
         Article next = null;
@@ -67,6 +71,7 @@ public class DefaultArticleController {
         model.addAttribute("article", article);
         model.addAttribute("next", next);
         model.addAttribute("previous", previous);
+        model.addAttribute("baseUrl", baseUrl);
         return a.getPath();
     }
 }

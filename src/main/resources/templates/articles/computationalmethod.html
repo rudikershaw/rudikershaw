@@ -8,10 +8,10 @@
 		<meta name="author" content="Rudi Kershaw" />
 
 		<meta name="twitter:card" th:content="summary" />
-		<meta name="twitter:site" content="www.RudiKershaw.com" />
+		<meta name="twitter:site" content="@RudiKershaw" />
 		<meta name="twitter:title" th:content="${article.name}" />
 		<meta name="twitter:description" th:content="${article.description}" />
-		<meta name="twitter:image" th:content="${article.imagePath}" />
+		<meta name="twitter:image" th:content="${baseUrl + article.imagePath}" />
 
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" type="text/css" href="/styles/style.min.css?v=1" />
