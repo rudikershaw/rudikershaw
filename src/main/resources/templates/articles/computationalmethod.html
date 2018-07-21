@@ -6,6 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
 		<meta name="author" content="Rudi Kershaw" />
+
+		<meta name="twitter:card" th:content="${article.name}" />
+		<meta name="twitter:site" content="www.RudiKershaw.com" />
+		<meta name="twitter:title" th:content="${article.name}" />
+		<meta name="twitter:description" th:content="${article.description}" />
+		<meta name="twitter:image" th:content="${article.imagePath}" />
+
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" type="text/css" href="/styles/style.min.css?v=1" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
