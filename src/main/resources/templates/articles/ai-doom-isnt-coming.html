@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head th:replace="articles/computationalmethod :: head"/>
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+		<div class="text-container">
+			<p class="date">16/07/2018</p>
+			<p class="views"><span th:text="${article.views}"></span> views</p>
+		</div>
+		<h1 th:text="${article.name}">AI Doom Isn't Coming</h1>
+		<hr />
+		<img class="coverimg" src="/images/ai-doom-isnt-coming-banner.jpg" alt="20 Something Books" />
+		<br />
+
+		<p>Progress in AI is going to bring us some really exciting and interesting technologies. But, you may have heard people discussing the possible dangers we could face with AI in the future.
+			Some small but significant portion of those who you hear worrying about the future of AI, are worried about something quite specific. The extinction or subjugation of the entire human race by
+			artificial intelligences. It's easy to dismiss these worries as a fantasy that comes from watching Terminator too many times, but there are some very smart people who think this is a very real
+			possibility. Some big names include Bill Gates, Elon Musk, Sam Harris, and the late Stephen Hawkings to name only a few.</p>
+		<br />
+		<p>If lots of very smart people are convinced this is a genuine problem, what is their rationale, and where did this idea come from? Although this has been a fringe concern for many decades,
+			the recent spike in attention has come from the release of a particular book. That book is 'Superintelligence' by Nick Bostrom, which became a New York Times best seller in March 2014.</p>
+		<br />
+		<p>There is no known path towards artificial general intelligence. But Nick Bostrom uses what little we do know to build a picture, make deductions, and prophecise about a future that
+			contains general AI. In exploring what this future might look like he paints a rather bleak picture of the dangers this future will face. 'Superintelligence' is a dense three hundred and
+			something page book that goes into a great deal of detail about the paths and dangers as we move towards general AI, as well as some broad strategies for dealing wth the situations he sees
+			coming.</p>
+		<br />
+		<p>A lot of thought has been put into this book. He brings in knowledge from topics such as economics, game theory, and computer science to support his argument. It is all very well thought out.
+			Fortunately, it is also probably wrong. Although at risk of over-simplifying his arguments, I am going to attempt to summarise some of this book, and then go into why his thinking misses some
+			fundamentally important considerations.</p>
+		<br />
+		<h2>A Summary of his Fears</h2>
+		<br />
+		<p>Bostrom notes that we have no idea what the limit of intelligence is, and we have no reason to believe that we are anywhere near that limit. He asks us to image a spectrum of intelligence from
+			an insect, to us, and past us to who knows where. Imagine for a moment a being who's intelligence doesn't just dwarf our greatest thinkers, but dwarfs the entire collective intellect of all people
+			working together. This being would very obviously be a threat to us, at least if its goals were not aligned with our own.</p>
+		<br />
+		<p>The book points out that we wouldn't even need to create this intelligence ourselves. All that would be required would be an AI sufficiently general and smart that it could improve its own
+			intellect. Then each time it improves itself it would be capable of an even greater improvement the next time. This would result in what Bostrom calls 'an intelligence explosion'. The explosion is
+			the central concern of the book, because it would give us no time to react. It could go from sub-human intelligence, to intellect beyond comprehension in no time at all.</p>
+		<br />
+		<p>If we managed to get this AI perfectly right, and aligned its goals with some perfect version of our own, it could become a benevolent god to us. But if we get it wrong, and Bostrom points out that
+			this is much more likely, we could find ourselves at the mercy of a superintelligence with a strange or unhelpful purpose.</p>
+		<br />
+		<br />
+		<hr />
+
+        <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
+
+		<div class="text-container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - AI Doom Isn\'t Coming';
+			var disqus_title = 'AI Doom Isn\'t Coming';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>

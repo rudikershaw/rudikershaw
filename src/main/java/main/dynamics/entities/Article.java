@@ -1,9 +1,14 @@
 package main.dynamics.entities;
 
 import javax.persistence.*;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import main.StaticResources;
 
 /** An article entity representing an article and it's url as well as any statistics against it. */
 @Entity
@@ -39,6 +44,29 @@ public class Article {
         this.description = description;
         views = 1;
         published = new Date();
+    }
+
+    /**
+     * Get the path for a larger version of the article image if one exists.
+     * If no larger image exists, returns the path to the standard image.
+     *
+     * @return the path of a large version of the image or the standard image path otherwise.
+     */
+    @Transient
+    public String getLargeImagePath() {
+        final String extension = imagePath.substring(imagePath.lastIndexOf('.'));
+        final String pathMinusExtension = imagePath.substring(0, imagePath.lastIndexOf('.'));
+        final String largeImagePath = pathMinusExtension + "-large" + extension;
+
+        try (final InputStream is = StaticResources.get(largeImagePath)) {
+            if (is != null) {
+                return largeImagePath;
+            }
+        } catch (IOException ioe) {
+            // Do nothing.
+        }
+
+        return getImagePath();
     }
 
     @Id

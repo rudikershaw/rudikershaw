@@ -39,7 +39,7 @@ public class IndexController {
     @ResponseBody
     @RequestMapping("/{page}")
     public List<Article> articles(@PathVariable int page){
-        Pageable pageable = new PageRequest(page, ARTICLES_PER_PAGE);
+        Pageable pageable = PageRequest.of(page, ARTICLES_PER_PAGE);
         return articleService.getPageOfArticles(pageable);
     }
 }
