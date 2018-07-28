@@ -50,7 +50,7 @@ public class DefaultArticleController {
         articles.add(new Article("Anomaly Detection", "articles/anomaly-detection", "images/anomaly-detection.jpg", "A machine learning example and explanation of an anomaly detection system for detecting suspicious user activity."));
         articles.add(new Article("Grokking RSA Encryption", "articles/rsa-encryption", "images/rsa-encryption.jpg", "Finally put in the effort to really understand public key encryption in the form of RSA. Hopefully this helps you too."));
         articles.add(new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."));
-        articles.add(new Article("An AI Doom Isn't Coming", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."));
+        articles.add(new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."));
     }
 
     @RequestMapping("articles/{path}")
