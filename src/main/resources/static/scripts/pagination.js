@@ -38,7 +38,7 @@ function getPage(page){
     pageContainer.empty();
     setTimeout(addImageIfWaiting, 500);
     $.ajax({
-        url: '/'+page,
+        url: '/list/' + page,
         dataType: 'JSON',
     }).done(function(data){
         // If no data go back a page.

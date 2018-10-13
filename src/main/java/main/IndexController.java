@@ -37,7 +37,7 @@ public class IndexController {
 
     /** Get a page (0 based index), by number, of articles to inject into html RESTfully. */
     @ResponseBody
-    @RequestMapping("/{page}")
+    @RequestMapping("/list/{page}")
     public List<Article> articles(@PathVariable int page){
         Pageable pageable = PageRequest.of(page, ARTICLES_PER_PAGE);
         return articleService.getPageOfArticles(pageable);
