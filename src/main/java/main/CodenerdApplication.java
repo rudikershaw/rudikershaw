@@ -9,17 +9,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /** The Code Nerd application configuration. */
 @EnableScheduling
 @SpringBootApplication
-public class CodenerdApplication implements WebMvcConfigurer {
+class CodenerdApplication implements WebMvcConfigurer {
 
+    /** The time to cache images in milli-seconds. */
     private static final int CACHE_TIME = 604800;
 
-    /** Start here. */
-    public static void main(String[] args) {
+    /**
+     * The application starts here.
+     * @param args parameters for starting up the application.
+     */
+    public static void main(final String[] args) {
         SpringApplication.run(CodenerdApplication.class, args);
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**")
                 .addResourceLocations("classpath:/static/images/")
                 .setCachePeriod(CACHE_TIME);

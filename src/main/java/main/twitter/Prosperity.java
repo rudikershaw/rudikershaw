@@ -1,14 +1,17 @@
 package main.twitter;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import main.dynamics.TwitterFollowService;
-import main.dynamics.entities.TwitterFollow;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import main.dynamics.TwitterFollowService;
+import main.dynamics.entities.TwitterFollow;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -22,28 +25,50 @@ import twitter4j.auth.AccessToken;
  * experience of the site owner more interesting by rotating extra followers.
  */
 @Component
-public class Prosperity {
+class Prosperity {
 
+    /** Twitter API consumer key. */
     @Value("${twitter.consumer.key}")
     private String consumerKey;
 
+    /** Twitter API consumer secret. */
     @Value("${twitter.consumer.secret}")
     private String consumerSecret;
 
+    /** Twitter API access key. */
     @Value("${twitter.access.key}")
     private String accessKey;
 
+    /** Twitter API access secret. */
     @Value("${twitter.access.secret}")
     private String accessSecret;
 
-    private TwitterFollowService service;
+    /** Injected twitter follow service. */
+    private final TwitterFollowService service;
 
+    /** The maximum number of tweets per day that is desirable for a new follow. */
+    private static final int MAX_TWEETS_PER_DAY = 20;
+
+    /** The maximum desirable ratio of friends to followers for a new follow. */
+    private static final double FRIEND_FOLLOWERS_RATIO = 0.1;
+
+    /** The number of tweets to scan from the timeline. */
+    private static final int NO_TWEETS_FROM_TIMELINE = 200;
+
+    /**
+     * Constructor for autowiring services.
+     * @param twitterFollowService twitter follow service for autowiring.
+     */
     @Autowired
-    public Prosperity(TwitterFollowService service) {
-        this.service = service;
+    Prosperity(final TwitterFollowService twitterFollowService) {
+        this.service = twitterFollowService;
     }
 
-    /** Run twitter follower rotating every day at 1am. */
+    /**
+     * Run twitter follower rotating every day at 1am.
+     *
+     * @throws TwitterException if connection could not be made.
+     */
     @Scheduled(cron = "0 1 1 * * ?")
     public void run() throws TwitterException {
         // Check that keys are set
@@ -52,25 +77,26 @@ public class Prosperity {
             return;
         }
 
-        TwitterFactory factory = new TwitterFactory();
-        Twitter twitter = factory.getInstance();
-        AccessToken accessToken = new AccessToken(accessKey, accessSecret);
+        final TwitterFactory factory = new TwitterFactory();
+        final Twitter twitter = factory.getInstance();
+        final AccessToken accessToken = new AccessToken(accessKey, accessSecret);
         twitter.setOAuthConsumer(consumerKey, consumerSecret);
         twitter.setOAuthAccessToken(accessToken);
 
-        TwitterFollow latestFollow = service.getLatestFollow();
-        Date yesterday = new Date(new Date().getTime() - (1000 * 60 * 60 * 23));
+        final TwitterFollow latestFollow = service.getLatestFollow();
+
+        final Date yesterday = getXDaysAgo(1);
         if (latestFollow == null || latestFollow.getDate().before(yesterday)) {
             // Get the retweets from the website owner's timeline.
-            Paging paging = new Paging();
-            paging.setCount(200);
+            final Paging paging = new Paging();
+            paging.setCount(NO_TWEETS_FROM_TIMELINE);
             List<Status> statuses = twitter.getHomeTimeline(paging);
             statuses = statuses.stream().filter(Status::isRetweet).collect(Collectors.toList());
             // Loop through and follow first desirable user you don't already
-            for (Status s : statuses) {
-                Status originalTweet = s.getRetweetedStatus();
-                User user = originalTweet.getUser();
-                String author = user.getScreenName();
+            for (final Status s : statuses) {
+                final Status originalTweet = s.getRetweetedStatus();
+                final User user = originalTweet.getUser();
+                final String author = user.getScreenName();
                 if (service.getFollowByName(author) == null && isDesirable(user, twitter)) {
                     System.out.println("Twitter Prosperity: Added follow - " + author);
                     twitter.createFriendship(author);
@@ -83,15 +109,16 @@ public class Prosperity {
         }
 
         // Clear up followers older than 7 days.
-        List<TwitterFollow> follows = service.getFollows();
-        Date lastWeek = new Date(new Date().getTime() - (1000 * 60 * 60 * 24 * 7));
-        for (TwitterFollow follow : follows) {
+        final List<TwitterFollow> follows = service.getFollows();
+        final Date lastWeek = getXDaysAgo(7);
+
+        for (final TwitterFollow follow : follows) {
             if (follow.getDate().before(lastWeek)) {
                 // Remove follow from twitter.
                 System.out.println("Twitter Prosperity: Removed follow - " + follow.getName());
                 try {
                     twitter.destroyFriendship(follow.getName());
-                } catch (TwitterException e) {
+                } catch (final TwitterException e) {
                     System.out.println("Follow '" + follow.getName() + "' not found. Removing from DB and proceeding.");
                 }
                 // Disable follow in DB.
@@ -107,14 +134,27 @@ public class Prosperity {
      * @return true if the user is desirable for following.
      * @throws TwitterException if connection could not be made.
      */
-    private boolean isDesirable(User user, Twitter twitter) throws TwitterException {
+    private boolean isDesirable(final User user, final Twitter twitter) throws TwitterException {
         // Check whether user follows at least 1/10 as many people as follow them.
-        boolean goodFollowerRatio = user.getFriendsCount() >= (user.getFollowersCount() / 10);
+        final boolean goodFollowerRatio = user.getFriendsCount() >= (user.getFollowersCount() * FRIEND_FOLLOWERS_RATIO);
         // Check whether user tweeted more than 20 times in the last 24 hours.
-        List<Status> statuses = twitter.getUserTimeline(user.getScreenName());
-        statuses.removeIf(s -> s.getCreatedAt().before(new Date(new Date().getTime() - (1000 * 60 * 60 * 24))));
-        boolean tooManyTweets = statuses.size() >= 20;
+        final List<Status> statuses = twitter.getUserTimeline(user.getScreenName());
+        final Date yesterday =  getXDaysAgo(1);
+        statuses.removeIf(s -> s.getCreatedAt().before(yesterday));
+        final boolean tooManyTweets = statuses.size() >= MAX_TWEETS_PER_DAY;
         // Desirable if their follower ratio is good and they don't tweet too often.
         return goodFollowerRatio && !tooManyTweets;
+    }
+
+    /**
+     * Get a date representing the provided number of days in the past.
+     *
+     * @param daysAgo the number of days in the past to get the date from.
+     * @return a date in the past.
+     */
+    private Date getXDaysAgo(final int daysAgo) {
+        final Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -daysAgo);
+        return calendar.getTime();
     }
 }

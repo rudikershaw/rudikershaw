@@ -6,12 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-/**
- * Created by Rudi Kershaw on 06/07/2016.
- */
+/** Spring CRUD repository for WhichpetDatum entities. */
 @Transactional
 public interface WhichpetRepository extends CrudRepository<WhichpetDatum, Integer> {
+
+    /**
+     * Find all WhichpetDatum.
+     * @param pageable the paging information for retrieval.
+     * @return a Page of WhichpetDatum.
+     */
     Page<WhichpetDatum> findAll(Pageable pageable);
 }

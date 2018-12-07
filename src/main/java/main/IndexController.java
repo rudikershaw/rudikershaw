@@ -18,28 +18,48 @@ import static main.articles.DefaultArticleController.ARTICLES;
 @Controller
 public class IndexController {
 
+    /** The path to the index page's view template. */
     private static final String PATH = "index";
-    public static final int ARTICLES_PER_PAGE = 4;
-    private ArticleService articleService;
 
+    /** Number of articles in a page as listed by the list end-point. */
+    static final int ARTICLES_PER_PAGE = 4;
+
+    /** Injected article service. */
+    private final ArticleService articleService;
+
+    /**
+     * Constructor used to dependency injection.
+     *
+     * @param injectedArticleService article service to be injected.
+     */
     @Autowired
-    public IndexController(ArticleService articleService){
-        this.articleService = articleService;
+    public IndexController(final ArticleService injectedArticleService) {
+        this.articleService = injectedArticleService;
     }
 
-    /** Mapping for the home page. */
+    /**
+     * Mapping for the home page.
+     *
+     * @param model The model injected by Spring.
+     * @return the path to the view template.
+     */
     @RequestMapping("/")
-    public String index(Model model){
-        List<Article> articles = articles(0);
+    public String index(final Model model) {
+        final List<Article> articles = articles(0);
         model.addAttribute("all", articles);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
         return PATH;
     }
 
-    /** Get a page (0 based index), by number, of articles to inject into html RESTfully. */
+    /**
+     * Get a page (0 based index), by number, of articles to inject into html RESTfully.
+     *
+     * @param page which page of articles to get (0 indexed).
+     * @return a list of articles in the requested page.
+     */
     @ResponseBody
     @RequestMapping("/list/{page}")
-    public List<Article> articles(@PathVariable int page) {
+    public List<Article> articles(@PathVariable final int page) {
         final int from = page < 0 ? 0 : page * ARTICLES_PER_PAGE;
         final int to = from + ARTICLES_PER_PAGE;
         if (from >= 0 && from < ARTICLES.size() && to <= (Integer.MAX_VALUE - ARTICLES_PER_PAGE)) {
