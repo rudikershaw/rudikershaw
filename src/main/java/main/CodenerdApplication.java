@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /** The Code Nerd application configuration. */
 @EnableScheduling
 @SpringBootApplication
-class CodenerdApplication implements WebMvcConfigurer {
+public class CodenerdApplication implements WebMvcConfigurer {
 
     /** The time to cache images in milli-seconds. */
     private static final int CACHE_TIME = 604800;
