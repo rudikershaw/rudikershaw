@@ -169,11 +169,15 @@
 			<plugin>
 				<groupId>com.rudikershaw.gitbuildhook</groupId>
 				<artifactId>git-build-hook-maven-plugin</artifactId>
-				<version>2.0.3</version>
+				<version>2.1.0</version>
+				<configuration>
+					<hooksPath>git-hooks/</hooksPath>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>initialize</goal>
+							<goal>configure</goal>
 						</goals>
 					</execution>
 				</executions>
