@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WaterAlarmRestController {
 
-    /** Twitter API access secret. */
+    /** Maximum number of alarm statuses to manage. */
     @Value("${maximum.water.alarms}")
     private short maximumSize;
 
