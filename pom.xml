@@ -185,10 +185,10 @@
 						<configuration>
 							<failOnError>false</failOnError>
 							<target>
-								<delete dir="${basedir}/git-hooks/" />
-								<get src="https://github.com/rudikershaw/client-git-hooks/releases/download/1.0.3/git-hooks.zip" dest="${project.build.directory}/git-hooks.zip"/>
-								<unzip src="${project.build.directory}/git-hooks.zip" dest="${basedir}"/>
-								<chmod dir="${basedir}/git-hooks/" includes="**/**" perm="700"/>
+								<delete dir="${basedir}/etc/git-hooks/"/>
+								<get src="https://github.com/rudikershaw/client-git-hooks/releases/download/1.0.4/git-hooks.zip" dest="${project.build.directory}/git-hooks.zip"/>
+								<unzip src="${project.build.directory}/git-hooks.zip" dest="${basedir}/etc"/>
+								<chmod dir="${basedir}/etc/git-hooks/" includes="**/**" perm="700"/>
 							</target>
 						</configuration>
 					</execution>
@@ -200,7 +200,8 @@
 				<version>3.0.0</version>
 				<configuration>
 					<gitConfig>
-						<core.hooksPath>git-hooks/</core.hooksPath>
+						<core.hooksPath>etc/git-hooks/</core.hooksPath>
+						<hooks.commitmsgregex>(\w+\s){3,}(\w+\.)</hooks.commitmsgregex>
 					</gitConfig>
 				</configuration>
 				<executions>

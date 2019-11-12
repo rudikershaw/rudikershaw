@@ -1,4 +1,4 @@
 /.idea
 /target
 *.iml
-/git-hooks
+/etc/git-hooks
