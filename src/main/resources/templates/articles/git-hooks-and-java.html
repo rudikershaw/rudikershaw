@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head th:replace="articles/computationalmethod :: head" />
+	<body>
+		<div class="header" th:replace="index :: header"></div>
+		<br />
+		<div class="text-container">
+			<p class="date">17/11/2019</p>
+			<p class="views"><span th:text="${article.views}"></span> views</p>
+		</div>
+		<h1 th:text="${article.name}">Git Hooks and Java Projects</h1>
+		<hr />
+		<img class="coverimg" src="/images/git-hooks-banner.jpg" alt="Picture of a close up section of an old fishing hook" />
+		<br />
+
+		<p>I am going to make the assumption that you know what Git is, and what Git hooks are. If you don't know, then I recommend the free
+			book <a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git</a> and specifically its chapter on
+			<a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" target="_blank">Git Hooks</a>. I will be focusing on Java projects for
+			my examples. The examples will be most useful and specific to Java but they should at least give other language users an indication of what
+			to do for themselves.</p>
+		<br />
+		<p>I hope that reading this piece will convince you, not just to use Git hooks, but also <strong class="bold">how and why</strong>
+			you should use them in your projects.</p>
+		<br />
+		<h2>Why Use Git Hooks?</h2>
+		<br />
+		<p>There are two main reasons for using Git hooks. The first is to automate a process that you do before or after a certain action you perform in
+			Git. A common example might be to set off a build when changes are received on a given branch, and then deploy the new version of your
+			application somewhere for testing. However, these kinds of tasks are usually solved by development tools built specifically for these purposes.
+			For example Jenkins pipelines, Travis CI, Github actions, etc.</p>
+		<br />
+		<p>The second reason, is for validation. You can think of Git as defining our workflow and the hooks can be used to ensure we have to a certain
+			standard before we move onto the next step. This early validation provides us with quick and regular feedback (important for developing expertise
+			in any field) and stops us from wasting time by straying down the wrong path.</p>
+		<br />
+		<p>Lets take a simple example, first without the hook. Your project has a standard format for commit messages, and you have done an early commit on
+			your branch wrong. You push your branch after merging in another branch, and adding multiple new commits afterward. The remote server rejects your
+			change and explains what you have done wrong. This rejection could be done by a git hook on the server side (such as pre-receive) or by some
+			pipelines tool. You now have to figure out how to change that single commit message on your branch. You could do an interactive rebase, squash
+			merge your changes onto a new branch, cherry-pick all the commits onto a new one. Either way, you have to do something a bit more radical than normal.</p>
+		<br />
+		<p>What does this look like with a good validating hook in place providing early feedback? Your project has a standard format for commit messages, and
+			you have done an early commit on your branch wrong. The commit-msg hook stops the commit, immediately flags your commit message as incorrect, and asks
+			you to try again. Done. Early regular feedback stops you making work for yourself, and you learn not to make that mistake much quicker.</p>
+		<br />
+		<h2>Managing Your Hooks</h2>
+		<br />
+		<p>You're convinced. Let's add some hooks. But how should we organise them? Makes sense to keep them in your project's Git repo so you can track changes
+			them. But what if you need to use them across multiple repositories? And how will you get the client side hooks installed for everyone working on the
+			project?</p>
+		<br />
+		<p>Hooks should be managed the same way any good code should be. They should be a dependency of your project, pulled in and installed/updated when you build
+			your application. Let's go through an example Java setup using Maven as our build tool. But first, full disclosure, I wrote the plugin and the client side
+			Git hooks library used in the example that follows. So when I tell you these are the best tools for the job, take that advice with a pinch of salt, and go
+			and see if there is anything better suited for your needs first.</p>
+
+		<br />
+		<br />
+		<hr />
+
+		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
+
+		<div class="text-container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Git Hooks and Java Projects';
+			var disqus_title = 'Git Hooks and Java Projects';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>

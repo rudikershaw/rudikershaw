@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
-import main.dynamics.ArticleService;
-import main.dynamics.entities.Article;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,14 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
+import main.dynamics.ArticleService;
+import main.dynamics.entities.Article;
 
-/** Controller for the Defining an Algorithm article. */
+/** Controller for the getting arbitrary articles. */
 @Controller
 public class DefaultArticleController {
 
     /**
-     * Ordered array list containing details of each published article.
+     * Ordered unmodifiable list containing details of each published article.
      * New articles must be added to this list for them to be accessible.
      * Order of the list determines the order of the articles on the site.
      */
@@ -49,6 +50,7 @@ public class DefaultArticleController {
         list.add(new Article("Grokking RSA Encryption", "articles/rsa-encryption", "images/rsa-encryption.jpg", "Finally put in the effort to really understand public key encryption in the form of RSA. Hopefully this helps you too."));
         list.add(new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."));
         list.add(new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."));
+        list.add(new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. We can do better."));
         //CHECKSTYLE:ON
         Collections.reverse(list);
         ARTICLES = Collections.unmodifiableList(list);
@@ -82,6 +84,7 @@ public class DefaultArticleController {
         // Retrieve article from list.
         final Article a = ARTICLES.stream().filter(art -> art.getPath().equals("articles/" + path)).findAny()
                                            .orElseThrow(EntityNotFoundException::new);
+
         final Article article = statisticsService.initialise(a.getPath(), a.getName(), a.getImagePath(), a.getDescription(), request);
         // Get next & previous article if any.
         Article next = null;

@@ -21,6 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<git.hooks.version>1.0.4</git.hooks.version>
 	</properties>
 
 	<dependencies>
@@ -180,14 +181,28 @@
 						<configuration>
 							<failOnError>false</failOnError>
 							<target>
-								<delete dir="${basedir}/etc/git-hooks/"/>
-								<get src="https://github.com/rudikershaw/client-git-hooks/releases/download/1.0.4/git-hooks.zip" dest="${project.build.directory}/git-hooks.zip"/>
-								<unzip src="${project.build.directory}/git-hooks.zip" dest="${basedir}/etc"/>
-								<chmod dir="${basedir}/etc/git-hooks/" includes="**/**" perm="700"/>
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+								<if>
+									<available file="${basedir}/etc/git-hooks/v${git.hooks.version}" />
+									<else>
+										<delete dir="${basedir}/etc/git-hooks/"/>
+										<get src="https://github.com/rudikershaw/client-git-hooks/releases/download/${git.hooks.version}/git-hooks.zip" dest="${project.build.directory}/git-hooks.zip"/>
+										<unzip src="${project.build.directory}/git-hooks.zip" dest="${basedir}/etc"/>
+										<chmod dir="${basedir}/etc/git-hooks/" includes="**/**" perm="700"/>
+										<touch file="${basedir}/etc/git-hooks/v${git.hooks.version}" />
+									</else>
+								</if>
 							</target>
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>ant-contrib</groupId>
+						<artifactId>ant-contrib</artifactId>
+						<version>20020829</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>com.rudikershaw.gitbuildhook</groupId>
