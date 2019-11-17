@@ -71,6 +71,11 @@ a {
 	font-weight: bold;
 }
 
+.code-inline {
+	font-weight: bold;
+	font-family: monospace;
+}
+
 .italic {
 	font-style: italic;
 }
