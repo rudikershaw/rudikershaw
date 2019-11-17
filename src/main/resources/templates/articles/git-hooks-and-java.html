@@ -23,7 +23,7 @@
 			build when changes are received on a given branch, and then deploy your application for testing. However, these kinds of tasks are usually
 			solved by development tools built specifically for these purposes. For example Jenkins pipelines, Travis CI, Github actions, etc.</p>
 		<br />
-		<p>My favorite reason is for validation. You can think of Git as defining our workflow and the hooks can be used to ensure we adhere to a certain
+		<p>My favorite reason for using hooks is as validation. You can think of Git as defining our workflow and the hooks can be used to ensure we adhere to a certain
 			standard before we move onto the next step. This early validation provides us with quick and regular feedback (important for developing expertise
 			in any field) and stops us from wasting time by straying down the wrong path.</p>
 		<br />
@@ -48,9 +48,95 @@
 		<br />
 		<h2>Java &amp; Maven Example</h2>
 		<br />
-		<p>First you're going to need a git repository for your own hooks, or a standard library of hooks. We're not going to go into writing the hooks themselves.
-			There are plenty of resources out there for that. So for our example I am going to use my small configurable library of
+		<p>First we're going to need a git repository for our own hooks, or a standard library of hooks. We're not going to go into writing the hooks themselves.
+			There are plenty of resources out there for that. So for our example we will use my small configurable library of
 			<a href="https://github.com/rudikershaw/client-git-hooks" target="_blank">client side git hooks</a>.</p>
+		<br />
+		<p>Next we need to store, and making available, releasable version of our hooks. If your hooks are managed in a Maven project you could deploy them
+			to a Maven repository, and get them into your project using the <a href="https://maven.apache.org/plugins/maven-dependency-plugin/" target="_blank">maven-dependency-plugin</a>.
+			If your hooks library is just a collection of shell files, as in our case, then we can just make each releasable version available for download by
+			URL. GitHub lets us add arbitrary compressed files to each release, and gives us an end-point you can download from.</p>
+		<br />
+		<p>Now we need to get a particular release of our hooks into our project. We want it to do this during our build. As we just have a URL,
+			we can use the <a href="https://maven.apache.org/plugins/maven-antrun-plugin/" target="_blank">maven-antrun-plugin</a> to download and unpack our hooks.
+			Here's our plugin definition from our pom.xml.</p>
+		<br />
+		<pre class="code">
+&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+  &lt;version&gt;1.8&lt;/version&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;id&gt;download-hooks&lt;/id&gt;
+      &lt;phase&gt;initialize&lt;/phase&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;run&lt;/goal&gt;
+      &lt;/goals&gt;
+      &lt;configuration&gt;
+        &lt;failOnError&gt;false&lt;/failOnError&gt;
+        &lt;target&gt;
+          &lt;taskdef resource=&#x22;net/sf/antcontrib/antcontrib.properties&#x22; /&gt;
+          &lt;if&gt;
+            &lt;available file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; /&gt;
+            &lt;else&gt;
+              &lt;delete dir=&#x22;${basedir}/etc/git-hooks/&#x22;/&gt;
+              &lt;get src=&#x22;https://github.com/rudikershaw/client-git-hooks/releases/download/${git.hooks.version}/git-hooks.zip&#x22;
+		   dest=&#x22;${project.build.directory}/git-hooks.zip&#x22;/&gt;
+              &lt;unzip src=&#x22;${project.build.directory}/git-hooks.zip&#x22; dest=&#x22;${basedir}/etc&#x22;/&gt;
+              &lt;chmod dir=&#x22;${basedir}/etc/git-hooks/&#x22; includes=&#x22;**/**&#x22; perm=&#x22;700&#x22;/&gt;
+              &lt;touch file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; /&gt;
+            &lt;/else&gt;
+          &lt;/if&gt;
+        &lt;/target&gt;
+      &lt;/configuration&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;ant-contrib&lt;/groupId&gt;
+      &lt;artifactId&gt;ant-contrib&lt;/artifactId&gt;
+      &lt;version&gt;20020829&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/plugin&gt;</pre>
+		<br />
+		<p>With the above, we've added in a few important features. We create a version file in the directory we move the hooks to. That way we
+			can check if we have the correct version already and then skip the process if it has already been done. By checking the version like this
+			it will work as you would expect if you change the ${git.hooks.version} property declared at the top of our pom.xml (not shown). We are
+			also giving the files the appropriate permissions to allow Git to run them.</p>
+		<br />
+		<p>I have chosen to put our hooks directory into the etc/ directory in our project. Initially it might seem target/ is a better place to put
+			them, as they are effectively temporary files downloaded in the build. But we don't really want these files cleared away if someone runs
+			mvn clean.</p>
+		<br />
+		<p>We have our hooks in our project, but we still need to tell git to use them. To do this, we are going to use a feature of git that has been
+			available since version 2.9. We can tell git to use a different folder to read its hooks from by setting the git config core.hooksPath to
+			our directory. But we also want to do this in our build. There shouldn't be any manual steps. Let's add another plugin to our pom.xml.</p>
+		<br />
+		<pre class="code">
+&lt;plugin&gt;
+  &lt;groupId&gt;com.rudikershaw.gitbuildhook&lt;/groupId&gt;
+  &lt;artifactId&gt;git-build-hook-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;3.0.0&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;gitConfig&gt;
+      &lt;core.hooksPath&gt;etc/git-hooks/&lt;/core.hooksPath&gt;
+      &lt;hooks.commitmsgregex&gt;(\w+\s){3,}(\w+\.)&lt;/hooks.commitmsgregex&gt;
+    &lt;/gitConfig&gt;
+  &lt;/configuration&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;initialize&lt;/goal&gt;
+        &lt;goal&gt;configure&lt;/goal&gt;
+      &lt;/goals&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;</pre>
+		<br />
+		<p>This is the <a href="https://github.com/rudikershaw/git-build-hook" target="_blank">git-build-hook Maven plugin</a> (my precious).
+			It is designed to define local git management/configuration in your build, and have it applied when the build is run.</p>
 
 		<br />
 		<br />
