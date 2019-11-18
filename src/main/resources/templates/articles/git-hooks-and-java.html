@@ -105,7 +105,7 @@
   <span class="orange">&lt;/dependencies&gt;</span>
 <span class="orange">&lt;/plugin&gt;</span></pre>
 		<br />
-		<p>With the above, we download and unzip the archive into our git hooks directory and then give the
+		<p>With the above, we download and unzip the archive into a directory and then give the
 			files the appropriate permissions to allow Git to run them. We also create a version file in the directory we move the hooks to. That way we
 			can check if we have the correct version already and then skip the process if it has already been done. By checking the version like this
 			it will work as you would expect if you change the <span class="code-inline">${git.hooks.version}</span> property declared at the top of our
