@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
-		<div class="header" th:replace="index :: header"></div>
+		<header th:replace="index :: header"></header>
 		<br />
 		<div class="text-container">
 			<p class="date">20/02/2015</p>
@@ -12,17 +12,17 @@
 		<hr />
 		<img class="coverimg" src="/images/lotsafonts.jpg" alt="Taking typesetting seriously online" />
 		<br />
-		
-		<p>I've recently spent some time looking into declaring new or interesting fonts for websites. Declaring them, 
-		of course, is easy. The trick is being able to view them from any computer whether said font is installed or 
+
+		<p>I've recently spent some time looking into declaring new or interesting fonts for websites. Declaring them,
+		of course, is easy. The trick is being able to view them from any computer whether said font is installed or
 		not. And that's where the <i>@font-face {}</i> css syntax comes in. After having had a play around with the usual
-		methods, and looking up best practices, it becomes quite clear that the act of simply adding your own font 
-		to your website makes a huge impact to the look, feel and style of your work. Having seen how infrequently 
-		this technique is used, and how easy it is, it seems only fair to say that its about time people started 
-		taking typesetting seriously on the web. The rest of this article details how the font on this website was 
+		methods, and looking up best practices, it becomes quite clear that the act of simply adding your own font
+		to your website makes a huge impact to the look, feel and style of your work. Having seen how infrequently
+		this technique is used, and how easy it is, it seems only fair to say that its about time people started
+		taking typesetting seriously on the web. The rest of this article details how the font on this website was
 		declared, general good practices, and a little bit of history to boot.</p>
 		<br />
-		<p>The best place to start, seems to me, is at the end product (for those of you too impatient to read the 
+		<p>The best place to start, seems to me, is at the end product (for those of you too impatient to read the
 		rest). So, below is what this site uses to declare this font.</p>
 		<br />
 		<pre class="code">
@@ -42,23 +42,23 @@
    <span class="orange">text-shadow</span>: 0 0 1px rgba(0,0,0,0.01);
 } 		</pre>
 		<br />
-		<p>The above is a subtle alteration on what, on January 12<sup>th</sup> 2015, <a href="http://css-tricks.com/snippets/css/using-font-face/">CSS-TRICKS.com has declared</a> 
-		"the deepest support possible right now". But, rather than trying to go into why this format currently 
-		offers the broadest support possible, I will start with a little history that will help us understand 
+		<p>The above is a subtle alteration on what, on January 12<sup>th</sup> 2015, <a href="http://css-tricks.com/snippets/css/using-font-face/">CSS-TRICKS.com has declared</a>
+		"the deepest support possible right now". But, rather than trying to go into why this format currently
+		offers the broadest support possible, I will start with a little history that will help us understand
 		why this is the best we have.</p>
 		<br />
-		<p>When HTML was first created font-families could not be declared or altered at all, except by 
-		altering settings in your browser. In 1995 however, we see our first step forwards typesetting in 
-		HTML pages with the introduction of the <i>&lt;font&gt;</i> tag. At this point we didn't even have CSS though, 
-		and as soon as we got CSS (<a href="http://www.w3.org/TR/CSS1/">which was proposed in December 1996</a>) 
-		the font tag became more or less obsolete. CSS1 gave us <i>font-family</i>, <i>font-style</i>, <i>font-size</i>, etc. Very 
-		useful, but... it relies on the end-user having the declared fonts already installed on their computer. 
-		Then, in 1997, Internet Explorer 4 was released which added support for basic font downloading from 
+		<p>When HTML was first created font-families could not be declared or altered at all, except by
+		altering settings in your browser. In 1995 however, we see our first step forwards typesetting in
+		HTML pages with the introduction of the <i>&lt;font&gt;</i> tag. At this point we didn't even have CSS though,
+		and as soon as we got CSS (<a href="http://www.w3.org/TR/CSS1/">which was proposed in December 1996</a>)
+		the font tag became more or less obsolete. CSS1 gave us <i>font-family</i>, <i>font-style</i>, <i>font-size</i>, etc. Very
+		useful, but... it relies on the end-user having the declared fonts already installed on their computer.
+		Then, in 1997, Internet Explorer 4 was released which added support for basic font downloading from
 		web-servers.</p>
 		<br />
-		<p>The star of our article <i>@font-face</i>, however, first appears in the <a href="http://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions">CSS2 specification</a> published 
-		in 1998. It's capabilities and uses have since been <a href="http://www.w3.org/TR/css3-fonts">expanded in 
-		CSS3</a>, but the support of its various features have only slowly been taken up by the big-name-browsers. 
+		<p>The star of our article <i>@font-face</i>, however, first appears in the <a href="http://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions">CSS2 specification</a> published
+		in 1998. It's capabilities and uses have since been <a href="http://www.w3.org/TR/css3-fonts">expanded in
+		CSS3</a>, but the support of its various features have only slowly been taken up by the big-name-browsers.
 		And its the support of those features by different browser versions that dictates the format of our declaration
 		above. So, lets go through this a few lines at a time.</p>
 		<br />
@@ -67,12 +67,12 @@
 <span class="purple">@font-face</span> {
    <span class="orange">font-family</span>: <span class="jade">"NewHaas"</span>;</pre>
 		<br />
-		<p>First things first, give credit where credits due. If someone painstakingly creates a beautiful font, 
-		they deserve the credit. Also, at this point you will want to make sure that you are fulfilling any license 
+		<p>First things first, give credit where credits due. If someone painstakingly creates a beautiful font,
+		they deserve the credit. Also, at this point you will want to make sure that you are fulfilling any license
 		terms. Usually this means putting the license terms before declaring the font. Some licenses specify exactly
-		what CSS you are allowed to use. Remember to pay attention. Next we open our <i>@font-face</i> declaration block, 
-		hopefully there's no more clarification needed on that one. And lastly, we declare a name for our <i>font-family</i>. 
-		This is the name we will use to reference our <i>font-family</i> later in our CSS. Skipping a line (we'll come back 
+		what CSS you are allowed to use. Remember to pay attention. Next we open our <i>@font-face</i> declaration block,
+		hopefully there's no more clarification needed on that one. And lastly, we declare a name for our <i>font-family</i>.
+		This is the name we will use to reference our <i>font-family</i> later in our CSS. Skipping a line (we'll come back
 		to that one), we move onto;</p>
 		<br />
 		<pre class="code">
@@ -83,44 +83,44 @@
         url(<span class="jade">"fonts/NewHaas.svg#NewHaas-webfont"</span>) format(<span class="jade">"svg"</span>);
 }</pre>
 		<br />
-		<p>The <i>src</i> descriptor is there to declare where we have stored our fonts. The <a href="http://www.w3.org/TR/css3-fonts/#src-desc">order 
+		<p>The <i>src</i> descriptor is there to declare where we have stored our fonts. The <a href="http://www.w3.org/TR/css3-fonts/#src-desc">order
 		determines our preference</a>, where the top of the list is our most preferred and the bottom is our least. You
-		might ask "Why not only reference your preferred choice?", and that's where browser support comes in. For example, 
-		the Android browser only supports <i>.ttf</i> and <i>.otf</i> font files. So even though we want to use a <i>.woff2</i> 
-		file, Android checks it, doesn't want to use it, and then moves down the list until it finds one it can use. This is 
-		why we declare so many alternative files. On the <i>.eot</i> url, did you notice the <i>?#iefix</i> postfix? Well, 
+		might ask "Why not only reference your preferred choice?", and that's where browser support comes in. For example,
+		the Android browser only supports <i>.ttf</i> and <i>.otf</i> font files. So even though we want to use a <i>.woff2</i>
+		file, Android checks it, doesn't want to use it, and then moves down the list until it finds one it can use. This is
+		why we declare so many alternative files. On the <i>.eot</i> url, did you notice the <i>?#iefix</i> postfix? Well,
 		that's there as a work around to some kind of wierd bug associated with an earlier versions of Internet Explorer.</p>
 		<br />
-		<p>You might recall that I said the format in this article was a "subtle alteration" on what CSS-TRICKS.com has 
-		proposed. What have I changed? Just the order of preference. I have moved the <i>.woff2</i> and <i>.woff</i> 
-		file types to the top. They are the most modern, smallest, and highest detailed formats with growing support 
-		amongst modern browsers. It seemed silly to me to have the <i>.eot</i> file above it, which is a much older 
+		<p>You might recall that I said the format in this article was a "subtle alteration" on what CSS-TRICKS.com has
+		proposed. What have I changed? Just the order of preference. I have moved the <i>.woff2</i> and <i>.woff</i>
+		file types to the top. They are the most modern, smallest, and highest detailed formats with growing support
+		amongst modern browsers. It seemed silly to me to have the <i>.eot</i> file above it, which is a much older
 		file type that misses some font details. So, what about the line we skipped?</p>
 		<br />
 		<pre class="code">
    <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.eot"</span>);</pre>
 		<br />
-		<p>So, what exactly is this for? Well, essentially its there to support Internet Explorer 6-8 as well 
+		<p>So, what exactly is this for? Well, essentially its there to support Internet Explorer 6-8 as well
 		as Compatibility mode. Turns out, that in certain situations, older versions of IE have difficulty going
-		down the list. They just try and use the first font they find, even if they can't use it. So this way, 
-		we put the file type we know the IE versions experiencing issues can use at the top to stop them from 
-		freaking out. It's a shame we have to do this, because modern browsers that support <i>.eot</i> and 
+		down the list. They just try and use the first font they find, even if they can't use it. So this way,
+		we put the file type we know the IE versions experiencing issues can use at the top to stop them from
+		freaking out. It's a shame we have to do this, because modern browsers that support <i>.eot</i> and
 		<i>.woff</i> could end up using the older lower quality font. Unfortunately, this is the price we pay
-		for super high browser compatibility. There is light at the end of the tunnel though. The <a href="http://www.w3.org/TR/css3-fonts/#font-resources">CCS3 specification 
-		says</a> that if you declare two or more descriptors of the same type (our two <i>src</i>) 
-		that browsers should ignore everything but the last one. If modern browsers adhere to the spec, then they 
+		for super high browser compatibility. There is light at the end of the tunnel though. The <a href="http://www.w3.org/TR/css3-fonts/#font-resources">CCS3 specification
+		says</a> that if you declare two or more descriptors of the same type (our two <i>src</i>)
+		that browsers should ignore everything but the last one. If modern browsers adhere to the spec, then they
 		will go through our second prioritized list as normal.</p>
 		<br />
-		<p>All that's left at this point is to set your new <i>font-family</i> as the primary <i>font-family</i> for your web 
-		page. Add in some subtle text-shadow to act as anti-aliasing for low resolution screens, and all is well with the 
-		world. That's it for now. Thanks for reading. If you have any criticism, corrections, objections, or (Gods forbid) 
+		<p>All that's left at this point is to set your new <i>font-family</i> as the primary <i>font-family</i> for your web
+		page. Add in some subtle text-shadow to act as anti-aliasing for low resolution screens, and all is well with the
+		world. That's it for now. Thanks for reading. If you have any criticism, corrections, objections, or (Gods forbid)
 		praise just drop me a comment under the article.</p>
-			
+
 		<br />
 		<hr />
 
 		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
-		
+
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
@@ -136,6 +136,6 @@
 			})();
 		</script>
 		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		
+
 	</body>
 </html>

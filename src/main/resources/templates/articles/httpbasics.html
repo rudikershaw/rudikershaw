@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
-		<div class="header" th:replace="index :: header"></div>
+		<header th:replace="index :: header"></header>
 		<br />
 		<div class="text-container">
 			<p class="date">29/02/2015</p>
@@ -12,33 +12,33 @@
 		<hr />
 		<img class="coverimg" src="/images/httptyped.jpg" alt="http://www" />
 		<br />
-		
-		<p>It was recently brought to my attention that I really don't know the first thing about <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>, 
-		what it means, how it works, or what the implications are for me as a developer. Having had a 
-		read around it seems to me that a lot of developers are in a similar situation. So I set out to 
-		learn and to write this, a missive on the points I found most pertinent. I like to think that I 
+
+		<p>It was recently brought to my attention that I really don't know the first thing about <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>,
+		what it means, how it works, or what the implications are for me as a developer. Having had a
+		read around it seems to me that a lot of developers are in a similar situation. So I set out to
+		learn and to write this, a missive on the points I found most pertinent. I like to think that I
 		can get into a fair amount of depth whilst keeping it simple.</p>
 		<br />
-		<p>First things first, what does HTTP mean? HTTP is the acronym for Hypertext Transfer Protocol. 
-		Now interpreting those three words could seem fairly complicated on the face of things but it 
-		really does say everything we need to know. Hypertext Transfer Protocol is an official procedure 
+		<p>First things first, what does HTTP mean? HTTP is the acronym for Hypertext Transfer Protocol.
+		Now interpreting those three words could seem fairly complicated on the face of things but it
+		really does say everything we need to know. Hypertext Transfer Protocol is an official procedure
 		(protocol) for transferring (sending &amp; receiving) hypertext (which is just text with links to
 		other text). Not so hard right? So, what's the procedure then?</p>
 		<br />
-		<p>Well, essentially it boils down to this. The goal is to allow a client (a browser, or whatever) 
-		to request text from a web server and have that server send the correct text back to the client.  
+		<p>Well, essentially it boils down to this. The goal is to allow a client (a browser, or whatever)
+		to request text from a web server and have that server send the correct text back to the client.
 		Alright, no problem; create a request with the salient details in it.</p>
 		<br />
 		<pre class="code">
 GET /index.html HTTP/1.1
 Host: www.rudikershaw.com</pre>
 		<br />
-		<p>And now we have an HTTP Request. It's just a <b>first line</b> which says what we want to do (i.e. 
+		<p>And now we have an HTTP Request. It's just a <b>first line</b> which says what we want to do (i.e.
 		GET the /index.html document), and a single <b>header</b> labelled Host which is the domain we want to
-		get our document from. There are just three terms to remember in this syntax. GET is our 
-		<b>method/verb</b> and it is on the <b>first line</b>. There are other methods/verbs, including POST, OPTIONS, 
-		DELETE, and a few others. And Host is our <b>header</b>. Host is the <a href="http://tools.ietf.org/html/rfc2616#page-128">only essential header in HTTP 1.1</a>, 
-		but there are many others. Once the host server has received this HTTP request it sends us a 
+		get our document from. There are just three terms to remember in this syntax. GET is our
+		<b>method/verb</b> and it is on the <b>first line</b>. There are other methods/verbs, including POST, OPTIONS,
+		DELETE, and a few others. And Host is our <b>header</b>. Host is the <a href="http://tools.ietf.org/html/rfc2616#page-128">only essential header in HTTP 1.1</a>,
+		but there are many others. Once the host server has received this HTTP request it sends us a
 		response. </p>
 		<br />
 		<pre class="code">
@@ -55,25 +55,25 @@ Content-Length: 77
 &lt;/body&gt;
 &lt;html&gt;</pre>
 		<br />
-		<p>The above is an incredibly simple HTTP Response. It has a <b>first line</b> which, aside from 
+		<p>The above is an incredibly simple HTTP Response. It has a <b>first line</b> which, aside from
 		'HTTP/1.1', has the <b>status code</b> 200 followed by OK. The status codes are essentially the web
-		server's way of telling you how your request went. 200 shows us, surprise surprise, that 
-		everything went OK. Ever search for a page and get the error 404 (page not found)? Well, that's 
-		an HTTP Response status code. Below the first line we have two <b>headers</b>. Technically speaking 
-		there are <a href="http://stackoverflow.com/a/25586633/2182928">no essential headers for an HTTP response</a> but those two at least are generally 
+		server's way of telling you how your request went. 200 shows us, surprise surprise, that
+		everything went OK. Ever search for a page and get the error 404 (page not found)? Well, that's
+		an HTTP Response status code. Below the first line we have two <b>headers</b>. Technically speaking
+		there are <a href="http://stackoverflow.com/a/25586633/2182928">no essential headers for an HTTP response</a> but those two at least are generally
 		expected. After two new lines we have the document we requested in the <b>body</b> of the HTTP Response, in this case our index.html.</p>
 		<br />
-		<p>Now that's all well and good but why do we, as developers, need to know this? The part that 
-		affects us most is the HTTP Request's verb. If you're familiar with submitting HTML form data to 
-		another page (for example a PHP page) then you will likely recognise two of our verbs. <b>GET</b> and 
-		<b>POST</b>. That's because the form submits this data to the next page using an HTTP Request with one 
+		<p>Now that's all well and good but why do we, as developers, need to know this? The part that
+		affects us most is the HTTP Request's verb. If you're familiar with submitting HTML form data to
+		another page (for example a PHP page) then you will likely recognise two of our verbs. <b>GET</b> and
+		<b>POST</b>. That's because the form submits this data to the next page using an HTTP Request with one
 		of those methods. So, what's the difference?</p>
 		<br />
 		<pre class="code">
 &lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"GET"</span>&gt;
 &lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"POST"</span>&gt;</pre>
 		<br />
-		<p>Okay. Let's first start with our GET method and imagine that we have the following basic HTML 
+		<p>Okay. Let's first start with our GET method and imagine that we have the following basic HTML
 		form.</p>
 		<br />
 		<pre class="code">
@@ -83,25 +83,25 @@ Content-Length: 77
 &lt;<span class="purple">form</span>/&gt;
 </pre>
 		<br />
-		<p>When we hit the submit button the value in our data text input is sent to the web server that 
-		we are requesting the page.php document from. It's sent in our HTTP Request using the GET method. 
-		But the GET method is for GETting stuff, so how does it send data? Well it already sends some 
+		<p>When we hit the submit button the value in our data text input is sent to the web server that
+		we are requesting the page.php document from. It's sent in our HTTP Request using the GET method.
+		But the GET method is for GETting stuff, so how does it send data? Well it already sends some
 		data, the location of our requested document. So that's where the data goes. In the URL.</p>
 		<br />
 		<pre class="code">
 GET /page.php?data=yourdata HTTP/1.1
 Host: www.rudikershaw.com</pre>
 		<br />
-		<p>This means that the data we're sending is plainly visible in the URL, in the address bar of 
-		our browser. It's also stored in your history as well as your browser cache and probably the logs 
-		of the web server you sent the request to. And because it's in the URL the data can be bookmarked 
-		and revisited. Also, because Internet Explorer and a few web servers put restrictions on the size 
-		of URLs (no more than 2000 characters) there is an upper limit to how much data you can transfer. 
-		It can also be said that GET is often marginally faster because in certain situations two separate 
-		requests need to be sent when using POST. So, if you're making trivial transfers of data between 
-		one page and another, and you want your user to be able to navigate backwards and forwards 
-		between those pages without having to resubmit data, or bookmark the resulting page then GET is 
-		for you. A word of caution though, don't use GET to transfer any sensitive information because it 
+		<p>This means that the data we're sending is plainly visible in the URL, in the address bar of
+		our browser. It's also stored in your history as well as your browser cache and probably the logs
+		of the web server you sent the request to. And because it's in the URL the data can be bookmarked
+		and revisited. Also, because Internet Explorer and a few web servers put restrictions on the size
+		of URLs (no more than 2000 characters) there is an upper limit to how much data you can transfer.
+		It can also be said that GET is often marginally faster because in certain situations two separate
+		requests need to be sent when using POST. So, if you're making trivial transfers of data between
+		one page and another, and you want your user to be able to navigate backwards and forwards
+		between those pages without having to resubmit data, or bookmark the resulting page then GET is
+		for you. A word of caution though, don't use GET to transfer any sensitive information because it
 		is logged everywhere and presents a real security risk.</p>
 		<br />
 		<p>Now let's submit the same HTML form but change the method to an HTTP POST Request instead.</p>
@@ -113,9 +113,9 @@ Host: www.rudikershaw.com</pre>
 &lt;<span class="purple">form</span>/&gt;
 </pre>
 		<br />
-		<p>This time we submit our data to the web server using the POST method, which is specifically 
-		for sending data to your recipient. So what's the difference? Well, this time our data is not 
-		transferred in the URL. This time our data has a designated space in the <b>body</b> of the HTTP 
+		<p>This time we submit our data to the web server using the POST method, which is specifically
+		for sending data to your recipient. So what's the difference? Well, this time our data is not
+		transferred in the URL. This time our data has a designated space in the <b>body</b> of the HTTP
 		Request, two new lines below the last header.</p>
 		<br />
 		<pre class="code">
@@ -124,27 +124,27 @@ Host: www.rudikershaw.com
 
 data=yourdata</pre>
 		<br />
-		<p>So what's so great about this? Well your data doesn't get logged anywhere. Not in the browsers 
-		history, cache or bookmarks, and not on any web server. Plus, it doesn't show up in the URL. As 
-		such transferring sensitive data like this isn't a problem.  It also doesn't suffer from the 
-		character restriction on the URL, so you can send as much data as you like each time. There are 
-		two caveats, the first of which is that under certain circumstances HTTP POST Requests are 
-		slightly slower. The second caveat is that many web servers will not receive POST requests that were referred from 
-		outside of their domain from a browser side programming language, at least not without a fight. 
-		This restriction is called the <a href="http://en.wikipedia.org/wiki/Same-origin_policy">same-origin policy</a>. It will work fine with submitting an HTML form 
-		between domains like in the example above, but <a href="http://stackoverflow.com/a/7605119/2182928">sending the request with JavaScript</a> will take some 
+		<p>So what's so great about this? Well your data doesn't get logged anywhere. Not in the browsers
+		history, cache or bookmarks, and not on any web server. Plus, it doesn't show up in the URL. As
+		such transferring sensitive data like this isn't a problem.  It also doesn't suffer from the
+		character restriction on the URL, so you can send as much data as you like each time. There are
+		two caveats, the first of which is that under certain circumstances HTTP POST Requests are
+		slightly slower. The second caveat is that many web servers will not receive POST requests that were referred from
+		outside of their domain from a browser side programming language, at least not without a fight.
+		This restriction is called the <a href="http://en.wikipedia.org/wiki/Same-origin_policy">same-origin policy</a>. It will work fine with submitting an HTML form
+		between domains like in the example above, but <a href="http://stackoverflow.com/a/7605119/2182928">sending the request with JavaScript</a> will take some
 		more work.</p>
 		<br />
-		<p>To finish up; in order for this all to sink in I would advise downloading <a href="http://www.telerik.com/download/fiddler/fiddler4">Fiddler4</a> in order to 
-		take a look at all the HTTP Requests being made as you browse around the web. This will give you 
-		an indication of when they are made and the types and varieties of headers and methods that are 
-		used. Thanks for reading. If you have any criticism, corrections, objections, or (Gods forbid) 
+		<p>To finish up; in order for this all to sink in I would advise downloading <a href="http://www.telerik.com/download/fiddler/fiddler4">Fiddler4</a> in order to
+		take a look at all the HTTP Requests being made as you browse around the web. This will give you
+		an indication of when they are made and the types and varieties of headers and methods that are
+		used. Thanks for reading. If you have any criticism, corrections, objections, or (Gods forbid)
 		praise just drop me a comment under the article.</p>
 		<br />
 		<hr />
 
 		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
-		
+
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
 			/* * * Configure Disqus Variables * * */
@@ -160,6 +160,6 @@ data=yourdata</pre>
 			})();
 		</script>
 		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		
+
 	</body>
 </html>

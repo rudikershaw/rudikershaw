@@ -92,17 +92,18 @@ hr {
 	margin: auto;
 }
 
-div.header {
-	background-color: #222222;
+header {
+	background-color: #272727;
 	border-top-color: #ED5900;
 	border-top-width: 5px;
 	border-style: solid;
 	margin-bottom: 20px;
 	min-height: 58px;
+	padding: 5px;
 }
 
 div.footer {
-	background-color: #222222;
+	background-color: #272727;
 	text-align: center;
 	margin-top: 20px;
 	padding: 30px;
@@ -126,7 +127,7 @@ a.sociallink {
 	margin-left: 8px;
     font-size: 25px;
 	display: block;
-	color: #222222;
+	color: #272727;
 	height: 29px;
 	width: 29px;
 	float: left;
@@ -150,7 +151,7 @@ a.donatelink {
 	padding: 0 5px;
 	line-height: 2;
 	display: block;
-	color: #222222;
+	color: #272727;
 	height: 29px;
 	width: 68px;
 	float: left;
@@ -176,7 +177,7 @@ div.entries.container {
 	min-height: 292px;
 	max-width: 290px;
 } div.entry > h4 {
-	background-color: #222222;
+	background-color: #272727;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-align: center;
@@ -210,7 +211,7 @@ h5.quoteblock {
 }
 
 div.black-band {
-	background-color: #222222;
+	background-color: #272727;
 	margin: 30px 0 40px 0;
 	text-align: center;
 	padding: 40px;
@@ -319,7 +320,7 @@ div.info-box {
 	border-radius: 10px;
 	margin: 10px auto;
 	max-width: 712px;
-	background: #222;
+	background: #272727;
 	font-size: 14px;
 	padding: 14px;
 	color: white;
@@ -332,7 +333,7 @@ div.info-box {
     clear: both;
 }
 .choices li {
- 	background-color: #222222;
+ 	background-color: #272727;
  	text-align: center;
  	margin-left: 2px;
  	font-size: 20px;
@@ -372,7 +373,7 @@ a.home {
 	margin: 20px;
 	float: left;
 } a.home:hover {
-	background-color: #222222;
+	background-color: #272727;
 	text-shadow: none;
 }
 
@@ -386,7 +387,7 @@ a.home-center {
 	width: 160px;
 	color: white;
 } a.home-center:hover {
-	background-color: #222222;
+	background-color: #272727;
 	text-shadow: none;
 }
 
@@ -407,7 +408,7 @@ a.previous {
 	height: 0;
 	width: 0;
 } a.previous:hover {
-	border-color: transparent #222222 transparent transparent;
+	border-color: transparent #272727 transparent transparent;
 }
 a.previous-off { border-color: transparent darkgrey transparent transparent; }
 a.previous-off:hover { border-color: transparent darkgrey transparent transparent; }
@@ -423,7 +424,7 @@ a.next {
 	height: 0;
 	width: 0;
 } a.next:hover {
-	border-color: transparent transparent transparent #222222;
+	border-color: transparent transparent transparent #272727;
 }
 a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
@@ -493,7 +494,7 @@ svg.graph {
 	border: none;
 	width: 25%;
 } .search-go:hover {
-	background: #222222;
+	background: #272727;
 	cursor: pointer;
 }
 
@@ -509,6 +510,15 @@ a.close-link {
 	height: 29px;
 	width: 29px;
 	float: right;
+}
+
+a.stack-overflow-link {
+	overflow: hidden;
+	float: right;
+}
+
+a.stack-overflow-link > img {
+	margin: -1px -1px -5px -1px;
 }
 
 /* Sharing dialog. */
@@ -624,7 +634,7 @@ div.whichpet { background: #CC5A13; margin-top: 3px; color: #EEE; }
 div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; max-width: 550px; }
 div.whichpet select { font-size: 24px; }
 div.whichpet input[type="button"] { background: #ED5900; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; }
-div.whichpet input[type="button"]:hover { background: #222222; cursor: pointer; color: #ED5900; }
+div.whichpet input[type="button"]:hover { background: #272727; cursor: pointer; color: #ED5900; }
 div.whichpet textarea { font-size: 18px; resize: none; width: 90%; padding: 5px 4px 5px 10px;}
 div.whichpet div.popup { display: none; background: rgba(34,34,34,0.9); position: fixed; width: 100%; height:100%; padding-top: 100px; top: 0; left: 0 }
 div.whichpet div.popup div.box { width: 600px; margin: auto; background: white; padding: 20px 20px; text-align: center;}
