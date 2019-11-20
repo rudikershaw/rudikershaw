@@ -1,61 +1,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
     <head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<header th:replace="index :: header"></header>
-		<br />
-		<div class="text-container">
-			<p class="date">22/08/2015</p>
-			<p class="views"><span th:text="${article.views}"></span> views</p>
-		</div>
-		<h1>Upgrading This Website</h1>
-		<hr />
-		<img class="coverimg" src="/images/upgradecover.jpg" alt="Upgrading to JavaEE - Spring Boot" />
-		<br />
+		<article>
+            <div class="text-container">
+                <p class="date">22/08/2015</p>
+                <p class="views"><span th:text="${article.views}"></span> views</p>
+            </div>
+            <h1>Upgrading This Website</h1>
+            <hr />
+            <img class="coverimg" src="/images/upgradecover.jpg" alt="Upgrading to JavaEE - Spring Boot" />
+            <br />
 
-		<p>In the unlikely event someone were actually following my ramblings, they would have noticed that I've not written anything
-			for four months. To cut a long story short I changed jobs and got married, so I've been pretty busy. Also, and probably more
-			relevantly, I had decided to write some work that would require a little more <i>oomph</i> from my website. I also wanted to make
-			some upgrades that frankly plain html, css and javascript were not going to be capable of. I am writing this article now because
-            I made those upgrades. So my first post will be about what I've done, all the cool technologies I used, and how I chose them.</p>
-		<br />
-        <p>So my new job was incredibly generous and bought me tickets to go to <a href="http://www.devoxx.co.uk/">Devoxx 2015</a>, which was
-            awesome by the way. On the second day I sat in on a talk from Josh Long about <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>
-            and, like some kind of wizard, he threw together a website using Spring Boot in break-neck time and still managed to keep some witty
-            banter going through-out. I'm a Java developer primarily so I already wanted to use JavaEE for this site and Josh made it look so easy
-            with Spring Boot that I just <i>had</i> to try it for myself.</p>
-        <br />
-        <p>So that is what I did, I went to <a href="http://start.spring.io/">start.spring.io</a> and chose all the technologies I wanted, clicked
-            generate project, and was given a working basic set-up for my new Spring application. Less than an hour later I had a working version of
-            my website up and running. I used <a href="http://www.thymeleaf.org/">Thymeleaf</a> for my view layer, <a href="https://en.wikipedia.org/wiki/Apache_Maven">Maven</a>
-            for build dependency management, and later connected a <a href="https://www.mysql.com/">MySQL</a> database to the app. So, what exactly was
-            it I wanted to do that required this much more comprehensive setup?</p>
-        <br />
-		<div class="code">
-<span class="orange"> 1 - </span>Record and monitor unique views for each article.<br />
-<span class="orange"> 2 - </span>Have all articles displayed dynamically on the home page,
-     ordered by date of publishing.<br />
-<span class="orange"> 3 - </span>Show off most popular articles using recorded data.<br />
-<span class="orange"> 4 - </span>Remove often repeated code, such as the header on each page.<br />
-<span class="orange"> 5 - </span>Create machine learning/neural net algorithms article.<br />
-<span class="orange"> 6 - </span>Set up subscriptions so that people can get email updates.<br />
-<span class="orange"> 7 - </span>Set up a donations service to help recover some costs.<br />
-<span class="orange"> 8 - </span>Set up article searching with keywords per article.</div>
-		<br />
-        <p>So, the above is my to-do list for the site. The first three on the list are done. If you look to the top right of the page you'll notice
-            a <i>views</i> counter. In order to check whether views are unique I am simply creating a session for each user that visits an
-            article (by creating a cookie on their side that has an ID I can recognise them by) and then logging the first time these sessions
-            access each article. If you already have a log in the database showing you've viewed the article, your view wont be considered unique.
-            If you refresh the page now, the view counter shouldn't go up. If you're using Chrome and you want to see this in action press <i>F12</i> so
-            the developer options pop up, click <i>Resources</i> and then <i>Cookies</i>. You should see the <i>JSESSIONID</i> that is used to check
-            your visitor number, if you delete this cookie and refresh the page you will see the view counter go up again.</p>
-        <br />
-        <p>Each article on the site is now logged on the database the first time it is accessed, that way I can do all kinds of server side logic on
-            them to speed things up in future or keep track of stats on each article. So the points 2 &amp; 3 on the list were easy. For number 4 I have done some (but not all) of the work so far.
-            I used a feature of Thymeleaf called Fragments. Using the header bar at the top of the website as an example we can declare it using all
-            necessary markup and styling on one single page...</p>
-        <br />
-        <pre class="code">
+            <p>In the unlikely event someone were actually following my ramblings, they would have noticed that I've not written anything
+                for four months. To cut a long story short I changed jobs and got married, so I've been pretty busy. Also, and probably more
+                relevantly, I had decided to write some work that would require a little more <i>oomph</i> from my website. I also wanted to make
+                some upgrades that frankly plain html, css and javascript were not going to be capable of. I am writing this article now because
+                I made those upgrades. So my first post will be about what I've done, all the cool technologies I used, and how I chose them.</p>
+            <br />
+            <p>So my new job was incredibly generous and bought me tickets to go to <a href="http://www.devoxx.co.uk/">Devoxx 2015</a>, which was
+                awesome by the way. On the second day I sat in on a talk from Josh Long about <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>
+                and, like some kind of wizard, he threw together a website using Spring Boot in break-neck time and still managed to keep some witty
+                banter going through-out. I'm a Java developer primarily so I already wanted to use JavaEE for this site and Josh made it look so easy
+                with Spring Boot that I just <i>had</i> to try it for myself.</p>
+            <br />
+            <p>So that is what I did, I went to <a href="http://start.spring.io/">start.spring.io</a> and chose all the technologies I wanted, clicked
+                generate project, and was given a working basic set-up for my new Spring application. Less than an hour later I had a working version of
+                my website up and running. I used <a href="http://www.thymeleaf.org/">Thymeleaf</a> for my view layer, <a href="https://en.wikipedia.org/wiki/Apache_Maven">Maven</a>
+                for build dependency management, and later connected a <a href="https://www.mysql.com/">MySQL</a> database to the app. So, what exactly was
+                it I wanted to do that required this much more comprehensive setup?</p>
+            <br />
+            <div class="code">
+    <span class="orange"> 1 - </span>Record and monitor unique views for each article.<br />
+    <span class="orange"> 2 - </span>Have all articles displayed dynamically on the home page,
+         ordered by date of publishing.<br />
+    <span class="orange"> 3 - </span>Show off most popular articles using recorded data.<br />
+    <span class="orange"> 4 - </span>Remove often repeated code, such as the header on each page.<br />
+    <span class="orange"> 5 - </span>Create machine learning/neural net algorithms article.<br />
+    <span class="orange"> 6 - </span>Set up subscriptions so that people can get email updates.<br />
+    <span class="orange"> 7 - </span>Set up a donations service to help recover some costs.<br />
+    <span class="orange"> 8 - </span>Set up article searching with keywords per article.</div>
+            <br />
+            <p>So, the above is my to-do list for the site. The first three on the list are done. If you look to the top right of the page you'll notice
+                a <i>views</i> counter. In order to check whether views are unique I am simply creating a session for each user that visits an
+                article (by creating a cookie on their side that has an ID I can recognise them by) and then logging the first time these sessions
+                access each article. If you already have a log in the database showing you've viewed the article, your view wont be considered unique.
+                If you refresh the page now, the view counter shouldn't go up. If you're using Chrome and you want to see this in action press <i>F12</i> so
+                the developer options pop up, click <i>Resources</i> and then <i>Cookies</i>. You should see the <i>JSESSIONID</i> that is used to check
+                your visitor number, if you delete this cookie and refresh the page you will see the view counter go up again.</p>
+            <br />
+            <p>Each article on the site is now logged on the database the first time it is accessed, that way I can do all kinds of server side logic on
+                them to speed things up in future or keep track of stats on each article. So the points 2 &amp; 3 on the list were easy. For number 4 I have done some (but not all) of the work so far.
+                I used a feature of Thymeleaf called Fragments. Using the header bar at the top of the website as an example we can declare it using all
+                necessary markup and styling on one single page...</p>
+            <br />
+            <pre class="code">
 <span class="orange">&lt;div</span> class=<span class="jade">"header"</span> <span class="purple">th</span>:fragment=<span class="jade">"header"</span><span class="orange">&gt;</span>
    <span class="orange">&lt;div</span> class=<span class="jade">"container"</span><span class="orange">&gt;</span>
       <span class="orange">&lt;a</span> class=<span class="jade">"rklogo"</span> href=<span class="jade">"/"</span><span class="orange">&gt;&lt;/a&gt;</span>
@@ -66,43 +66,43 @@
       <span class="orange">&lt;/a&gt;</span>
    <span class="orange">&lt;/div&gt;</span>
 <span class="orange">&lt;/div&gt;</span></pre>
-        <br />
-        <p>... and then you can refer back to this on another page without having to repeat all the details. Notice, in the html above the
-            <i><span class="purple">th</span>:fragment=<span class="jade">"header"</span></i>.</p>
-        <br />
-        <pre class="code">
+            <br />
+            <p>... and then you can refer back to this on another page without having to repeat all the details. Notice, in the html above the
+                <i><span class="purple">th</span>:fragment=<span class="jade">"header"</span></i>.</p>
+            <br />
+            <pre class="code">
 <span class="orange">&lt;div</span> class=<span class="jade">"header"</span> <span class="purple">th</span>:replace=<span class="jade">"/index :: header"</span><span class="orange">&gt;&lt;/div&gt;</span></pre>
-        <br />
-        <p>This single line on each page basically translates as "replace this div with a copy of the div marked <i><span class="purple">th</span>:fragment=<span class="jade">'header'</span></i>
-            on the page <i>/index</i>". Not only do we save many, many lines of code on each page when you take into account headers, footers, navigation etc
-            but it means that if you ever need to change them there is a single place you can go to edit those things for the whole website. Marvelous.</p>
-        <br />
-        <p>As for points 5 to 8; I will be adding those in at some point in the future. Wanting to get into machine learning was a large part of the reason
-            for the upgrade and I want to write an article (hopefully soon&trade;) about the most basic example of machine learning that can be talked about in
-            a quick article. Then after that I'd like to try something a bit more robust.</p>
-        <br />
-        <p>Before I'm done, there are some fantastic features of Spring Boot that I just <i>have</i> to talk about briefly. The one that has to be mentioned first is that with Spring
-            Boot your whole web application can be packaged into a single <i>.jar</i> file with everything inside, including an embedded Tomcat web server.
-            What this means is that you don't have to set up a web server at all, you just build your application, and run the <i>.jar</i> file and that's it. Love it.
-            I have already mentioned the <a href="http://start.spring.io/">start.spring.io</a> page that let's you pick features that you want in your app and creates a
-            starter <i>pom.xml</i> for you. This means, as was the case with me, that you can have a project up and running in no time at all. A lot of people will know
-            Spring as a framework as having fairly verbose xml configuration for things like bean injection and the like but Spring Boot requires none at all. It is all
-            handled through neat annotations. And then there are the usual benefits of frameworks such as 'intelligent defaults' and the like, etc.</p>
-        <br />
-        <p style="text-align:center;"><a href="http://projects.spring.io/spring-boot/">An excerpt from the spring boot page.</a></p>
-        <div class="code">
-<span class="green">&bull; </span>Create stand-alone Spring applications<br />
-<span class="green">&bull; </span>Embed Tomcat, Jetty or Undertow directly (no WAR file deploys)<br />
-<span class="green">&bull; </span>Provide opinionated 'starter' POMs to simplify your Maven config<br />
-<span class="green">&bull; </span>Automatically configure Spring whenever possible<br />
-<span class="green">&bull; </span>Provide production-ready features such as metrics, health checks and
-  externalized configuration<br />
-<span class="green">&bull; </span>Absolutely no code generation and no requirement for XML configuration</div>
-        <br />
-        <p>And that's it from me for now. I hope this was helpful. Thanks for reading. If you have any criticism, corrections, objections,
-            or (Gods forbid) praise just drop me a comment under the article, and until my next article, happy
-            reading!</p>
-        <br />
+            <br />
+            <p>This single line on each page basically translates as "replace this div with a copy of the div marked <i><span class="purple">th</span>:fragment=<span class="jade">'header'</span></i>
+                on the page <i>/index</i>". Not only do we save many, many lines of code on each page when you take into account headers, footers, navigation etc
+                but it means that if you ever need to change them there is a single place you can go to edit those things for the whole website. Marvelous.</p>
+            <br />
+            <p>As for points 5 to 8; I will be adding those in at some point in the future. Wanting to get into machine learning was a large part of the reason
+                for the upgrade and I want to write an article (hopefully soon&trade;) about the most basic example of machine learning that can be talked about in
+                a quick article. Then after that I'd like to try something a bit more robust.</p>
+            <br />
+            <p>Before I'm done, there are some fantastic features of Spring Boot that I just <i>have</i> to talk about briefly. The one that has to be mentioned first is that with Spring
+                Boot your whole web application can be packaged into a single <i>.jar</i> file with everything inside, including an embedded Tomcat web server.
+                What this means is that you don't have to set up a web server at all, you just build your application, and run the <i>.jar</i> file and that's it. Love it.
+                I have already mentioned the <a href="http://start.spring.io/">start.spring.io</a> page that let's you pick features that you want in your app and creates a
+                starter <i>pom.xml</i> for you. This means, as was the case with me, that you can have a project up and running in no time at all. A lot of people will know
+                Spring as a framework as having fairly verbose xml configuration for things like bean injection and the like but Spring Boot requires none at all. It is all
+                handled through neat annotations. And then there are the usual benefits of frameworks such as 'intelligent defaults' and the like, etc.</p>
+            <br />
+            <p style="text-align:center;"><a href="http://projects.spring.io/spring-boot/">An excerpt from the spring boot page.</a></p>
+            <div class="code">
+    <span class="green">&bull; </span>Create stand-alone Spring applications<br />
+    <span class="green">&bull; </span>Embed Tomcat, Jetty or Undertow directly (no WAR file deploys)<br />
+    <span class="green">&bull; </span>Provide opinionated 'starter' POMs to simplify your Maven config<br />
+    <span class="green">&bull; </span>Automatically configure Spring whenever possible<br />
+    <span class="green">&bull; </span>Provide production-ready features such as metrics, health checks and
+      externalized configuration<br />
+    <span class="green">&bull; </span>Absolutely no code generation and no requirement for XML configuration</div>
+            <br />
+            <p>And that's it from me for now. I hope this was helpful. Thanks for reading. If you have any criticism, corrections, objections,
+                or (Gods forbid) praise just drop me a comment under the article, and until my next article, happy
+                reading!</p>
+        </article>
         <hr />
 
         <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>

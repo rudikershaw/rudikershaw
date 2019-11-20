@@ -1,157 +1,156 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<header th:replace="index :: header"></header>
-		<br />
-		<div class="text-container">
-			<p class="date">01/03/2017</p>
-			<p class="views"><span th:text="${article.views}"></span> views</p>
-		</div>
-		<h1 th:text="${article.name}">A Tour of AI</h1>
-		<hr />
-		<img class="coverimg" src="/images/tour-of-ai-banner.jpg" alt="A Tour of AI" />
-		<br />
+		<article>
+			<div class="text-container">
+				<p class="date">01/03/2017</p>
+				<p class="views"><span th:text="${article.views}"></span> views</p>
+			</div>
+			<h1 th:text="${article.name}">A Tour of AI</h1>
+			<hr />
+			<img class="coverimg" src="/images/tour-of-ai-banner.jpg" alt="A Tour of AI" />
+			<br />
 
-        <p>Artificial Intelligence has been making headlines recently. Over the past year an AI has beat the worlds
-			best <a href="https://www.scientificamerican.com/article/how-the-computer-beat-the-go-master/" target="_blank">Go</a>
-			and <a href="https://www.cmu.edu/news/stories/archives/2017/january/AI-beats-poker-pros.html" target="_blank">Poker</a>
-			players. Regular talk of <a href="https://www.theguardian.com/technology/2017/jan/15/driverless-cars-12-things-you-need-to-know" target="_blank">driverless cars</a>
-			fill social media and news websites. These are all things that people have previously said would be impossible for a
-			machine to do. We are in the middle of a boom in interesting AI applications. Looking in from the outside it's easy
-			to feel like AI is just magic. I decided to put this article together to help myself and others feel their way
-			through the fog of buzz-words. Here is what I will be covering.</p>
-        <br />
-		<div class="code">
-			<span class="green">&bull; </span>Strong &amp; Weak AI<br />
-			<span class="green">&bull; </span>Machine Learning &amp; Symbolic AI<br />
-			<span class="green">&bull; </span>Supervised &amp; Unsupervised Learning<br />
-			<span class="green">&bull; </span>Classification &amp; Regression<br />
-			<span class="green">&bull; </span>Clustering, &amp; Anomaly Detection<br />
-			<span class="green">&bull; </span>Specific Learning Algorithms
-		</div>
-		<br />
-		<h2>Strong &amp; Weak AI</h2>
-		<br />
-		<p>What exactly does Artificial Intelligence (AI) mean? An AI is any machine which has capabilities you would normally
-			associate with an intelligent being. AI is often divided into two categories; strong and weak. A strong (or true) AI
-			is a machine that is at least as capable as a human being in all ways. Think terminator, Chappie, HAL, Wall-E, etc.
-			Obviously, there aren't any strong AIs yet. Weak AI refers to the kinds of AI we have today that
-			can perform some specialised function. Technically all modern computer hardware and software is AI, but we only
-			really refer to something as an AI if it surpasses our expectations of machines. As new kinds of AI become common
-			they start to be referred to as AI less and less. You probably wouldn't refer to a chess game as AI for example, but
-			in 1997 when IBM's chess AI <a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov" target="_blank">Deep
-			Blue beat world chess champion Gary Kasparov</a> it was considered the height of artificial intelligence.</p>
-		<br />
-		<h2>Machine Learning &amp; Symbolic AI</h2>
-		<br />
-		<p>The term <a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">machine learning</a> has been
-			thrown around a lot recently. In 1997 Tom Mitchel defined machine learning in very practical terms:</p>
-		<br />
-		<div class="code bold center">
-			<h4>
-				<span class="green">"</span>A computer program is said to learn from experience E with respect to some class of
-				tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with
-				experience E.<span class="green">"</span>
-			</h4>
-		</div>
-		<br />
-		<p>Which is just a fancy way of saying that any machine that gets better at some task with experience uses machine
-			learning. Machine learning has largely been responsible for the boom in AI applications we are seeing today.
-			More often than not machine learning simply uses statistics to work out patterns in data, and then uses these
-			patterns to make assumptions about new data that the algorithm hasn't seen yet. Machine learning has been around
-			for a while, but it wasn't until the 80s that people started to consider it a real and viable method for creating
-			AIs.</p>
-		<br />
-		<p>Before that the prevalent method for creating AIs was to use <i>symbolic AI</i>. Symbolic AI is a term you may
-			not be familiar with, but essentially it is the creation of AI through defining rules and patterns that a machine
-			must follow. In symbolic AI the engineer defines the rules of how the machine works. With machine learning the
-			engineer tells the machine to find the rules itself.</p>
-		<br />
-		<p>Most of the hype around AI recently has been from machine learning, because it has become clear that symbolic AI
-			is impractical for pushing past what we've already achieved. Defining long lists of rules to follow is a long and
-			painful process fraught with errors. It may well be impossible to write rules for every possible scenario for an
-			intelligent system. The rest of this article focuses on terms from machine learning.</p>
-		<br />
-		<h2 id="supervised-v-unsupervised">Supervised &amp; Unsupervised Machine Learning</h2>
-		<br />
-		<p>People very often break machine learning into two broad categories; supervised and unsupervised learning. At the
-			heart it, the different between these two categories is quite simple. In <i>supervised</i> learning you provide the
-			machine with the right answers for the examples it uses to learn. For instance, you may give an AI
-			pictures of cats and dogs and tell it which one is which. You could then present it with a new picture and ask
-			it whether it is of a cat or a dog. This would be supervised learning. In <i>unsupervised</i> learning you
-			provide the machine with the pictures of cats and dogs but don't tell it which ones are which. In this case
-			you might ask it to split the images into two categories and it might split them into pictures of cats and dogs,
-			or it might choose some other category like pictures taken indoors and outdoors.</p>
-		<br />
-		<p>In reality AIs often don't fall neatly into either supervised or unsupervised learning because they may use
-			algorithms from both.</p>
-		<br />
-		<h2>Clustering &amp; Anomaly Detection</h2>
-		<br />
-		<p>Clustering and anomaly detection are unsupervised learning techniques. <i>Clustering</i> is the process of taking a
-			set of things and grouping the most similar ones together. Our unsupervised learning example of grouping similar
-			photos together is exactly this, except it wouldn't have to be into two groups. It could be any number of groups.
-			<i>Anomaly detection</i> is used to find unlikely (or anomalous) data in some set of entries. Typical examples include
-			fraud &amp; hacking detection, fault detection in manufacturing, and detecting weird data for academic purposes.</p>
-		<br />
-		<div class="chart-js">
-			<canvas id="my-chart"></canvas>
-		</div>
-		<div class="info-box">Above: Normal/Gaussian distribution can be used for anomaly detection. Any 'Number of
-			Things' that falls on the far right or left of the bell curve can be considered anomalous.</div>
-		<br />
-		<h2>Classification &amp; Regression</h2>
-		<br />
-		<p>Classification and regression are terms generally used to described types of supervised learning. Classification is
-			when you try to determine whether something fits into one class of thing, or another. For example the cat and dog
-			example we used previously would be a classification algorithm. It takes pictures and <i>classifies</i>
-			them as a picture of a cat, or a dog. Regression problems on the other hand try to produce fluid values. Imagine
-			a program that you give the details of your house to. It takes the number of rooms, floors, bathrooms, en-suites,
-			as well as the size of the rooms, and the style of the house, etc. It uses those details to produce a price estimate
-			for your house. This would be a <i>regression</i> algorithm. Other examples include predicting the temperature,
-			sales of a product, or the value of stocks.</p>
-		<br />
-		<h2>Specific Learning Algorithms</h2>
-		<br />
-		<p>Supervised, unsupervised, classification, regression, clustering, and anomaly detection algorithms are all categories
-			of algorithms. There is an extensive list of specific learning algorithms each coming with their own name, pros, cons,
-			and specialist uses. One of the most highly talked about is <a href="https://en.wikipedia.org/wiki/Artificial_neural_network" target="_blank">
-			Artificial Neural Networks</a>, which are classification algorithms. Although the workings, pros, and cons of each algorithm
-			are beyond the scope of this article below is a list of common learning algorithms and which categories they fall into.</p>
-		<br />
-		<div class="code-header">Clustering</div>
-		<div class="code">
-			<span class="green">• </span>K-Means<br />
-			<span class="green">• </span>K-Nearest Neighbours<br />
-			<span class="green">• </span>Hierarchical Clustering
-		</div>
-		<div class="code-header">Anomaly Detection</div>
-		<div class="code">
-			<span class="green">• </span>Normal Distribution<br />
-			<span class="green">• </span>One Class Support Vector Machines
-		</div>
-		<br />
-		<div class="code-header">Regression</div>
-		<div class="code">
-			<span class="green">• </span>Linear Regression
-		</div>
-		<div class="code-header">Classification</div>
-		<div class="code">
-			<span class="green">• </span>Logistic Regression<br />
-			<span class="green">• </span>Support Vector Machines<br />
-			<span class="green">• </span>Artificial Neural Networks
-		</div>
-		<br />
-		<p>The above are limited to algorithms I have some basic understanding of, but there are an enormous number and
-			variety of machine learning algorithms. Some of the above can also be split into various sub-types, again
-			with their own use cases, pros, and cons.</p>
-		<br />
-		<p>I hope you've found this illuminating. At some point in the near future I would like to write up <a href="anomaly-detection">an example
-			implementation</a> of one of the above. In the mean time, if you have any questions or criticism post it in the
-			comments below.</p>
-		<br />
-        <br />
+			<p>Artificial Intelligence has been making headlines recently. Over the past year an AI has beat the worlds
+				best <a href="https://www.scientificamerican.com/article/how-the-computer-beat-the-go-master/" target="_blank">Go</a>
+				and <a href="https://www.cmu.edu/news/stories/archives/2017/january/AI-beats-poker-pros.html" target="_blank">Poker</a>
+				players. Regular talk of <a href="https://www.theguardian.com/technology/2017/jan/15/driverless-cars-12-things-you-need-to-know" target="_blank">driverless cars</a>
+				fill social media and news websites. These are all things that people have previously said would be impossible for a
+				machine to do. We are in the middle of a boom in interesting AI applications. Looking in from the outside it's easy
+				to feel like AI is just magic. I decided to put this article together to help myself and others feel their way
+				through the fog of buzz-words. Here is what I will be covering.</p>
+			<br />
+			<div class="code">
+				<span class="green">&bull; </span>Strong &amp; Weak AI<br />
+				<span class="green">&bull; </span>Machine Learning &amp; Symbolic AI<br />
+				<span class="green">&bull; </span>Supervised &amp; Unsupervised Learning<br />
+				<span class="green">&bull; </span>Classification &amp; Regression<br />
+				<span class="green">&bull; </span>Clustering, &amp; Anomaly Detection<br />
+				<span class="green">&bull; </span>Specific Learning Algorithms
+			</div>
+			<br />
+			<h2>Strong &amp; Weak AI</h2>
+			<br />
+			<p>What exactly does Artificial Intelligence (AI) mean? An AI is any machine which has capabilities you would normally
+				associate with an intelligent being. AI is often divided into two categories; strong and weak. A strong (or true) AI
+				is a machine that is at least as capable as a human being in all ways. Think terminator, Chappie, HAL, Wall-E, etc.
+				Obviously, there aren't any strong AIs yet. Weak AI refers to the kinds of AI we have today that
+				can perform some specialised function. Technically all modern computer hardware and software is AI, but we only
+				really refer to something as an AI if it surpasses our expectations of machines. As new kinds of AI become common
+				they start to be referred to as AI less and less. You probably wouldn't refer to a chess game as AI for example, but
+				in 1997 when IBM's chess AI <a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov" target="_blank">Deep
+				Blue beat world chess champion Gary Kasparov</a> it was considered the height of artificial intelligence.</p>
+			<br />
+			<h2>Machine Learning &amp; Symbolic AI</h2>
+			<br />
+			<p>The term <a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">machine learning</a> has been
+				thrown around a lot recently. In 1997 Tom Mitchel defined machine learning in very practical terms:</p>
+			<br />
+			<div class="code bold center">
+				<h4>
+					<span class="green">"</span>A computer program is said to learn from experience E with respect to some class of
+					tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with
+					experience E.<span class="green">"</span>
+				</h4>
+			</div>
+			<br />
+			<p>Which is just a fancy way of saying that any machine that gets better at some task with experience uses machine
+				learning. Machine learning has largely been responsible for the boom in AI applications we are seeing today.
+				More often than not machine learning simply uses statistics to work out patterns in data, and then uses these
+				patterns to make assumptions about new data that the algorithm hasn't seen yet. Machine learning has been around
+				for a while, but it wasn't until the 80s that people started to consider it a real and viable method for creating
+				AIs.</p>
+			<br />
+			<p>Before that the prevalent method for creating AIs was to use <i>symbolic AI</i>. Symbolic AI is a term you may
+				not be familiar with, but essentially it is the creation of AI through defining rules and patterns that a machine
+				must follow. In symbolic AI the engineer defines the rules of how the machine works. With machine learning the
+				engineer tells the machine to find the rules itself.</p>
+			<br />
+			<p>Most of the hype around AI recently has been from machine learning, because it has become clear that symbolic AI
+				is impractical for pushing past what we've already achieved. Defining long lists of rules to follow is a long and
+				painful process fraught with errors. It may well be impossible to write rules for every possible scenario for an
+				intelligent system. The rest of this article focuses on terms from machine learning.</p>
+			<br />
+			<h2 id="supervised-v-unsupervised">Supervised &amp; Unsupervised Machine Learning</h2>
+			<br />
+			<p>People very often break machine learning into two broad categories; supervised and unsupervised learning. At the
+				heart it, the different between these two categories is quite simple. In <i>supervised</i> learning you provide the
+				machine with the right answers for the examples it uses to learn. For instance, you may give an AI
+				pictures of cats and dogs and tell it which one is which. You could then present it with a new picture and ask
+				it whether it is of a cat or a dog. This would be supervised learning. In <i>unsupervised</i> learning you
+				provide the machine with the pictures of cats and dogs but don't tell it which ones are which. In this case
+				you might ask it to split the images into two categories and it might split them into pictures of cats and dogs,
+				or it might choose some other category like pictures taken indoors and outdoors.</p>
+			<br />
+			<p>In reality AIs often don't fall neatly into either supervised or unsupervised learning because they may use
+				algorithms from both.</p>
+			<br />
+			<h2>Clustering &amp; Anomaly Detection</h2>
+			<br />
+			<p>Clustering and anomaly detection are unsupervised learning techniques. <i>Clustering</i> is the process of taking a
+				set of things and grouping the most similar ones together. Our unsupervised learning example of grouping similar
+				photos together is exactly this, except it wouldn't have to be into two groups. It could be any number of groups.
+				<i>Anomaly detection</i> is used to find unlikely (or anomalous) data in some set of entries. Typical examples include
+				fraud &amp; hacking detection, fault detection in manufacturing, and detecting weird data for academic purposes.</p>
+			<br />
+			<div class="chart-js">
+				<canvas id="my-chart"></canvas>
+			</div>
+			<div class="info-box">Above: Normal/Gaussian distribution can be used for anomaly detection. Any 'Number of
+				Things' that falls on the far right or left of the bell curve can be considered anomalous.</div>
+			<br />
+			<h2>Classification &amp; Regression</h2>
+			<br />
+			<p>Classification and regression are terms generally used to described types of supervised learning. Classification is
+				when you try to determine whether something fits into one class of thing, or another. For example the cat and dog
+				example we used previously would be a classification algorithm. It takes pictures and <i>classifies</i>
+				them as a picture of a cat, or a dog. Regression problems on the other hand try to produce fluid values. Imagine
+				a program that you give the details of your house to. It takes the number of rooms, floors, bathrooms, en-suites,
+				as well as the size of the rooms, and the style of the house, etc. It uses those details to produce a price estimate
+				for your house. This would be a <i>regression</i> algorithm. Other examples include predicting the temperature,
+				sales of a product, or the value of stocks.</p>
+			<br />
+			<h2>Specific Learning Algorithms</h2>
+			<br />
+			<p>Supervised, unsupervised, classification, regression, clustering, and anomaly detection algorithms are all categories
+				of algorithms. There is an extensive list of specific learning algorithms each coming with their own name, pros, cons,
+				and specialist uses. One of the most highly talked about is <a href="https://en.wikipedia.org/wiki/Artificial_neural_network" target="_blank">
+				Artificial Neural Networks</a>, which are classification algorithms. Although the workings, pros, and cons of each algorithm
+				are beyond the scope of this article below is a list of common learning algorithms and which categories they fall into.</p>
+			<br />
+			<div class="code-header">Clustering</div>
+			<div class="code">
+				<span class="green">• </span>K-Means<br />
+				<span class="green">• </span>K-Nearest Neighbours<br />
+				<span class="green">• </span>Hierarchical Clustering
+			</div>
+			<div class="code-header">Anomaly Detection</div>
+			<div class="code">
+				<span class="green">• </span>Normal Distribution<br />
+				<span class="green">• </span>One Class Support Vector Machines
+			</div>
+			<br />
+			<div class="code-header">Regression</div>
+			<div class="code">
+				<span class="green">• </span>Linear Regression
+			</div>
+			<div class="code-header">Classification</div>
+			<div class="code">
+				<span class="green">• </span>Logistic Regression<br />
+				<span class="green">• </span>Support Vector Machines<br />
+				<span class="green">• </span>Artificial Neural Networks
+			</div>
+			<br />
+			<p>The above are limited to algorithms I have some basic understanding of, but there are an enormous number and
+				variety of machine learning algorithms. Some of the above can also be split into various sub-types, again
+				with their own use cases, pros, and cons.</p>
+			<br />
+			<p>I hope you've found this illuminating. At some point in the near future I would like to write up <a href="anomaly-detection">an example
+				implementation</a> of one of the above. In the mean time, if you have any questions or criticism post it in the
+				comments below.</p>
+		</article>
 		<hr />
 
 		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>

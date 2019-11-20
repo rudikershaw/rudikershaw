@@ -1,155 +1,154 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
     <head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<header th:replace="index :: header"></header>
-		<br />
-		<div class="text-container">
-			<p class="date">31/08/2015</p>
-			<p class="views"><span th:text="${article.views}"></span> views</p>
-		</div>
-		<h1>Defining an Algorithm - Part 3</h1>
-		<hr />
-		<img class="coverimg" src="/images/taocp_text3.jpg" alt="Let us formally define a computational method" />
-		<br />
+		<article>
+            <div class="text-container">
+                <p class="date">31/08/2015</p>
+                <p class="views"><span th:text="${article.views}"></span> views</p>
+            </div>
+            <h1>Defining an Algorithm - Part 3</h1>
+            <hr />
+            <img class="coverimg" src="/images/taocp_text3.jpg" alt="Let us formally define a computational method" />
+            <br />
 
-		<p>This is Part 3, the last instalment, on the Algorithms section at the beginning of the Basic Concepts chapter in the first volume of
-			The Art of Computer Programming. In the <a href="/articles/computationalmethod2">previous article</a> we covered Knuth's first example
-			of an implementation of Euclid's algorithm. But, as Knuth points out, this system doesn't restrict defined computational methods to strictly
-			effective ones, where there are a finite number of steps or where the steps can always be performed by a human being. As such, he formally
-            defines a computation method using a variation on a generic <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> that can be used for the same purpose
-            whilst keeping the defined computational method effective.</p>
-		<br />
-		<p>It's worth mentioning at this point that this whole example makes significantly more sense if you know what a
-            <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> actually <b>is</b>. A Markov algorithm is a procedure for taking
-            a string of letters and converting them to a different string of letters using an <b>ordered</b> list of rules. Each rule looks for a specific series
-            of letters and replaces them with another. We start at the top of our list of rules and work our way down. If we find one that applies we use it to
-            change some letters and move back to the top of the list of rules to go again. If we don't find one, we keep moving down the list until we either
-            find one or get to the end of the list. If you reach the bottom of the list of rules without applying any, your process is finished.  That's it.
-            To appreciate this a little better, let's run over a very simple example that will help make Knuth's example feel familiar later. Take the following
-            ordered list fo rules.</p>
-		<br />
-        <pre class="code">    <span class="orange"> 1 - </span>"u" -> "do"
-    <span class="orange"> 2 - </span>"p" -> "wn"
-    <span class="orange"> 3 - </span>"up" -> "error"</pre>
-        <br />
-        <p>Now, imagine we parse in the string of letters <b>"up"</b>. Starting at the top of our list we check our first rule (if you find a <b>"u"</b>, replace it with <b>"do"</b>), and it
-            applies so we replace the <b>"u"</b> in <b>"up"</b> with <b>"do"</b> and our result is <b>"dop"</b>. Now we start again, we check our first rule
-            but there is no <b>"u"</b>, so we move onto our second rule (if you find a <b>"p"</b>, replace it with <b>"wn"</b>) and it applies so we replace
-            our <b>"p"</b> with <b>"wn"</b> and now we have the string <b>"down"</b>. And we go again, we check our first rule and it doesn't apply, we check
-            our second rule and it doesn't apply, and we check our third rule and it doesn't apply to our new string. We have got to the end of our list and
-            applied no rules, so the process is over. We have converted the string <b>"up"</b> to the string <b>"down"</b>.</p>
-        <br />
-        <pre class="code">    <span class="orange"> 1 - </span>"up"
-    <span class="orange"> 2 - </span>"dop"
-    <span class="orange"> 3 - </span>"down"</pre>
-        <br />
-        <p>Remember how I emphasised that the <b>order</b> of the rules mattered? Well, if we were to re-arrange our rules and swap rules 1 and 3 we would end up
-            with the word <b>"error"</b> instead. Knuth's algorithm actually varies slightly from a traditional Markov algorithm, and we'll see how later. Now,
-            let's get back to the book and see how Knuth plans to ensure our new algorithm definition is effective.</p>
-        <br />
-		<h5 class="quoteblock">If we wish to restrict the notion of algorithm so that only elementary operations are involved, we can place
-            restrictions on <i>Q</i>, <i>I</i>, <i>Ω</i> and <i>f</i>, for example as follows: Let <i>A</i> be a finite set of letters, and let
-            <i>A*</i> be the set of all strings on <i>A</i> (the set of all ordered sequences <i>x<sub>1</sub>x<sub>2</sub>...x<sub>n</sub></i>,
-            where <i>n ≥ 0</i> and <i>x<sub>j</sub></i> is in <i>A</i> for <i>1 ≤ j ≤ n</i>).</h5>
-		<br />
-		<p>So we have a finite limited set of letters called <i>A</i>. And we have <i>A*</i> which contains all combinations of letters that can be made
-            with letters from <i>A</i>. Each combination of letters in <i>A*</i> is an ordered sequence that is at least <i>n</i> long, but <i>n ≥ 0</i>
-            so <i>A*</i> must also include an empty combination with no letters at all. When Knuth says "<i>x<sub>j</sub></i> is in <i>A</i> for
-            <i>1 ≤ j ≤ n</i>" what he means is that any letter(<i>x<sub>j</sub></i>) in each combination in <i>A*</i> is a letter from our set <i>A</i>. </p>
-		<br/>
-        <h5 class="quoteblock">The idea is to encode the states of the computation so that they are represented by strings of <i>A*</i>.</h5>
-        <br />
-        <p>What this means is that each string of letters in <i>A*</i> represents a state in <i>Q</i>, and so every state of our computation
-            (input, output and everything between) can be represented by a string in <i>A*</i>. You may even be able to draw a comparison to
-            the Markov algorithm we defined earlier at this point. Markov algorithms, as we said earlier, have inputs that are strings, they
-            work on strings, and then output another string.</p>
-        <br />
-        <h5 class="quoteblock">Now let <i>N</i> be a nonnegative integer and let <i>Q</i> be the set of all <i>(σ,j)</i>, where <i>σ</i> is in <i>A*</i>
-            and <i>j</i> is an integer, <i>0 ≤ j ≤ N</i>; let <i>I</i> be the subset of <i>Q</i> with <i>j = 0</i> and let <i>Ω</i> be the subset
-            with <i>j = N</i>.</h5>
-        <br />
-        <p>Now if you know in advanced that Knuth is working towards a Malkov algorithm and you understand the snippet above then we are finally
-            starting to see a glimpse of the bigger picture. <i>Q</i> is the set of all pair <i>(σ,j)</i> where <i>σ</i> is one of the strings
-            in <i>A*</i> and <i>j</i> represents the step (or the state) in the algorithm. When <i>j = 0</i> it is our input (our first step), and when <i>j = N</i>
-            it is our output (our final step). If you got back to our example algorithm then our input <b>"up"</b> would look like this <i>("up",0)</i> and our
-            output would look like this <i>("down",3)</i>.</p>
-		<br />
-        <h5 class="quoteblock">If <i>θ</i> and <i>σ</i> are strings in <i>A*</i>, we say that <i>θ</i> occurs in <i>σ</i> if it has the form <i>αθω</i>
-            for strings <i>α</i> and <i>ω</i>.</h5>
-        <br />
-        <p>Here, Knuth is simply defining what we mean when we say that one string is <b>in</b> another. It's a fairly intuitive idea that one
-            string is <b>in</b> another if it exists in the middle with strings either side. For example the string "rap" is <b>in</b> "trapped" with
-            the strings "t" and "ped" either side. At this point it is worth mentioning that a string in <i>A*</i> can have a length of <i>0</i>.
-            As such you can also say that the string "up" is <b>in</b> the string "up" with two empty strings either side.</p>
-        <br />
-        <h5 class="quoteblock">To complete our definition, let <i>f</i> be a function of the following type, defined by the strings  <i>θ<sub>j</sub>,  φ<sub>j</sub></i> and the integers  <i>a<sub>j</sub>, b<sub>j</sub></i> for  <i>0 ≤ j ≤ N</i>:<br /><br />
-            <i>f((σ,j)) = (σ,a<sub>j</sub>)</i>&nbsp;&nbsp;&nbsp;&nbsp; if <i>θ<sub>j</sub></i> does not occur in  <i>σ</i><br />
-            <i>f((σ,j)) = (αφ<sub>j</sub>ω,b<sub>j</sub>)</i>&nbsp;&nbsp;&nbsp;&nbsp; if <i>α</i> is the shortest string for which  <i>σ = αθ<sub>j</sub>ω</i><br />
-            <i>f((σ,N)) = (σ,N)</i></h5>
-        <br />
-        <p>And this is where everything comes together. Remembering that <i>j</i> is the number of the step we are performing, we can define
-            strings for <i>θ &amp; φ</i> for each step (<i>θ<sub>j</sub> &amp;  φ<sub>j</sub></i>) as well as integers <i>a &amp; b</i> for each
-            step that represent the step to move to next depending on the circumstances. The three function calls above are actually the rules
-            we talked about in our Markov algorithm, so you try to apply the first function but if <i>θ<sub>j</sub></i> <b>does</b> occur, move
-            down to the next function etc. So now we have a complex Markov algorithm with rules to fall through, but <b>also</b> steps defined with different
-            strings to check based on <i>j</i>. No amount of explaining though will help as much as going through an example. Let's take our
-            <b>"up"</b> example. First, lets declare our <i>θ, φ, a &amp; b</i> for each step <i>j</i>.</p>
-        <br />
-        <pre class="code"><table>
-                <thead>
-                <tr>
-                    <th style="width:130px;"><i><span class="orange">j - </span></i></th>
-                    <th style="width:130px;"><i><span class="orange">θ</span></i></th>
-                    <th style="width:130px;"><i><span class="orange">φ</span></i></th>
-                    <th style="width:130px;"><i><span class="orange">a</span></i></th>
-                    <th style="width:130px;"><i><span class="orange">b</span></i></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="text-align:center;">
-                    <td><i>0 - </i></td>
-                    <td><i>"u"</i></td>
-                    <td><i>"do"</i></td>
-                    <td><i>2</i></td>
-                    <td><i>1</i></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><i>1 - </i></td>
-                    <td><i>"p"</i></td>
-                    <td><i>"wn"</i></td>
-                    <td><i>2</i></td>
-                    <td><i>3</i></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><i>2 - </i></td>
-                    <td><i>"*"</i></td>
-                    <td><i>"error"</i></td>
-                    <td><i>3</i></td>
-                    <td><i>3</i></td>
-                </tr>
-                </tbody>
-            </table></pre>
-        <br />
-        <p>Now let's walk through this. We have our input <b>"up"</b> and we have our steps (<i>j</i>) defined. Look to the
-            table above to see how we've defined the strings and integers <i>θ, φ, a &amp; b</i> respectively for each step. We also
-            have the ordered rules for our Markov algorithm as defined by Knuth. We start with the state <i>("up",0)</i>, and we check the first rule. Our
-            first rule does not apply because <i>σ ("up")</i> <b>does</b> contain <i>θ<sub>0</sub> ("u")</i>. We move down to our second rule which
-            applies. We <b>do</b> have a string <i>αθ<sub>0</sub>ω</i>. <i>α</i> is an empty string <i>θ<sub>0</sub></i> is <i>"u"</i> and
-            <i>ω</i> is <i>"p"</i>. So we set our state as <i>(αφ<sub>j</sub>ω,b<sub>j</sub>)</i>, in other words we replace the <i>"u"</i>
-            with <i>"do"</i> and set our step as <i>b<sub>j</sub> ( 1 )</i>. Now we start again. We have our state <i>("dop", 1)</i> and we
-            check our first rule which does not apply because <i>"dop"</i> includes <i>θ<sub>1</sub> ("p")</i>. The second rule applies and
-            we do the same again and make our state <i>(αφ<sub>j</sub>ω,b<sub>j</sub>)</i>, which this time is <i>("down", 3)</i>. And we're done.</p>
-        <br />
-        <p>If our input string did not contain <b>"u"</b> at the beginning our first rule would have applied and taken us directly to step <i>2</i>,
-            which would have replaced the whole string with <b>"error"</b>. And that's it for the algorithms section! At the end, after the text, there are a
-            set of questions. Question 8 asks you to create a number of steps and values for <i>θ, φ, a &amp; b</i> for each step in order to implement Euclid's
-            algorithm. Hopefully that shouldn't be too difficult for you now.</p>
-        <br />
-        <p>That's it for me until next time. I hope this was helpful, and as always if you have any questions or clarifications feel free to drop me a
-            comment below. Until next time, happy reading!</p>
-        <br />
-        <br />
+            <p>This is Part 3, the last instalment, on the Algorithms section at the beginning of the Basic Concepts chapter in the first volume of
+                The Art of Computer Programming. In the <a href="/articles/computationalmethod2">previous article</a> we covered Knuth's first example
+                of an implementation of Euclid's algorithm. But, as Knuth points out, this system doesn't restrict defined computational methods to strictly
+                effective ones, where there are a finite number of steps or where the steps can always be performed by a human being. As such, he formally
+                defines a computation method using a variation on a generic <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> that can be used for the same purpose
+                whilst keeping the defined computational method effective.</p>
+            <br />
+            <p>It's worth mentioning at this point that this whole example makes significantly more sense if you know what a
+                <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> actually <b>is</b>. A Markov algorithm is a procedure for taking
+                a string of letters and converting them to a different string of letters using an <b>ordered</b> list of rules. Each rule looks for a specific series
+                of letters and replaces them with another. We start at the top of our list of rules and work our way down. If we find one that applies we use it to
+                change some letters and move back to the top of the list of rules to go again. If we don't find one, we keep moving down the list until we either
+                find one or get to the end of the list. If you reach the bottom of the list of rules without applying any, your process is finished.  That's it.
+                To appreciate this a little better, let's run over a very simple example that will help make Knuth's example feel familiar later. Take the following
+                ordered list fo rules.</p>
+            <br />
+            <pre class="code">    <span class="orange"> 1 - </span>"u" -> "do"
+        <span class="orange"> 2 - </span>"p" -> "wn"
+        <span class="orange"> 3 - </span>"up" -> "error"</pre>
+            <br />
+            <p>Now, imagine we parse in the string of letters <b>"up"</b>. Starting at the top of our list we check our first rule (if you find a <b>"u"</b>, replace it with <b>"do"</b>), and it
+                applies so we replace the <b>"u"</b> in <b>"up"</b> with <b>"do"</b> and our result is <b>"dop"</b>. Now we start again, we check our first rule
+                but there is no <b>"u"</b>, so we move onto our second rule (if you find a <b>"p"</b>, replace it with <b>"wn"</b>) and it applies so we replace
+                our <b>"p"</b> with <b>"wn"</b> and now we have the string <b>"down"</b>. And we go again, we check our first rule and it doesn't apply, we check
+                our second rule and it doesn't apply, and we check our third rule and it doesn't apply to our new string. We have got to the end of our list and
+                applied no rules, so the process is over. We have converted the string <b>"up"</b> to the string <b>"down"</b>.</p>
+            <br />
+            <pre class="code">    <span class="orange"> 1 - </span>"up"
+        <span class="orange"> 2 - </span>"dop"
+        <span class="orange"> 3 - </span>"down"</pre>
+            <br />
+            <p>Remember how I emphasised that the <b>order</b> of the rules mattered? Well, if we were to re-arrange our rules and swap rules 1 and 3 we would end up
+                with the word <b>"error"</b> instead. Knuth's algorithm actually varies slightly from a traditional Markov algorithm, and we'll see how later. Now,
+                let's get back to the book and see how Knuth plans to ensure our new algorithm definition is effective.</p>
+            <br />
+            <h5 class="quoteblock">If we wish to restrict the notion of algorithm so that only elementary operations are involved, we can place
+                restrictions on <i>Q</i>, <i>I</i>, <i>Ω</i> and <i>f</i>, for example as follows: Let <i>A</i> be a finite set of letters, and let
+                <i>A*</i> be the set of all strings on <i>A</i> (the set of all ordered sequences <i>x<sub>1</sub>x<sub>2</sub>...x<sub>n</sub></i>,
+                where <i>n ≥ 0</i> and <i>x<sub>j</sub></i> is in <i>A</i> for <i>1 ≤ j ≤ n</i>).</h5>
+            <br />
+            <p>So we have a finite limited set of letters called <i>A</i>. And we have <i>A*</i> which contains all combinations of letters that can be made
+                with letters from <i>A</i>. Each combination of letters in <i>A*</i> is an ordered sequence that is at least <i>n</i> long, but <i>n ≥ 0</i>
+                so <i>A*</i> must also include an empty combination with no letters at all. When Knuth says "<i>x<sub>j</sub></i> is in <i>A</i> for
+                <i>1 ≤ j ≤ n</i>" what he means is that any letter(<i>x<sub>j</sub></i>) in each combination in <i>A*</i> is a letter from our set <i>A</i>. </p>
+            <br/>
+            <h5 class="quoteblock">The idea is to encode the states of the computation so that they are represented by strings of <i>A*</i>.</h5>
+            <br />
+            <p>What this means is that each string of letters in <i>A*</i> represents a state in <i>Q</i>, and so every state of our computation
+                (input, output and everything between) can be represented by a string in <i>A*</i>. You may even be able to draw a comparison to
+                the Markov algorithm we defined earlier at this point. Markov algorithms, as we said earlier, have inputs that are strings, they
+                work on strings, and then output another string.</p>
+            <br />
+            <h5 class="quoteblock">Now let <i>N</i> be a nonnegative integer and let <i>Q</i> be the set of all <i>(σ,j)</i>, where <i>σ</i> is in <i>A*</i>
+                and <i>j</i> is an integer, <i>0 ≤ j ≤ N</i>; let <i>I</i> be the subset of <i>Q</i> with <i>j = 0</i> and let <i>Ω</i> be the subset
+                with <i>j = N</i>.</h5>
+            <br />
+            <p>Now if you know in advanced that Knuth is working towards a Malkov algorithm and you understand the snippet above then we are finally
+                starting to see a glimpse of the bigger picture. <i>Q</i> is the set of all pair <i>(σ,j)</i> where <i>σ</i> is one of the strings
+                in <i>A*</i> and <i>j</i> represents the step (or the state) in the algorithm. When <i>j = 0</i> it is our input (our first step), and when <i>j = N</i>
+                it is our output (our final step). If you got back to our example algorithm then our input <b>"up"</b> would look like this <i>("up",0)</i> and our
+                output would look like this <i>("down",3)</i>.</p>
+            <br />
+            <h5 class="quoteblock">If <i>θ</i> and <i>σ</i> are strings in <i>A*</i>, we say that <i>θ</i> occurs in <i>σ</i> if it has the form <i>αθω</i>
+                for strings <i>α</i> and <i>ω</i>.</h5>
+            <br />
+            <p>Here, Knuth is simply defining what we mean when we say that one string is <b>in</b> another. It's a fairly intuitive idea that one
+                string is <b>in</b> another if it exists in the middle with strings either side. For example the string "rap" is <b>in</b> "trapped" with
+                the strings "t" and "ped" either side. At this point it is worth mentioning that a string in <i>A*</i> can have a length of <i>0</i>.
+                As such you can also say that the string "up" is <b>in</b> the string "up" with two empty strings either side.</p>
+            <br />
+            <h5 class="quoteblock">To complete our definition, let <i>f</i> be a function of the following type, defined by the strings  <i>θ<sub>j</sub>,  φ<sub>j</sub></i> and the integers  <i>a<sub>j</sub>, b<sub>j</sub></i> for  <i>0 ≤ j ≤ N</i>:<br /><br />
+                <i>f((σ,j)) = (σ,a<sub>j</sub>)</i>&nbsp;&nbsp;&nbsp;&nbsp; if <i>θ<sub>j</sub></i> does not occur in  <i>σ</i><br />
+                <i>f((σ,j)) = (αφ<sub>j</sub>ω,b<sub>j</sub>)</i>&nbsp;&nbsp;&nbsp;&nbsp; if <i>α</i> is the shortest string for which  <i>σ = αθ<sub>j</sub>ω</i><br />
+                <i>f((σ,N)) = (σ,N)</i></h5>
+            <br />
+            <p>And this is where everything comes together. Remembering that <i>j</i> is the number of the step we are performing, we can define
+                strings for <i>θ &amp; φ</i> for each step (<i>θ<sub>j</sub> &amp;  φ<sub>j</sub></i>) as well as integers <i>a &amp; b</i> for each
+                step that represent the step to move to next depending on the circumstances. The three function calls above are actually the rules
+                we talked about in our Markov algorithm, so you try to apply the first function but if <i>θ<sub>j</sub></i> <b>does</b> occur, move
+                down to the next function etc. So now we have a complex Markov algorithm with rules to fall through, but <b>also</b> steps defined with different
+                strings to check based on <i>j</i>. No amount of explaining though will help as much as going through an example. Let's take our
+                <b>"up"</b> example. First, lets declare our <i>θ, φ, a &amp; b</i> for each step <i>j</i>.</p>
+            <br />
+            <pre class="code"><table>
+                    <thead>
+                    <tr>
+                        <th style="width:130px;"><i><span class="orange">j - </span></i></th>
+                        <th style="width:130px;"><i><span class="orange">θ</span></i></th>
+                        <th style="width:130px;"><i><span class="orange">φ</span></i></th>
+                        <th style="width:130px;"><i><span class="orange">a</span></i></th>
+                        <th style="width:130px;"><i><span class="orange">b</span></i></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="text-align:center;">
+                        <td><i>0 - </i></td>
+                        <td><i>"u"</i></td>
+                        <td><i>"do"</i></td>
+                        <td><i>2</i></td>
+                        <td><i>1</i></td>
+                    </tr>
+                    <tr style="text-align:center;">
+                        <td><i>1 - </i></td>
+                        <td><i>"p"</i></td>
+                        <td><i>"wn"</i></td>
+                        <td><i>2</i></td>
+                        <td><i>3</i></td>
+                    </tr>
+                    <tr style="text-align:center;">
+                        <td><i>2 - </i></td>
+                        <td><i>"*"</i></td>
+                        <td><i>"error"</i></td>
+                        <td><i>3</i></td>
+                        <td><i>3</i></td>
+                    </tr>
+                    </tbody>
+                </table></pre>
+            <br />
+            <p>Now let's walk through this. We have our input <b>"up"</b> and we have our steps (<i>j</i>) defined. Look to the
+                table above to see how we've defined the strings and integers <i>θ, φ, a &amp; b</i> respectively for each step. We also
+                have the ordered rules for our Markov algorithm as defined by Knuth. We start with the state <i>("up",0)</i>, and we check the first rule. Our
+                first rule does not apply because <i>σ ("up")</i> <b>does</b> contain <i>θ<sub>0</sub> ("u")</i>. We move down to our second rule which
+                applies. We <b>do</b> have a string <i>αθ<sub>0</sub>ω</i>. <i>α</i> is an empty string <i>θ<sub>0</sub></i> is <i>"u"</i> and
+                <i>ω</i> is <i>"p"</i>. So we set our state as <i>(αφ<sub>j</sub>ω,b<sub>j</sub>)</i>, in other words we replace the <i>"u"</i>
+                with <i>"do"</i> and set our step as <i>b<sub>j</sub> ( 1 )</i>. Now we start again. We have our state <i>("dop", 1)</i> and we
+                check our first rule which does not apply because <i>"dop"</i> includes <i>θ<sub>1</sub> ("p")</i>. The second rule applies and
+                we do the same again and make our state <i>(αφ<sub>j</sub>ω,b<sub>j</sub>)</i>, which this time is <i>("down", 3)</i>. And we're done.</p>
+            <br />
+            <p>If our input string did not contain <b>"u"</b> at the beginning our first rule would have applied and taken us directly to step <i>2</i>,
+                which would have replaced the whole string with <b>"error"</b>. And that's it for the algorithms section! At the end, after the text, there are a
+                set of questions. Question 8 asks you to create a number of steps and values for <i>θ, φ, a &amp; b</i> for each step in order to implement Euclid's
+                algorithm. Hopefully that shouldn't be too difficult for you now.</p>
+            <br />
+            <p>That's it for me until next time. I hope this was helpful, and as always if you have any questions or clarifications feel free to drop me a
+                comment below. Until next time, happy reading!</p>
+        </article>
 		<hr />
 
         <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>

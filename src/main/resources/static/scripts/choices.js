@@ -22,7 +22,7 @@ $(document).ready(function(){
         choices.hide();
         choices.each(function(){
             thisChoice = $(this);
-            if(thisChoice.attr('choice') == thisButton.text()){
+            if(thisChoice.attr('choice') === thisButton.text()){
                 thisChoice.show();
             }
         });

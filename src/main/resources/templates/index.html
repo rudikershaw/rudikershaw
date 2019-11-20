@@ -13,33 +13,27 @@
 	</head>
 	<body>
 		<header th:fragment="header">
-			<div class="container">
-				<a class="rklogo" href="/"></a>
-				<a class="sociallink" target="blank_" href="https://twitter.com/RudiKershaw"><i class="fa fa-twitter"></i></a>
-				<a class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"><i class="fa fa-linkedin"></i></a>
-				<a class="sociallink" target="blank_" href="https://github.com/rudikershaw"><i class="fa fa-github"></i></a>
-				<a class="donatelink" href="/donate">Donate</a>
-				<a class="stack-overflow-link" target="blank_" href="https://stackoverflow.com/users/2182928/rudi">
-					<img src="https://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
-				</a>
-			</div>
+			<a class="rklogo" href="/"></a>
+			<a class="sociallink" target="blank_" href="https://twitter.com/RudiKershaw"><i class="fa fa-twitter"></i></a>
+			<a class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"><i class="fa fa-linkedin"></i></a>
+			<a class="sociallink" target="blank_" href="https://github.com/rudikershaw"><i class="fa fa-github"></i></a>
+			<a class="donatelink" href="/donate">Donate</a>
+			<a class="stack-overflow-link" target="blank_" href="https://stackoverflow.com/users/2182928/rudi">
+				<img src="https://stackoverflow.com/users/flair/2182928.png?theme=dark" width="208" height="58" alt="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Rudi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+			</a>
 		</header>
-		<br />
-		<h1>Rudi Kershaw</h1>
-		<h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
-		<br />
-		<p>This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble
-		about geeky things. Geeky things might range from clever code snippets I've enjoyed, open source libraries I've appreciated, and
-		other such computery things. Or, geeky things could be latest developments in some technology sectors or science genres.</p>
-        <br />
-		<h2>My Latest Tweet</h2>
-		<div class="container" style="text-align:center;">
-			<hr style="max-width:520px;"/>
-			<a style="padding:50px;display:block;" class="twitter-timeline" href="https://twitter.com/RudiKershaw" data-widget-id="645696211949752320" data-tweet-limit="1" data-chrome="nofooter noheader noborder transparent">Latest tweet by @RudiKershaw</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			<hr style="max-width:520px"/>
+
+		<div class="view-height">
+			<div class="container">
+				<h1 class="my-name">Rudi Kershaw</h1>
+				<h2>Web &amp; Software Developer, Science Geek, and Science Enthusiast</h2>
+				<br />
+				<p>This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble
+				about geeky things. Geeky things might range from clever code snippets I've enjoyed, open source libraries I've appreciated, and
+				other such computery things. Or, geeky things could be latest developments in some technology sectors or science genres.</p>
+			</div>
 		</div>
-		<br />
+
 		<div class="black-band">
 			<a th:href="${trending.path}" class="container">
 				<img th:src="${trending.imagePath}" height="144" width="174"/>

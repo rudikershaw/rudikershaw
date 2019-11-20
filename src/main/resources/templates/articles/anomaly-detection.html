@@ -1,58 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<header th:replace="index :: header"></header>
-		<br />
-		<div class="text-container">
-			<p class="date">01/05/2017</p>
-			<p class="views"><span th:text="${article.views}"></span> views</p>
-		</div>
-		<h1 th:text="${article.name}">Anomaly Detection</h1>
-		<hr />
-		<img class="coverimg" src="/images/anomaly-detection-banner.jpg" alt="Visual Agnosia" />
-		<br />
+        <article>
+            <div class="text-container">
+                <p class="date">01/05/2017</p>
+                <p class="views"><span th:text="${article.views}"></span> views</p>
+            </div>
+            <h1 th:text="${article.name}">Anomaly Detection</h1>
+            <hr />
+            <img class="coverimg" src="/images/anomaly-detection-banner.jpg" alt="Visual Agnosia" />
+            <br />
 
-        <p>In one of my previous articles, <a href="tour-of-ai" target="_blank">A Tour of AI</a>, I promised to go over some examples of specific machine learning
-			algorithms. I recently had the opportunity to add an anomaly detection system to the <a href="http://www.cognitran.com/" target="_blank">Cognitran</a> service monitoring suite.
-			The anomaly detection system was a malicious user detection feature for finding suspicious user activity.</p>
-		<br />
-		<p>Anomaly detection is a category of <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Unsupervised Learning</a> algorithms. We use it to determine if something is <b>anomalous</b> compared with
-			previous data. Anomaly detection systems are used for tasks such as fraud detection, finding abnormal parts during manufacturing, and
-			detecting suspicious user behavior. For malicious user detection, I used <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian (Normal) distribution</a>. When thinking about
-			how Gaussian distribution is used for anomaly detection it is useful to picture a bell curve. Once you have plotted a bell curve
-			with your data you simply mark a distance (or <b>threshold</b>) from the center of your curve on each side. If new data comes in that falls outside
-			of that threshold you say that it is anomalous.</p>
-		<img class="coverimg" src="/images/normal-distribution.png" width="780" />
-		<p>Above and on the left is a bell curve with a single variable. The two red lines represent our threshold. Everything inside those lines is
-			considered normal, and everything outside (in the light blue) is an anomaly. The position we set this threshold is arbitrary. The further
-			out we push the threshold the more lenient we are in picking up odd behavior. If we added a second variable we get a 3D graph like the one on
-			the right. Our threshold is the continuous red line around the bottom of the hill. If you have more than two variables it becomes difficult
-            to visualise, but the concept is the same in four dimensional space and above.</p>
-        <br />
-        <h2>When to Use Anomaly Detection.</h2>
-        <br />
-        <p>Anomaly detection is especially useful when we have <b>few or no examples</b> of the kind of anomalies you are trying to detect in advance. It also
-            has the advantage that the anomalies we are looking for can be <b>loosely defined</b>. This means that anomaly detection will find all manner of
-            unusual results, not just highly specific circumstances. By contrast if you have access to positive and negatives examples and you are looking
-            for something very specific, then <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Supervised Learning</a> techniques are generally more useful.</p>
-        <br />
-		<h2>Means and Variances.</h2>
-		<br />
-		<p>Before we describe an implementation of Gaussian distribution we should cover the basics quickly. The <b>mean</b> (&mu;) of our values is the sum
-			of all our values divided by the total number of values. The <b>variance</b> (&delta;<sup>2</sup>) of our values is the sum of the squared difference between each
-			value and the mean, divided by the total number of values. If you have more than one variable we simply work out the mean and variance for each
-            variable separately. Below are some example methods for calculating the means and variances of a list of data with any number of variables for
-            each entry. For brevity I have not included any validation for null / number type / zero values or inconsistent array sizing, but please remember to add
-            validation to your own code.</p>
-		<br />
-        <div class="choices">
-            <ul>
-                <li class="selected">Java</li>
-                <li>Python</li>
-                <li>Octave</li>
-                <div style="clear:both;"></div>
-            </ul>
+            <p>In one of my previous articles, <a href="tour-of-ai" target="_blank">A Tour of AI</a>, I promised to go over some examples of specific machine learning
+                algorithms. I recently had the opportunity to add an anomaly detection system to the <a href="http://www.cognitran.com/" target="_blank">Cognitran</a> service monitoring suite.
+                The anomaly detection system was a malicious user detection feature for finding suspicious user activity.</p>
+            <br />
+            <p>Anomaly detection is a category of <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Unsupervised Learning</a> algorithms. We use it to determine if something is <b>anomalous</b> compared with
+                previous data. Anomaly detection systems are used for tasks such as fraud detection, finding abnormal parts during manufacturing, and
+                detecting suspicious user behavior. For malicious user detection, I used <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian (Normal) distribution</a>. When thinking about
+                how Gaussian distribution is used for anomaly detection it is useful to picture a bell curve. Once you have plotted a bell curve
+                with your data you simply mark a distance (or <b>threshold</b>) from the center of your curve on each side. If new data comes in that falls outside
+                of that threshold you say that it is anomalous.</p>
+            <img class="coverimg" src="/images/normal-distribution.png" width="780" />
+            <p>Above and on the left is a bell curve with a single variable. The two red lines represent our threshold. Everything inside those lines is
+                considered normal, and everything outside (in the light blue) is an anomaly. The position we set this threshold is arbitrary. The further
+                out we push the threshold the more lenient we are in picking up odd behavior. If we added a second variable we get a 3D graph like the one on
+                the right. Our threshold is the continuous red line around the bottom of the hill. If you have more than two variables it becomes difficult
+                to visualise, but the concept is the same in four dimensional space and above.</p>
+            <br />
+            <h2>When to Use Anomaly Detection.</h2>
+            <br />
+            <p>Anomaly detection is especially useful when we have <b>few or no examples</b> of the kind of anomalies you are trying to detect in advance. It also
+                has the advantage that the anomalies we are looking for can be <b>loosely defined</b>. This means that anomaly detection will find all manner of
+                unusual results, not just highly specific circumstances. By contrast if you have access to positive and negatives examples and you are looking
+                for something very specific, then <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Supervised Learning</a> techniques are generally more useful.</p>
+            <br />
+            <h2>Means and Variances.</h2>
+            <br />
+            <p>Before we describe an implementation of Gaussian distribution we should cover the basics quickly. The <b>mean</b> (&mu;) of our values is the sum
+                of all our values divided by the total number of values. The <b>variance</b> (&delta;<sup>2</sup>) of our values is the sum of the squared difference between each
+                value and the mean, divided by the total number of values. If you have more than one variable we simply work out the mean and variance for each
+                variable separately. Below are some example methods for calculating the means and variances of a list of data with any number of variables for
+                each entry. For brevity I have not included any validation for null / number type / zero values or inconsistent array sizing, but please remember to add
+                validation to your own code.</p>
+            <br />
+            <div class="choices">
+                <ul>
+                    <li class="selected">Java</li>
+                    <li>Python</li>
+                    <li>Octave</li>
+                    <div style="clear:both;"></div>
+                </ul>
             <pre class="code choice" choice="Java" xml:space="preserve"><span class="orange">public double</span>[] means(List&lt;<span class="orange">double</span>[]&gt; <span class="green">entries</span>) {
     <span class="orange">int</span> <span class="green">variables</span> = <span class="green">entries</span>.get(<span class="jade">0</span>).<span class="green">length</span>;
     <span class="orange">double</span>[] <span class="green">means</span> = <span class="orange">new double</span>[<span class="green">variables</span>];
@@ -121,25 +121,25 @@
 
 # The 2D/3D bell curves above were generated using octave.
 </pre>
-        </div>
-        <br />
-        <p>Now we have our means and variances for each of our variables. We can now set a threshold for determining whether future data is anomalous.
-            Unlike in our graphs we wont be determining where our threshold sits by physically drawing a line in geometric space. Instead we
-            will be estimating the <b>probability</b> of a given example using a method called <b>Density Estimation</b>. Then our threshold simply
-            becomes a probability. Future examples who's probability falls below our threshold can be determined anomalous.</p>
-        <br />
-        <h2>Density Estimation.</h2>
-        <br />
-        <p>With density estimation our goal is to estimate the probability of examples using the means and variances we calculated. Below
-            is an example of our density estimation function.</p>
-		<br />
-        <div class="choices">
-            <ul>
-                <li class="selected">Java</li>
-                <li>Python</li>
-                <li>Octave</li>
-                <div style="clear:both;"></div>
-            </ul>
+            </div>
+            <br />
+            <p>Now we have our means and variances for each of our variables. We can now set a threshold for determining whether future data is anomalous.
+                Unlike in our graphs we wont be determining where our threshold sits by physically drawing a line in geometric space. Instead we
+                will be estimating the <b>probability</b> of a given example using a method called <b>Density Estimation</b>. Then our threshold simply
+                becomes a probability. Future examples who's probability falls below our threshold can be determined anomalous.</p>
+            <br />
+            <h2>Density Estimation.</h2>
+            <br />
+            <p>With density estimation our goal is to estimate the probability of examples using the means and variances we calculated. Below
+                is an example of our density estimation function.</p>
+            <br />
+            <div class="choices">
+                <ul>
+                    <li class="selected">Java</li>
+                    <li>Python</li>
+                    <li>Octave</li>
+                    <div style="clear:both;"></div>
+                </ul>
             <pre class="code choice" choice="Java" xml:space="preserve"><span class="orange">public double</span> estimate(<span class="orange">double</span>[] <span class="green">e</span>, <span class="orange">double</span>[] <span class="green">means</span>, <span class="orange">double</span>[] <span class="green">variance</span>) {
     <span class="orange">double</span> <span class="green">density</span> = <span class="jade">1</span>;
     <span class="orange">for</span> (<span class="orange">int</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">e</span>.<span class="green">length</span>; <span class="green">i</span>++) {
@@ -166,38 +166,38 @@
         <span class="green">p</span> = <span class="green">p</span> * <span class="green">tmp</span> * exp(-(<span class="green">delta</span> / (<span class="jade">2</span> * <span class="green">variance</span>(<span class="green">i</span>))));
     <span class="orange">end</span>
 <span class="orange">end</span></pre>
-        </div>
-        <br />
-        <p>The astute amongst you will be wondering what this equation is doing that makes it approximately equivalent to finding an entry's
-            probability. If you are curious there is a description of what this does under the Wikipedia article for
-            <a href="https://en.wikipedia.org/wiki/Probability_density_function" target="_blank">probability density</a>. You can also see the
-            density estimation equation for normal distribution at the top of the <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">normal distribution</a> Wikipedia entry, described as it's probability
-            density.</p>
-        <img class="coverimg" src="/images/density-estimation.jpg" width="600" />
-        <div class="info-box">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
-            <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm" target="_blank">course on Coursera</a> by Stanford University.
-        </div>
-        <br />
-        <h2>Bringing It All Together.</h2>
-        <br />
-        <p>For Cognitran's suspicious user detection I collected records of the users' activity from our extensive logs. I
-            grouped this data by user, and split it into anonymous hour chunks. What we end up with is entries that
-            represent an hour of a user's activity. Although our implementation includes many features of users' activity,
-            lets use a simplified example with three features.</p>
-        <br />
-        <p><b><span class="green">[</span>2, 1, 28<span class="green">]</span></b> represents a <b>single user's behavior over an hour</b> with three example features / variables. From
-            left-to-right, the times the user viewed their settings, requested a password reset, and searched in
-            a document. I gathered a respectable half million entries of user behavior which were used to calculate
-            means and variance for each feature. Once the means and variance are calculated the original half million entries are not
-            required anymore, because we don't need them to calculate our density estimates.</p>
-        <br />
-        <div class="choices">
-            <ul>
-                <li class="selected">Java</li>
-                <li>Python</li>
-                <li>Octave</li>
-                <div style="clear:both;"></div>
-            </ul>
+            </div>
+            <br />
+            <p>The astute amongst you will be wondering what this equation is doing that makes it approximately equivalent to finding an entry's
+                probability. If you are curious there is a description of what this does under the Wikipedia article for
+                <a href="https://en.wikipedia.org/wiki/Probability_density_function" target="_blank">probability density</a>. You can also see the
+                density estimation equation for normal distribution at the top of the <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">normal distribution</a> Wikipedia entry, described as it's probability
+                density.</p>
+            <img class="coverimg" src="/images/density-estimation.jpg" width="600" />
+            <div class="info-box">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
+                <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm" target="_blank">course on Coursera</a> by Stanford University.
+            </div>
+            <br />
+            <h2>Bringing It All Together.</h2>
+            <br />
+            <p>For Cognitran's suspicious user detection I collected records of the users' activity from our extensive logs. I
+                grouped this data by user, and split it into anonymous hour chunks. What we end up with is entries that
+                represent an hour of a user's activity. Although our implementation includes many features of users' activity,
+                lets use a simplified example with three features.</p>
+            <br />
+            <p><b><span class="green">[</span>2, 1, 28<span class="green">]</span></b> represents a <b>single user's behavior over an hour</b> with three example features / variables. From
+                left-to-right, the times the user viewed their settings, requested a password reset, and searched in
+                a document. I gathered a respectable half million entries of user behavior which were used to calculate
+                means and variance for each feature. Once the means and variance are calculated the original half million entries are not
+                required anymore, because we don't need them to calculate our density estimates.</p>
+            <br />
+            <div class="choices">
+                <ul>
+                    <li class="selected">Java</li>
+                    <li>Python</li>
+                    <li>Octave</li>
+                    <div style="clear:both;"></div>
+                </ul>
             <pre class="code choice" choice="Java" xml:space="preserve">List&lt;<span class="orange">double</span>[]&gt; <span class="green">entries</span> =
                Arrays.asList(<span class="orange">new double</span>[]{<span class="jade">2</span>,<span class="jade">1</span>,<span class="jade">28</span>}, <span class="orange">new double</span>[]{<span class="jade">1</span>,<span class="jade">0</span>,<span class="jade">12</span>},
                              <span class="orange">new double</span>[]{<span class="jade">4</span>,<span class="jade">1</span>,<span class="jade">21</span>}, <span class="orange">new double</span>[]{<span class="jade">1</span>,<span class="jade">2</span>,<span class="jade">9</span>});
@@ -232,56 +232,55 @@ NormalDistribution <span class="green">norm</span> = <span class="orange">new</s
 estimate([<span class="jade">1</span>, <span class="jade">0</span>, <span class="jade">9</span>], <span class="green">mu</span>, <span class="green">variances</span>);
 # Estimate - 8.608462007644988e-59
 estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class="jade">0</span>], <span class="green">mu</span>, <span class="green">variances</span>);</pre>
-        </div>
-        <br />
-        <p>First we create our data. We work out the means and variances, which we use to estimate two new examples. The first new entry is a user who
-            looks at their settings once and searches in a document nine times. We estimate an approximately <b>one in three hundred</b> probability. If you
-            have three hundred users for an hour it's very likely you will see activity like this. The second entry is a user who does nothing but try
-            and reset their password fourteen times in a row. We estimate a probability of <b>one in one octodecillion</b> (that's one followed by 57 zeroes).</p>
-        <br />
-        <p>It should be pretty clear at this point that we will want to set our threshold somewhere between these two probabilities. If
-            I had to pick a number, I might start at some arbitrary low probability like one in a billion. From here we can tune it.</p>
-        <br />
-        <h2>Tuning the Machine.</h2>
-        <br />
-        <p>Tuning the system meant playing with different combinations of features and normalizing the data.
-            This ensured that the algorithm finds the kind of malicious activity we are looking for. After features
-            were finalized it came time to tune the <b>threshold</b>.</p>
-        <br />
-        <p>In an ideal world I would have extensive normal and anomalous user examples in advance. With these details
-            I could test the algorithm's precision and tune it until it identified each of the examples
-            correctly. But this is not an ideal world, so I took a different approach. From my half million entries, I split off 10k entries.
-            I trained the system against the 490k, and then used it to find anomalies in the remaining 10k. At first my threshold was too low.
-            The anomalies found showed many entries that looked reasonably normal. I lowered
-            the threshold until we had a list of anomalies that definitely looked malicious. I then repeated this process by shuffling
-            the half million and picking a different 10k <a href="https://en.wikipedia.org/wiki/Test_set" target="_blank">test set</a>.</p>
-        <br />
-        <h2>The Future.</h2>
-        <br />
-        <p>Anomalous activity flagged to an administrator can be marked as either a true positive, or a
-            false positive. This allows us to build up entries that can be used to tune the algorithm more precisely. It will
-            be possible to allow the system to learn from client specific products so that it gradually adapts a more nuanced understanding
-            of its users. Currently the system cannot understand inter-feature relationships. It should also
-            be possible to upgrade the system to use <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution" target="_blank">multivariant normal distribution</a>
-            so that it can identify correlations between features.</p>
-        <br />
-        <div class="code">
-            <span class="green">• </span>Continuous Online Learning<br />
-            <span class="green">• </span>Gathering Precision Data<br />
-            <span class="green">• </span>Automatically Adjusting Threshold<br />
-            <span class="green">• </span>Multivariant Normal Distribution
-        </div>
-        <br />
-        <p>I hope this has been useful and informative. As usual I would like to hear from you if you have any comments, which you can
-            leave at the bottom of the article. Next time I would like to go over an example implementation of a Neural Network. Until
-            then, happy learning.</p>
-        <br />
-		<br />
+            </div>
+            <br />
+            <p>First we create our data. We work out the means and variances, which we use to estimate two new examples. The first new entry is a user who
+                looks at their settings once and searches in a document nine times. We estimate an approximately <b>one in three hundred</b> probability. If you
+                have three hundred users for an hour it's very likely you will see activity like this. The second entry is a user who does nothing but try
+                and reset their password fourteen times in a row. We estimate a probability of <b>one in one octodecillion</b> (that's one followed by 57 zeroes).</p>
+            <br />
+            <p>It should be pretty clear at this point that we will want to set our threshold somewhere between these two probabilities. If
+                I had to pick a number, I might start at some arbitrary low probability like one in a billion. From here we can tune it.</p>
+            <br />
+            <h2>Tuning the Machine.</h2>
+            <br />
+            <p>Tuning the system meant playing with different combinations of features and normalizing the data.
+                This ensured that the algorithm finds the kind of malicious activity we are looking for. After features
+                were finalized it came time to tune the <b>threshold</b>.</p>
+            <br />
+            <p>In an ideal world I would have extensive normal and anomalous user examples in advance. With these details
+                I could test the algorithm's precision and tune it until it identified each of the examples
+                correctly. But this is not an ideal world, so I took a different approach. From my half million entries, I split off 10k entries.
+                I trained the system against the 490k, and then used it to find anomalies in the remaining 10k. At first my threshold was too low.
+                The anomalies found showed many entries that looked reasonably normal. I lowered
+                the threshold until we had a list of anomalies that definitely looked malicious. I then repeated this process by shuffling
+                the half million and picking a different 10k <a href="https://en.wikipedia.org/wiki/Test_set" target="_blank">test set</a>.</p>
+            <br />
+            <h2>The Future.</h2>
+            <br />
+            <p>Anomalous activity flagged to an administrator can be marked as either a true positive, or a
+                false positive. This allows us to build up entries that can be used to tune the algorithm more precisely. It will
+                be possible to allow the system to learn from client specific products so that it gradually adapts a more nuanced understanding
+                of its users. Currently the system cannot understand inter-feature relationships. It should also
+                be possible to upgrade the system to use <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution" target="_blank">multivariant normal distribution</a>
+                so that it can identify correlations between features.</p>
+            <br />
+            <div class="code">
+                <span class="green">• </span>Continuous Online Learning<br />
+                <span class="green">• </span>Gathering Precision Data<br />
+                <span class="green">• </span>Automatically Adjusting Threshold<br />
+                <span class="green">• </span>Multivariant Normal Distribution
+            </div>
+            <br />
+            <p>I hope this has been useful and informative. As usual I would like to hear from you if you have any comments, which you can
+                leave at the bottom of the article. Next time I would like to go over an example implementation of a Neural Network. Until
+                then, happy learning.</p>
+        </article>
 		<hr />
 
         <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
 
-        <script src="/scripts/choices.js"></script>
+        <script src="/scripts/choices.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">

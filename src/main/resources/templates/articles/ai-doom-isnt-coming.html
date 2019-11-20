@@ -1,160 +1,159 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 	<head th:replace="articles/computationalmethod :: head"/>
 	<body>
 		<header th:replace="index :: header"></header>
-		<br />
-		<div class="text-container">
-			<p class="date">29/07/2018</p>
-			<p class="views"><span th:text="${article.views}"></span> views</p>
-		</div>
-		<h1 th:text="${article.name}">There Is No AI Apocalypse</h1>
-		<hr />
-		<img class="coverimg" src="/images/ai-doom-isnt-coming-banner.jpg" alt="An AI Doom Isn't Coming" />
-		<br />
+		<article>
+			<div class="text-container">
+				<p class="date">29/07/2018</p>
+				<p class="views"><span th:text="${article.views}"></span> views</p>
+			</div>
+			<h1 th:text="${article.name}">There Is No AI Apocalypse</h1>
+			<hr />
+			<img class="coverimg" src="/images/ai-doom-isnt-coming-banner.jpg" alt="An AI Doom Isn't Coming" />
+			<br />
 
-		<p>Progress in AI is going to bring us interesting and exciting technologies. But, you may have heard people discussing the possible dangers we could face with AI in the future.
-			Some small but significant portion of those who you hear worrying about the future of AI, are worried about something quite specific. <b>The extinction or subjugation of the entire human race by
-			artificial intelligences</b>. It's easy to dismiss these worries as a fantasy that comes from watching Terminator too many times, but there are some very smart people who think this is a very real
-			possibility. Some big names include <a href="https://www.reddit.com/r/IAmA/comments/2tzjp7/hi_reddit_im_bill_gates_and_im_back_for_my_third/co3r3g8" target="_blank">Bill Gates</a>,
-			<a href="https://twitter.com/elonmusk/status/495759307346952192" target="_blank">Elon Musk</a>, <a href="https://www.ted.com/talks/sam_harris_can_we_build_ai_without_losing_control_over_it" target="_blank">Sam Harris</a>,
-			and the late <a href="https://www.bbc.co.uk/news/technology-30290540" target="_blank">Stephen Hawking</a> to name only a few.</p>
-		<br />
-		<p>If lots of very smart people are convinced this is a genuine problem, what is their rationale, and where did this idea come from? Although this has been a fringe concern for many decades,
-			the recent spike in attention has come from the release of a particular book. That book is 'Superintelligence' by Nick Bostrom, which became a New York Times best seller in March 2014.</p>
-		<br />
-		<p>There is no known path towards artificial general intelligence. But Nick Bostrom uses what little we do know to build a picture, make deductions, and prophecise about a future that
-			contains general AI. In exploring what this future might look like he paints a rather bleak picture of the dangers this future will face. 'Superintelligence' is a dense three hundred and
-			something page book that goes into a great deal of detail about the paths and dangers as we move towards general AI, as well as some broad strategies for dealing wth the situations he sees
-			coming.</p>
-		<br />
-		<p>A lot of thought has been put into this book. He brings in knowledge from topics such as economics, game theory, and computer science to support his argument. It is all very well thought out.
-			Fortunately, it is also probably wrong. At risk of over-simplifying his arguments, I am going to attempt to summarise some of his fears, and then go into why his thinking misses some
-			fundamentally important considerations.</p>
-		<br />
-		<h2>A Summary of his Fears</h2>
-		<br />
-		<p>Bostrom notes that we have no idea what the limit of intelligence is, and we have no reason to believe that we are anywhere near that limit. He asks us to imagine a spectrum of intelligence from
-			an insect, to us, and past us to who knows where. Imagine for a moment a being who's intelligence doesn't just dwarf our greatest thinkers, but dwarfs the entire collective intellect of all people
-			working together. This being would very obviously be a threat to us, at least if its goals were not aligned with our own.</p>
-		<br />
-		<p>The book points out that we wouldn't even need to create this intelligence ourselves. All that would be required would be an AI sufficiently general and smart that it could improve its own
-			intellect. Then each time it improves itself it would be capable of an even greater improvement the next time. This would result in what is called 'an intelligence explosion'. The explosion is
-			the central concern of the book, because it would give us no time to react. It could go from sub-human intelligence, to intellect beyond comprehension in no time at all. You may have also heard this
-			referred to as the 'singularity'.</p>
-		<br />
-		<p>If we managed to get this AI perfectly right, and aligned its goals with some perfect version of our own, it could become a benevolent god to us. But if we get it wrong, and Bostrom points out that
-			this is much more likely, we could find ourselves at the mercy of a superintelligence with a strange or unhelpful purpose.</p>
-		<br />
-		<h2>A Bad Argument</h2>
-		<br />
-		<p>Although I will get to the point soon and start telling you why this is extremely unlikely, I feel I should quickly cover a poor argument people often make for why we don't have to worry.</p>
-		<br />
-		<p>Some people say that artificial general intelligence might be impossible, but this is very clearly not true. There is a long and colourful history of people saying that certain aspects of
-			intelligence will never be possible for a machine, and people who say this are always proved wrong eventually. People have said that machines will never be able to make decisions based on conditions,
-			do general purpose calculations, play chess, interpret writing or speech, play go, pass the turing test, have conversations, etc. These are all things that machines can do now.</p>
-		<br />
-		<p>'General intelligence' doesn't have a hard definition. Until it does, there will always be a way for people to convince themselves that machines will never get
-			there. The moment you define an aspect of intelligence, or propose a particular task that would qualify as generally intelligent, that problem is usually solved. When people argue that general AI might
-			be impossible there is usually more nuance. They will often talk about emotions, goal setting, perception of self, and the hard problem, but I don't find these arguments convincing. I can't really do
-			these topics credit in such a small space. So it's about time I move onto some arguments I do find convincing.</p>
-		<br />
-		<div class="info-box"><b>Bostrom on paths to superintelligence</b><br /> "We know that blind evolutionary processes can produce human-level general intelligence, since they have already done so at least once."</div>
-		<br />
-		<h2>Why It Will All Be Fine</h2>
-		<br />
-		<p>I want to make it clear that I am not saying that there is no reason to worry at all, or that we won't get super-intelligences. There are plenty of reasons to be concerned. Additionally, I believe we
-			will eventually get general purpose super-intelligences. What I do not believe, is that improvements in AI will lead to a sudden take-over by machines. AI is not more dangerous than nuclear war. They will
-			not pose some run-away existential threat.</p>
-		<br />
-		<h2>Isaac Newton's Smart Phone</h2>
-		<br />
-		<p>'Isaac Newton's Smart Phone' is an analogy for how we tend to ignore the possible limitations of future technologies, written by <a href="https://www.technologyreview.com/s/609048/the-seven-deadly-sins-of-ai-predictions/" target="_blank">Rodney Brooks in an article for MIT Technology Review</a>.
-			Imagine taking Isaac Newton from the early 1700s and showing him a smart phone. Show him that the device produces light without fire, sound without obvious movement, records sound and light, retrieves
-			information from anywhere in the world, and creates direct links of communication between people who aren't in ear-shot. If you asked Newton how it worked, he couldn't possibly know. It would be
-			indistinguishable from magic to him. If you asked him what other properties the phone might have, he might think it would last forever. He would have no concept of electricity, or batteries. He might think it
-			could turn lead into gold. Newton believed science was on the cusp of solving that problem. Something as incredible as this device must be able to do it.</p>
-		<br />
-		<p>Transmutation, the process of changing one chemical or element into another, is a great example of this phenomenon. We have been searching for the ability to change one thing into another from as early as 3500 BC.
-			Newton spent a great deal of time contemplating how lead might be turned into gold and might have worried that this ability, in the hands of the wrong people, could result in the de-valuing of English currency.
-			He was a member of UK Parliament and Master of the Royal Mint, and alchemy like this was banned during his lifetime. Transmutation is a solved problem now. But it has not de-valued gold even a
-			little. This is because the energy required to turn lead into gold through nuclear transmutation is much more valuable than the gold it produces.</p>
-		<br />
-		<p>This worry about de-valuing might seem familiar if you have read Bostrom's book. He devotes many pages to worrying about what might happen to our economy if we create super-intelligences that can
-			produce value in amounts that dwarf human labor. Ultimately this concern is the same as Newton's concerns about transmutation. Without understanding how a technology will work, it is easy to assume it will work
-			like magic with no limitations. So if artificial super-intelligence will have limitations (and they will), what kind of limitations will they have?</p>
-		<br />
-		<h2>The Problem with Hard Problems</h2>
-		<br />
-		<p>One limitation super-intelligences are almost certain to have is that hard problems will still be hard for them. That is a bit of a glib remark, so allow me to explain myself. In computer science we have a
-			concept of '<a href="https://en.wikipedia.org/wiki/NP_(complexity)" target="_blank">Non-Polynomial</a>' problems, or 'hard problems' (not to be confused with the
-			<a href="https://en.wikipedia.org/wiki/Hard_problem_of_consciousness" target="_blank">hard problem of consciousness</a> in philosophy). Hard problems are ones that cannot be solved without a certain level of effort.
-			This level of effort scales exponentially with the scope of hard problems. That's probably a little difficult to visualise without an example. The stereotypical example of a hard problem is 'The Travelling Salesman'
-			problem.</p>
-		<br />
-		<p>Imagine a travelling salesman. He has three locations to visit and wants to find which order will keep his distance travelled lowest. The only <b>perfect</b> way to do this is to find all possible routes, measure the
-			distance travelled for each, and then pick the shortest. With three locations there are six possible routes. It is trivial for our salesman to work out the shortest route. But if they have four destinations
-			there are 24 routes to check. Just one extra location makes it quite a lot more time consuming. Five destinations leaves us with 120 routes, six becomes 720, seven becomes 5040. This quickly gets out of our
-			control.</p>
-		<br />
-		<p>Computers can obviously find the shortest routes for many more destinations than humans can. But, to get the shortest route for 16 destinations a computer has to check <b>20 trillion routes</b>. Even computers
-			struggle with those kinds of numbers. A super-intelligence, no matter how smart, will still have trouble with hard problems. What-ever goals a general AI might have, it is likely to encounter hard problems.
-			Additionally, it is likely that some aspects of intelligence are hard problems themselves. In this instance the superior speed of electronic components over biological neurones will only offer modest returns.</p>
-		<br />
-		<h2>The Intelligence Explosion</h2>
-		<br />
-		<p>Not only would future super-intelligences be at the mercy of hard problems, but the <b>path</b> to creating super-intelligences may also be subject to them. The idea of run-away general AIs relies very heavily on the
-			notion of a singularity, or intelligence explosion. Without an intelligence-explosion there would be ample time to deal with any issues we face with the goals, objectives, behavior, etc of our AIs. Do we have any reason
-			to believe this explosion is possible or likely? The main argument used to support the possibility of a singularity, is a generalization of Moore's law. This generalization states that technology improves at an exponential
-			rate. But, there are a number of problems with this.</p>
-		<br />
-		<p>The first problem is with assuming that progress in technology as a whole, or in some specific field, can be generalised to AI specifically. The progress of technology is substantially under-estimated.
-			But this is not true of general AI specifically. In 1950, Alan turing predicted we would have general AI by the year 2000. In 1965 Herbert A. Simon predicted we would have it within 20 years. In 1970 Marvin Minsky said we would have it
-			within a generation. You can also see this in Bostrom's book where he predicts that certain problems are <b>AI Complete</b>. AI Complete problems are those that would require a general artificial intelligence to solve. Bostrom
-			predicts that Go and fluent conversations will both require general AIs. Google's <a href="https://en.wikipedia.org/wiki/AlphaGo#Match_against_Lee_Sedol" target="_blank">Alpha Go</a> beat one of the worlds
-			best go players in 2016, and Google have shown demos of <a href="https://www.youtube.com/watch?v=lXUQ-DdSDoE" target="_blank">conversational AIs</a> this year, but there are no general AIs in sight.</p>
-		<br />
-		<p>The second problem, which I think is a bigger issue, is that the Moore's law generalization can be used as an argument for why we <b>won't</b> see a singularity. If your argument is that the progress of technology moves at
-			some predictable specified rate, then AI should follow exactly that pattern too. Which is to say that there is no reason to believe it will out-pace us, only that it will keep up with our other technologies. If we have other
-			technologies as powerful and useful as general AI then it will not have any means of exploiting us.</p>
-		<br />
-		<p>Ultimately, if there is no explosion then there is very little reason to worry. If we create a general intelligent AI, we can examine it, work with it, correct faulty behaviors, and so on in our own time. Without the
-			singularity we would have ample time to make sure we get it right. And if we start getting it wrong, the dangers will be modest and slow down progress until they are solved.</p>
-		<br />
-		<h2>General Intelligence</h2>
-		<br />
-		<p>This fear of an AI take-over is largely limited to <b>general</b> super-intelligence. The best chess AI is no threat to us because it only knows chess. It does not understand anything else. In fact, it does not even
-			understand chess except in a very limited way. In order for an AI to be a risk to all life it must have numerous general abilities, such as understanding of 3-dimensional space, time, language, self-preservation, forward
-			planning, and a variety of other human-like traits. This poses a problem for belief in an AI take-over.</p>
-		<br />
-		<p>There is good reason to believe that specialising in things gives you an advantage. All other things being equal, AIs that generalise to more aspects of intelligence lose their advantage in more specialised tasks. This is
-			important because it means that the easily controllable specialised AIs we create will always have advantages over any general AI we might produce in the future. Take an example Bostrom uses in the book, where we try to
-			physically contain a potentially dangerous artificial general super-intelligence. Bostrom argues it's unlikely we would be smart enough to build physical constraints that would hold it, by virtue of its vastly
-			superior intellect. But, if we are capable of building an AI of this nature, we will also have specialised AIs available that can be put to constraining it themselves. These AIs will have significant advantages over any
-			AI general enough to pose a risk to us.</p>
-		<br />
-		<p>Bostrom's fear of run-away AIs is exaggerated by a belief that the intelligence of a system is not related in any way to the goals of that system. He calls this the 'Orthogonality Thesis'. He gives a satirical example
-			by describing a '<a href="https://wiki.lesswrong.com/wiki/Paperclip_maximizer" target="_blank">paperclip maximising AI</a>', who's sole goal is to maximise the number of paperclips in the universe. This AI deduces that
-			being smart would be helpful to its cause, produces an intelligence explosion in itself, and then wipes out all life in the pursuit of using all the worlds resources to create paperclip factories.</p>
-		<br />
-		<div class="info-box"><b>Bostrom's Orthogonality Thesis</b><br /> "Intelligence and final goals are orthogonal: More or less any level of intelligence could in principle be combined with more or less any final goal."</div>
-		<br />
-		<p>The orthogonality thesis must be true in order for examples like the paperclip maximiser to be possible, but I don't believe it is true. If we are to create general intelligence, there is a good chance it will
-			have to be 'learned'. Systems that learn require pre-specified goals in order to learn. More generally intelligent systems will require more general goals. You can see this in nature. Human beings have many built in goals
-			such as avoiding fear, pain, hunger, social isolation, etc. These avoidance goals are what defines our behavior for self-preservation. An AI lacking these more general goals would also lack a capacity for self preservation.</p>
-		<br />
-		<p>An AI with one goal that overwhelms all others, such as maximising paperclip production, will never be generally intelligent.</p>
-		<br />
-		<h2>In Summary</h2>
-		<br />
-		<p>This is not an exhaustive piece. It does not cover all of Bostrom's concerns or all the nuances in the book, but It covers what I believe to be the salient points. The fear of an AI apocalypse is based on a series
-			of massively over-simplified deductions, slippery slope fallacies, appeals to probability, and un-falsifiable statements. With so little evidence for a future of this kind you might hear supporters say 'But if you're wrong,
-			the human race is at risk! It should be taken seriously regardless of its likelihood'. This is just a variant on something known as '<a href="https://en.wikipedia.org/wiki/Pascal%27s_Wager" target="_blank">Pascals Wager</a>', a widely
-			dis-credited argument by Blaise Pascal for why we should believe in God even if he is improbable. To summarise, I will finish with a quote from Christopher Hitchens;</p>
-		<br />
-		<h4>"What can be asserted without evidence can be dismissed without evidence."</h4>
-		<br />
-		<br />
+			<p>Progress in AI is going to bring us interesting and exciting technologies. But, you may have heard people discussing the possible dangers we could face with AI in the future.
+				Some small but significant portion of those who you hear worrying about the future of AI, are worried about something quite specific. <b>The extinction or subjugation of the entire human race by
+				artificial intelligences</b>. It's easy to dismiss these worries as a fantasy that comes from watching Terminator too many times, but there are some very smart people who think this is a very real
+				possibility. Some big names include <a href="https://www.reddit.com/r/IAmA/comments/2tzjp7/hi_reddit_im_bill_gates_and_im_back_for_my_third/co3r3g8" target="_blank">Bill Gates</a>,
+				<a href="https://twitter.com/elonmusk/status/495759307346952192" target="_blank">Elon Musk</a>, <a href="https://www.ted.com/talks/sam_harris_can_we_build_ai_without_losing_control_over_it" target="_blank">Sam Harris</a>,
+				and the late <a href="https://www.bbc.co.uk/news/technology-30290540" target="_blank">Stephen Hawking</a> to name only a few.</p>
+			<br />
+			<p>If lots of very smart people are convinced this is a genuine problem, what is their rationale, and where did this idea come from? Although this has been a fringe concern for many decades,
+				the recent spike in attention has come from the release of a particular book. That book is 'Superintelligence' by Nick Bostrom, which became a New York Times best seller in March 2014.</p>
+			<br />
+			<p>There is no known path towards artificial general intelligence. But Nick Bostrom uses what little we do know to build a picture, make deductions, and prophecise about a future that
+				contains general AI. In exploring what this future might look like he paints a rather bleak picture of the dangers this future will face. 'Superintelligence' is a dense three hundred and
+				something page book that goes into a great deal of detail about the paths and dangers as we move towards general AI, as well as some broad strategies for dealing wth the situations he sees
+				coming.</p>
+			<br />
+			<p>A lot of thought has been put into this book. He brings in knowledge from topics such as economics, game theory, and computer science to support his argument. It is all very well thought out.
+				Fortunately, it is also probably wrong. At risk of over-simplifying his arguments, I am going to attempt to summarise some of his fears, and then go into why his thinking misses some
+				fundamentally important considerations.</p>
+			<br />
+			<h2>A Summary of his Fears</h2>
+			<br />
+			<p>Bostrom notes that we have no idea what the limit of intelligence is, and we have no reason to believe that we are anywhere near that limit. He asks us to imagine a spectrum of intelligence from
+				an insect, to us, and past us to who knows where. Imagine for a moment a being who's intelligence doesn't just dwarf our greatest thinkers, but dwarfs the entire collective intellect of all people
+				working together. This being would very obviously be a threat to us, at least if its goals were not aligned with our own.</p>
+			<br />
+			<p>The book points out that we wouldn't even need to create this intelligence ourselves. All that would be required would be an AI sufficiently general and smart that it could improve its own
+				intellect. Then each time it improves itself it would be capable of an even greater improvement the next time. This would result in what is called 'an intelligence explosion'. The explosion is
+				the central concern of the book, because it would give us no time to react. It could go from sub-human intelligence, to intellect beyond comprehension in no time at all. You may have also heard this
+				referred to as the 'singularity'.</p>
+			<br />
+			<p>If we managed to get this AI perfectly right, and aligned its goals with some perfect version of our own, it could become a benevolent god to us. But if we get it wrong, and Bostrom points out that
+				this is much more likely, we could find ourselves at the mercy of a superintelligence with a strange or unhelpful purpose.</p>
+			<br />
+			<h2>A Bad Argument</h2>
+			<br />
+			<p>Although I will get to the point soon and start telling you why this is extremely unlikely, I feel I should quickly cover a poor argument people often make for why we don't have to worry.</p>
+			<br />
+			<p>Some people say that artificial general intelligence might be impossible, but this is very clearly not true. There is a long and colourful history of people saying that certain aspects of
+				intelligence will never be possible for a machine, and people who say this are always proved wrong eventually. People have said that machines will never be able to make decisions based on conditions,
+				do general purpose calculations, play chess, interpret writing or speech, play go, pass the turing test, have conversations, etc. These are all things that machines can do now.</p>
+			<br />
+			<p>'General intelligence' doesn't have a hard definition. Until it does, there will always be a way for people to convince themselves that machines will never get
+				there. The moment you define an aspect of intelligence, or propose a particular task that would qualify as generally intelligent, that problem is usually solved. When people argue that general AI might
+				be impossible there is usually more nuance. They will often talk about emotions, goal setting, perception of self, and the hard problem, but I don't find these arguments convincing. I can't really do
+				these topics credit in such a small space. So it's about time I move onto some arguments I do find convincing.</p>
+			<br />
+			<div class="info-box"><b>Bostrom on paths to superintelligence</b><br /> "We know that blind evolutionary processes can produce human-level general intelligence, since they have already done so at least once."</div>
+			<br />
+			<h2>Why It Will All Be Fine</h2>
+			<br />
+			<p>I want to make it clear that I am not saying that there is no reason to worry at all, or that we won't get super-intelligences. There are plenty of reasons to be concerned. Additionally, I believe we
+				will eventually get general purpose super-intelligences. What I do not believe, is that improvements in AI will lead to a sudden take-over by machines. AI is not more dangerous than nuclear war. They will
+				not pose some run-away existential threat.</p>
+			<br />
+			<h2>Isaac Newton's Smart Phone</h2>
+			<br />
+			<p>'Isaac Newton's Smart Phone' is an analogy for how we tend to ignore the possible limitations of future technologies, written by <a href="https://www.technologyreview.com/s/609048/the-seven-deadly-sins-of-ai-predictions/" target="_blank">Rodney Brooks in an article for MIT Technology Review</a>.
+				Imagine taking Isaac Newton from the early 1700s and showing him a smart phone. Show him that the device produces light without fire, sound without obvious movement, records sound and light, retrieves
+				information from anywhere in the world, and creates direct links of communication between people who aren't in ear-shot. If you asked Newton how it worked, he couldn't possibly know. It would be
+				indistinguishable from magic to him. If you asked him what other properties the phone might have, he might think it would last forever. He would have no concept of electricity, or batteries. He might think it
+				could turn lead into gold. Newton believed science was on the cusp of solving that problem. Something as incredible as this device must be able to do it.</p>
+			<br />
+			<p>Transmutation, the process of changing one chemical or element into another, is a great example of this phenomenon. We have been searching for the ability to change one thing into another from as early as 3500 BC.
+				Newton spent a great deal of time contemplating how lead might be turned into gold and might have worried that this ability, in the hands of the wrong people, could result in the de-valuing of English currency.
+				He was a member of UK Parliament and Master of the Royal Mint, and alchemy like this was banned during his lifetime. Transmutation is a solved problem now. But it has not de-valued gold even a
+				little. This is because the energy required to turn lead into gold through nuclear transmutation is much more valuable than the gold it produces.</p>
+			<br />
+			<p>This worry about de-valuing might seem familiar if you have read Bostrom's book. He devotes many pages to worrying about what might happen to our economy if we create super-intelligences that can
+				produce value in amounts that dwarf human labor. Ultimately this concern is the same as Newton's concerns about transmutation. Without understanding how a technology will work, it is easy to assume it will work
+				like magic with no limitations. So if artificial super-intelligence will have limitations (and they will), what kind of limitations will they have?</p>
+			<br />
+			<h2>The Problem with Hard Problems</h2>
+			<br />
+			<p>One limitation super-intelligences are almost certain to have is that hard problems will still be hard for them. That is a bit of a glib remark, so allow me to explain myself. In computer science we have a
+				concept of '<a href="https://en.wikipedia.org/wiki/NP_(complexity)" target="_blank">Non-Polynomial</a>' problems, or 'hard problems' (not to be confused with the
+				<a href="https://en.wikipedia.org/wiki/Hard_problem_of_consciousness" target="_blank">hard problem of consciousness</a> in philosophy). Hard problems are ones that cannot be solved without a certain level of effort.
+				This level of effort scales exponentially with the scope of hard problems. That's probably a little difficult to visualise without an example. The stereotypical example of a hard problem is 'The Travelling Salesman'
+				problem.</p>
+			<br />
+			<p>Imagine a travelling salesman. He has three locations to visit and wants to find which order will keep his distance travelled lowest. The only <b>perfect</b> way to do this is to find all possible routes, measure the
+				distance travelled for each, and then pick the shortest. With three locations there are six possible routes. It is trivial for our salesman to work out the shortest route. But if they have four destinations
+				there are 24 routes to check. Just one extra location makes it quite a lot more time consuming. Five destinations leaves us with 120 routes, six becomes 720, seven becomes 5040. This quickly gets out of our
+				control.</p>
+			<br />
+			<p>Computers can obviously find the shortest routes for many more destinations than humans can. But, to get the shortest route for 16 destinations a computer has to check <b>20 trillion routes</b>. Even computers
+				struggle with those kinds of numbers. A super-intelligence, no matter how smart, will still have trouble with hard problems. What-ever goals a general AI might have, it is likely to encounter hard problems.
+				Additionally, it is likely that some aspects of intelligence are hard problems themselves. In this instance the superior speed of electronic components over biological neurones will only offer modest returns.</p>
+			<br />
+			<h2>The Intelligence Explosion</h2>
+			<br />
+			<p>Not only would future super-intelligences be at the mercy of hard problems, but the <b>path</b> to creating super-intelligences may also be subject to them. The idea of run-away general AIs relies very heavily on the
+				notion of a singularity, or intelligence explosion. Without an intelligence-explosion there would be ample time to deal with any issues we face with the goals, objectives, behavior, etc of our AIs. Do we have any reason
+				to believe this explosion is possible or likely? The main argument used to support the possibility of a singularity, is a generalization of Moore's law. This generalization states that technology improves at an exponential
+				rate. But, there are a number of problems with this.</p>
+			<br />
+			<p>The first problem is with assuming that progress in technology as a whole, or in some specific field, can be generalised to AI specifically. The progress of technology is substantially under-estimated.
+				But this is not true of general AI specifically. In 1950, Alan turing predicted we would have general AI by the year 2000. In 1965 Herbert A. Simon predicted we would have it within 20 years. In 1970 Marvin Minsky said we would have it
+				within a generation. You can also see this in Bostrom's book where he predicts that certain problems are <b>AI Complete</b>. AI Complete problems are those that would require a general artificial intelligence to solve. Bostrom
+				predicts that Go and fluent conversations will both require general AIs. Google's <a href="https://en.wikipedia.org/wiki/AlphaGo#Match_against_Lee_Sedol" target="_blank">Alpha Go</a> beat one of the worlds
+				best go players in 2016, and Google have shown demos of <a href="https://www.youtube.com/watch?v=lXUQ-DdSDoE" target="_blank">conversational AIs</a> this year, but there are no general AIs in sight.</p>
+			<br />
+			<p>The second problem, which I think is a bigger issue, is that the Moore's law generalization can be used as an argument for why we <b>won't</b> see a singularity. If your argument is that the progress of technology moves at
+				some predictable specified rate, then AI should follow exactly that pattern too. Which is to say that there is no reason to believe it will out-pace us, only that it will keep up with our other technologies. If we have other
+				technologies as powerful and useful as general AI then it will not have any means of exploiting us.</p>
+			<br />
+			<p>Ultimately, if there is no explosion then there is very little reason to worry. If we create a general intelligent AI, we can examine it, work with it, correct faulty behaviors, and so on in our own time. Without the
+				singularity we would have ample time to make sure we get it right. And if we start getting it wrong, the dangers will be modest and slow down progress until they are solved.</p>
+			<br />
+			<h2>General Intelligence</h2>
+			<br />
+			<p>This fear of an AI take-over is largely limited to <b>general</b> super-intelligence. The best chess AI is no threat to us because it only knows chess. It does not understand anything else. In fact, it does not even
+				understand chess except in a very limited way. In order for an AI to be a risk to all life it must have numerous general abilities, such as understanding of 3-dimensional space, time, language, self-preservation, forward
+				planning, and a variety of other human-like traits. This poses a problem for belief in an AI take-over.</p>
+			<br />
+			<p>There is good reason to believe that specialising in things gives you an advantage. All other things being equal, AIs that generalise to more aspects of intelligence lose their advantage in more specialised tasks. This is
+				important because it means that the easily controllable specialised AIs we create will always have advantages over any general AI we might produce in the future. Take an example Bostrom uses in the book, where we try to
+				physically contain a potentially dangerous artificial general super-intelligence. Bostrom argues it's unlikely we would be smart enough to build physical constraints that would hold it, by virtue of its vastly
+				superior intellect. But, if we are capable of building an AI of this nature, we will also have specialised AIs available that can be put to constraining it themselves. These AIs will have significant advantages over any
+				AI general enough to pose a risk to us.</p>
+			<br />
+			<p>Bostrom's fear of run-away AIs is exaggerated by a belief that the intelligence of a system is not related in any way to the goals of that system. He calls this the 'Orthogonality Thesis'. He gives a satirical example
+				by describing a '<a href="https://wiki.lesswrong.com/wiki/Paperclip_maximizer" target="_blank">paperclip maximising AI</a>', who's sole goal is to maximise the number of paperclips in the universe. This AI deduces that
+				being smart would be helpful to its cause, produces an intelligence explosion in itself, and then wipes out all life in the pursuit of using all the worlds resources to create paperclip factories.</p>
+			<br />
+			<div class="info-box"><b>Bostrom's Orthogonality Thesis</b><br /> "Intelligence and final goals are orthogonal: More or less any level of intelligence could in principle be combined with more or less any final goal."</div>
+			<br />
+			<p>The orthogonality thesis must be true in order for examples like the paperclip maximiser to be possible, but I don't believe it is true. If we are to create general intelligence, there is a good chance it will
+				have to be 'learned'. Systems that learn require pre-specified goals in order to learn. More generally intelligent systems will require more general goals. You can see this in nature. Human beings have many built in goals
+				such as avoiding fear, pain, hunger, social isolation, etc. These avoidance goals are what defines our behavior for self-preservation. An AI lacking these more general goals would also lack a capacity for self preservation.</p>
+			<br />
+			<p>An AI with one goal that overwhelms all others, such as maximising paperclip production, will never be generally intelligent.</p>
+			<br />
+			<h2>In Summary</h2>
+			<br />
+			<p>This is not an exhaustive piece. It does not cover all of Bostrom's concerns or all the nuances in the book, but It covers what I believe to be the salient points. The fear of an AI apocalypse is based on a series
+				of massively over-simplified deductions, slippery slope fallacies, appeals to probability, and un-falsifiable statements. With so little evidence for a future of this kind you might hear supporters say 'But if you're wrong,
+				the human race is at risk! It should be taken seriously regardless of its likelihood'. This is just a variant on something known as '<a href="https://en.wikipedia.org/wiki/Pascal%27s_Wager" target="_blank">Pascals Wager</a>', a widely
+				dis-credited argument by Blaise Pascal for why we should believe in God even if he is improbable. To summarise, I will finish with a quote from Christopher Hitchens;</p>
+			<br />
+			<h4>"What can be asserted without evidence can be dismissed without evidence."</h4>
+		</article>
 		<hr />
 
 		<div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
