@@ -29,16 +29,12 @@
                 out we push the threshold the more lenient we are in picking up odd behavior. If we added a second variable we get a 3D graph like the one on
                 the right. Our threshold is the continuous red line around the bottom of the hill. If you have more than two variables it becomes difficult
                 to visualise, but the concept is the same in four dimensional space and above.</p>
-            <br />
             <h2>When to Use Anomaly Detection.</h2>
-            <br />
             <p>Anomaly detection is especially useful when we have <b>few or no examples</b> of the kind of anomalies you are trying to detect in advance. It also
                 has the advantage that the anomalies we are looking for can be <b>loosely defined</b>. This means that anomaly detection will find all manner of
                 unusual results, not just highly specific circumstances. By contrast if you have access to positive and negatives examples and you are looking
                 for something very specific, then <a href="tour-of-ai#supervised-v-unsupervised" target="_blank">Supervised Learning</a> techniques are generally more useful.</p>
-            <br />
             <h2>Means and Variances.</h2>
-            <br />
             <p>Before we describe an implementation of Gaussian distribution we should cover the basics quickly. The <b>mean</b> (&mu;) of our values is the sum
                 of all our values divided by the total number of values. The <b>variance</b> (&delta;<sup>2</sup>) of our values is the sum of the squared difference between each
                 value and the mean, divided by the total number of values. If you have more than one variable we simply work out the mean and variance for each
@@ -127,9 +123,7 @@
                 Unlike in our graphs we wont be determining where our threshold sits by physically drawing a line in geometric space. Instead we
                 will be estimating the <b>probability</b> of a given example using a method called <b>Density Estimation</b>. Then our threshold simply
                 becomes a probability. Future examples who's probability falls below our threshold can be determined anomalous.</p>
-            <br />
             <h2>Density Estimation.</h2>
-            <br />
             <p>With density estimation our goal is to estimate the probability of examples using the means and variances we calculated. Below
                 is an example of our density estimation function.</p>
             <br />
@@ -177,9 +171,7 @@
             <div class="info-box">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
                 <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm" target="_blank">course on Coursera</a> by Stanford University.
             </div>
-            <br />
             <h2>Bringing It All Together.</h2>
-            <br />
             <p>For Cognitran's suspicious user detection I collected records of the users' activity from our extensive logs. I
                 grouped this data by user, and split it into anonymous hour chunks. What we end up with is entries that
                 represent an hour of a user's activity. Although our implementation includes many features of users' activity,
@@ -241,9 +233,7 @@ estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class
             <br />
             <p>It should be pretty clear at this point that we will want to set our threshold somewhere between these two probabilities. If
                 I had to pick a number, I might start at some arbitrary low probability like one in a billion. From here we can tune it.</p>
-            <br />
             <h2>Tuning the Machine.</h2>
-            <br />
             <p>Tuning the system meant playing with different combinations of features and normalizing the data.
                 This ensured that the algorithm finds the kind of malicious activity we are looking for. After features
                 were finalized it came time to tune the <b>threshold</b>.</p>
@@ -255,9 +245,7 @@ estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class
                 The anomalies found showed many entries that looked reasonably normal. I lowered
                 the threshold until we had a list of anomalies that definitely looked malicious. I then repeated this process by shuffling
                 the half million and picking a different 10k <a href="https://en.wikipedia.org/wiki/Test_set" target="_blank">test set</a>.</p>
-            <br />
             <h2>The Future.</h2>
-            <br />
             <p>Anomalous activity flagged to an administrator can be marked as either a true positive, or a
                 false positive. This allows us to build up entries that can be used to tune the algorithm more precisely. It will
                 be possible to allow the system to learn from client specific products so that it gradually adapts a more nuanced understanding

@@ -8,6 +8,7 @@ var entryCard = null;
 var pageContainer = null;
 
 $(document).ready(function(){
+    $('div.faded-background-cover').fadeOut(2000);
     // On click for next page button.
     $('.next').click(function(){
         if(waiting || $('.next').hasClass('next-off')) return;

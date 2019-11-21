@@ -15,35 +15,29 @@ table{border-collapse:collapse;border-spacing:0}
 html {
 	font-family: 'Noto Serif', Helvetica, Arial, sans-serif;
 	text-shadow: 0 0 1px rgba(0,0,0,0.02);
+	box-sizing: border-box;
 }
 
 /* And the rest. */
 
-body {
-
-}
-
 h1 {
-	text-align: center;
 	margin-top: 10px;
 	font-size: 50px;
 }
 
 h2 {
-	text-align: center;
 	font-size: 26px;
+	margin: 25px 0 10px;
 }
 
 h3 { font-size: 24px; }
 
 h4 {
-	text-align: center;
 	font-size: 18px;
 }
 
 p {
 	font-size: 16px;
-	padding: 0 10px;
 }
 
 p > i {
@@ -83,11 +77,12 @@ a {
 header {
 	background-color: #272727;
 	border-top-color: #ED5900;
+	box-sizing: border-box;
 	border-top-width: 5px;
 	border-style: solid;
 	position: absolute;
+	padding: 5px 20px;
 	min-height: 58px;
-	padding: 5px 0;
 	width: 100%;
 	top: 0;
 }
@@ -103,7 +98,6 @@ div.footer {
 a.rklogo {
 	background-image: url("/images/RK.png");
 	background-size: cover;
-	margin-left: 5px;
 	display: block;
 	height: 58px;
 	width: 100px;
@@ -114,7 +108,7 @@ a.sociallink {
 	border-radius: 4px;
 	background: white;
     text-align: center;
-	margin-top: 25px;
+	margin-top: 28px;
 	margin-left: 8px;
     font-size: 25px;
 	display: block;
@@ -137,7 +131,7 @@ a.donatelink {
 	text-align: center;
 	border-radius: 3px;
 	font-weight: bold;
-	margin-top: 25px;
+	margin-top: 28px;
 	margin-left: 8px;
 	padding: 0 5px;
 	line-height: 2;
@@ -153,10 +147,22 @@ a.donatelink {
 	top: -5px;
 }
 
+div.faded-background-cover {
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	position: fixed;
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	left: 0;
+	top: 0;
+}
+
 div.entries.container {
     text-align: center;
 } div.entry {
-	margin: 50px 50px 0px 50px;
+	margin: 50px 50px 0 50px;
 	border-top-color: #ED5900;
     border-color: grey;
 	border-width: 1px;
@@ -194,13 +200,27 @@ div.entries.container {
 }
 
 h1.my-name {
-	margin: 0 0 20px 0;
+	margin: 0;
 	font-size: 72px;
+}
+
+h2.my-summary {
+	font-size: 42px;
+	margin: 0 0 30px 0;
+}
+
+p.my-description {
+	max-width: 600px;
 }
 
 article {
 	margin: 120px auto 50px auto;
 	max-width: 810px;
+	padding: 0 20px;
+}
+
+.article-footer {
+	text-align: center;
 }
 
 h5.quoteblock {
@@ -262,6 +282,7 @@ img.coverimg {
 .view-height {
 	height: 100vh;
 	display: flex;
+	padding: 0 20px;
 	flex-direction: column;
 	justify-content: center;
 }
@@ -369,7 +390,7 @@ a.home {
 	font-size: 40px;
 	color: white;
 	display: block;
-	padding: 10px 20px 6px;
+	padding: 8px 20px;
 	margin: 20px;
 	float: left;
 } a.home:hover {
@@ -513,7 +534,6 @@ a.close-link {
 }
 
 a.stack-overflow-link {
-	margin-right: 5px;
 	overflow: hidden;
 	float: right;
 }

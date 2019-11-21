@@ -35,9 +35,7 @@
 				<span class="green">• </span>Euler's Theorum<br />
 				<span class="green">• </span>Generating Our Keys
 			</div>
-			<br />
 			<h2>High Level Overview</h2>
-			<br />
 			<p>We start with two pairs of numbers, and we call each pair our keys. For the overview we are going to assume we already have our keys. First we take our <b>public key</b>, the pair
 				of numbers <b>(5, 14)</b>, and pass it to the person we want to be able to send us messages. They then use this key to encrypt their message. Before
 				they encrypt it however, they will have to turn the message into a number (or a list of numbers). This can be as simple as encoding each character in
@@ -54,17 +52,13 @@
 				discuss later, working out the details for decrypting the messages without the private key is almost impossible (at least in any sensible
 				amount of time). Simple right? Well maybe. If you're anything like me you will have loads of questions at this point. How do we get those
 				keys? And how exactly does that work? We'll get to that. But first there are a few concepts you'll want to understand.</p>
-			<br />
 			<h2>One Way Functions</h2>
-			<br />
 			<p>A one way function can easily compute an output from some input, but reversing the process and getting the input back from
 				the output is hard. Easy and hard are obviously relative terms, but in the context of functions we tend to mean that easy
 				processes have low <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory" target="_blank">complexity</a> and
 				hard processes have high complexity. The one way function we use in RSA is multiplying two very large prime numbers, which is
 				easy. The reverse process is very hard, and is called prime factorisation.</p>
-			<br />
 			<h2>Prime Factorisation</h2>
-			<br />
 			<p>Every number can be created as the product of a single unique combination of prime numbers. If the number is a prime number, then
 				its single unique combination of primes is simply itself. We call this unique combination a numbers
 				<a href="https://en.wikipedia.org/wiki/Prime_factor" target="_blank">prime factors</a>. Below are a few examples:</p>
@@ -82,18 +76,14 @@
 				is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity" target="_blank">very hard</a>
 				problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO" target="_blank">600,000 years</a>
 				to work out the prime factors of a 300 digit number. If you had the prime factors however, it would only take a tiny fraction of a second to multiply them.</p>
-			<br />
 			<h2>Coprimes</h2>
-			<br />
 			<p>Coprimes are numbers that share no prime factors, or are not divisible by any of the same numbers except <b>1</b>. For example
 				<b>4</b> and <b>9</b> are coprimes because the prime factors of <b>4</b> are <b>2 &times; 2</b> and the prime factors of <b>9</b>
 				are <b>3 &times; 3</b>. A prime numbers is coprime with all other numbers except those that are divisible by itself. This
 				also means that a prime number is coprime with all numbers below its value. It is also worth noting that <b>1</b> is coprime
 				to all numbers because it cannot share prime factors with other numbers (because it has none) and it is not divisible by any of
 				the same numbers except itself.</p>
-			<br />
 			<h2>Euler's Totient</h2>
-			<br />
 			<p>A number's <b>totient</b> is the number of whole positive numbers below it that do not share any prime factors. In other words
 				the totient of a number is the number of coprimes below its value. The totient of a number <b>n</b> is often written <b>&Phi;(n)</b>.
 				Working out a number's totient is a hard problem, but in RSA encryption we rely on two quirks to make it easy for us. The totient
@@ -114,18 +104,14 @@
 				<span class="orange">6</span>, <span class="orange">5</span>, <span class="orange">4</span>, <span class="orange">3</span>, <span class="orange">2</span>, <span class="orange">1</span><br />
 				The totient of 7 is 6, i.e. 7-1 because 7 is prime.
 			</div>
-			<br />
 			<h2>Euler's Theorum</h2>
-			<br />
 			<p><a href="https://en.wikipedia.org/wiki/Euler%27s_theorem" target="_blank">Euler's theorum</a> is key to understanding how RSA encryption works.
 				It explains why we can convert between our message and the encrypted version using our keys and the <b>mod</b> operator.
 				What Euler's theorum says is that if we have two coprimes <b>a</b> and <b>n</b>, the following is always true:</p>
 			<h5 class="quoteblock">a<sup>&Phi;(n)</sup> mod n = 1</h5>
 			<p>For any two coprimes <b>a</b> and <b>n</b>, <b>a</b> to the power of the totient of <b>n</b> divided by <b>n</b> leaves a remainder of one.
 				An interesting little quirk you might think, but this turns out to be extremely useful.</p>
-			<br />
 			<h2>Generating Our Keys</h2>
-			<br />
 			<p>At the beginning we described passing our <b>public key</b> to another person so that they can encrypt and send us messages. We then
 				described using our <b>private key</b> to decrypt those messages. So our public key <b>(e, n)</b> and private key <b>(d, n)</b> are both a
 				pair of values. We use the letter <b>e</b> for our public key as an abbreviation of <b>encrypt</b>, and the letter <b>d</b> in our
@@ -154,9 +140,7 @@
 				<span class="orange"> Encrypted Message C</span> = M<sup>e</sup> mod n<br />
 				<span class="orange"> Decrypted Message M</span> = C<sup>d</sup> mod n
 			</div>
-			<br />
 			<h2>Tying It All Together</h2>
-			<br />
 			<p>The point of all this is to transfer a message that cannot be read by anyone except the intended recipient. To use a common
 				metaphor, its like sending someone a lock that they can use to lock their message in a box and send it to us. But we only send
 				them the lock without the key. If anyone were to try and intercept this box on the way back to its intended recipient they would

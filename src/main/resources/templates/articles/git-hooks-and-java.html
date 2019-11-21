@@ -17,9 +17,7 @@
 				we should use them in our projects. I've tried to find best practices for using git hooks in our projects, but the only place this kind of
 				information can be found is in dribs and drabs scattered across <a href="https://stackoverflow.com/q/427207/2182928" target="_blank">Stackoverflow questions</a>.
 				I hope that this can serve as a starting point, for a more comprehensive view on the subject.</p>
-			<br />
 			<h2>Why Use Git Hooks?</h2>
-			<br />
 			<p>One reason, is to automate something you do every time you perform a certain action in Git. For instance running a build when changes are received
 				on a given branch. However, these kinds of tasks are usually solved by tools built for purpose. For example Jenkins, Travis CI, Github
 				actions, etc.</p>
@@ -35,9 +33,7 @@
 			<p>What about with a validating hook in place to provide early feedback? Your project has a standard commit messages format, and
 				you've done an early commit on your branch wrong. The commit-msg hook stops the commit, immediately flags your commit message as incorrect, and asks
 				you to try again. Done. Early regular feedback stops you making work for yourself, and you learn not to make that mistake much quicker.</p>
-			<br />
 			<h2>Managing Your Hooks</h2>
-			<br />
 			<p>Let's say you're convinced and you want to add some hooks. How should we organise them? Makes sense to keep them in your project's Git repo so you can
 				track changes to them. But what if you need to use them across multiple repositories? And how will you get the client side hooks installed for everyone
 				working on the project?</p>
@@ -45,9 +41,7 @@
 			<p>Hooks should be managed the same way any good code should be. They should be a dependency of your project, pulled in and installed/updated when you build
 				your application. Let's go through an example Java setup using Maven as our build tool. Full disclosure: I wrote one plugin and the client side
 				Git hooks library used in the example that follows. So it might be worth checking to see if there is anything better suited for your needs.</p>
-			<br />
 			<h2>A Java &amp; Maven Example</h2>
-			<br />
 			<p>First we're going to need a git repository for our own hooks, or a standard library of hooks. We're not going to go into writing the hooks themselves.
 				There are plenty of resources out there for that. So for our example we will use my small configurable library of
 				<a href="https://github.com/rudikershaw/client-git-hooks" target="_blank">client side git hooks</a>.</p>
@@ -158,9 +152,7 @@
 <span class="green">rudi@XPS</span>:<span class="jade">~/projects/rudikershaw.com$</span> git commit -m "wat"
 Commit message does not adhere to '(\w+\s){3,}(\w+\.)', try again.
 <span class="green">rudi@XPS</span>:<span class="jade">~/projects/rudikershaw.com$</span></pre>
-			<br />
 			<h2>To Summarise</h2>
-			<br />
 			<p>It seems strange that where-ever we find explanations or tutorials online on git hooks, they never mention how we should manage the
 				development and maintenance of these hooks. They rarely even mention how to get them out to everyone. The
 				<a href="https://www.atlassian.com/git/tutorials/git-hooks" target="_blank">Atlassian documentation</a> on git hooks even goes so
