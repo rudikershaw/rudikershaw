@@ -49,7 +49,14 @@
 						<p class="twitter-handle">
 							<b>Rudi Kershaw</b>
 							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.createdAt, 'MMM dd')}"></span></span></p>
-						<p th:text="${tweet.text}"></p>
+						<p class="tweet-text" th:text="${tweet.text}"></p>
+						<br />
+						<div class="flex-row">
+							<i class="fa fa-comment-o"></i>
+							<i class="fa fa-retweet"></i>
+							<i class="fa fa-heart-o"></i>
+							<i class="fa fa-external-link"></i>
+						</div>
 					</div>
 				</a>
 			</div>
@@ -65,13 +72,14 @@
 				</a>
 
 			</div>
-			<div>
+			<div class="latest-commits">
 				<h2>Latest Commits</h2>
-
-			</div>
-			<div>
-				<h2>Latest Stackoverflow</h2>
-
+				<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
+				<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
+				<div class="calendar">
+					Loading Github contributions.
+				</div>
+				<script> new GitHubCalendar(".calendar", "rudikershaw");</script>
 			</div>
 		</div>
 

@@ -301,7 +301,6 @@ img.coverimg {
 .flex-row > div {
 	text-align: center;
 	margin: 30px 10px;
-	width: 430px;
 }
 
 .flex-row > div .entry {
@@ -334,8 +333,17 @@ img.coverimg {
 }
 
 .tweet .tweet-body {
-	max-width: 345px;
+	max-width: 400px;
 	min-width: 285px;
+}
+
+.tweet .tweet-text {
+	min-height: 80px;
+}
+
+.tweet .flex-row {
+	justify-content: space-between;
+	margin-right: 20px;
 }
 
 .tweet .twitter-handle {
@@ -346,8 +354,13 @@ img.coverimg {
 	word-spacing: 2px;
 }
 
+div.calendar {
+	width: auto;
+}
 
-
+div.calendar div.position-relative {
+	padding: 20px;
+}
 
 .container {
 	min-height: 30px;
@@ -691,6 +704,12 @@ a.stack-overflow-link > img {
         margin: auto;
         float: none;
     }
+}
+
+@media (max-width: 850px) {
+	div.latest-commits {
+		display: none;
+	}
 }
 
 /* Feature - Whichpet specific styling. */
