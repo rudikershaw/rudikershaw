@@ -41,15 +41,33 @@
 		</div>
 
 		<div class="flex-row">
+			<div class="latest-commits">
+				<h2>Latest Commits</h2>
+				<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
+				<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
+				<div class="calendar">
+					Loading Github contributions.
+				</div>
+				<script>
+				new GitHubCalendar(".calendar", "rudikershaw", {
+					responsive: true,
+					summary_text: 'Summary of GitHub contributions made by <a href="https://github.com/rudikershaw" target="blank">@rudikershaw</a>'
+				});
+				</script>
+			</div>
+
 			<div>
 				<h2>Latest Tweet</h2>
-				<a class="tweet" href="https://twitter.com/RudiKershaw/with_replies">
+				<a class="tweet" th:href="${'https://twitter.com/RudiKershaw/status/' + tweet.id}">
 					<img class="profile-image" src="/images/twitter-profile-image.jpg"  alt="Twitter profile image"/>
 					<div class="tweet-body">
 						<p class="twitter-handle">
 							<b>Rudi Kershaw</b>
-							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.createdAt, 'MMM dd')}"></span></span></p>
-						<p class="tweet-text" th:text="${tweet.text}"></p>
+							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span></p>
+						<pre class="tweet-text" th:text="${tweet.text}"></pre>
+						<div class="tweet-image-container" th:if="${tweet.image != null}">
+							<img th:src="${'data:image/png;base64,' + tweet.image}" class="tweet-media-image" />
+						</div>
 						<br />
 						<div class="flex-row">
 							<i class="fa fa-comment-o"></i>
@@ -60,8 +78,8 @@
 					</div>
 				</a>
 			</div>
-			<div>
 
+			<div>
 				<h2>Latest Article</h2>
 				<a class="entry-card" th:href="${latest.path}">
 					<div class="entry">
@@ -70,16 +88,6 @@
 						<p th:text="${latest.description}">Article Description</p>
 					</div>
 				</a>
-
-			</div>
-			<div class="latest-commits">
-				<h2>Latest Commits</h2>
-				<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
-				<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
-				<div class="calendar">
-					Loading Github contributions.
-				</div>
-				<script> new GitHubCalendar(".calendar", "rudikershaw");</script>
 			</div>
 		</div>
 

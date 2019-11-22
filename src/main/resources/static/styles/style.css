@@ -164,8 +164,8 @@ div.entries.container {
     text-align: center;
 } div.entry {
 	margin: 50px 50px 0 50px;
+    border-color: #DDDDDD;
 	border-top-color: #ED5900;
-    border-color: grey;
 	border-width: 1px;
 	border-top-width: 4px;
 	display: inline-block;
@@ -321,7 +321,7 @@ img.coverimg {
 	text-align: left;
 	flex-wrap: wrap;
 	display: flex;
-	padding: 10px;
+	padding: 15px;
 	color: black;
 }
 
@@ -338,6 +338,7 @@ img.coverimg {
 }
 
 .tweet .tweet-text {
+	white-space: pre-wrap;
 	min-height: 80px;
 }
 
@@ -354,8 +355,16 @@ img.coverimg {
 	word-spacing: 2px;
 }
 
-div.calendar {
-	width: auto;
+.tweet .tweet-media-image {
+	max-width: 400px;
+}
+
+.tweet .tweet-image-container {
+	border: solid 1px #BBB;
+	border-radius: 15px;
+	max-height: 250px;
+	margin-top: 10px;
+	overflow: hidden;
 }
 
 div.calendar div.position-relative {
@@ -707,8 +716,15 @@ a.stack-overflow-link > img {
 }
 
 @media (max-width: 850px) {
-	div.latest-commits {
-		display: none;
+	div.calendar {
+		width: auto;
+	}
+}
+
+@media (max-height: 540px) {
+	.view-height {
+		margin-top: 90px;
+		height: auto;
 	}
 }
 
