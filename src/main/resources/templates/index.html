@@ -6,7 +6,7 @@
 		<meta name="description" content="My name is Rudi Kershaw and I am a science nerd, research nerd, and software developer (nerd). And this, is where I like to ramble about technical stuff." />
 		<meta name="author" content="Rudi Kershaw" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+		<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/styles/style.min.css?v=1" />
 		<link rel="shortcut icon" href="/images/RK.ico" />
 		<link href="https://designers.hubspot.com/hs-fs/hub/327485/file-2054199286-css/font-awesome.min.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
 	<body>
 		<div class="faded-background-cover"></div>
 		<header th:fragment="header">
-			<a class="rklogo" href="/"></a>
+			<a class="rklogo" href="/">RK</a>
 			<a class="sociallink" target="blank_" href="https://twitter.com/RudiKershaw"><i class="fa fa-twitter"></i></a>
 			<a class="sociallink" target="blank_" href="https://uk.linkedin.com/in/rudikershaw"><i class="fa fa-linkedin"></i></a>
 			<a class="sociallink" target="blank_" href="https://github.com/rudikershaw"><i class="fa fa-github"></i></a>
@@ -37,6 +37,41 @@
 					<li>Coursera Machine Learning</li>
 					<li>1st Dan in Tang Soo Do</li>
 				</ul>
+			</div>
+		</div>
+
+		<div class="flex-row">
+			<div>
+				<h2>Latest Tweet</h2>
+				<a class="tweet" href="https://twitter.com/RudiKershaw/with_replies">
+					<img class="profile-image" src="/images/twitter-profile-image.jpg"  alt="Twitter profile image"/>
+					<div class="tweet-body">
+						<p class="twitter-handle">
+							<b>Rudi Kershaw</b>
+							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.createdAt, 'MMM dd')}"></span></span></p>
+						<p th:text="${tweet.text}"></p>
+					</div>
+				</a>
+			</div>
+			<div>
+
+				<h2>Latest Article</h2>
+				<a class="entry-card" th:href="${latest.path}">
+					<div class="entry">
+						<h4 th:text="${latest.name}">Article Title</h4>
+						<img th:src="${latest.imagePath}" height="240" width="290" />
+						<p th:text="${latest.description}">Article Description</p>
+					</div>
+				</a>
+
+			</div>
+			<div>
+				<h2>Latest Commits</h2>
+
+			</div>
+			<div>
+				<h2>Latest Stackoverflow</h2>
+
 			</div>
 		</div>
 

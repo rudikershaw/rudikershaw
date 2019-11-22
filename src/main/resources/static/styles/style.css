@@ -15,7 +15,7 @@ table{border-collapse:collapse;border-spacing:0}
 /* And the rest. */
 
 html {
-	font-family: 'Noto Serif', Helvetica, Arial, sans-serif;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
 	text-shadow: 0 0 1px rgba(0,0,0,0.02);
 	box-sizing: border-box;
 }
@@ -96,12 +96,13 @@ div.footer {
 }
 
 a.rklogo {
-	background-image: url("/images/RK.png");
-	background-size: cover;
-	display: block;
-	height: 58px;
-	width: 100px;
+	text-decoration: none;
+	letter-spacing: -5px;
+	line-height: 0.72;
+	margin-right: 5px;
+	font-size: 75px;
 	float: left;
+	color: white;
 }
 a.sociallink {
 	transition: all .2s .05s;
@@ -201,8 +202,8 @@ div.entries.container {
 
 h1.my-name {
 	margin: 0;
-	color: #C84B00;
-	font-size: 74px;
+	color: #ED5900;
+	font-size: 80px;
 }
 
 h2.my-summary {
@@ -223,10 +224,10 @@ ul.bullets > li {
 }
 
 ul.bullets > li:before {
-	content: "▶";
+	position: relative;
 	margin: 0 8px 0 0;
 	font-size: 10px;
-	position: relative;
+	content: "▶";
 	top: -2px;
 }
 
@@ -289,6 +290,64 @@ img.coverimg {
 	height: auto;
 	width: 100%;
 }
+
+.flex-row {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.flex-row > div {
+	text-align: center;
+	margin: 30px 10px;
+	width: 430px;
+}
+
+.flex-row > div .entry {
+	margin: 0;
+}
+
+.grey {
+	color: #444;
+}
+
+
+
+.tweet {
+	align-items: flex-start;
+	border: solid 1px #DDD;
+	text-decoration: none;
+	background: white;
+	text-align: left;
+	flex-wrap: wrap;
+	display: flex;
+	padding: 10px;
+	color: black;
+}
+
+.tweet .profile-image {
+	border: solid 1px #BBB;
+	margin: 0 10px 10px 0;
+	border-radius: 50%;
+	min-width: 50px;
+}
+
+.tweet .tweet-body {
+	max-width: 345px;
+	min-width: 285px;
+}
+
+.tweet .twitter-handle {
+	margin-bottom: 6px;
+}
+
+.tweet .twitter-handle .grey {
+	word-spacing: 2px;
+}
+
+
+
 
 .container {
 	min-height: 30px;
@@ -578,9 +637,20 @@ a.stack-overflow-link > img {
     }
 
     a.rklogo {
-        height: 31px;
-        width: 50px;
+		font-size: 41px;
     }
+
+	h1.my-name {
+		font-size: 56px;
+	}
+
+	h2.my-summary {
+		font-size: 28px;
+	}
+
+	p.my-description {
+		font-size: 16px;
+	}
 
     a.sociallink {
     	margin-top: 1px;
@@ -605,6 +675,14 @@ a.stack-overflow-link > img {
     header {
         min-height: 31px;
     }
+
+	article {
+		margin: 80px auto 50px auto;
+	}
+
+	.code {
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 420px) {

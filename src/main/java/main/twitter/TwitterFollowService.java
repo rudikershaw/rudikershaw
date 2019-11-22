@@ -1,4 +1,4 @@
-package main.dynamics;
+package main.twitter;
 
 import java.util.ArrayList;
 import java.util.List;

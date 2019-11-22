@@ -13,7 +13,7 @@ public class IndexControllerTest {
     @Test
     public void testPaginatedArticlesList()
     {
-        final IndexController controller = new IndexController(null);
+        final IndexController controller = new IndexController(null, null);
 
         List<Article> articles = controller.articles(0);
         Assert.assertNotNull(articles);

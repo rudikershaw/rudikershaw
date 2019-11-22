@@ -2,6 +2,8 @@ package main;
 
 import main.dynamics.ArticleService;
 import main.dynamics.entities.Article;
+import main.twitter.TwitterService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,14 +29,20 @@ public class IndexController {
     /** Injected article service. */
     private final ArticleService articleService;
 
+    /** Injected twitter service. */
+    private final TwitterService twitterService;
+
     /**
      * Constructor used to dependency injection.
      *
      * @param injectedArticleService article service to be injected.
+     * @param injectedTwitterService twitter service to be injected.
+     *
      */
     @Autowired
-    public IndexController(final ArticleService injectedArticleService) {
+    public IndexController(final ArticleService injectedArticleService, final TwitterService injectedTwitterService) {
         this.articleService = injectedArticleService;
+        this.twitterService = injectedTwitterService;
     }
 
     /**
@@ -48,6 +56,8 @@ public class IndexController {
         final List<Article> articles = articles(0);
         model.addAttribute("all", articles);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
+        model.addAttribute("latest", articles.get(0));
+        model.addAttribute("tweet", twitterService.getMyLatestTweet());
         return PATH;
     }
 
@@ -63,7 +73,7 @@ public class IndexController {
         final int from = page < 0 ? 0 : page * ARTICLES_PER_PAGE;
         final int to = from + ARTICLES_PER_PAGE;
         if (from >= 0 && from < ARTICLES.size() && to <= (Integer.MAX_VALUE - ARTICLES_PER_PAGE)) {
-            return ARTICLES.subList(from, to > ARTICLES.size() ? ARTICLES.size() : to);
+            return ARTICLES.subList(from, Math.min(to, ARTICLES.size()));
         }
         return Collections.emptyList();
     }

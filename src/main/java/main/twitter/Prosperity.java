@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import main.dynamics.TwitterFollowService;
 import main.dynamics.entities.TwitterFollow;
 import twitter4j.Paging;
 import twitter4j.Status;
@@ -27,21 +25,8 @@ import twitter4j.auth.AccessToken;
 @Component
 class Prosperity {
 
-    /** Twitter API consumer key. */
-    @Value("${twitter.consumer.key}")
-    private String consumerKey;
-
-    /** Twitter API consumer secret. */
-    @Value("${twitter.consumer.secret}")
-    private String consumerSecret;
-
-    /** Twitter API access key. */
-    @Value("${twitter.access.key}")
-    private String accessKey;
-
-    /** Twitter API access secret. */
-    @Value("${twitter.access.secret}")
-    private String accessSecret;
+    /** Provider for Twitter API authentication details. */
+    private final AuthDetailsProvider provider;
 
     /** Injected twitter follow service. */
     private final TwitterFollowService service;
@@ -57,11 +42,14 @@ class Prosperity {
 
     /**
      * Constructor for autowiring services.
+     *
      * @param twitterFollowService twitter follow service for autowiring.
+     * @param authDetailsProvider provider for twitter authentication for autowiring.
      */
     @Autowired
-    Prosperity(final TwitterFollowService twitterFollowService) {
+    Prosperity(final TwitterFollowService twitterFollowService, final AuthDetailsProvider authDetailsProvider) {
         this.service = twitterFollowService;
+        this.provider = authDetailsProvider;
     }
 
     /**
@@ -73,14 +61,14 @@ class Prosperity {
     public void run() throws TwitterException {
         // Check that keys are set
         System.out.println("Twitter Prosperity Running");
-        if (consumerSecret.equals("fallback") || consumerKey.equals("fallback")) {
+        if (!provider.detailAvailable()) {
             return;
         }
 
         final TwitterFactory factory = new TwitterFactory();
         final Twitter twitter = factory.getInstance();
-        final AccessToken accessToken = new AccessToken(accessKey, accessSecret);
-        twitter.setOAuthConsumer(consumerKey, consumerSecret);
+        final AccessToken accessToken = provider.getAccessToken();
+        provider.setOAuthConsumer(twitter);
         twitter.setOAuthAccessToken(accessToken);
 
         final TwitterFollow latestFollow = service.getLatestFollow();
