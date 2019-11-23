@@ -53,28 +53,10 @@ public class IndexController {
      */
     @RequestMapping("/")
     public String index(final Model model) {
-        final List<Article> articles = articles(0);
-        model.addAttribute("all", articles);
+        model.addAttribute("all", ARTICLES);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
-        model.addAttribute("latest", articles.get(0));
+        model.addAttribute("latest", ARTICLES.get(0));
         model.addAttribute("tweet", twitterService.getMyLatestTweet());
         return PATH;
-    }
-
-    /**
-     * Get a page (0 based index), by number, of articles to inject into html RESTfully.
-     *
-     * @param page which page of articles to get (0 indexed).
-     * @return a list of articles in the requested page.
-     */
-    @ResponseBody
-    @RequestMapping("/list/{page}")
-    public List<Article> articles(@PathVariable final int page) {
-        final int from = page < 0 ? 0 : page * ARTICLES_PER_PAGE;
-        final int to = from + ARTICLES_PER_PAGE;
-        if (from >= 0 && from < ARTICLES.size() && to <= (Integer.MAX_VALUE - ARTICLES_PER_PAGE)) {
-            return ARTICLES.subList(from, Math.min(to, ARTICLES.size()));
-        }
-        return Collections.emptyList();
     }
 }

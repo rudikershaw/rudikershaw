@@ -42,11 +42,13 @@
 
 		<div class="flex-row">
 			<div class="latest-commits">
-				<h2>Latest Commits</h2>
+				<h3>Latest Commits</h3>
 				<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
 				<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
 				<div class="calendar">
-					Loading Github contributions.
+					<br />
+					<p>Loading Github contributions.</p><br />
+					<p>You will require a reasonably modern browser for this to load.</p>
 				</div>
 				<script>
 				new GitHubCalendar(".calendar", "rudikershaw", {
@@ -57,7 +59,7 @@
 			</div>
 
 			<div>
-				<h2>Latest Tweet</h2>
+				<h3>Latest Tweet</h3>
 				<a class="tweet" th:href="${'https://twitter.com/RudiKershaw/status/' + tweet.id}">
 					<img class="profile-image" src="/images/twitter-profile-image.jpg"  alt="Twitter profile image"/>
 					<div class="tweet-body">
@@ -80,7 +82,7 @@
 			</div>
 
 			<div>
-				<h2>Latest Article</h2>
+				<h3>Latest Article</h3>
 				<a class="entry-card" th:href="${latest.path}">
 					<div class="entry">
 						<h4 th:text="${latest.name}">Article Title</h4>
@@ -91,26 +93,17 @@
 			</div>
 		</div>
 
+		<h2 class="my-articles">My Articles</h2>
 		<div class="black-band">
 			<a th:href="${trending.path}" class="container">
-				<img th:src="${trending.imagePath}" height="144" width="174"/>
-				<div class="box-600" >
-					<h2>Most Viewed - Last 7 Days</h2>
-					<h3 th:text="${trending.name}">Article Title</h3>
-					<p th:text="${trending.description}">Article Description</p>
-				</div>
-				<div style="clear: both;"></div>
+				<img th:src="${trending.largeImagePath}" />
+				<h2>Most Viewed - Last 7 Days</h2>
+				<h3 th:text="${trending.name}">Article Title</h3>
+				<p th:text="${trending.description}">Article Description</p>
 			</a>
 		</div>
-        <div class="navigate">
-			<a class="home latest" href="/">Latest</a>
-			<div class="next-previous">
-				<a class="next"></a>
-				<a class="previous previous-off"></a>
-			</div>
-		</div>
-		<hr style="clear:both;" />
-		<div id="page" class="entries container">
+
+		<div id="page" class="entries">
 			<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
 				<div class="entry">
 					<h4 th:text="${article.name}">Article Title</h4>
@@ -119,13 +112,7 @@
 				</div>
 			</a>
 		</div>
-		<div class="navigate">
-			<div class="next-previous">
-				<a class="next"></a>
-				<a class="previous previous-off"></a>
-			</div>
-		</div>
-		<br />
+
 		<br style="clear: both;" />
 		<div class="footer" th:fragment="footer">
 			<div class="container">

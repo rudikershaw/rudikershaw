@@ -56,7 +56,8 @@ public class TwitterService {
     @Cacheable("latest-tweet")
     public LatestTweet getMyLatestTweet() {
         try {
-            final Status status = twitter.getUserTimeline(new Paging(1, 1)).stream().findAny().orElse(null);
+            final Status status = twitter.getUserTimeline(new Paging(1, 20)).stream()
+                                              .filter(s -> !s.isRetweet()).findFirst().orElse(null);
             if(status != null) {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 final MediaEntity[] mediaEntities = status.getMediaEntities();

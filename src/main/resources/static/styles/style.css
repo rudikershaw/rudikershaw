@@ -30,7 +30,10 @@ h2 {
 	margin: 25px 0 10px;
 }
 
-h3 { font-size: 24px; }
+h3 {
+	font-size: 24px;
+	margin: 20px 0 10px;
+}
 
 h4 {
 	font-size: 18px;
@@ -248,24 +251,30 @@ h5.quoteblock {
 	font-size: 20px;
 }
 
+h2.my-articles {
+	text-align: center;
+	margin-top: 70px;
+	font-size: 46px;
+}
+
 div.black-band {
 	background-color: #272727;
-	margin: 0 0 40px 0;
+	margin: 10px 0 40px 0;
 	text-align: center;
 	padding: 40px;
 	color: white;
 }
 div.black-band img {
 	border: 8px solid black;
-	display: inline-block;
+	max-height:100%;
+	max-width:100%;
 }
-div.black-band div.box-600 {
-	display: inline-block;
-	max-width: 600px;
-}
+
 div.black-band p, div.black-band h2, div.black-band h3 {
 	padding: 8px 30px;
+	max-width: 500px;
 	color: white;
+	margin: auto;
 	width: auto;
 }
 div.black-band h2 {
@@ -295,6 +304,8 @@ img.coverimg {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	/* Doubled up for IE 11 support. */
+	justify-content: space-around;
 	justify-content: space-evenly;
 }
 
@@ -383,7 +394,6 @@ div.calendar div.position-relative {
 	display: flex;
 	padding: 0 20px;
 	flex-direction: column;
-	justify-content: center;
 }
 
 .text-container {
@@ -420,6 +430,10 @@ p.views {
 	color: lightgrey;
 	overflow: auto;
 	padding: 20px;
+}
+
+.code h3 {
+	margin: 0;
 }
 
 .code ol {
@@ -549,7 +563,10 @@ a.next {
 a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 
-#page { min-height: 970px; }
+#page {
+	text-align: center;
+	margin: auto;
+}
 #waiting {
 	padding: 250px;
 	display: block;
@@ -604,7 +621,6 @@ svg.graph {
 }
 
 .search-go {
-	font-family: NewHaas, Helvetica;
 	background: #ED5900;
 	font-weight: bold;
 	font-size: 16px;
@@ -645,12 +661,12 @@ a.stack-overflow-link > img {
 
 @media (max-width: 800px) {
     div.entry {
-    	margin: 50px 25px 0px 25px;
+    	margin: 50px 25px 0 25px;
     }
 }
 
 @media (max-width: 555px) {
-    .stack-overflow-link, a.home.latest {
+    .stack-overflow-link {
         display:none;
     }
 

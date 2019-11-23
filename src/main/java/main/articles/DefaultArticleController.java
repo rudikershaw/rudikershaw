@@ -50,7 +50,7 @@ public class DefaultArticleController {
         list.add(new Article("Grokking RSA Encryption", "articles/rsa-encryption", "images/rsa-encryption.jpg", "Finally put in the effort to really understand public key encryption in the form of RSA. Hopefully this helps you too."));
         list.add(new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."));
         list.add(new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."));
-        list.add(new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe can do better."));
+        list.add(new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe we can do better."));
         //CHECKSTYLE:ON
         Collections.reverse(list);
         ARTICLES = Collections.unmodifiableList(list);
