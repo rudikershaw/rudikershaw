@@ -22,14 +22,15 @@ public class LatestTweet {
         super();
     }
 
-    /**
+    /**]
      * Constructor taking the creation date and tweet text.
      *
      * @param createdDate the date the tweet was created.
      * @param tweetText the body of the tweet's text.
+     * @param tweetId the ID of the tweet.
      */
-    public LatestTweet(Date createdDate, String tweetText, long tweetId) {
-        created = createdDate;
+    public LatestTweet(final Date createdDate, final String tweetText, final long tweetId) {
+        created = new Date(createdDate.getTime());
         text = tweetText;
         id = tweetId;
     }
@@ -40,16 +41,16 @@ public class LatestTweet {
      * @return the created date.
      */
     public Date getCreated() {
-        return created;
+        return new Date(created.getTime());
     }
 
     /**
      * Sets the date the Tweet was created.
      *
-     * @param created the created date.
+     * @param tweetCreated the created date.
      */
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setCreated(final Date tweetCreated) {
+        this.created = new Date(tweetCreated.getTime());
     }
 
     /**
@@ -64,10 +65,10 @@ public class LatestTweet {
     /**
      * Sets the text for the body of the tweet..
      *
-     * @param text the text.
+     * @param tweetText the text.
      */
-    public void setText(String text) {
-        this.text = text;
+    public void setText(final String tweetText) {
+        this.text = tweetText;
     }
 
     /**
@@ -82,10 +83,10 @@ public class LatestTweet {
     /**
      * Sets the base 64 string value of images attached to the tweet.
      *
-     * @param image the image.
+     * @param tweetImage the image.
      */
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage(final String tweetImage) {
+        this.image = tweetImage;
     }
 
     /**
@@ -100,9 +101,9 @@ public class LatestTweet {
     /**
      * Sets the ID for this Tweet.
      *
-     * @param id the link.
+     * @param tweetId the link.
      */
-    public void setId(long id) {
-        this.id = id;
+    public void setId(final long tweetId) {
+        this.id = tweetId;
     }
 }

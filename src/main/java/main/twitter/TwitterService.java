@@ -1,11 +1,11 @@
 package main.twitter;
 
-import static java.util.Arrays.asList;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.MediaType.IMAGE_GIF;
 import static org.springframework.http.MediaType.IMAGE_JPEG;
 import static org.springframework.http.MediaType.IMAGE_PNG;
 
+import java.util.Arrays;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,9 @@ import twitter4j.auth.AccessToken;
 /** Service for accessing twitter information using the Twitter4j API. */
 @Service
 public class TwitterService {
+
+    /** One minute as a number of milliseconds. */
+    private static final int ONE_MINUTE = 60000;
 
     /** Twitter object for access to Twitter4j API. */
     private final Twitter twitter;
@@ -56,9 +59,10 @@ public class TwitterService {
     @Cacheable("latest-tweet")
     public LatestTweet getMyLatestTweet() {
         try {
-            final Status status = twitter.getUserTimeline(new Paging(1, 20)).stream()
+            final int tweetsToGet = 20;
+            final Status status = twitter.getUserTimeline(new Paging(1, tweetsToGet)).stream()
                                               .filter(s -> !s.isRetweet()).findFirst().orElse(null);
-            if(status != null) {
+            if (status != null) {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 final MediaEntity[] mediaEntities = status.getMediaEntities();
                 replaceUrlsEntities(latestTweet, status.getURLEntities());
@@ -78,8 +82,8 @@ public class TwitterService {
 
     /** Evict entries from the Latest Tweet cache every 60 seconds. */
     @CacheEvict(allEntries = true, cacheNames = { "latest-tweet" })
-    @Scheduled(fixedDelay = 60000)
-    public void invalidateCache () {
+    @Scheduled(fixedDelay = ONE_MINUTE)
+    public void invalidateCache() {
         // The effect of this method is purely in the annotations.
     }
 
@@ -91,7 +95,7 @@ public class TwitterService {
      */
     private String getBase64ImageString(final String url) {
         final HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(asList(IMAGE_GIF, IMAGE_JPEG, IMAGE_PNG));
+        headers.setAccept(Arrays.asList(IMAGE_GIF, IMAGE_JPEG, IMAGE_PNG));
         HttpEntity<String> entity = new HttpEntity<>("", headers);
         final ResponseEntity<byte[]> response = new RestTemplate().exchange(url, GET, entity, byte[].class);
 

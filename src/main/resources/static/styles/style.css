@@ -393,7 +393,13 @@ div.calendar div.position-relative {
 	height: 100vh;
 	display: flex;
 	padding: 0 20px;
+	position: relative;
 	flex-direction: column;
+}
+
+.view-height .off-centre {
+	position: relative;
+	left: -100px;
 }
 
 .text-container {
@@ -737,6 +743,13 @@ a.stack-overflow-link > img {
 	}
 }
 
+@media (max-width: 900px) {
+	.view-height .off-centre {
+		position: relative;
+		left: 0;
+	}
+}
+
 @media (max-height: 540px) {
 	.view-height {
 		margin-top: 90px;
@@ -746,7 +759,8 @@ a.stack-overflow-link > img {
 
 /* Feature - Whichpet specific styling. */
 
-div.whichpet { background: #CC5A13; margin-top: 68px; color: #EEE; }
+div.whichpet { background: #ED5900; margin-top: 68px; color: #EEE; }
+div.whichpet h1, div.whichpet h2 { text-align: center; }
 div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; max-width: 550px; }
 div.whichpet select { font-size: 24px; }
 div.whichpet input[type="button"] { background: #ED5900; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; }
