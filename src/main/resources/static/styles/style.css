@@ -223,10 +223,10 @@ p.my-description {
 
 a.theres-more {
 	animation: bounce 1s 3;
-	margin: -20px 0 10px 0;
 	text-decoration: none;
+	margin-bottom: 45px;
 	text-align: center;
-	font-size: 100px;
+	font-size: 50px;
 }
 
 @keyframes bounce {
@@ -766,7 +766,7 @@ a.stack-overflow-link > img {
 	}
 }
 
-@media (max-height: 550px) {
+@media (max-height: 600px) {
 	.view-height {
 		margin-top: 90px;
 		height: auto;
