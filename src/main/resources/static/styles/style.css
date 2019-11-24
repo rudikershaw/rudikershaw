@@ -17,6 +17,7 @@ table{border-collapse:collapse;border-spacing:0}
 html {
 	font-family: 'Lato', Helvetica, Arial, sans-serif;
 	text-shadow: 0 0 1px rgba(0,0,0,0.02);
+	scroll-behavior: smooth;
 	box-sizing: border-box;
 }
 
@@ -220,6 +221,23 @@ p.my-description {
 	font-size: 20px;
 }
 
+a.theres-more {
+	animation: bounce 1s 3;
+	margin: -20px 0 10px 0;
+	text-decoration: none;
+	text-align: center;
+	font-size: 100px;
+}
+
+@keyframes bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-15px);
+	}
+}
+
 ul.bullets > li {
 	margin-top: 5px;
 	font-size: 14px;
@@ -321,8 +339,6 @@ img.coverimg {
 .grey {
 	color: #444;
 }
-
-
 
 .tweet {
 	align-items: flex-start;
@@ -750,10 +766,14 @@ a.stack-overflow-link > img {
 	}
 }
 
-@media (max-height: 540px) {
+@media (max-height: 550px) {
 	.view-height {
 		margin-top: 90px;
 		height: auto;
+	}
+
+	a.theres-more {
+		display: none;
 	}
 }
 
