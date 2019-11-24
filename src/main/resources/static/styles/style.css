@@ -118,11 +118,13 @@ div.footer {
 a.rklogo {
 	text-decoration: none;
 	letter-spacing: -5px;
+	position: relative;
 	line-height: 0.72;
 	margin-right: 5px;
-	font-size: 75px;
-	float: left;
+	font-size: 79px;
 	color: white;
+	float: left;
+	top: 1px;
 }
 a.sociallink {
 	transition: all .2s .05s;
@@ -257,7 +259,7 @@ a.theres-more {
 ul.bullets > li {
 	margin-top: 5px;
 	font-size: 14px;
-	color: #222222;
+	color: #333333;
 }
 
 ul.bullets > li:before {
