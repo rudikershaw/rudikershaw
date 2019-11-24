@@ -1,18 +1,33 @@
 /* Modified Eric Meyer's Reset CSS v2.0 */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,
-blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
-em,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,
-u,center,dl,dt,dd,fieldset,form,label,legend,table,caption,
-tbody,tfoot,thead,tr,th,td,ol,ul,li,article,aside,canvas,details,embed,figure,
-figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
+em,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,u,center,dl,dt,dd,fieldset,form,label,legend,table,caption,
+tbody,tfoot,thead,tr,th,td,ol,ul,li,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
 time,mark,audio,video{border:0;font:inherit;vertical-align:baseline;margin:0;padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body{line-height:1.2;}ol,ul{list-style:none}sup{font-size:small;}
-blockquote,q{quotes:none}
-blockquote:before,blockquote:after,q:before,q:after{content:none}
-table{border-collapse:collapse;border-spacing:0}
+body{line-height:1.2;}ol,ul{list-style:none}sup{font-size:small;}blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
 /* And the rest. */
+@font-face {
+	font-family: "Lato";
+	src: url("fonts/Lato-Regular.ttf");
+}
+@font-face {
+	font-family: "Lato";
+	src: url("fonts/Lato-Bold.ttf");
+	font-weight: bold;
+}
+@font-face {
+	font-family: "Lato";
+	src: url("fonts/Lato-Italic.ttf");
+	font-style: italic;
+}
+@font-face {
+	font-family: "Lato";
+	src: url("fonts/Lato-BoldItalic.ttf");
+	font-weight: bold;
+	font-style: italic;
+}
 
 html {
 	font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -88,6 +103,7 @@ header {
 	padding: 5px 20px;
 	min-height: 58px;
 	width: 100%;
+	z-index: 2;
 	top: 0;
 }
 
@@ -159,7 +175,7 @@ div.faded-background-cover {
 	overflow: auto;
 	height: 100%;
 	width: 100%;
-	z-index: 2;
+	z-index: 5;
 	left: 0;
 	top: 0;
 }
@@ -450,6 +466,7 @@ p.views {
 	font-family: "Courier New", Courier, monospace;
 	background-color: #383838;
 	color: lightgrey;
+	font-size: 15px;
 	overflow: auto;
 	padding: 20px;
 }
