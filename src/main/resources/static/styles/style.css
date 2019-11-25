@@ -10,21 +10,21 @@ blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-co
 /* And the rest. */
 @font-face {
 	font-family: "Lato";
-	src: url("fonts/Lato-Regular.ttf");
+	src: url("../fonts/Lato-Regular.ttf");
 }
 @font-face {
 	font-family: "Lato";
-	src: url("fonts/Lato-Bold.ttf");
+	src: url("../fonts/Lato-Bold.ttf");
 	font-weight: bold;
 }
 @font-face {
 	font-family: "Lato";
-	src: url("fonts/Lato-Italic.ttf");
+	src: url("../fonts/Lato-Italic.ttf");
 	font-style: italic;
 }
 @font-face {
 	font-family: "Lato";
-	src: url("fonts/Lato-BoldItalic.ttf");
+	src: url("../fonts/Lato-BoldItalic.ttf");
 	font-weight: bold;
 	font-style: italic;
 }
@@ -118,13 +118,11 @@ div.footer {
 a.rklogo {
 	text-decoration: none;
 	letter-spacing: -5px;
-	position: relative;
 	line-height: 0.72;
 	margin-right: 5px;
-	font-size: 79px;
+	font-size: 77px;
 	color: white;
 	float: left;
-	top: 1px;
 }
 a.sociallink {
 	transition: all .2s .05s;
@@ -184,7 +182,9 @@ div.faded-background-cover {
 
 div.entries.container {
     text-align: center;
-} div.entry {
+} a.entry-card {
+	text-decoration: none;
+}div.entry {
 	margin: 50px 50px 0 50px;
     border-color: #DDDDDD;
 	border-top-color: #ED5900;

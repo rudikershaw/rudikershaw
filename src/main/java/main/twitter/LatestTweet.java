@@ -7,7 +7,6 @@ import java.util.List;
 /** POJO for the salient Tweet details needed in the view layer. */
 public class LatestTweet {
 
-
     /** The ID for this Tweet. */
     private long id;
 
