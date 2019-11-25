@@ -65,6 +65,9 @@ public class TwitterService {
                                               .filter(s -> !s.isRetweet()).findFirst().orElse(null);
             if (status != null) {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
+                latestTweet.setRetweets(status.getRetweetCount());
+                latestTweet.setLikes(status.getFavoriteCount());
+
                 final MediaEntity[] mediaEntities = status.getMediaEntities();
                 processReplies(latestTweet, status.getUserMentionEntities());
                 replaceUrlsEntities(latestTweet, status.getURLEntities());

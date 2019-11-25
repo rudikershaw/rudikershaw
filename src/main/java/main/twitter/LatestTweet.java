@@ -7,6 +7,10 @@ import java.util.List;
 /** POJO for the salient Tweet details needed in the view layer. */
 public class LatestTweet {
 
+
+    /** The ID for this Tweet. */
+    private long id;
+
     /** The date this tweet was created. */
     private Date created;
 
@@ -16,8 +20,14 @@ public class LatestTweet {
     /** The base 64 string value of images attached to the tweet. */
     private String image;
 
-    /** The ID for this Tweet. */
-    private long id;
+    /** The number of retweets. */
+    private int retweets;
+
+    /** The number of likes. */
+    private int likes;
+
+    /** The number of replies. */
+    private int replies;
 
     /** The screen names of those being replied to. */
     private List<String> inReplyTo = new ArrayList<>();
@@ -131,6 +141,60 @@ public class LatestTweet {
     }
 
     /**
+     * Gets the number of retweets.
+     *
+     * @return the retweets.
+     */
+    public int getRetweets() {
+        return retweets;
+    }
+
+    /**
+     * Sets the number of retweets.
+     *
+     * @param retweetsNo the retweets.
+     */
+    public void setRetweets(final int retweetsNo) {
+        this.retweets = retweetsNo;
+    }
+
+    /**
+     * Gets the number of likes.
+     *
+     * @return the likes.
+     */
+    public int getLikes() {
+        return likes;
+    }
+
+    /**
+     * Sets the number of likes.
+     *
+     * @param likesNo the likes.
+     */
+    public void setLikes(final int likesNo) {
+        this.likes = likesNo;
+    }
+
+    /**
+     * Gets the number of replies.
+     *
+     * @return the replies.
+     */
+    public int getReplies() {
+        return replies;
+    }
+
+    /**
+     * Sets the number of replies.
+     *
+     * @param repliesNo the replies.
+     */
+    public void setReplies(final int repliesNo) {
+        this.replies = repliesNo;
+    }
+
+    /**
      * Gets the list user screen names representing the users this tweet is a reply to.
      *
      * @return the inReplyTo.
@@ -138,9 +202,9 @@ public class LatestTweet {
     public String getFormattedInReplyTo() {
         if (inReplyTo != null && !inReplyTo.isEmpty()) {
             final StringBuilder formattedReplyTo = new StringBuilder();
-            final int replies = inReplyTo.size();
-            for (int i = 0; i < replies; i++) {
-                if (i == (replies - 1) && replies > 1) {
+            final int count = inReplyTo.size();
+            for (int i = 0; i < count; i++) {
+                if (i == (count - 1) && count > 1) {
                     formattedReplyTo.append(" and");
                 }
                 formattedReplyTo.append(" @").append(inReplyTo.get(i));

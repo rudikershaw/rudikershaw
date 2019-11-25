@@ -397,7 +397,7 @@ img.coverimg {
 
 .tweet .flex-row {
 	justify-content: space-between;
-	margin-right: 20px;
+	margin-right: 40px;
 }
 
 .tweet .twitter-handle {
@@ -418,6 +418,10 @@ img.coverimg {
 	max-height: 250px;
 	margin-top: 10px;
 	overflow: hidden;
+}
+
+.tweet .count {
+	font-size: 14px;
 }
 
 div.calendar div.position-relative {
