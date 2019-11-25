@@ -1,6 +1,8 @@
 package main.twitter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /** POJO for the salient Tweet details needed in the view layer. */
 public class LatestTweet {
@@ -16,6 +18,9 @@ public class LatestTweet {
 
     /** The ID for this Tweet. */
     private long id;
+
+    /** The screen names of those being replied to. */
+    private List<String> inReplyTo = new ArrayList<>();
 
     /** Default constructor. */
     public LatestTweet() {
@@ -105,5 +110,44 @@ public class LatestTweet {
      */
     public void setId(final long tweetId) {
         this.id = tweetId;
+    }
+
+    /**
+     * Gets the list user screen names representing the users this tweet is a reply to.
+     *
+     * @return the inReplyTo.
+     */
+    public List<String> getInReplyTo() {
+        return inReplyTo;
+    }
+
+    /**
+     * Sets the list user screen names representing the users this tweet is a reply to.
+     *
+     * @param inReplyToList the collection of screen names.
+     */
+    public void setInReplyTo(final List<String> inReplyToList) {
+        this.inReplyTo = inReplyToList;
+    }
+
+    /**
+     * Gets the list user screen names representing the users this tweet is a reply to.
+     *
+     * @return the inReplyTo.
+     */
+    public String getFormattedInReplyTo() {
+        if (inReplyTo != null && !inReplyTo.isEmpty()) {
+            final StringBuilder formattedReplyTo = new StringBuilder();
+            final int replies = inReplyTo.size();
+            for (int i = 0; i < replies; i++) {
+                if (i == (replies - 1) && replies > 1) {
+                    formattedReplyTo.append(" and");
+                }
+                formattedReplyTo.append(" @").append(inReplyTo.get(i));
+            }
+            return formattedReplyTo.toString();
+        } else {
+            return null;
+        }
     }
 }

@@ -65,7 +65,9 @@
 					<div class="tweet-body">
 						<p class="twitter-handle">
 							<b>Rudi Kershaw</b>
-							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span></p>
+							<span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span>
+						</p>
+						<p class="tweet-reply-to" th:if="${tweet.getFormattedInReplyTo() != null}">Replying to <span class="blue" th:text="${tweet.getFormattedInReplyTo()}"></span></p>
 						<pre class="tweet-text" th:text="${tweet.text}"></pre>
 						<div class="tweet-image-container" th:if="${tweet.image != null}">
 							<img th:src="${'data:image/png;base64,' + tweet.image}" class="tweet-media-image" />

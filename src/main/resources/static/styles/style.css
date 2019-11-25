@@ -359,6 +359,7 @@ img.coverimg {
 }
 
 .tweet {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 	align-items: flex-start;
 	border: solid 1px #DDD;
 	text-decoration: none;
@@ -380,6 +381,13 @@ img.coverimg {
 .tweet .tweet-body {
 	max-width: 400px;
 	min-width: 285px;
+}
+
+.tweet .tweet-reply-to {
+	font-size: 14px;
+	color:
+			#444;
+	margin-bottom: 6px;
 }
 
 .tweet .tweet-text {
@@ -530,6 +538,7 @@ span.purple { color: #7F36B0; }
 span.orange { color: #ED5900; }
 span.green { color: #347B34; }
 span.jade { color: #347B94; }
+span.blue { color: #1DA1F2 }
 
 div.navigate {
 	max-width: 800px;

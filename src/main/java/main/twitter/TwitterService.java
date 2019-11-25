@@ -25,6 +25,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.URLEntity;
+import twitter4j.UserMentionEntity;
 import twitter4j.auth.AccessToken;
 
 /** Service for accessing twitter information using the Twitter4j API. */
@@ -65,7 +66,9 @@ public class TwitterService {
             if (status != null) {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 final MediaEntity[] mediaEntities = status.getMediaEntities();
+                processReplies(latestTweet, status.getUserMentionEntities());
                 replaceUrlsEntities(latestTweet, status.getURLEntities());
+
                 if (mediaEntities != null && mediaEntities.length > 0) {
                     final MediaEntity mediaEntity = mediaEntities[0];
                     latestTweet.setImage(getBase64ImageString(mediaEntity.getMediaURLHttps()));
@@ -116,7 +119,7 @@ public class TwitterService {
         if (entities != null) {
             String text = tweet.getText();
             for (URLEntity entity : entities) {
-                text = text.replace(entity.getURL(), entity.getDisplayURL());
+                text = text.replace(entity.getURL(), entity.getDisplayURL()).trim();
             }
             tweet.setText(text);
         }
@@ -132,9 +135,46 @@ public class TwitterService {
         if (entities != null) {
             String text = tweet.getText();
             for (MediaEntity entity : entities) {
-                text = text.replace(entity.getURL(), "");
+                text = text.replace(entity.getURL(), "").trim();
             }
             tweet.setText(text);
         }
+    }
+
+    /**
+     * Remove replies from beginning of tweet text and add them as replies to seperate field on the LatestTweet object.
+     *
+     * @param tweet the latest tweet to process.
+     * @param mentionEntities the user mentions to check for replies.
+     */
+    private void processReplies(final LatestTweet tweet, final UserMentionEntity[] mentionEntities) {
+        String text = tweet.getText();
+        if (mentionEntities != null && mentionEntities.length > 0) {
+            while (startsWithAReply(text, mentionEntities)) {
+                for (UserMentionEntity mention : mentionEntities) {
+                    if (text.startsWith("@" + mention.getScreenName())) {
+                        text = text.replace("@" + mention.getScreenName(), "").trim();
+                        tweet.getInReplyTo().add(mention.getScreenName());
+                    }
+                }
+            }
+        }
+        tweet.setText(text);
+    }
+
+    /**
+     * Checks whether a tweet text starts with a reply.
+     *
+     * @param text the tweet text to check.
+     * @param mentionEntities the user mentions to validate against.
+     * @return true if the text start with a reply, else false.
+     */
+    private boolean startsWithAReply(final String text, final UserMentionEntity[] mentionEntities) {
+        for (UserMentionEntity mention : mentionEntities) {
+            if (text.startsWith("@" + mention.getScreenName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
