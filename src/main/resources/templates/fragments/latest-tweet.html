@@ -1,0 +1,24 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml">
+    <h3>Latest Tweet</h3>
+    <a class="tweet" th:href="${'https://twitter.com/RudiKershaw/status/' + tweet.id}">
+        <img class="profile-image" src="/images/twitter-profile-image.jpg"  alt="Twitter profile image"/>
+        <div class="tweet-body">
+            <p class="twitter-handle">
+                <b>Rudi Kershaw</b>
+                <span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span>
+            </p>
+            <p class="tweet-reply-to" th:if="${tweet.formattedInReplyTo != null}">Replying to <span class="blue" th:text="${tweet.formattedInReplyTo}"></span></p>
+            <pre class="tweet-text" th:text="${tweet.text}"></pre>
+            <div class="tweet-image-container" th:if="${tweet.image != null}">
+                <img th:src="${'data:image/png;base64,' + tweet.image}" class="tweet-media-image" />
+            </div>
+            <br />
+            <div class="flex-row">
+                <i class="fa fa-comment-o"><span class="count"></span></i>
+                <i class="fa fa-retweet"><span class="count" th:if="${tweet.retweets > 0}" th:text="${' ' + tweet.retweets}"></span></i>
+                <i class="fa fa-heart-o"><span class="count" th:if="${tweet.likes > 0}" th:text="${' ' + tweet.likes}"></span></i>
+                <i class="fa fa-external-link"></i>
+            </div>
+        </div>
+    </a>
+</div>

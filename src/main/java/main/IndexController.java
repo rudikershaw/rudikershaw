@@ -17,6 +17,9 @@ public class IndexController {
     /** The path to the index page's view template. */
     private static final String PATH = "index";
 
+    /** The path to the latest tweet fragment. */
+    private static final String TWEET_PATH = "fragments/latest-tweet";
+
     /** Injected article service. */
     private final ArticleService articleService;
 
@@ -47,7 +50,18 @@ public class IndexController {
         model.addAttribute("all", ARTICLES);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
         model.addAttribute("latest", ARTICLES.get(0));
-        model.addAttribute("tweet", twitterService.getMyLatestTweet());
         return PATH;
+    }
+
+    /**
+     * Construct a panel containing my latest tweet and return the HTML.
+     *
+     * @param model the model injected by Spring.
+     * @return the path to the latest tweet fragment.
+     */
+    @RequestMapping("/latest-tweet")
+    public String latestTweet(final Model model) {
+        model.addAttribute("tweet", twitterService.getMyLatestTweet());
+        return TWEET_PATH;
     }
 }
