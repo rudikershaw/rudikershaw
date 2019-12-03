@@ -67,6 +67,7 @@ public class TwitterService {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 latestTweet.setRetweets(status.getRetweetCount());
                 latestTweet.setLikes(status.getFavoriteCount());
+                latestTweet.getAuthor().setImage(getBase64ImageString(status.getUser().getProfileImageURL()));
 
                 final MediaEntity[] mediaEntities = status.getMediaEntities();
                 processReplies(latestTweet, status.getUserMentionEntities());

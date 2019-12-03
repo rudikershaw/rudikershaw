@@ -28,6 +28,9 @@ public class LatestTweet {
     /** The number of replies. */
     private int replies;
 
+    /** The author of this tweet. */
+    private TwitterUser author = new TwitterUser();
+
     /** The screen names of those being replied to. */
     private List<String> inReplyTo = new ArrayList<>();
 
@@ -36,7 +39,7 @@ public class LatestTweet {
         super();
     }
 
-    /**]
+    /**
      * Constructor taking the creation date and tweet text.
      *
      * @param createdDate the date the tweet was created.
@@ -173,6 +176,24 @@ public class LatestTweet {
      */
     public void setLikes(final int likesNo) {
         this.likes = likesNo;
+    }
+
+    /**
+     * Gets the author of this tweet.
+     *
+     * @return the author.
+     */
+    public TwitterUser getAuthor() {
+        return author;
+    }
+
+    /**
+     * Sets the author of this tweet.
+     *
+     * @param user the author.
+     */
+    public void setAuthor(final TwitterUser user) {
+        this.author = user;
     }
 
     /**
