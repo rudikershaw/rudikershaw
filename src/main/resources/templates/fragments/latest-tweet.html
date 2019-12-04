@@ -4,8 +4,8 @@
         <img class="profile-image" th:src="${'data:image/png;base64,' + tweet.author.image}" alt="Twitter profile image"/>
         <div class="tweet-body">
             <p class="twitter-handle">
-                <b>Rudi Kershaw</b>
-                <span class="grey">@RudiKershaw &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span>
+                <b th:text="${tweet.author.name}">Rudi Kershaw</b>
+                <span class="grey"><span th:text="${'@' + tweet.author.screenName}">@RudiKershaw</span> &#183; <span th:text="${#dates.format(tweet.created, 'MMM dd')}"></span></span>
             </p>
             <p class="tweet-reply-to" th:if="${tweet.formattedInReplyTo != null}">Replying to <span class="blue" th:text="${tweet.formattedInReplyTo}"></span></p>
             <pre class="tweet-text" th:text="${tweet.text}"></pre>

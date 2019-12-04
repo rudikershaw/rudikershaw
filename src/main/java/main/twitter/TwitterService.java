@@ -25,6 +25,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.URLEntity;
+import twitter4j.User;
 import twitter4j.UserMentionEntity;
 import twitter4j.auth.AccessToken;
 
@@ -67,7 +68,7 @@ public class TwitterService {
                 final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 latestTweet.setRetweets(status.getRetweetCount());
                 latestTweet.setLikes(status.getFavoriteCount());
-                latestTweet.getAuthor().setImage(getBase64ImageString(status.getUser().getProfileImageURL()));
+                latestTweet.setAuthor(setUserDetails(latestTweet.getAuthor(), status.getUser()));
 
                 final MediaEntity[] mediaEntities = status.getMediaEntities();
                 processReplies(latestTweet, status.getUserMentionEntities());
@@ -180,5 +181,19 @@ public class TwitterService {
             }
         }
         return false;
+    }
+
+    /**
+     *  Sets details of the TwitterUser POJO using the user retrieved from the latest tweet.
+     *
+     * @param twitterUser the twitter user to populate.
+     * @param user the Twitter4j user to get the details from.
+     * @return the provided TwitterUser.
+     */
+    private TwitterUser setUserDetails(final TwitterUser twitterUser, final User user) {
+        twitterUser.setImage(getBase64ImageString(user.getProfileImageURL()));
+        twitterUser.setName(user.getName());
+        twitterUser.setScreenName(user.getScreenName());
+        return twitterUser;
     }
 }
