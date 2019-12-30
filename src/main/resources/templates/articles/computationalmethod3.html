@@ -29,9 +29,9 @@
                 To appreciate this a little better, let's run over a very simple example that will help make Knuth's example feel familiar later. Take the following
                 ordered list fo rules.</p>
             <br />
-            <pre class="code">    <span class="orange"> 1 - </span>"u" -> "do"
-        <span class="orange"> 2 - </span>"p" -> "wn"
-        <span class="orange"> 3 - </span>"up" -> "error"</pre>
+            <pre class="code"><span class="orange"> 1 - </span>"u" -> "do"
+<span class="orange"> 2 - </span>"p" -> "wn"
+<span class="orange"> 3 - </span>"up" -> "error"</pre>
             <br />
             <p>Now, imagine we parse in the string of letters <b>"up"</b>. Starting at the top of our list we check our first rule (if you find a <b>"u"</b>, replace it with <b>"do"</b>), and it
                 applies so we replace the <b>"u"</b> in <b>"up"</b> with <b>"do"</b> and our result is <b>"dop"</b>. Now we start again, we check our first rule
@@ -40,9 +40,9 @@
                 our second rule and it doesn't apply, and we check our third rule and it doesn't apply to our new string. We have got to the end of our list and
                 applied no rules, so the process is over. We have converted the string <b>"up"</b> to the string <b>"down"</b>.</p>
             <br />
-            <pre class="code">    <span class="orange"> 1 - </span>"up"
-        <span class="orange"> 2 - </span>"dop"
-        <span class="orange"> 3 - </span>"down"</pre>
+            <pre class="code"><span class="orange"> 1 - </span>"up"
+<span class="orange"> 2 - </span>"dop"
+<span class="orange"> 3 - </span>"down"</pre>
             <br />
             <p>Remember how I emphasised that the <b>order</b> of the rules mattered? Well, if we were to re-arrange our rules and swap rules 1 and 3 we would end up
                 with the word <b>"error"</b> instead. Knuth's algorithm actually varies slightly from a traditional Markov algorithm, and we'll see how later. Now,
