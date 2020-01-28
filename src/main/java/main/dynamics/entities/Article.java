@@ -2,6 +2,7 @@ package main.dynamics.entities;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ import main.StaticResources;
 
 /** An article entity representing an article and it's url as well as any statistics against it. */
 @Entity
-public class Article {
+public class Article implements Serializable {
 
     /** The logger for the article class. */
     private static final Logger LOGGER = Logger.getLogger(Article.class.getName());

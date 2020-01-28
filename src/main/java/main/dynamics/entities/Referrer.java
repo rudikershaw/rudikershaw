@@ -19,6 +19,9 @@ public class Referrer implements Serializable {
     @Id
     private String referrer;
 
+    /** The number of times a unique user has requested an article with a particular referrer. */
+    private long count;
+
     /**
      * Gets the article to which the referrer directed its request.
      *
@@ -53,5 +56,23 @@ public class Referrer implements Serializable {
      */
     public void setReferrer(final String referrerHeader) {
         this.referrer = referrerHeader;
+    }
+
+    /**
+     * Gets the count.
+     *
+     * @return the count.
+     */
+    public long getCount() {
+        return count;
+    }
+
+    /**
+     * Sets the count.
+     *
+     * @param requestCount the count.
+     */
+    public void setCount(final long requestCount) {
+        this.count = requestCount;
     }
 }
