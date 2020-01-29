@@ -2,60 +2,50 @@ package main.dynamics.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /** Entity representing a unique referrer for a particular article. */
 @Entity
 public class Referrer implements Serializable {
 
-    /** The article a request with a particular referrer was for. */
-    @Id
-    @ManyToOne
-    private Article article;
-
-    /** Referrer header of the request for a particular article. */
-    @Id
-    private String referrer;
+    /** The composite ID of the referrer. */
+    @EmbeddedId
+    private ReferrerIdentity referrerIdentity;
 
     /** The number of times a unique user has requested an article with a particular referrer. */
     private long count;
 
-    /**
-     * Gets the article to which the referrer directed its request.
-     *
-     * @return the article.
-     */
-    public Article getArticle() {
-        return article;
+    /** Default constructor. */
+    public Referrer() {
+        super();
     }
 
     /**
-     * Sets the article.
+     * Constructor that sets the composite ID of the referrer.
      *
-     * @param articleReferredTo the article.
+     * @param referrerIdentity object representing the composite ID of this referrer.
      */
-    public void setArticle(final Article articleReferredTo) {
-        this.article = articleReferredTo;
+    public Referrer(final ReferrerIdentity referrerIdentity) {
+        this.referrerIdentity = referrerIdentity;
     }
 
     /**
-     * Gets the referrer.
+     * Gets the referrer identity.
      *
-     * @return the referrer.
+     * @return the referrer identity.
      */
-    public String getReferrer() {
-        return referrer;
+    public ReferrerIdentity getReferrerIdentity() {
+        return referrerIdentity;
     }
 
     /**
-     * Sets the referrer.
+     * Sets the referrer identity.
      *
-     * @param referrerHeader the referrer.
+     * @param referrerIdentity the referrer identity.
      */
-    public void setReferrer(final String referrerHeader) {
-        this.referrer = referrerHeader;
+    public void setReferrerIdentity(final ReferrerIdentity referrerIdentity) {
+        this.referrerIdentity = referrerIdentity;
     }
 
     /**
