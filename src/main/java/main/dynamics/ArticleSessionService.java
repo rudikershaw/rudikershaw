@@ -17,8 +17,8 @@ public class ArticleSessionService {
     /** Injected article session respository. */
     private final ArticleSessionRepository sessionRepository;
 
-    /** Injected referrer service. */
-    private final ReferrerService referrerService;
+    /** Injected referer service. */
+    private final RefererService refererService;
 
     /** Counter of how many times articles have been viewed but expired sessions have not been cleared. */
     private int counter = 0;
@@ -33,12 +33,12 @@ public class ArticleSessionService {
      * Constructor for dependency injection.
      *
      * @param sessionRepository injected article session repository.
-     * @param referrerService injected referrer service.
+     * @param refererService injected referer service.
      */
     @Autowired
-    public ArticleSessionService(final ArticleSessionRepository sessionRepository, final ReferrerService referrerService) {
+    public ArticleSessionService(final ArticleSessionRepository sessionRepository, final RefererService refererService) {
         this.sessionRepository = sessionRepository;
-        this.referrerService = referrerService;
+        this.refererService = refererService;
     }
 
     /**
@@ -58,7 +58,7 @@ public class ArticleSessionService {
         final ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(sessionId, article.getId());
         if (userSession == null) {
             sessionRepository.save(new ArticleSession(request.getSession().getId(), article.getId()));
-            referrerService.processReferrer(request, article);
+            refererService.processReferer(request, article);
             return true;
         }
         return false;

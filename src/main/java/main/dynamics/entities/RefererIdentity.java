@@ -6,35 +6,35 @@ import java.util.Objects;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
-/** Represents the composite identity of a Referrer entity. */
+/** Represents the composite identity of a Referer entity. */
 @Embeddable
-public class ReferrerIdentity implements Serializable {
+public class RefererIdentity implements Serializable {
 
-    /** The article a request with a particular referrer was for. */
+    /** The article a request with a particular referer was for. */
     @ManyToOne
     private Article article;
 
-    /** Referrer header of the request for a particular article. */
-    private String referrer;
+    /** Referer header of the request for a particular article. */
+    private String referer;
 
     /** Default constructor. */
-    public ReferrerIdentity() {
+    public RefererIdentity() {
         super();
     }
 
     /**
-     * Constructor to set the article and referrer.
+     * Constructor to set the article and referer.
      *
      * @param article the article.
-     * @param referrer the referrer.
+     * @param referer the referer.
      */
-    public ReferrerIdentity(final Article article, final String referrer) {
+    public RefererIdentity(final Article article, final String referer) {
         this.article = article;
-        this.referrer = referrer;
+        this.referer = referer;
     }
 
     /**
-     * Gets the article to which the referrer directed its request.
+     * Gets the article to which the referer directed its request.
      *
      * @return the article.
      */
@@ -52,21 +52,21 @@ public class ReferrerIdentity implements Serializable {
     }
 
     /**
-     * Gets the referrer.
+     * Gets the referer.
      *
-     * @return the referrer.
+     * @return the referer.
      */
-    public String getReferrer() {
-        return referrer;
+    public String getReferer() {
+        return referer;
     }
 
     /**
-     * Sets the referrer.
+     * Sets the referer.
      *
-     * @param referrerHeader the referrer.
+     * @param refererHeader the referer.
      */
-    public void setReferrer(final String referrerHeader) {
-        this.referrer = referrerHeader;
+    public void setReferer(final String refererHeader) {
+        this.referer = refererHeader;
     }
 
     @Override
@@ -77,13 +77,13 @@ public class ReferrerIdentity implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ReferrerIdentity that = (ReferrerIdentity) o;
+        RefererIdentity that = (RefererIdentity) o;
         return Objects.equals(getArticle(), that.getArticle())
-                && Objects.equals(getReferrer(), that.getReferrer());
+                && Objects.equals(getReferer(), that.getReferer());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getArticle(), getReferrer());
+        return Objects.hash(getArticle(), getReferer());
     }
 }
