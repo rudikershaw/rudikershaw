@@ -1,5 +1,6 @@
 package main.dynamics;
 
+import main.dynamics.entities.Article;
 import main.dynamics.entities.ArticleSession;
 import main.dynamics.repositories.ArticleSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class ArticleSessionService {
     /** Injected article session respository. */
     private final ArticleSessionRepository sessionRepository;
 
+    /** Injected referrer service. */
+    private final ReferrerService referrerService;
+
     /** Counter of how many times articles have been viewed but expired sessions have not been cleared. */
     private int counter = 0;
 
@@ -28,30 +32,33 @@ public class ArticleSessionService {
     /**
      * Constructor for dependency injection.
      *
-     * @param articleSessionRepository injected article session repository.
+     * @param sessionRepository injected article session repository.
+     * @param referrerService injected referrer service.
      */
     @Autowired
-    public ArticleSessionService(final ArticleSessionRepository articleSessionRepository) {
-        this.sessionRepository = articleSessionRepository;
+    public ArticleSessionService(final ArticleSessionRepository sessionRepository, final ReferrerService referrerService) {
+        this.sessionRepository = sessionRepository;
+        this.referrerService = referrerService;
     }
 
     /**
      * Checks whether this is the first view of this article by the given session.
      *
      * @param request the request to get the session from.
-     * @param articleId the article to check whether it is their first view of.
+     * @param article the article to check whether it is their first view of.
      * @return whether this was the first view of the article.
      */
-    public boolean isUniqueSession(final HttpServletRequest request, final Integer articleId) {
+    public boolean isUniqueSession(final HttpServletRequest request, final Article article) {
         cleanOldSessions();
         if (isBot(request)) {
             return false;
         }
 
         final String sessionId = request.getSession().getId();
-        final ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(sessionId, articleId);
+        final ArticleSession userSession = sessionRepository.findBySessionIdAndArticleId(sessionId, article.getId());
         if (userSession == null) {
-            sessionRepository.save(new ArticleSession(request.getSession().getId(), articleId));
+            sessionRepository.save(new ArticleSession(request.getSession().getId(), article.getId()));
+            referrerService.processReferrer(request, article);
             return true;
         }
         return false;

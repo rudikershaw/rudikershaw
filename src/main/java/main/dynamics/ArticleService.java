@@ -44,18 +44,15 @@ public class ArticleService {
         Article article = articleRepository.findByPath(articlePath);
         if (article == null) {
             article = articleRepository.save(new Article(articleName, articlePath, imagePath, description));
-            articleSessionService.isUniqueSession(request, article.getId());
-            return article;
-        } else {
-            if (articleSessionService.isUniqueSession(request, article.getId())) {
-                article.setName(articleName);
-                article.setImagePath(imagePath);
-                article.setDescription(description);
-                article.setViews(article.getViews() + 1);
-                articleRepository.save(article);
-            }
-            return article;
+            articleSessionService.isUniqueSession(request, article);
+        } else if (articleSessionService.isUniqueSession(request, article)) {
+            article.setName(articleName);
+            article.setImagePath(imagePath);
+            article.setDescription(description);
+            article.setViews(article.getViews() + 1);
+            articleRepository.save(article);
         }
+        return article;
     }
 
     /**
