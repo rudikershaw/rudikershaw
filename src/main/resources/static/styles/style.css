@@ -93,6 +93,14 @@ a {
 	white-space: nowrap;
 }
 
+figure {
+	padding: 15px 0;
+}
+
+figcaption {
+	margin-top: 15px;
+}
+
 header {
 	background-color: #272727;
 	border-top-color: #ED5900;
