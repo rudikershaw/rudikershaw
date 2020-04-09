@@ -1,0 +1,12 @@
+<div class="article-footer" th:fragment="article-footer" xmlns:th="http://www.thymeleaf.org">
+    <div class="navigate">
+        <a class="home" href="/">Home</a>
+        <div class="next-previous">
+            <a class="next" th:href="${ next == null ? '#' : ('/' + next.path) }" title="Next"></a>
+            <a class="previous" th:style="${ previous == null ? 'display:none' : '' }" th:href="${ previous == null ? '#' : ('/' + previous.path) }" title="Previous"></a>
+        </div>
+    </div>
+    <h1 style="clear:both;">Rudi Kershaw</h1>
+    <h2>Web &amp; Software Developer, Science Geek, and Research Enthusiast</h2>
+    <br />
+</div>

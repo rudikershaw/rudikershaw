@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
-    <head th:replace="articles/computationalmethod :: head"/>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/article/head :: head"></head>
 	<body>
 		<header th:replace="index :: header"></header>
 		<article>
@@ -105,7 +105,7 @@
         </article>
         <hr />
 
-        <div class="article-footer" th:replace="articles/computationalmethod :: article-footer"></div>
+        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
