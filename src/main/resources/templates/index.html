@@ -46,7 +46,7 @@
 				<h3>Latest Commits</h3>
 				<figure>
 					<img width="100%" src="https://ghchart.rshah.org/rudikershaw" alt="Rudi Kershaw GitHub contributions chart">
-					<figcaption>Summary of GitHub contributions made by <a href="https://github.com/rudikershaw" target="blank">@rudikershaw</a></figcaption>
+					<figcaption>Summary of GitHub contributions made by <a href="https://github.com/rudikershaw">@rudikershaw</a></figcaption>
 				</figure>
 			</div>
 
@@ -57,7 +57,7 @@
 				<a class="entry-card" th:href="${latest.path}">
 					<div class="entry">
 						<h4 th:text="${latest.name}">Article Title</h4>
-						<img th:src="${latest.imagePath}" height="240" width="290" />
+						<img th:src="${latest.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${latest.name} + '\' by Rudi Kershaw'" />
 						<p th:text="${latest.description}">Article Description</p>
 					</div>
 				</a>
@@ -67,7 +67,7 @@
 		<h2 class="my-articles">My Articles</h2>
 		<div class="black-band">
 			<a th:href="${trending.path}" class="container">
-				<img th:src="${trending.largeImagePath}" />
+				<img th:src="${trending.largeImagePath}" th:alt="'Article thumbnail for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
 				<h2>Most Viewed - Last 7 Days</h2>
 				<h3 th:text="${trending.name}">Article Title</h3>
 				<p th:text="${trending.description}">Article Description</p>
@@ -78,7 +78,7 @@
 			<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
 				<div class="entry">
 					<h4 th:text="${article.name}">Article Title</h4>
-					<img th:src="${article.imagePath}" height="240" width="290" />
+					<img th:src="${article.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
 					<p th:text="${article.description}">Article Description</p>
 				</div>
 			</a>

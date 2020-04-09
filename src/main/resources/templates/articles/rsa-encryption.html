@@ -13,7 +13,7 @@
 			<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="RSA Encryption" />
 			<br />
 
-			<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok" target="_blank">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
+			<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
 				and is used for things like validating certificates in HTTPS requests, moving credit card information over the internet, and
 				encrypting messages in secure chat applications. This article is my attempt to put together a single source that describes
 				everything you need to know to <b>really</b> understand it.</p>
@@ -42,7 +42,7 @@
 				your method as their set unicode number or something like that. Imagine for example they want to send the character <b>'B'</b> and they convert it to
 				a <b>2</b>. To encrypt their message they take this number and do the following:</p>
 			<h5 class="quoteblock">2<sup>5</sup> mod 14 = 32 mod 14 = 4</h5>
-			<p>The word <b>mod</b>, in case you are wondering, is the <a href="https://en.wikipedia.org/wiki/Modular_arithmetic" target="_blank">modulus</a> operation for getting the remainder of division by the two numbers. In the above it
+			<p>The word <b>mod</b>, in case you are wondering, is the <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modulus</a> operation for getting the remainder of division by the two numbers. In the above it
 				is essentially the same as getting the remainder of <b>32</b> divided by <b>14</b>. Our friend then sends us the number <b>4</b> and we
 				use our <b>private key</b>, the pair <b>(11, 14)</b>, to convert it back to its original value. We do that by doing the following;</p>
 			<h5 class="quoteblock">4<sup>11</sup> mod 14 = 4194304 mod 14 = 2</h5>
@@ -55,13 +55,13 @@
 			<h2>One Way Functions</h2>
 			<p>A one way function can easily compute an output from some input, but reversing the process and getting the input back from
 				the output is hard. Easy and hard are obviously relative terms, but in the context of functions we tend to mean that easy
-				processes have low <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory" target="_blank">complexity</a> and
+				processes have low <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a> and
 				hard processes have high complexity. The one way function we use in RSA is multiplying two very large prime numbers, which is
 				easy. The reverse process is very hard, and is called prime factorisation.</p>
 			<h2>Prime Factorisation</h2>
 			<p>Every number can be created as the product of a single unique combination of prime numbers. If the number is a prime number, then
 				its single unique combination of primes is simply itself. We call this unique combination a numbers
-				<a href="https://en.wikipedia.org/wiki/Prime_factor" target="_blank">prime factors</a>. Below are a few examples:</p>
+				<a href="https://en.wikipedia.org/wiki/Prime_factor">prime factors</a>. Below are a few examples:</p>
 			<br />
 			<div class="code">
 				<span class="orange"> 4 = </span>2 &times; 2<br />
@@ -73,8 +73,8 @@
 			</div>
 			<br />
 			<p>The process of taking a number and finding its prime factors is called, guess what, prime factorisation. Prime factorisation
-				is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity" target="_blank">very hard</a>
-				problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO" target="_blank">600,000 years</a>
+				is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity">very hard</a>
+				problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO">600,000 years</a>
 				to work out the prime factors of a 300 digit number. If you had the prime factors however, it would only take a tiny fraction of a second to multiply them.</p>
 			<h2>Coprimes</h2>
 			<p>Coprimes are numbers that share no prime factors, or are not divisible by any of the same numbers except <b>1</b>. For example
@@ -105,7 +105,7 @@
 				The totient of 7 is 6, i.e. 7-1 because 7 is prime.
 			</div>
 			<h2>Euler's Theorum</h2>
-			<p><a href="https://en.wikipedia.org/wiki/Euler%27s_theorem" target="_blank">Euler's theorum</a> is key to understanding how RSA encryption works.
+			<p><a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorum</a> is key to understanding how RSA encryption works.
 				It explains why we can convert between our message and the encrypted version using our keys and the <b>mod</b> operator.
 				What Euler's theorum says is that if we have two coprimes <b>a</b> and <b>n</b>, the following is always true:</p>
 			<h5 class="quoteblock">a<sup>&Phi;(n)</sup> mod n = 1</h5>
@@ -129,7 +129,7 @@
 			<h5 class="quoteblock">d = some value where de mod &Phi;(n) = 1</h5>
 			<p>The value of <b>d</b> can be quite difficult to find. As such there are a number of different algorithms that are used to find the value of
 				<b>d</b>. Although you can find it manually you will want to use one of these algorithms, for example the
-				<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank">extended Euclidean algorithm</a>.</p>
+				<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a>.</p>
 			<br />
 			<div class="code">
 				<span class="orange"> p</span>, <span class="orange">q</span> = 2 large primes<br />
