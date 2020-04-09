@@ -218,7 +218,7 @@ public class Article implements Serializable {
             return false;
         }
         Article article = (Article) o;
-        return Objects.equals(getId(), article.getId());
+        return Objects.equals(getPath(), article.getPath());
     }
 
     @Override

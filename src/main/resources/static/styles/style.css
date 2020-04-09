@@ -115,12 +115,25 @@ header {
 	top: 0;
 }
 
-div.footer {
+footer.index-footer {
 	background-color: #272727;
 	text-align: center;
 	margin-top: 20px;
+	font-size: 24px;
 	padding: 30px;
 	color: white;
+}
+
+footer.index-footer blockquote p{
+	font-size: 24px;
+}
+
+blockquote cite {
+	font-style: italic;
+}
+
+blockquote footer {
+	margin-top: 10px;
 }
 
 a.rklogo {
