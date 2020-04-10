@@ -23,7 +23,9 @@
                 how Gaussian distribution is used for anomaly detection it is useful to picture a bell curve. Once you have plotted a bell curve
                 with your data you simply mark a distance (or <b>threshold</b>) from the center of your curve on each side. If new data comes in that falls outside
                 of that threshold you say that it is anomalous.</p>
-            <img class="coverimg" src="/images/normal-distribution.png" width="780" />
+            <figure>
+                <img class="coverimg" src="/images/normal-distribution.png" width="780"  alt="2 and 3 dimensional bell curves along side each other" />
+            </figure>
             <p>Above and on the left is a bell curve with a single variable. The two red lines represent our threshold. Everything inside those lines is
                 considered normal, and everything outside (in the light blue) is an anomaly. The position we set this threshold is arbitrary. The further
                 out we push the threshold the more lenient we are in picking up odd behavior. If we added a second variable we get a 3D graph like the one on
@@ -167,10 +169,12 @@
                 <a href="https://en.wikipedia.org/wiki/Probability_density_function">probability density</a>. You can also see the
                 density estimation equation for normal distribution at the top of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> Wikipedia entry, described as it's probability
                 density.</p>
-            <img class="coverimg" src="/images/density-estimation.jpg" width="600" />
-            <aside>Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
-                <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm">course on Coursera</a> by Stanford University.
-            </aside>
+            <figure>
+                <img class="coverimg" src="/images/density-estimation.jpg" width="600"  alt="The formula for density estimation"/>
+                <figcaption class="dark">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
+                    <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm">course on Coursera</a> by Stanford University.
+                </figcaption>
+            </figure>
             <h2>Bringing It All Together.</h2>
             <p>For Cognitran's suspicious user detection I collected records of the users' activity from our extensive logs. I
                 grouped this data by user, and split it into anonymous hour chunks. What we end up with is entries that
