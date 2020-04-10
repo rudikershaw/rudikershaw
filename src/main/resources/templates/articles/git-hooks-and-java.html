@@ -46,9 +46,9 @@
 				There are plenty of resources out there for that. So for our example we will use my small configurable library of
 				<a href="https://github.com/rudikershaw/client-git-hooks">client side git hooks</a>.</p>
 			<br />
-			<div class="info-box">If you have your git hooks in a separate repository there is a good chance you will want your hooks to work in subtly different ways
+			<aside>If you have your git hooks in a separate repository there is a good chance you will want your hooks to work in subtly different ways
 				in each of your projects. A good way of handling this is to have your hooks take configuration from the <span class="code-inline">git config</span> of your
-				local repository. You can set this config in your build differently for each project.</div>
+				local repository. You can set this config in your build differently for each project.</aside>
 			<br />
 			<p>Next we need to store, and make available, releasable versions of our hooks. If your hooks are managed in a Maven project you could deploy them
 				to a Maven repository, and get them into your project using the <a href="https://maven.apache.org/plugins/maven-dependency-plugin/">maven-dependency-plugin</a>.
@@ -109,9 +109,9 @@
 				<span class="code-inline">target/</span> is a better place to put them, as they are effectively temporary files downloaded in the build. But
 				we don't really want these files cleared away if someone runs <span class="code-inline">mvn clean</span>.</p>
 			<br />
-			<div class="info-box">There are four standard ways of telling git to use your hooks; move them into the <span class="code-inline">.git/hooks/</span>
+			<aside>There are four standard ways of telling git to use your hooks; move them into the <span class="code-inline">.git/hooks/</span>
 				directory, symlink another directory to <span class="code-inline">.git/hooks/</span>, add <span class="code-inline">core.hooksPath</span> config,
-				or use a <span class="code-inline">git init</span> template directory.</div>
+				or use a <span class="code-inline">git init</span> template directory.</aside>
 			<br />
 			<p>We have our hooks in our project, but we still need to tell git to use them. To do this, we are going to use a feature of git that has been
 				available since version 2.9. We can tell git to use a different folder to read its hooks from by setting the git config <span class="code-inline">core.hooksPath</span> to

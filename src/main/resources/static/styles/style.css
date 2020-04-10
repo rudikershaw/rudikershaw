@@ -59,9 +59,9 @@ p {
 	font-size: 16px;
 }
 
-p > i {
+var {
+	font-style: italic;
 	font-weight: bold;
-	font-size: 17px;
 }
 
 a {
@@ -301,11 +301,12 @@ article {
 	text-align: center;
 }
 
-h5.quoteblock {
-	text-align: center;
-	font-weight: bold;
-	margin: 20px auto;
-	font-size: 20px;
+:not(footer) > blockquote {
+	border-left: 4px solid #272727;
+	background: #f9f9f9;
+	padding: 0.5em 10px;
+	margin: 1.5em 10px;
+	font-size: 18px;
 }
 
 h2.my-articles {
@@ -528,7 +529,7 @@ p.views {
     margin: auto;
 }
 
-div.info-box {
+aside {
 	border-radius: 10px;
 	background: #272727;
 	font-size: 14px;

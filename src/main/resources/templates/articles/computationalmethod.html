@@ -26,59 +26,59 @@
 			in plain text. It's at this point that those without any advanced formal maths education will have difficulty. If the reader is anything like me however, they are a completionist,
 			and won't want to skip those bits to move forward. They'll want to understand them. Let's make a start
 			where he does.</p>
-			<br />
-			<h5 class="quoteblock">Let us formally define a computational method to be a quadruple <i>(Q, I, Ω, f)</i>, in
-			which <i>Q</i> is a set containing subsets <i>I</i> and <i>Ω</i> and <i>f</i> is a function from <i>Q</i> into itself.</h5>
-			<br />
-			<p>When Knuth refers to a <i>computational method</i> as a <i>quadruple</i> he is simply saying that a computational
-			method is composed of four distinctly defined parts. He labels these four parts as <i>(Q, I, Ω, f)</i>. He
-			then moves on to briefly describe each component of this quadruple. <i>I</i> and <i>Ω</i> are sets (collections of
-			things), and <i>Q</i> is also a set which contains the things in the sets <i>I</i> and <i>Ω</i>. At this point it's easy
-			to mistakenly assume that he means that <i>Q</i> contains only the sets <i>I</i> and <i>Ω</i> and nothing else. But we later
-			find that this is not the case. Lastly he describes <i>f</i> as a function from <i>Q</i> into itself. What this means
-			is that <i>f</i> is a process which takes an input which is an element from the set <i>Q</i> and returns or outputs
-			another element from <i>Q</i>.</p>
-			<br/>
-			<h5 class="quoteblock">Furthermore <i>f</i> should leave <i>Ω</i> pointwise fixed; that is, <i>f(q)</i> should equal <i>q</i> for all elements <i>q</i> of <i>Ω</i>.</h5>
-			<br/>
-			<p>What this essentially means is that, what our function <i>f</i> returns, will be the same as its argument (i.e. the value will
-			not change) if the argument is a member or element of (thing in) set <i>Ω</i>. This makes more sense when Knuth makes a clarification
-			in his next statement; Spoiler alert - <i>Ω</i> is the set of possible outputs of our computational method. Once we know this it's a
+
+			<blockquote>Let us formally define a computational method to be a quadruple <var>(Q, I, Ω, f)</var>, in
+			which <var>Q</var> is a set containing subsets <var>I</var> and <var>Ω</var> and <var>f</var> is a function from <var>Q</var> into itself.</blockquote>
+
+			<p>When Knuth refers to a <var>computational method</var> as a <var>quadruple</var> he is simply saying that a computational
+			method is composed of four distinctly defined parts. He labels these four parts as <var>(Q, I, Ω, f)</var>. He
+			then moves on to briefly describe each component of this quadruple. <var>I</var> and <var>Ω</var> are sets (collections of
+			things), and <var>Q</var> is also a set which contains the things in the sets <var>I</var> and <var>Ω</var>. At this point it's easy
+			to mistakenly assume that he means that <var>Q</var> contains only the sets <var>I</var> and <var>Ω</var> and nothing else. But we later
+			find that this is not the case. Lastly he describes <var>f</var> as a function from <var>Q</var> into itself. What this means
+			is that <var>f</var> is a process which takes an input which is an element from the set <var>Q</var> and returns or outputs
+			another element from <var>Q</var>.</p>
+
+			<blockquote>Furthermore <var>f</var> should leave <var>Ω</var> pointwise fixed; that is, <var>f(q)</var> should equal <var>q</var> for all elements <var>q</var> of <var>Ω</var>.</blockquote>
+
+			<p>What this essentially means is that, what our function <var>f</var> returns, will be the same as its argument (i.e. the value will
+			not change) if the argument is a member or element of (thing in) set <var>Ω</var>. This makes more sense when Knuth makes a clarification
+			in his next statement; Spoiler alert - <var>Ω</var> is the set of possible outputs of our computational method. Once we know this it's a
 			little easier to understand. Passing an output back into our function will not change it.</p>
-			<br />
-			<h5 class="quoteblock">The four quantities <i>Q, I, Ω, f</i> are intended to represent respectively the states of the computation, the input,
-			the output, and the computational rule.</h5>
-			<br />
-			<p>So <i>Q</i> is a set that contains all possible states of the computation i.e. all the possible variations of input, output and all the stages in
-			between. The set <i>I</i> contains all possible inputs. The set <i>Ω</i> contains all possible outputs (sorry if I spoiled that revelation for you earlier).
-			And finally, <i>f</i> represents the computational rule; that is, the process/es applied to each state to get the next state, eventually (hopefully)
+
+			<blockquote>The four quantities <var>Q, I, Ω, f</var> are intended to represent respectively the states of the computation, the input,
+			the output, and the computational rule.</blockquote>
+
+			<p>So <var>Q</var> is a set that contains all possible states of the computation i.e. all the possible variations of input, output and all the stages in
+			between. The set <var>I</var> contains all possible inputs. The set <var>Ω</var> contains all possible outputs (sorry if I spoiled that revelation for you earlier).
+			And finally, <var>f</var> represents the computational rule; that is, the process/es applied to each state to get the next state, eventually (hopefully)
 			until we get our output.</p>
-			<br />
-			<h5 class="quoteblock">Each input <i>x</i> in the set <i>I</i> defines a computational sequence, <i>x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, ...</i>,
-			as follows:     <i>x<sub>0</sub> = x     and    x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0.</i></h5>
-			<br />
+
+			<blockquote>Each input <var>x</var> in the set <var>I</var> defines a computational sequence, <var>x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, ...</var>,
+				as follows:     <var>x<sub>0</sub></var> = <var>x</var>     and    <var>x<sub>k+1</sub></var> = <var>f(x<sub>k</sub>)</var>    for <var>k</var> ≥ 0.</blockquote>
+
 			<p>I wrestled with the above lines for some time, and had to ask the opinion of a friend with a maths degree what he thought about it before
-			securely arriving at a consensus. My first thought was to think that each <i>x</i> (or each element) in the set of all inputs ( <i>I</i> ), <i>was</i> a sequence.
+			securely arriving at a consensus. My first thought was to think that each <var>x</var> (or each element) in the set of all inputs ( <var>I</var> ), <var>was</var> a sequence.
 			But when Knuth says "Each input x in the set I defines a ... sequence", that is not what he appears to mean. The only interpretation that
-			makes sense here is that for each <i>x</i> in the set of all inputs <i>there exists</i> a corresponding sequence in which the first state in the sequence
-			is <i>x<sub>0</sub></i> and that this first state is the raw input. Hence, <i>x<sub>0</sub> = x</i>. When he says that <i>x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0</i> he's saying that for every state
-			in the sequence that has an index of <i>0</i> or more we can get the next state in the sequence by putting it through a function <i>f(x<sub>k</sub>)</i>. So, if you
-			put <i>x<sub>1</sub></i> into the function, you get <i>x<sub>2</sub></i> out (assuming of course that <i>x<sub>1</sub></i> is not the final state. We'll come to that later) <i>f(x<sub>1</sub>) = x<sub>2</sub></i>. That way,
+			makes sense here is that for each <var>x</var> in the set of all inputs <var>there exists</var> a corresponding sequence in which the first state in the sequence
+			is <var>x<sub>0</sub></var> and that this first state is the raw input. Hence, <var>x<sub>0</sub> = x</var>. When he says that <var>x<sub>k+1</sub> = f(x<sub>k</sub>)    for k ≥ 0</var> he's saying that for every state
+			in the sequence that has an index of <var>0</var> or more we can get the next state in the sequence by putting it through a function <var>f(x<sub>k</sub>)</var>. So, if you
+			put <var>x<sub>1</sub></var> into the function, you get <var>x<sub>2</sub></var> out (assuming of course that <var>x<sub>1</sub></var> is not the final state. We'll come to that later) <var>f(x<sub>1</sub>) = x<sub>2</sub></var>. That way,
 			we can repeatedly apply the function to each new state to get the state that follows. An important note here, when Knuth earlier states
-			that <i>Q</i> is the set of all computational states, these are the states he is talking about (along-side the inputs and outputs of course).</p>
-			<br />
-			<h5 class="quoteblock">The computational sequence is said to terminate in <i>k</i> steps if <i>k</i> is the smallest integer for which <i>x<sub>k</sub></i> is in <i>Ω</i>, and in this case
-			it is said to produce the output <i>x<sub>k</sub></i> from <i>x</i>.</h5>
-			<br />
-			<p>The sequence is said to terminate in <i>k</i> steps where <i>k</i> is the first position in the series that exists in <i>Ω</i>. What this means of course, is that a series runs from <i>x<sub>0</sub></i> (the input) to <i>x<sub>k</sub></i>
-			and <i>x<sub>k</sub></i> is then the output, and therefore a member of <i>Ω</i>.</p>
+			that <var>Q</var> is the set of all computational states, these are the states he is talking about (along-side the inputs and outputs of course).</p>
+
+			<blockquote>The computational sequence is said to terminate in <var>k</var> steps if <var>k</var> is the smallest integer for which <var>x<sub>k</sub></var> is in <var>Ω</var>, and in this case
+			it is said to produce the output <var>x<sub>k</sub></var> from <var>x</var>.</blockquote>
+
+			<p>The sequence is said to terminate in <var>k</var> steps where <var>k</var> is the first position in the series that exists in <var>Ω</var>. What this means of course, is that a series runs from <var>x<sub>0</sub></var> (the input) to <var>x<sub>k</sub></var>
+			and <var>x<sub>k</sub></var> is then the output, and therefore a member of <var>Ω</var>.</p>
 			<br />
 			<p>Now here's the clincher, thus far we've been defining a computational method rather than an algorithm.</p>
-			<br />
-			<h5 class="quoteblock">Some computational sequences may never terminate; an algorithm is a computational method that terminates
-			in finitely many steps for all <i>x</i> in <i>I</i></h5>
-			<br />
-			<p>What we mean here when we say "finitely many steps for all <i>x</i> in <i>I</i>" is that for all the elements ( <i>x</i> ) in <i>I</i> (all our potential inputs) there is a
+
+			<blockquote>Some computational sequences may never terminate; an algorithm is a computational method that terminates
+			in finitely many steps for all <var>x</var> in <var>I</var></blockquote>
+
+			<p>What we mean here when we say "finitely many steps for all <var>x</var> in <var>I</var>" is that for all the elements ( <var>x</var> ) in <var>I</var> (all our potential inputs) there is a
 			sequence of computational states that is finite, i.e. does eventually end. Or in layman's terms, no input we put into our algorithm will cause
 			the algorithm to run forever.</p>
 			<br />
