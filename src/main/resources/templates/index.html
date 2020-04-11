@@ -23,7 +23,7 @@
 			</a>
 		</header>
 
-		<div class="view-height">
+		<section class="view-height">
 			<div class="container off-centre">
 				<h1 class="my-name">Rudi Kershaw</h1>
 				<h2 class="my-summary">Programmer, Science Nerd, Skeptic</h2>
@@ -39,9 +39,9 @@
 				</ul>
 			</div>
 			<a class="theres-more" href="#my-activity"><i class="fa fa-chevron-down"></i></a>
-		</div>
+		</section>
 
-		<div id="my-activity" class="flex-row">
+		<section id="my-activity" class="flex-row">
 			<div class="latest-commits">
 				<h3>Latest Commits</h3>
 				<figure>
@@ -62,27 +62,29 @@
 					</div>
 				</a>
 			</div>
-		</div>
+		</section>
 
-		<h2 class="my-articles">My Articles</h2>
-		<div class="black-band">
-			<a th:href="${trending.path}" class="container">
-				<img th:src="${trending.largeImagePath}" th:alt="'Article thumbnail for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
-				<h2>Most Viewed - Last 7 Days</h2>
-				<h3 th:text="${trending.name}">Article Title</h3>
-				<p th:text="${trending.description}">Article Description</p>
-			</a>
-		</div>
+		<section>
+			<h2 class="my-articles">My Articles</h2>
+			<div class="black-band">
+				<a th:href="${trending.path}" class="container">
+					<img th:src="${trending.largeImagePath}" th:alt="'Article thumbnail for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
+					<h2>Most Viewed - Last 7 Days</h2>
+					<h3 th:text="${trending.name}">Article Title</h3>
+					<p th:text="${trending.description}">Article Description</p>
+				</a>
+			</div>
 
-		<div id="page" class="entries">
-			<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
-				<div class="entry">
-					<h4 th:text="${article.name}">Article Title</h4>
-					<img th:src="${article.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
-					<p th:text="${article.description}">Article Description</p>
-				</div>
-			</a>
-		</div>
+			<div id="page" class="entries">
+				<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
+					<div class="entry">
+						<h4 th:text="${article.name}">Article Title</h4>
+						<img th:src="${article.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
+						<p th:text="${article.description}">Article Description</p>
+					</div>
+				</a>
+			</div>
+		</section>
 
 		<footer class="index-footer" th:fragment="footer">
 			<blockquote class="container">
