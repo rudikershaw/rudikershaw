@@ -8,113 +8,125 @@
 				<p class="date">18/11/2017</p>
 				<p class="views"><span th:text="${article.views}"></span> views</p>
 			</div>
-			<h1 th:text="${article.name}">A Year &amp; 20 Something Books</h1>
-			<hr />
-			<img class="coverimg" src="/images/20-something-books-banner.jpg" alt="20 Something Books" />
-			<br />
 
-			<p>A little over a year ago I decided that I needed to read more. This was born of a growing frustration with not being smart enough to achieve anything
-				intellectually note-worthy. Although relatively late in life, I have developed serious motivations to make some kind of important innovation or add to
-				technological progress in some meaningful way. I became aware of a certain stereotype or cliché. Smart and successful people read a lot.</p>
-			<br />
-			<p>Bill gates has been quoted as saying that he reads 50 books a year. Apparently, when asked how he learned to build rockets, Elon Musk replied <a href="http://uk.businessinsider.com/elon-musk-favorite-books-2015-10/#the-lord-of-the-rings-by-jrr-tolkien-1" target="blank_">"I read books"</a>.
-				Steve Jobs, Warren Buffet, Paul Allen, Mark Zuckerberg, and a wide variety of others have reputations for reading enormous amounts. I am not naive enough to
-				think that trying to read as much as these people will make me as successful as them. There are a number of highly dubious claims in the media and over the
-				internet trying to sell you that idea. It is very probably a load of garbage. Regardless, I thought it would be worth a go.</p>
-			<br />
-			<p>I picked up <span class="italic">Becoming a Better Programmer</span> by Pete Goodliffe in mid May 2016, and set myself the goal of reading a book every two weeks. If <a href="https://en.wikipedia.org/wiki/Mark_Zuckerberg_book_club">Mark Zuckerberg wasn't
-				too busy</a> to pull it off, then I could too. A year later I had read 21 books, a little shy of my target, but I am still happy with the result. These are the 21
-				books I read in that time.</p>
-			<br />
+			<section>
+				<h1 th:text="${article.name}">A Year &amp; 20 Something Books</h1>
+				<hr />
+				<img class="coverimg" src="/images/20-something-books-banner.jpg" alt="20 Something Books" />
+				<br />
+				<p>A little over a year ago I decided that I needed to read more. This was born of a growing frustration with not being smart enough to achieve anything
+					intellectually note-worthy. Although relatively late in life, I have developed serious motivations to make some kind of important innovation or add to
+					technological progress in some meaningful way. I became aware of a certain stereotype or cliché. Smart and successful people read a lot.</p>
+				<br />
+				<p>Bill gates has been quoted as saying that he reads 50 books a year. Apparently, when asked how he learned to build rockets, Elon Musk replied <a href="http://uk.businessinsider.com/elon-musk-favorite-books-2015-10/#the-lord-of-the-rings-by-jrr-tolkien-1" target="blank_">"I read books"</a>.
+					Steve Jobs, Warren Buffet, Paul Allen, Mark Zuckerberg, and a wide variety of others have reputations for reading enormous amounts. I am not naive enough to
+					think that trying to read as much as these people will make me as successful as them. There are a number of highly dubious claims in the media and over the
+					internet trying to sell you that idea. It is very probably a load of garbage. Regardless, I thought it would be worth a go.</p>
+				<br />
+				<p>I picked up <span class="italic">Becoming a Better Programmer</span> by Pete Goodliffe in mid May 2016, and set myself the goal of reading a book every two weeks. If <a href="https://en.wikipedia.org/wiki/Mark_Zuckerberg_book_club">Mark Zuckerberg wasn't
+					too busy</a> to pull it off, then I could too. A year later I had read 21 books, a little shy of my target, but I am still happy with the result. These are the 21
+					books I read in that time.</p>
+				<br />
 
-			<div class="code">
-				<ol>
-					<li>Becoming a Better Programmer <span class="orange">by Pete Goodliffe</span></li>
-					<li>Pro Git <span class="orange">by Scott Chacon and Ben Straub</span></li>
-					<li>Elon Musk's biography <span class="orange">by Ashley Vance</span></li>
-					<li>Seven Brief Lessons on Physics <span class="orange">by Carlo Rovelli</span></li>
-					<li>Look to Windward <span class="orange">by Iain M. Banks</span></li>
-					<li>The Elements of Computer Systems <span class="orange">by Noam Nisan and Shimon Schocken</span></li>
-					<li>Excession <span class="orange">by Iain M. Banks</span></li>
-					<li>The Trouble with Physics <span class="orange">by Lee Smolin</span></li>
-					<li>God is not Great <span class="orange">by Christopher Hitchens</span></li>
-					<li>The Magic of Reality <span class="orange">by Richard Dawkins</span></li>
-					<li>Inversions <span class="orange">by Iain M. Banks</span></li>
-					<li>Homo Deus <span class="orange">by Yuval Noah Harari</span></li>
-					<li>Free Will <span class="orange">by Sam Harris</span></li>
-					<li>Feersum Endjinn <span class="orange">by Iain M. Banks</span></li>
-					<li>Driverless <span class="orange">by Hod Lipson and Melba Kurman</span></li>
-					<li>Pride and Prejudice <span class="orange">by Jane Austen</span></li>
-					<li>The Lean Startup <span class="orange">by Eric Ries</span></li>
-					<li>The Complete Robot <span class="orange">by Isaac Asimov</span></li>
-					<li>The Man Who Mistook His Wife for a Hat <span class="orange">by Oliver Sacks</span></li>
-					<li>Spring Boot in Action <span class="orange">by Craig Walls</span></li>
-					<li>Stranger in a Strange Land <span class="orange">by Robert Heinlein</span></li>
-				</ol>
-			</div>
-			<br />
-			<p>So how did reading 21 books some time last year change my life? If you were hoping to find out that I'm a new man and that I have become hugely successful,
-				then I am sorry to disappoint. However, the benefits have definitely been worth the effort. Those benefits were the ones that you would expect. I know more
-				now.</p>
-			<br />
-			<p>But reading this way doesn't just help you know more on some pre-defined topic. The advantage of reading whole books is that they may take you places that you don't
-				initially expect. You read most books from beginning to end and learn whatever content you find in the middle. This is also a disadvantage. If you want to
-				learn something very specific you can probably find a tutorial or something online, but this way you almost never find out what you didn't know to look for.
-				Learning from much more targeted sources doesn't give you as well rounded an understanding of what there is to know.</p>
-			<br />
-			<p>So here is the kind of stuff I have gained from reading over the past year. Let's split this up into the genres of books I ended up reading.</p>
-			<br />
-			<h2>Fiction</h2>
-			<h4><i>Look to Windward, Excession, Inversions, Feersum Endjinn, The Complete Robot, Stranger in a Strange Land, Pride and Prejudice</i></h4>
-			<img class="coverimg" src="/images/fiction-header.jpg" alt="Fiction" height="100" width="780" />
-			<br />
-			<p>You will probably have noticed, even with a fairly casual glance at the list above, that I have read <b>a lot</b> of books by Iain M. Banks. I love his books. I am
-				not generally very fond of fiction, but when it comes to science fiction I will make an exception. Fiction in general feels like a bit of a waste. I rarely feel
-				as though I have learned anything from fiction. I tend to measure a book's worth by whether it has shaped who I am in some way. Learning a new body of knowledge
-				or learning to look at the world differently is why I enjoy reading. Unlike most other fiction, science fiction in particular does that for me.</p>
-			<br />
-			<p>There is a lot to be learned from what creative writers think the future will be like. There is also a lot to be learned from looking back at what writers in the past
-				thought <span class="italic">today</span> would be like. It can be both inspiring and humbling to see what great minds have foreseen and also failed to see. If you look forward to a better
-				future then science fiction can help you feel excited about it. And if you want to help <span class="italic">create</span> a better future, then maybe you can borrow a few ideas.</p>
-			<br />
-			<h2>Technical Books</h2>
-			<h4><i>Becoming a Better Programmer, The Elements of Computer Systems, Pro Git, The Lean Startup, Spring Boot in Action</i></h4>
-			<img class="coverimg" src="/images/technical-header.jpg" alt="Fiction" height="100" width="780" />
-			<br />
-			<p>My job is a <span class="italic">vocation</span>. I am a software developer. Not everyone has that feeling about what they do for a living. If you don't, I would encourage you to look for it.
-				That doesn't always mean looking for a new job. It can also mean learning to love <span class="italic">whatever</span> you do. Do you know what really helps you to love what you do for a living?
-				Being good at it. If you are proud of what you do it is easier to enjoy, and it is easier to be proud of what you are good at. This is one of the many reasons I
-				quite enjoy reading technical books.</p>
-			<br />
-			<p>Just over this year period I learned the fundamentals of how a computer works (built up from nothing but NAND gates made from transistors), as well as a little bit
-				about how successful products are created. I also learned about good practices in the software industry in general, and a whole host of things about specific tools
-				that I use on a day to day basis. So long as I keep this up, I will keep getting better.</p>
-			<br />
-			<h2>Popular Science</h2>
-			<h4><i>Seven Brief Lessons on Physics, The Trouble with Physics, The Magic of Reality, Homo Deus, Free Will, Driverless, The Man Who Mistook His Wife for a Hat</i></h4>
-			<img class="coverimg" src="/images/science-header.jpg" alt="Fiction" height="100" width="780" />
-			<br />
-			<p>Popular science books are probably some of the most diverse that I read, taking me to new and unexpected places. Good books can change your world view. Some of
-				them can fundamentally change the way that you look at the world. Over the past year and a half, books like these have changed my understanding of history, politics,
-				religion, academia, and even what it means to exist at all.</p>
-			<br />
-			<p>A word of warning. It is easy to slip from reading popular science, into reading <b>pseudo</b>-science. It can be tough to choose what to believe and how to know what sources
-				are reliable. For this, I can only recommend more books. Although I didn't read these books in this specific year period, I can recommend 5 books in particular that may
-				help you choose what should be believed, and what should not be.</p>
-			<br />
-			<div class="code">
-				<ol>
-					<li>Bad Science <span class="orange">by Ben Goldachre</span></li>
-					<li>How Not to be Wrong <span class="orange">by Jordan Ellenberg</span></li>
-					<li>Trick or Treatment <span class="orange">by Edzard Ernst and Simon Singh</span></li>
-					<li>The God Delusion <span class="orange">by Richard Dawkins</span></li>
-					<li>Tricks of the Mind <span class="orange">by Derren Brown</span></li>
-				</ol>
-			</div>
-			<br />
-			<p>All of these books have something in common. They are all trying to teach you to be skeptical, but also let you see how difficult it really is to truly <b>know</b> something.
-				Both valuable lessons, especially if you want to read to acquire new knowledge.</p>
-			<br />
+				<div class="code">
+					<ol>
+						<li>Becoming a Better Programmer <span class="orange">by Pete Goodliffe</span></li>
+						<li>Pro Git <span class="orange">by Scott Chacon and Ben Straub</span></li>
+						<li>Elon Musk's biography <span class="orange">by Ashley Vance</span></li>
+						<li>Seven Brief Lessons on Physics <span class="orange">by Carlo Rovelli</span></li>
+						<li>Look to Windward <span class="orange">by Iain M. Banks</span></li>
+						<li>The Elements of Computer Systems <span class="orange">by Noam Nisan and Shimon Schocken</span></li>
+						<li>Excession <span class="orange">by Iain M. Banks</span></li>
+						<li>The Trouble with Physics <span class="orange">by Lee Smolin</span></li>
+						<li>God is not Great <span class="orange">by Christopher Hitchens</span></li>
+						<li>The Magic of Reality <span class="orange">by Richard Dawkins</span></li>
+						<li>Inversions <span class="orange">by Iain M. Banks</span></li>
+						<li>Homo Deus <span class="orange">by Yuval Noah Harari</span></li>
+						<li>Free Will <span class="orange">by Sam Harris</span></li>
+						<li>Feersum Endjinn <span class="orange">by Iain M. Banks</span></li>
+						<li>Driverless <span class="orange">by Hod Lipson and Melba Kurman</span></li>
+						<li>Pride and Prejudice <span class="orange">by Jane Austen</span></li>
+						<li>The Lean Startup <span class="orange">by Eric Ries</span></li>
+						<li>The Complete Robot <span class="orange">by Isaac Asimov</span></li>
+						<li>The Man Who Mistook His Wife for a Hat <span class="orange">by Oliver Sacks</span></li>
+						<li>Spring Boot in Action <span class="orange">by Craig Walls</span></li>
+						<li>Stranger in a Strange Land <span class="orange">by Robert Heinlein</span></li>
+					</ol>
+				</div>
+				<br />
+				<p>So how did reading 21 books some time last year change my life? If you were hoping to find out that I'm a new man and that I have become hugely successful,
+					then I am sorry to disappoint. However, the benefits have definitely been worth the effort. Those benefits were the ones that you would expect. I know more
+					now.</p>
+				<br />
+				<p>But reading this way doesn't just help you know more on some pre-defined topic. The advantage of reading whole books is that they may take you places that you don't
+					initially expect. You read most books from beginning to end and learn whatever content you find in the middle. This is also a disadvantage. If you want to
+					learn something very specific you can probably find a tutorial or something online, but this way you almost never find out what you didn't know to look for.
+					Learning from much more targeted sources doesn't give you as well rounded an understanding of what there is to know.</p>
+				<br />
+				<p>So here is the kind of stuff I have gained from reading over the past year. Let's split this up into the genres of books I ended up reading.</p>
+				<br />
+			</section>
+
+			<section>
+				<h2>Fiction</h2>
+				<h4><i>Look to Windward, Excession, Inversions, Feersum Endjinn, The Complete Robot, Stranger in a Strange Land, Pride and Prejudice</i></h4>
+				<img class="coverimg" src="/images/fiction-header.jpg" alt="Fiction" height="100" width="780" />
+				<br />
+				<p>You will probably have noticed, even with a fairly casual glance at the list above, that I have read <b>a lot</b> of books by Iain M. Banks. I love his books. I am
+					not generally very fond of fiction, but when it comes to science fiction I will make an exception. Fiction in general feels like a bit of a waste. I rarely feel
+					as though I have learned anything from fiction. I tend to measure a book's worth by whether it has shaped who I am in some way. Learning a new body of knowledge
+					or learning to look at the world differently is why I enjoy reading. Unlike most other fiction, science fiction in particular does that for me.</p>
+				<br />
+				<p>There is a lot to be learned from what creative writers think the future will be like. There is also a lot to be learned from looking back at what writers in the past
+					thought <span class="italic">today</span> would be like. It can be both inspiring and humbling to see what great minds have foreseen and also failed to see. If you look forward to a better
+					future then science fiction can help you feel excited about it. And if you want to help <span class="italic">create</span> a better future, then maybe you can borrow a few ideas.</p>
+				<br />
+			</section>
+
+			<section>
+				<h2>Technical Books</h2>
+				<h4><i>Becoming a Better Programmer, The Elements of Computer Systems, Pro Git, The Lean Startup, Spring Boot in Action</i></h4>
+				<img class="coverimg" src="/images/technical-header.jpg" alt="Fiction" height="100" width="780" />
+				<br />
+				<p>My job is a <span class="italic">vocation</span>. I am a software developer. Not everyone has that feeling about what they do for a living. If you don't, I would encourage you to look for it.
+					That doesn't always mean looking for a new job. It can also mean learning to love <span class="italic">whatever</span> you do. Do you know what really helps you to love what you do for a living?
+					Being good at it. If you are proud of what you do it is easier to enjoy, and it is easier to be proud of what you are good at. This is one of the many reasons I
+					quite enjoy reading technical books.</p>
+				<br />
+				<p>Just over this year period I learned the fundamentals of how a computer works (built up from nothing but NAND gates made from transistors), as well as a little bit
+					about how successful products are created. I also learned about good practices in the software industry in general, and a whole host of things about specific tools
+					that I use on a day to day basis. So long as I keep this up, I will keep getting better.</p>
+				<br />
+			</section>
+
+			<section>
+				<h2>Popular Science</h2>
+				<h4><i>Seven Brief Lessons on Physics, The Trouble with Physics, The Magic of Reality, Homo Deus, Free Will, Driverless, The Man Who Mistook His Wife for a Hat</i></h4>
+				<img class="coverimg" src="/images/science-header.jpg" alt="Fiction" height="100" width="780" />
+				<br />
+				<p>Popular science books are probably some of the most diverse that I read, taking me to new and unexpected places. Good books can change your world view. Some of
+					them can fundamentally change the way that you look at the world. Over the past year and a half, books like these have changed my understanding of history, politics,
+					religion, academia, and even what it means to exist at all.</p>
+				<br />
+				<p>A word of warning. It is easy to slip from reading popular science, into reading <b>pseudo</b>-science. It can be tough to choose what to believe and how to know what sources
+					are reliable. For this, I can only recommend more books. Although I didn't read these books in this specific year period, I can recommend 5 books in particular that may
+					help you choose what should be believed, and what should not be.</p>
+				<br />
+				<div class="code">
+					<ol>
+						<li>Bad Science <span class="orange">by Ben Goldachre</span></li>
+						<li>How Not to be Wrong <span class="orange">by Jordan Ellenberg</span></li>
+						<li>Trick or Treatment <span class="orange">by Edzard Ernst and Simon Singh</span></li>
+						<li>The God Delusion <span class="orange">by Richard Dawkins</span></li>
+						<li>Tricks of the Mind <span class="orange">by Derren Brown</span></li>
+					</ol>
+				</div>
+				<br />
+				<p>All of these books have something in common. They are all trying to teach you to be skeptical, but also let you see how difficult it really is to truly <b>know</b> something.
+					Both valuable lessons, especially if you want to read to acquire new knowledge.</p>
+				<br />
+			</section>
+
 			<p>So, in conclusion, I am going to see if I can keep this up. I've taken a short break and so I have only read 7 other books since the ones listed in this article. So I am a
 				little behind. This time next year I will try to write an update on how it has gone. Until then, happy reading.</p>
 		</article>

@@ -8,148 +8,175 @@
 				<p class="date">08/06/2017</p>
 				<p class="views"><span th:text="${article.views}"></span> views</p>
 			</div>
-			<h1 th:text="${article.name}">Grokking RSA Encryption</h1>
-			<hr />
-			<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="RSA Encryption" />
-			<br />
 
-			<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
-				and is used for things like validating certificates in HTTPS requests, moving credit card information over the internet, and
-				encrypting messages in secure chat applications. This article is my attempt to put together a single source that describes
-				everything you need to know to <b>really</b> understand it.</p>
-			<br />
-			<p>We're going to start with a high level example where we
-				<b class="has-title" title="Convert (information or data) into a code, especially to prevent unauthorized access. - Oxford Living Dictionary"><span class="green">encrypt</span></b>
-				a message using a <b>public key</b>, and then decrypt it using a <b>private key</b>. Then we'll move on to explain all the key math
-				concepts you'll need to understand to grok RSA encryption in its fullness. Be warned, there is quite a lot of math. After that
-				we'll talk about how we generate our public and private keys. To appreciate this you will find a basic understanding of some programming
-				language helpful. By the time you have finished reading this article you should have the understanding required to perform your own
-				encryption using RSA.</p>
-			<br />
-			<div class="code">
-				<span class="green">• </span>High Level Overview<br />
-				<span class="green">• </span>One Way Functions<br />
-				<span class="green">• </span>Prime Factorisation<br />
-				<span class="green">• </span>Coprimes<br />
-				<span class="green">• </span>Euler's Totient<br />
-				<span class="green">• </span>Euler's Theorum<br />
-				<span class="green">• </span>Generating Our Keys
-			</div>
-			<h2>High Level Overview</h2>
-			<p>We start with two pairs of numbers, and we call each pair our keys. For the overview we are going to assume we already have our keys. First we take our <b>public key</b>, the pair
-				of numbers <b>(5, 14)</b>, and pass it to the person we want to be able to send us messages. They then use this key to encrypt their message. Before
-				they encrypt it however, they will have to turn the message into a number (or a list of numbers). This can be as simple as encoding each character in
-				your method as their set unicode number or something like that. Imagine for example they want to send the character <b>'B'</b> and they convert it to
-				a <b>2</b>. To encrypt their message they take this number and do the following:</p>
-			<blockquote>2<sup>5</sup> mod 14 = 32 mod 14 = 4</blockquote>
-			<p>The word <b>mod</b>, in case you are wondering, is the <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modulus</a> operation for getting the remainder of division by the two numbers. In the above it
-				is essentially the same as getting the remainder of <b>32</b> divided by <b>14</b>. Our friend then sends us the number <b>4</b> and we
-				use our <b>private key</b>, the pair <b>(11, 14)</b>, to convert it back to its original value. We do that by doing the following;</p>
-			<blockquote>4<sup>11</sup> mod 14 = 4194304 mod 14 = 2</blockquote>
-			<p>Once we have this number back we just have to convert it back into characters again. <b>2</b> becomes the letter <b>'B'</b> again. If we
-				want to send our friend a message back they will have to send us their public key so we can do the same process the other way around. This
-				is secure because we never send the detail required to <b>decrypt</b> the message to anyone, so it can never be stolen. And for reasons we'll
-				discuss later, working out the details for decrypting the messages without the private key is almost impossible (at least in any sensible
-				amount of time). Simple right? Well maybe. If you're anything like me you will have loads of questions at this point. How do we get those
-				keys? And how exactly does that work? We'll get to that. But first there are a few concepts you'll want to understand.</p>
-			<h2>One Way Functions</h2>
-			<p>A one way function can easily compute an output from some input, but reversing the process and getting the input back from
-				the output is hard. Easy and hard are obviously relative terms, but in the context of functions we tend to mean that easy
-				processes have low <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a> and
-				hard processes have high complexity. The one way function we use in RSA is multiplying two very large prime numbers, which is
-				easy. The reverse process is very hard, and is called prime factorisation.</p>
-			<h2>Prime Factorisation</h2>
-			<p>Every number can be created as the product of a single unique combination of prime numbers. If the number is a prime number, then
-				its single unique combination of primes is simply itself. We call this unique combination a numbers
-				<a href="https://en.wikipedia.org/wiki/Prime_factor">prime factors</a>. Below are a few examples:</p>
-			<br />
-			<div class="code">
-				<span class="orange"> 4 = </span>2 &times; 2<br />
-				<span class="orange"> 5 = </span>5<br />
-				<span class="orange"> 6 = </span>2 &times; 3<br />
-				<span class="orange"> 54 = </span>2 &times; 3 &times; 3 &times; 3<br />
-				<span class="orange"> 210 = </span>2 &times; 3 &times; 5 &times; 7<br />
-				<span class="orange"> 126945253 = </span>11261 &times; 11273
-			</div>
-			<br />
-			<p>The process of taking a number and finding its prime factors is called, guess what, prime factorisation. Prime factorisation
-				is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity">very hard</a>
-				problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO">600,000 years</a>
-				to work out the prime factors of a 300 digit number. If you had the prime factors however, it would only take a tiny fraction of a second to multiply them.</p>
-			<h2>Coprimes</h2>
-			<p>Coprimes are numbers that share no prime factors, or are not divisible by any of the same numbers except <b>1</b>. For example
-				<b>4</b> and <b>9</b> are coprimes because the prime factors of <b>4</b> are <b>2 &times; 2</b> and the prime factors of <b>9</b>
-				are <b>3 &times; 3</b>. A prime numbers is coprime with all other numbers except those that are divisible by itself. This
-				also means that a prime number is coprime with all numbers below its value. It is also worth noting that <b>1</b> is coprime
-				to all numbers because it cannot share prime factors with other numbers (because it has none) and it is not divisible by any of
-				the same numbers except itself.</p>
-			<h2>Euler's Totient</h2>
-			<p>A number's <b>totient</b> is the number of whole positive numbers below it that do not share any prime factors. In other words
-				the totient of a number is the number of coprimes below its value. The totient of a number <b>n</b> is often written <b>&Phi;(n)</b>.
-				Working out a number's totient is a hard problem, but in RSA encryption we rely on two quirks to make it easy for us. The totient
-				of a prime number is always just the prime number minus one. As described earlier all numbers below a prime are coprimes with it.
-				Also, the results of totient calculations are multiplicative, which means that:</p>
-			<blockquote>&Phi;(a) &times; &Phi;(b) = &Phi;(a &times; b)</blockquote>
-			<p>This means that if <b>a</b> and <b>b</b> are primes we can also work it out like so:</p>
-			<blockquote>&Phi;(a) &times; &Phi;(b) = &Phi;(a &times; b) = (a - 1) &times; (b - 1)</blockquote>
-			<p>By knowing the prime factors of a part of our keys in advance we can easily work out its totient value. This is extremely useful
-				for us when we generate our public and private keys.</p>
-			<br />
-			<div class="code">
-				The totient of 12 is the number of numbers below 12 that are <span class="orange">coprime</span>.<br />
-				<span class="orange">11</span>, 10, 9, 8, <span class="orange">7</span>, 6, <span class="orange">5</span>, 4, 3, 2, <span class="orange">1</span><br />
-				The totient of 12 is 4.<br />
-				<br /><br />
-				The totient of 7 is the number of numbers below 7 that are <span class="orange">coprime</span>.<br />
-				<span class="orange">6</span>, <span class="orange">5</span>, <span class="orange">4</span>, <span class="orange">3</span>, <span class="orange">2</span>, <span class="orange">1</span><br />
-				The totient of 7 is 6, i.e. 7-1 because 7 is prime.
-			</div>
-			<h2>Euler's Theorum</h2>
-			<p><a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorum</a> is key to understanding how RSA encryption works.
-				It explains why we can convert between our message and the encrypted version using our keys and the <b>mod</b> operator.
-				What Euler's theorum says is that if we have two coprimes <b>a</b> and <b>n</b>, the following is always true:</p>
-			<blockquote>a<sup>&Phi;(n)</sup> mod n = 1</blockquote>
-			<p>For any two coprimes <b>a</b> and <b>n</b>, <b>a</b> to the power of the totient of <b>n</b> divided by <b>n</b> leaves a remainder of one.
-				An interesting little quirk you might think, but this turns out to be extremely useful.</p>
-			<h2>Generating Our Keys</h2>
-			<p>At the beginning we described passing our <b>public key</b> to another person so that they can encrypt and send us messages. We then
-				described using our <b>private key</b> to decrypt those messages. So our public key <b>(e, n)</b> and private key <b>(d, n)</b> are both a
-				pair of values. We use the letter <b>e</b> for our public key as an abbreviation of <b>encrypt</b>, and the letter <b>d</b> in our
-				private key as an abbreviation for <b>decrypt</b>. So let's go through how we get these keys. First we pick two huge prime numbers
-				with more than a hundred digits each and call them <b>p</b> and <b>q</b>. <b>n</b> then becomes the product of <b>p</b> and <b>q</b>:</p>
+			<section>
+				<h1 th:text="${article.name}">Grokking RSA Encryption</h1>
+				<hr />
+				<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="RSA Encryption" />
+				<br />
+				<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
+					and is used for things like validating certificates in HTTPS requests, moving credit card information over the internet, and
+					encrypting messages in secure chat applications. This article is my attempt to put together a single source that describes
+					everything you need to know to <b>really</b> understand it.</p>
+				<br />
+				<p>We're going to start with a high level example where we
+					<b class="has-title" title="Convert (information or data) into a code, especially to prevent unauthorized access. - Oxford Living Dictionary"><span class="green">encrypt</span></b>
+					a message using a <b>public key</b>, and then decrypt it using a <b>private key</b>. Then we'll move on to explain all the key math
+					concepts you'll need to understand to grok RSA encryption in its fullness. Be warned, there is quite a lot of math. After that
+					we'll talk about how we generate our public and private keys. To appreciate this you will find a basic understanding of some programming
+					language helpful. By the time you have finished reading this article you should have the understanding required to perform your own
+					encryption using RSA.</p>
+				<br />
+				<div class="code">
+					<span class="green">• </span>High Level Overview<br />
+					<span class="green">• </span>One Way Functions<br />
+					<span class="green">• </span>Prime Factorisation<br />
+					<span class="green">• </span>Coprimes<br />
+					<span class="green">• </span>Euler's Totient<br />
+					<span class="green">• </span>Euler's Theorum<br />
+					<span class="green">• </span>Generating Our Keys
+				</div>
+			</section>
+
+			<section>
+				<h2>High Level Overview</h2>
+				<p>We start with two pairs of numbers, and we call each pair our keys. For the overview we are going to assume we already have our keys. First we take our <b>public key</b>, the pair
+					of numbers <b>(5, 14)</b>, and pass it to the person we want to be able to send us messages. They then use this key to encrypt their message. Before
+					they encrypt it however, they will have to turn the message into a number (or a list of numbers). This can be as simple as encoding each character in
+					your method as their set unicode number or something like that. Imagine for example they want to send the character <b>'B'</b> and they convert it to
+					a <b>2</b>. To encrypt their message they take this number and do the following:</p>
+				<blockquote>2<sup>5</sup> mod 14 = 32 mod 14 = 4</blockquote>
+				<p>The word <b>mod</b>, in case you are wondering, is the <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modulus</a> operation for getting the remainder of division by the two numbers. In the above it
+					is essentially the same as getting the remainder of <b>32</b> divided by <b>14</b>. Our friend then sends us the number <b>4</b> and we
+					use our <b>private key</b>, the pair <b>(11, 14)</b>, to convert it back to its original value. We do that by doing the following;</p>
+				<blockquote>4<sup>11</sup> mod 14 = 4194304 mod 14 = 2</blockquote>
+				<p>Once we have this number back we just have to convert it back into characters again. <b>2</b> becomes the letter <b>'B'</b> again. If we
+					want to send our friend a message back they will have to send us their public key so we can do the same process the other way around. This
+					is secure because we never send the detail required to <b>decrypt</b> the message to anyone, so it can never be stolen. And for reasons we'll
+					discuss later, working out the details for decrypting the messages without the private key is almost impossible (at least in any sensible
+					amount of time). Simple right? Well maybe. If you're anything like me you will have loads of questions at this point. How do we get those
+					keys? And how exactly does that work? We'll get to that. But first there are a few concepts you'll want to understand.</p>
+			</section>
+
+			<section>
+				<h2>One Way Functions</h2>
+				<p>A one way function can easily compute an output from some input, but reversing the process and getting the input back from
+					the output is hard. Easy and hard are obviously relative terms, but in the context of functions we tend to mean that easy
+					processes have low <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a> and
+					hard processes have high complexity. The one way function we use in RSA is multiplying two very large prime numbers, which is
+					easy. The reverse process is very hard, and is called prime factorisation.</p>
+			</section>
+
+			<section>
+				<h2>Prime Factorisation</h2>
+				<p>Every number can be created as the product of a single unique combination of prime numbers. If the number is a prime number, then
+					its single unique combination of primes is simply itself. We call this unique combination a numbers
+					<a href="https://en.wikipedia.org/wiki/Prime_factor">prime factors</a>. Below are a few examples:</p>
+				<br />
+				<div class="code">
+					<span class="orange"> 4 = </span>2 &times; 2<br />
+					<span class="orange"> 5 = </span>5<br />
+					<span class="orange"> 6 = </span>2 &times; 3<br />
+					<span class="orange"> 54 = </span>2 &times; 3 &times; 3 &times; 3<br />
+					<span class="orange"> 210 = </span>2 &times; 3 &times; 5 &times; 7<br />
+					<span class="orange"> 126945253 = </span>11261 &times; 11273
+				</div>
+				<br />
+				<p>The process of taking a number and finding its prime factors is called, guess what, prime factorisation. Prime factorisation
+					is a <a href="https://en.wikipedia.org/wiki/Integer_factorization#Difficulty_and_complexity">very hard</a>
+					problem. So hard in fact that it could take a computer <a href="https://www.quora.com/Is-it-true-that-factoring-a-300-digit-number-takes-150-000-years-for-current-computers/answer/Miguel-Oliveira-2?srid=hZUvO">600,000 years</a>
+					to work out the prime factors of a 300 digit number. If you had the prime factors however, it would only take a tiny fraction of a second to multiply them.</p>
+			</section>
+
+			<section>
+				<h2>Coprimes</h2>
+				<p>Coprimes are numbers that share no prime factors, or are not divisible by any of the same numbers except <b>1</b>. For example
+					<b>4</b> and <b>9</b> are coprimes because the prime factors of <b>4</b> are <b>2 &times; 2</b> and the prime factors of <b>9</b>
+					are <b>3 &times; 3</b>. A prime numbers is coprime with all other numbers except those that are divisible by itself. This
+					also means that a prime number is coprime with all numbers below its value. It is also worth noting that <b>1</b> is coprime
+					to all numbers because it cannot share prime factors with other numbers (because it has none) and it is not divisible by any of
+					the same numbers except itself.</p>
+			</section>
+
+			<section>
+				<h2>Euler's Totient</h2>
+				<p>A number's <b>totient</b> is the number of whole positive numbers below it that do not share any prime factors. In other words
+					the totient of a number is the number of coprimes below its value. The totient of a number <b>n</b> is often written <b>&Phi;(n)</b>.
+					Working out a number's totient is a hard problem, but in RSA encryption we rely on two quirks to make it easy for us. The totient
+					of a prime number is always just the prime number minus one. As described earlier all numbers below a prime are coprimes with it.
+					Also, the results of totient calculations are multiplicative, which means that:</p>
+				<blockquote>&Phi;(a) &times; &Phi;(b) = &Phi;(a &times; b)</blockquote>
+				<p>This means that if <b>a</b> and <b>b</b> are primes we can also work it out like so:</p>
+				<blockquote>&Phi;(a) &times; &Phi;(b) = &Phi;(a &times; b) = (a - 1) &times; (b - 1)</blockquote>
+				<p>By knowing the prime factors of a part of our keys in advance we can easily work out its totient value. This is extremely useful
+					for us when we generate our public and private keys.</p>
+				<br />
+				<div class="code">
+					The totient of 12 is the number of numbers below 12 that are <span class="orange">coprime</span>.<br />
+					<span class="orange">11</span>, 10, 9, 8, <span class="orange">7</span>, 6, <span class="orange">5</span>, 4, 3, 2, <span class="orange">1</span><br />
+					The totient of 12 is 4.<br />
+					<br /><br />
+					The totient of 7 is the number of numbers below 7 that are <span class="orange">coprime</span>.<br />
+					<span class="orange">6</span>, <span class="orange">5</span>, <span class="orange">4</span>, <span class="orange">3</span>, <span class="orange">2</span>, <span class="orange">1</span><br />
+					The totient of 7 is 6, i.e. 7-1 because 7 is prime.
+				</div>
+			</section>
+
+			<section>
+				<h2>Euler's Theorum</h2>
+				<p><a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorum</a> is key to understanding how RSA encryption works.
+					It explains why we can convert between our message and the encrypted version using our keys and the <b>mod</b> operator.
+					What Euler's theorum says is that if we have two coprimes <b>a</b> and <b>n</b>, the following is always true:</p>
+				<blockquote>a<sup>&Phi;(n)</sup> mod n = 1</blockquote>
+				<p>For any two coprimes <b>a</b> and <b>n</b>, <b>a</b> to the power of the totient of <b>n</b> divided by <b>n</b> leaves a remainder of one.
+					An interesting little quirk you might think, but this turns out to be extremely useful.</p>
+			</section>
+
+			<section>
+				<h2>Generating Our Keys</h2>
+				<p>At the beginning we described passing our <b>public key</b> to another person so that they can encrypt and send us messages. We then
+					described using our <b>private key</b> to decrypt those messages. So our public key <b>(e, n)</b> and private key <b>(d, n)</b> are both a
+					pair of values. We use the letter <b>e</b> for our public key as an abbreviation of <b>encrypt</b>, and the letter <b>d</b> in our
+					private key as an abbreviation for <b>decrypt</b>. So let's go through how we get these keys. First we pick two huge prime numbers
+					with more than a hundred digits each and call them <b>p</b> and <b>q</b>. <b>n</b> then becomes the product of <b>p</b> and <b>q</b>:</p>
 				<blockquote>n = p &times; q</blockquote>
-			<p>Now we need the totient of <b>n</b> to work out the public and private components of our key <b>e</b> and <b>d</b>. Remembering our trick
-				from earlier, we can get the totient of <b>n</b> because we know its prime factors <b>p</b> and <b>q</b>:</p>
-			<blockquote>&Phi;(n) = &Phi;(p &times; q) = (p - 1) &times; (q - 1)</blockquote>
-			<p>We can now use our totient <b>&Phi;(n)</b> to find <b>e</b> for our public key. To find <b>e</b> we just needs some value that is a coprime
-				of (shares no common divisors but one) <b>&Phi;(n)</b> but that is greater than <b>1</b> and less than <b>&Phi;(n)</b>.</p>
-			<blockquote>e = some coprime of &Phi;(n) where 1 &lt; e &lt; &Phi;(n)</blockquote>
-			<p>And lastly we need to find <b>d</b> for our private key that we keep to ourselves. To get <b>d</b> we need to find a value that satisfies the
-				following condition:</p>
-			<blockquote>d = some value where de mod &Phi;(n) = 1</blockquote>
-			<p>The value of <b>d</b> can be quite difficult to find. As such there are a number of different algorithms that are used to find the value of
-				<b>d</b>. Although you can find it manually you will want to use one of these algorithms, for example the
-				<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a>.</p>
-			<br />
-			<div class="code">
-				<span class="orange"> p</span>, <span class="orange">q</span> = 2 large primes<br />
-				<span class="orange"> n </span>= pq<br />
-				<span class="orange"> &Phi;(n)</span> = (p - 1)(q - 1)<br />
-				<span class="orange"> e</span> = coprime of n where 1 &lt; e &lt; &Phi;(n)<br />
-				<span class="orange"> d</span> = some d where de mod &Phi;(n) = 1<br />
-				<span class="orange"> Encrypted Message C</span> = M<sup>e</sup> mod n<br />
-				<span class="orange"> Decrypted Message M</span> = C<sup>d</sup> mod n
-			</div>
-			<h2>Tying It All Together</h2>
-			<p>The point of all this is to transfer a message that cannot be read by anyone except the intended recipient. To use a common
-				metaphor, its like sending someone a lock that they can use to lock their message in a box and send it to us. But we only send
-				them the lock without the key. If anyone were to try and intercept this box on the way back to its intended recipient they would
-				have no way of opening it.</p>
-			<br />
-			<p>In RSA the lock is <b>(d, n)</b> and the key is <b>(e, n)</b>. If an impostor wants to find <b>e</b> they would need to work out
-				the prime factors of <b>n</b> and go through the process of generating the keys fresh. But as we discussed, this is a very hard
-				problem indeed. Chances are they wouldn't live long enough for a computer to give them the answer.</p>
-			<br />
+				<p>Now we need the totient of <b>n</b> to work out the public and private components of our key <b>e</b> and <b>d</b>. Remembering our trick
+					from earlier, we can get the totient of <b>n</b> because we know its prime factors <b>p</b> and <b>q</b>:</p>
+				<blockquote>&Phi;(n) = &Phi;(p &times; q) = (p - 1) &times; (q - 1)</blockquote>
+				<p>We can now use our totient <b>&Phi;(n)</b> to find <b>e</b> for our public key. To find <b>e</b> we just needs some value that is a coprime
+					of (shares no common divisors but one) <b>&Phi;(n)</b> but that is greater than <b>1</b> and less than <b>&Phi;(n)</b>.</p>
+				<blockquote>e = some coprime of &Phi;(n) where 1 &lt; e &lt; &Phi;(n)</blockquote>
+				<p>And lastly we need to find <b>d</b> for our private key that we keep to ourselves. To get <b>d</b> we need to find a value that satisfies the
+					following condition:</p>
+				<blockquote>d = some value where de mod &Phi;(n) = 1</blockquote>
+				<p>The value of <b>d</b> can be quite difficult to find. As such there are a number of different algorithms that are used to find the value of
+					<b>d</b>. Although you can find it manually you will want to use one of these algorithms, for example the
+					<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a>.</p>
+				<br />
+				<div class="code">
+					<span class="orange"> p</span>, <span class="orange">q</span> = 2 large primes<br />
+					<span class="orange"> n </span>= pq<br />
+					<span class="orange"> &Phi;(n)</span> = (p - 1)(q - 1)<br />
+					<span class="orange"> e</span> = coprime of n where 1 &lt; e &lt; &Phi;(n)<br />
+					<span class="orange"> d</span> = some d where de mod &Phi;(n) = 1<br />
+					<span class="orange"> Encrypted Message C</span> = M<sup>e</sup> mod n<br />
+					<span class="orange"> Decrypted Message M</span> = C<sup>d</sup> mod n
+				</div>
+			</section>
+
+			<section>
+				<h2>Tying It All Together</h2>
+				<p>The point of all this is to transfer a message that cannot be read by anyone except the intended recipient. To use a common
+					metaphor, its like sending someone a lock that they can use to lock their message in a box and send it to us. But we only send
+					them the lock without the key. If anyone were to try and intercept this box on the way back to its intended recipient they would
+					have no way of opening it.</p>
+				<br />
+				<p>In RSA the lock is <b>(d, n)</b> and the key is <b>(e, n)</b>. If an impostor wants to find <b>e</b> they would need to work out
+					the prime factors of <b>n</b> and go through the process of generating the keys fresh. But as we discussed, this is a very hard
+					problem indeed. Chances are they wouldn't live long enough for a computer to give them the answer.</p>
+				<br />
+			</section>
+
 			<p>I hope you've found this break-down helpful. If you don't grok it and have questions please pop them in the comments below this article and I
 				will try and get back to you. Your questions may also help me to revise the article and make it clearer.</p>
 		</article>

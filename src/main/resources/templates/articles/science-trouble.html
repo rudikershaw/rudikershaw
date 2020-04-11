@@ -8,117 +8,133 @@
 				<p class="date">20/05/2016</p>
 				<p class="views"><span th:text="${article.views}"></span> views</p>
 			</div>
-			<h1>The Trouble with Science</h1>
-			<hr />
-			<img class="coverimg" src="/images/science-trouble-banner.jpg" alt="The Trouble with Science Cover Image" />
-			<br />
-			<p>Science is how we know stuff. It's not a body of facts, some government controlled institution, or a belief system. Science is a process in which we demand evidence, question that evidence,
-				stay skeptical, and keep trying to prove other people's research wrong. The ideas that survive this process get to be called <span class="bold">The Truth</span>, at least until some better research comes out showing
-				us that we were wrong all along.</p>
-			<br />
-			<p>This process we call science has given us almost everything that we now take for granted. Cultivated food, medicine, transport, communication, education, entertainment, as well as long, healthy, safe,
-				and largely happy lives.</p>
-			<br />
-			<p>So what's the problem? In August of 2015 a <a href="http://science.sciencemag.org/content/349/6251/aac4716">single study</a><sup><a href="#ref-1">1</a></sup>, by Brian Nosek PhD and colleagues, was performed that shook the very
-				bedrock of science itself. They took 100 pieces of original (not performed before) psychology research and tried to reproduce their results by replicating
-				the research exactly. Only a third of these studies could be successfully reproduced with significant results and almost all of the studies produced weaker results than the first time. To
-				radically over-simplify that, two thirds of those studies were <span class="bold">wrong</span>.</p>
-			<br />
-			<p>Not all science has this problem, right? Well... apparently it does. The same year <a href="http://circres.ahajournals.org/content/116/1/116.full">a review</a><sup><a href="#ref-2">2</a></sup> published in the
-				American Heart Association's journal Circulation Research highlighted the exact same sentiment. As it turns out this has been a problem for some time in pharmacology<sup><a href="#ref-3">3</a>,<a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup>,
-				gynecology<sup><a href="#ref-6">6</a></sup>, genetics<sup><a href="#ref-7">7</a></sup>, and a variety of other fields<sup><a href="#ref-8">8</a></sup>. Nosek, it seems, is just one of the latest
-				and most thorough in a long string of researchers trying to point this out. As a personal observation, the sciences that study people seem to have been hit hardest by this
-				phenomenon. Psychology, medicine, sociology, and economics.</p>
-			<br />
-			<p>So what the hell is going on? How is this happening? If you were inclined to split things into arbitrary sections then you might just say <span class="bold">Poor Research Quality</span>,
-				<span class="bold">Inevitability</span>, and <span class="bold">Publication Bias</span>. To get to grips with the problem we need to do a flash tour of research methodology.</p>
-			<br />
-			<div class="code bold">
-				<h3><span class="green">• </span>Poor Research Quality</h3><br />
-				<h3><span class="green">• </span>Inevitability</h3><br />
-				<h3><span class="green">• </span>Publication Bias</h3>
-			</div>
-			<br />
-			<h2>Research Quality</h2>
-			<p>Bias of some description or another leaks into all research, no exceptions. The quality of a piece of research is judged by the effort to eliminate that bias. <a href="https://en.wikipedia.org/wiki/Response_bias">Research participants
-				are biased</a> if they think they are being observed, or if they think you expect certain results. So we try not to let them know what we expect, or what intervention they are
-				receiving. We call research that does this <a href="https://en.wikipedia.org/wiki/Blind_experiment#Single-blind_trials">single-blinded</a>. Turns out that <a href="https://en.wikipedia.org/wiki/Observer-expectancy_effect">researchers are also bias</a>,
-				so some research even hides these details from the researchers. We call research that hides the expectations from both the participants
-				and the researchers <a href="https://en.wikipedia.org/wiki/Blind_experiment#Double-blind_trials">double-blinded</a>.</p>
-			<br />
-			<p>Any research where you are studying the effects of something needs a <a href="https://en.wikipedia.org/wiki/Scientific_control">control group</a>. If you give some ill people
-				a drug and they all get better what have we learnt? <span class="bold">Nothing</span>. Ill people get better most of the time. You would have to compare the group getting the drug to some
-				other group who didn't. This second group is the control group. Remember what we said about participants being biased? To stop our control group from knowing
-				that they're not getting treated we give them a placebo so they think they're getting treated too. This is an even better control called a <a href="https://en.wikipedia.org/wiki/Placebo-controlled_study">placebo control</a>.
-				Lots of interventions can't be placebo controlled, but there are clever tricks that can be used to work out whether the participants' biases affected the results.</p>
-			<br />
-			<p>If you are going to split your participants into groups how should you choose who goes in what groups? Simple. You shouldn't. If you are choosing who gets into each group then you are
-				introducing bias, and your study isn't double blinded anymore. We call studies where the participants are split into their groups randomly... wait for it... <a href="https://en.wikipedia.org/wiki/Randomized_controlled_trial">randomised</a>. Lastly,
-				all research should include all the steps required to replicate it. We call this <a href="https://en.wikipedia.org/wiki/Reproducibility">reproducibility</a>. Science is, after all,
-				about checking our facts and not believing anything unless we can confirm it. Reproducibility is at the very heart of science and one of it's most important principles.</p>
-			<br />
-			<p>There is a lot more to it than just that, and the importance of these practices varies from field to field, but these are the basics. Good research is
-				randomised, double-blinded, placebo controlled, and reproducible. When people fail to include these best practices their results are less accurate<sup><a href="#ref-9">9</a>,<a href="#ref-10">10</a></sup>
-				and if your study isn't reproducible then it might as well be worthless.</p>
-			<br />
-			<div class="code bold center">
-				<h3><span class="green">&quot;</span>Good research is randomised, double-blinded, placebo controlled, and reproducible<span class="green">&quot;</span></h3>
-			</div>
-			<br />
-			<h2>Inevitability</h2>
-			<p>Getting dodgy results is inevitable, and let me explain why. In a great many fields we determine whether the results of a study are significant by working out how likely the result is to be a fluke. We assign the results of
-				our studies a value to indicate how likely it is that they were just luck. We call this a <a href="https://en.wikipedia.org/wiki/P-value">p-value</a>. This doesn't take
-				into account any biases, but never mind.</p>
-			<br />
-			<p>We say that a piece of research is <span class="bold">significant</span> if it has a p-value of less that 0.05, which is to say that there is less than a 1 in 20 chance of the results being
-				a fluke. Without even taking into account the biases in all research, you could say that if you do 20 studies you get at least one who's results are just due to chance.</p>
-			<br />
-			<p>Let's do a little thought experiment. Imagine that you want to determine whether a coin is biased, and use a p-value to determine if your results are significant. All you
-				would have to do is flip the coin on the same side enough times in a row. If the coin landed on heads 4 times in a row you wouldn't have a small enough p-value because the chance of that is only
-				1 in 16 or <span class="italic bold">(0.5)<sup>4</sup></span>. But if it landed heads 5 times in a row then that's a 1 in 32 chance or <span class="italic bold">(0.5)<sup>5</sup></span> of being a fluke.
-				That would be enough to say you had a significant result showing that the coin was bias. But what if more than one person was studying this coin? What if you had 32 people
-				doing research and each person flipped the coin five times? Well the chances of one of those 32 people getting heads five times in a row is <span class="italic bold">(0.5)<sup>5</sup> x 32 = 1</span>.
-				Do you see the problem? If 32 people study this coin the same way, on average one of them will determine that the coin is biased, <span class="bold">even if it isn't!</span></p>
-			<br />
-			<p>Dodgy results are inevitable. Using p-values is a good way to prevent so many from slipping through the cracks, but we need to be aware that it wont stop all the flukes getting through. When a
-				study has a very low p-value it is much more likely to be the real deal. The lower the p-value of a piece of research the more likely someone can reproduce your results<sup><a href="#ref-1">1</a></sup>.</p>
-			<br />
-			<div class="code bold center">
-				<h3><span class="green">&quot;</span>Dodgy results are inevitable<span class="green">&quot;</span></h3>
-			</div>
-			<br />
-			<h2>Publication Bias</h2>
-			<p>Publication bias is a very simple problem. But first, lets talk about how research is published. A big part of the science process is <a href="https://en.wikipedia.org/wiki/Peer_review">peer review</a>, which means showing
-				your findings to other people so they can tear it apart (maybe even literally some times). It's important to let people point out any problems or wrong assumptions you've made. We do this
-				by submitting research to scientific journals for publishing. These journals throw out all the really low quality or boring pieces of research and the best research gets published. Some journals
-				have higher standards than others. This way people pay more attention to the research published in these high standard (or <a href="https://en.wikipedia.org/wiki/Impact_factor">high impact</a>) journals.</p>
-			<br />
-			<p>This all sounds very positive, so where is the problem? If you were reading carefully you may have spotted it. Journals weed out boring results. In some fields significant positive results are published almost
-				<span class="bold">ten times more</span><sup><a href="#ref-11">11</a></sup> than negative or insignificant results. On top of this, researchers often don't even bother trying to publish negative results<sup><a href="#ref-12">12</a></sup>. Think
-				back to our 32 coin flipping researchers.</p>
-			<br />
-			<p>Image that most of our coin flipping researchers didn't bother to try and publish their negative results, and that only a small handful of those people tried to get their work published. It's very likely that our
-				single fluke positive study would get published and the journals wouldn't want to publish the others. If you had all the results from all 32 studies it would be blindingly obvious that the
-				coin was not biased. Unfortunately people would only see the single fluke result and think the coin biased.</p>
-			<br />
-			<p>Publication bias is an absolutely massive problem. Ben Goldacre called this '<a href="https://www.ted.com/talks/ben_goldacre_battling_bad_science#t-410486">the single biggest ethical problem facing medicine today</a>', and
-				he's right. I can't say it enough, this is a huge problem.</p>
-			<br />
-			<div class="code bold center">
-				<h3><span class="green">&quot;</span>positive results are published almost ten times more than negative or insignificant results<span class="green">&quot;</span></h3>
-			</div>
-			<br />
-			<h2>What Can We Do About It?</h2>
-			<p>Identifying a problem is great, but how do we fix it? Journals already try to encourage good bias free studies and hopefully the improving quality of research will continue. Efforts are also
-				being made to encourage researchers to publish regardless of whether their results are positive or negative. Places are being provided for publishing negative results so that if you can't publish
-				them in high impact journals there is still somewhere that it can go.</p>
-			<br />
-			<p>It may be defeatist but we need to accept that if a piece of research has only been done once, it is probably wrong. We need to encourage people to try and reproduce other people's research. Once
-				enough studies are published showing a particular phenomenon we can start to be sure that the claims are valid. A single study is never going to be enough.</p>
-			<br />
-			<p>Lastly we can let everyone know about the problem. Everyone in industry and the media should understand these problems so we can make informed decisions about what to do, and what to report. I
-				think it's important that we teach skepticism, the scientific process, and its problems thoroughly in schools so everyone can understand how we come to know the truth.</p>
-			<br />
+
+			<section>
+				<h1>The Trouble with Science</h1>
+				<hr />
+				<img class="coverimg" src="/images/science-trouble-banner.jpg" alt="The Trouble with Science Cover Image" />
+				<br />
+				<p>Science is how we know stuff. It's not a body of facts, some government controlled institution, or a belief system. Science is a process in which we demand evidence, question that evidence,
+					stay skeptical, and keep trying to prove other people's research wrong. The ideas that survive this process get to be called <span class="bold">The Truth</span>, at least until some better research comes out showing
+					us that we were wrong all along.</p>
+				<br />
+				<p>This process we call science has given us almost everything that we now take for granted. Cultivated food, medicine, transport, communication, education, entertainment, as well as long, healthy, safe,
+					and largely happy lives.</p>
+				<br />
+				<p>So what's the problem? In August of 2015 a <a href="http://science.sciencemag.org/content/349/6251/aac4716">single study</a><sup><a href="#ref-1">1</a></sup>, by Brian Nosek PhD and colleagues, was performed that shook the very
+					bedrock of science itself. They took 100 pieces of original (not performed before) psychology research and tried to reproduce their results by replicating
+					the research exactly. Only a third of these studies could be successfully reproduced with significant results and almost all of the studies produced weaker results than the first time. To
+					radically over-simplify that, two thirds of those studies were <span class="bold">wrong</span>.</p>
+				<br />
+				<p>Not all science has this problem, right? Well... apparently it does. The same year <a href="http://circres.ahajournals.org/content/116/1/116.full">a review</a><sup><a href="#ref-2">2</a></sup> published in the
+					American Heart Association's journal Circulation Research highlighted the exact same sentiment. As it turns out this has been a problem for some time in pharmacology<sup><a href="#ref-3">3</a>,<a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup>,
+					gynecology<sup><a href="#ref-6">6</a></sup>, genetics<sup><a href="#ref-7">7</a></sup>, and a variety of other fields<sup><a href="#ref-8">8</a></sup>. Nosek, it seems, is just one of the latest
+					and most thorough in a long string of researchers trying to point this out. As a personal observation, the sciences that study people seem to have been hit hardest by this
+					phenomenon. Psychology, medicine, sociology, and economics.</p>
+				<br />
+				<p>So what the hell is going on? How is this happening? If you were inclined to split things into arbitrary sections then you might just say <span class="bold">Poor Research Quality</span>,
+					<span class="bold">Inevitability</span>, and <span class="bold">Publication Bias</span>. To get to grips with the problem we need to do a flash tour of research methodology.</p>
+				<br />
+				<div class="code bold">
+					<h3><span class="green">• </span>Poor Research Quality</h3><br />
+					<h3><span class="green">• </span>Inevitability</h3><br />
+					<h3><span class="green">• </span>Publication Bias</h3>
+				</div>
+				<br />
+			</section>
+
+			<section>
+				<h2>Research Quality</h2>
+				<p>Bias of some description or another leaks into all research, no exceptions. The quality of a piece of research is judged by the effort to eliminate that bias. <a href="https://en.wikipedia.org/wiki/Response_bias">Research participants
+					are biased</a> if they think they are being observed, or if they think you expect certain results. So we try not to let them know what we expect, or what intervention they are
+					receiving. We call research that does this <a href="https://en.wikipedia.org/wiki/Blind_experiment#Single-blind_trials">single-blinded</a>. Turns out that <a href="https://en.wikipedia.org/wiki/Observer-expectancy_effect">researchers are also bias</a>,
+					so some research even hides these details from the researchers. We call research that hides the expectations from both the participants
+					and the researchers <a href="https://en.wikipedia.org/wiki/Blind_experiment#Double-blind_trials">double-blinded</a>.</p>
+				<br />
+				<p>Any research where you are studying the effects of something needs a <a href="https://en.wikipedia.org/wiki/Scientific_control">control group</a>. If you give some ill people
+					a drug and they all get better what have we learnt? <span class="bold">Nothing</span>. Ill people get better most of the time. You would have to compare the group getting the drug to some
+					other group who didn't. This second group is the control group. Remember what we said about participants being biased? To stop our control group from knowing
+					that they're not getting treated we give them a placebo so they think they're getting treated too. This is an even better control called a <a href="https://en.wikipedia.org/wiki/Placebo-controlled_study">placebo control</a>.
+					Lots of interventions can't be placebo controlled, but there are clever tricks that can be used to work out whether the participants' biases affected the results.</p>
+				<br />
+				<p>If you are going to split your participants into groups how should you choose who goes in what groups? Simple. You shouldn't. If you are choosing who gets into each group then you are
+					introducing bias, and your study isn't double blinded anymore. We call studies where the participants are split into their groups randomly... wait for it... <a href="https://en.wikipedia.org/wiki/Randomized_controlled_trial">randomised</a>. Lastly,
+					all research should include all the steps required to replicate it. We call this <a href="https://en.wikipedia.org/wiki/Reproducibility">reproducibility</a>. Science is, after all,
+					about checking our facts and not believing anything unless we can confirm it. Reproducibility is at the very heart of science and one of it's most important principles.</p>
+				<br />
+				<p>There is a lot more to it than just that, and the importance of these practices varies from field to field, but these are the basics. Good research is
+					randomised, double-blinded, placebo controlled, and reproducible. When people fail to include these best practices their results are less accurate<sup><a href="#ref-9">9</a>,<a href="#ref-10">10</a></sup>
+					and if your study isn't reproducible then it might as well be worthless.</p>
+				<br />
+				<div class="code bold center">
+					<h3><span class="green">&quot;</span>Good research is randomised, double-blinded, placebo controlled, and reproducible<span class="green">&quot;</span></h3>
+				</div>
+				<br />
+			</section>
+
+			<section>
+				<h2>Inevitability</h2>
+				<p>Getting dodgy results is inevitable, and let me explain why. In a great many fields we determine whether the results of a study are significant by working out how likely the result is to be a fluke. We assign the results of
+					our studies a value to indicate how likely it is that they were just luck. We call this a <a href="https://en.wikipedia.org/wiki/P-value">p-value</a>. This doesn't take
+					into account any biases, but never mind.</p>
+				<br />
+				<p>We say that a piece of research is <span class="bold">significant</span> if it has a p-value of less than 0.05, which is to say that there is less than a 1 in 20 chance of the results being
+					a fluke. Without even taking into account the biases in all research, you could say that if you do 20 studies you get at least one who's results are just due to chance.</p>
+				<br />
+				<p>Let's do a little thought experiment. Imagine that you want to determine whether a coin is biased, and use a p-value to determine if your results are significant. All you
+					would have to do is flip the coin on the same side enough times in a row. If the coin landed on heads 4 times in a row you wouldn't have a small enough p-value because the chance of that is only
+					1 in 16 or <span class="italic bold">(0.5)<sup>4</sup></span>. But if it landed heads 5 times in a row then that's a 1 in 32 chance or <span class="italic bold">(0.5)<sup>5</sup></span> of being a fluke.
+					That would be enough to say you had a significant result showing that the coin was bias. But what if more than one person was studying this coin? What if you had 32 people
+					doing research and each person flipped the coin five times? Well the chances of one of those 32 people getting heads five times in a row is <span class="italic bold">(0.5)<sup>5</sup> x 32 = 1</span>.
+					Do you see the problem? If 32 people study this coin the same way, on average one of them will determine that the coin is biased, <span class="bold">even if it isn't!</span></p>
+				<br />
+				<p>Dodgy results are inevitable. Using p-values is a good way to prevent so many from slipping through the cracks, but we need to be aware that it wont stop all the flukes getting through. When a
+					study has a very low p-value it is much more likely to be the real deal. The lower the p-value of a piece of research the more likely someone can reproduce your results<sup><a href="#ref-1">1</a></sup>.</p>
+				<br />
+				<div class="code bold center">
+					<h3><span class="green">&quot;</span>Dodgy results are inevitable<span class="green">&quot;</span></h3>
+				</div>
+				<br />
+			</section>
+
+			<section>
+				<h2>Publication Bias</h2>
+				<p>Publication bias is a very simple problem. But first, lets talk about how research is published. A big part of the science process is <a href="https://en.wikipedia.org/wiki/Peer_review">peer review</a>, which means showing
+					your findings to other people so they can tear it apart (maybe even literally some times). It's important to let people point out any problems or wrong assumptions you've made. We do this
+					by submitting research to scientific journals for publishing. These journals throw out all the really low quality or boring pieces of research and the best research gets published. Some journals
+					have higher standards than others. This way people pay more attention to the research published in these high standard (or <a href="https://en.wikipedia.org/wiki/Impact_factor">high impact</a>) journals.</p>
+				<br />
+				<p>This all sounds very positive, so where is the problem? If you were reading carefully you may have spotted it. Journals weed out boring results. In some fields significant positive results are published almost
+					<span class="bold">ten times more</span><sup><a href="#ref-11">11</a></sup> than negative or insignificant results. On top of this, researchers often don't even bother trying to publish negative results<sup><a href="#ref-12">12</a></sup>. Think
+					back to our 32 coin flipping researchers.</p>
+				<br />
+				<p>Image that most of our coin flipping researchers didn't bother to try and publish their negative results, and that only a small handful of those people tried to get their work published. It's very likely that our
+					single fluke positive study would get published and the journals wouldn't want to publish the others. If you had all the results from all 32 studies it would be blindingly obvious that the
+					coin was not biased. Unfortunately people would only see the single fluke result and think the coin biased.</p>
+				<br />
+				<p>Publication bias is an absolutely massive problem. Ben Goldacre called this '<a href="https://www.ted.com/talks/ben_goldacre_battling_bad_science#t-410486">the single biggest ethical problem facing medicine today</a>', and
+					he's right. I can't say it enough, this is a huge problem.</p>
+				<br />
+				<div class="code bold center">
+					<h3><span class="green">&quot;</span>positive results are published almost ten times more than negative or insignificant results<span class="green">&quot;</span></h3>
+				</div>
+				<br />
+			</section>
+
+			<section>
+				<h2>What Can We Do About It?</h2>
+				<p>Identifying a problem is great, but how do we fix it? Journals already try to encourage good bias free studies and hopefully the improving quality of research will continue. Efforts are also
+					being made to encourage researchers to publish regardless of whether their results are positive or negative. Places are being provided for publishing negative results so that if you can't publish
+					them in high impact journals there is still somewhere that it can go.</p>
+				<br />
+				<p>It may be defeatist but we need to accept that if a piece of research has only been done once, it is probably wrong. We need to encourage people to try and reproduce other people's research. Once
+					enough studies are published showing a particular phenomenon we can start to be sure that the claims are valid. A single study is never going to be enough.</p>
+				<br />
+				<p>Lastly we can let everyone know about the problem. Everyone in industry and the media should understand these problems so we can make informed decisions about what to do, and what to report. I
+					think it's important that we teach skepticism, the scientific process, and its problems thoroughly in schools so everyone can understand how we come to know the truth.</p>
+				<br />
+			</section>
+
 			<h2>References</h2>
 			<p class="reference" id="ref-1"><span class="bold">1.</span> Nosek et al. Estimating the reproducibility of psychological science. Science 2015 349: 6251</p>
 			<p class="reference" id="ref-2"><span class="bold">2.</span> C G Begley. Reproducibility in Science. Circulation Res 2015 116: 116-126</p>

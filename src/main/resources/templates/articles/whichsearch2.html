@@ -8,31 +8,33 @@
                 <p class="date">03/07/2016</p>
                 <p class="views"><span th:text="${article.views}"></span> views</p>
             </div>
-            <h1>Which Search Algorithm? - Part 2</h1>
-            <hr />
-            <img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
-            <br />
 
-            <p>In the <a href="whichsearch">first installation of Which Search Algorithm</a>, I covered exhaustive and binary searches. I also briefly
-                went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth
-                first searches, so let's jump straight into the subject.</p>
-            <br />
-            <p>Depth and breadth first searches are performed on <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graph</a>
-                structures. For this article I am going to assume we are dealing with an undirected graph in it's most abstract sense. We wont assume that we are using
-                a graph of any specific type. As an example, if we assumed we were only dealing with trees we could make assumptions about not having to deal
-                with cyclic paths. By assuming that <b>anything goes</b> in our graph we can theoretically write searches that will work on more varieties of graph.</p>
-            <br />
-            <p>Before we talk about both searches we had better define our nodes so that we know what we are dealing with. I will leave out getters and setters
-                for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulation</a> in your own code),
-                as well as any validation we might want to do when constructing the nodes.</p>
-            <br />
-            <div class="choices">
-                <ul>
-                    <li class="selected">Java</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <div style="clear:both;" ></div>
-                </ul>
+            <section>
+                <h1>Which Search Algorithm? - Part 2</h1>
+                <hr />
+                <img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
+                <br />
+                <p>In the <a href="whichsearch">first installation of Which Search Algorithm</a>, I covered exhaustive and binary searches. I also briefly
+                    went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth
+                    first searches, so let's jump straight into the subject.</p>
+                <br />
+                <p>Depth and breadth first searches are performed on <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graph</a>
+                    structures. For this article I am going to assume we are dealing with an undirected graph in it's most abstract sense. We wont assume that we are using
+                    a graph of any specific type. As an example, if we assumed we were only dealing with trees we could make assumptions about not having to deal
+                    with cyclic paths. By assuming that <b>anything goes</b> in our graph we can theoretically write searches that will work on more varieties of graph.</p>
+                <br />
+                <p>Before we talk about both searches we had better define our nodes so that we know what we are dealing with. I will leave out getters and setters
+                    for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulation</a> in your own code),
+                    as well as any validation we might want to do when constructing the nodes.</p>
+                <br />
+                <div class="choices">
+                    <ul>
+                        <li class="selected">Java</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <div style="clear:both;" ></div>
+                    </ul>
+
             <pre class="code choice" choice="Java"><span class="orange">public class</span> Node {
     <span class="orange">public</span> <span class="orange">int</span> <span class="green">value</span>;
     <span class="orange">public</span> Set&lt;Node&gt; <span class="green">connections</span> = <span class="orange">new</span> HashSet&lt;&gt;();
@@ -45,21 +47,26 @@
     <span class="green">value</span> = <span class="jade">0</span>
     <span class="green">connections</span> = []
  </pre>
-            </div>
-            <br />
-            <h2>Depth First Search</h2>
-            <p>Performing a depth first search simply means following possible edges (or connections) in the graph to the end of the path first before going back and searching
-                alternative routes. It is the computer science equivalent of looking for your keys by thoroughly searching each cupboard, draw, or shelf in a single room before
-                moving onto the next room. Below are some simple examples of depth first searches.</p>
-            <br />
-            <div class="choices">
-                <ul>
-                    <li class="selected">Java</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <div style="clear:both;" ></div>
-                </ul>
-            <pre class="code choice" choice="Java">Node depthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
+
+                </div>
+                <br />
+            </section>
+
+            <section>
+                <h2>Depth First Search</h2>
+                <p>Performing a depth first search simply means following possible edges (or connections) in the graph to the end of the path first before going back and searching
+                    alternative routes. It is the computer science equivalent of looking for your keys by thoroughly searching each cupboard, draw, or shelf in a single room before
+                    moving onto the next room. Below are some simple examples of depth first searches.</p>
+                <br />
+                <div class="choices">
+                    <ul>
+                        <li class="selected">Java</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <div style="clear:both;" ></div>
+                    </ul>
+
+                <pre class="code choice" choice="Java">Node depthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
     Stack&lt;Node&gt; <span class="green">stack</span> = <span class="orange">new</span> Stack&lt;Node&gt;();
     Set&lt;Node&gt; <span class="green">visited</span> = <span class="orange">new</span> HashSet&lt;Node&gt;();
     <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>) <span class="orange">return</span> <span class="green">root</span>;
@@ -78,7 +85,7 @@
     }
     <span class="orange">return null</span>;
 }</pre>
-            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
+                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
     <span class="orange">var</span> <span class="green">stack</span> = [];
     <span class="orange">var</span> <span class="green">visited</span> = {};
     <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> === <span class="green">value</span>) return <span class="green">root</span>;
@@ -97,7 +104,7 @@
     }
     <span class="orange">return null</span>;
 }</pre>
-            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
+                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
     <span class="green">stack</span> = []
     <span class="green">visited</span> = set()
     <span class="orange">if</span> <span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>:
@@ -115,84 +122,89 @@
                 <span class="green">visited</span>.add(<span class="green">child</span>)
 
     <span class="orange">return null</span>
-            </pre>
-            </div>
-            <br />
-            <p>Essentially the way this works is we keep track of each node we look at and then we add the node's connections into a stack to check later. Because stacks are
-                last-in-first-out (LIFO) we end up dropping down a layer in the graph each time we check the next item in the stack. This is what it means to search <b>depth
-                first</b>. Take a look at the graphic below for a visual representation of how it works. Try searching for a number in the graph and
-                watch how the search is performed.</p>
-            <br />
-            <div class="container">
-                <input type="number" class="search-for" name="d-search-for" />
-                <input type="button" class="search-go" value="Search" name="d-search-go" />
-                <svg class="graph" id="depth-graph" viewBox="0 0 800 320">
-                    <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="100" x2="500" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="500" y1="160" x2="450" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="500" y1="160" x2="550" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="300" y1="160" x2="250" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="220" x2="400" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="220" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="400" y1="280" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="220" x2="200" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="220" x2="300" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                </pre>
 
-                    <circle class="root" cx="400" cy="40" r="20" stroke="black" stroke-width="4" fill="#333333" ></circle>
-                    <circle class="node2" cx="250" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node3" cx="350" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node4" cx="450" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node5" cx="300" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node7" cx="500" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node6" cx="400" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node10" cx="550" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node9" cx="450" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node8" cx="250" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node11" cx="200" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node12" cx="300" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node13" cx="400" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node14" cx="500" cy="280" r="20" fill="#333333" ></circle>
+                </div>
+                <br />
+                <p>Essentially the way this works is we keep track of each node we look at and then we add the node's connections into a stack to check later. Because stacks are
+                    last-in-first-out (LIFO) we end up dropping down a layer in the graph each time we check the next item in the stack. This is what it means to search <b>depth
+                    first</b>. Take a look at the graphic below for a visual representation of how it works. Try searching for a number in the graph and
+                    watch how the search is performed.</p>
+                <br />
+                <div class="container">
+                    <input type="number" class="search-for" name="d-search-for" />
+                    <input type="button" class="search-go" value="Search" name="d-search-go" />
+                    <svg class="graph" id="depth-graph" viewBox="0 0 800 320">
+                        <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="100" x2="500" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="500" y1="160" x2="450" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="500" y1="160" x2="550" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="300" y1="160" x2="250" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="220" x2="400" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="220" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="400" y1="280" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="220" x2="200" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="220" x2="300" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
 
-                    <text x="396" y="45" fill="white">1</text>
-                    <text x="246" y="105" fill="white">2</text>
-                    <text x="346" y="105" fill="white">3</text>
-                    <text x="446" y="105" fill="white">4</text>
-                    <text x="296" y="165" fill="white">5</text>
-                    <text x="396" y="165" fill="white">6</text>
-                    <text x="496" y="165" fill="white">7</text>
-                    <text x="246" y="225" fill="white">8</text>
-                    <text x="446" y="225" fill="white">9</text>
-                    <text x="542" y="225" fill="white">10</text>
+                        <circle class="root" cx="400" cy="40" r="20" stroke="black" stroke-width="4" fill="#333333" ></circle>
+                        <circle class="node2" cx="250" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node3" cx="350" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node4" cx="450" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node5" cx="300" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node7" cx="500" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node6" cx="400" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node10" cx="550" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node9" cx="450" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node8" cx="250" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node11" cx="200" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node12" cx="300" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node13" cx="400" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node14" cx="500" cy="280" r="20" fill="#333333" ></circle>
 
-                    <text x="192" y="285" fill="white">11</text>
-                    <text x="292" y="285" fill="white">12</text>
-                    <text x="392" y="285" fill="white">13</text>
-                    <text x="492" y="285" fill="white">14</text>
-                    You are using an awful browser and it does not support inline SVG.
-                </svg>
-            </div>
-            <h2>Breadth First Search</h2>
-            <p>Running a breadth first search is the opposite approach to searching depth first. When you search breadth first you check all nearby nodes first
-                before wandering off down any particular path. Where a depth first search goes as far as it can away from your starting position before coming back to check a
-                different path, a breadth first search checks everything close by first before moving onto nodes that are farther away.</p>
-            <br />
-            <p>There is also an interesting and useful side effect of a breadth first search. It can be used to identify the shortest path from your starting position (or root
-                node), to the node you are looking for. As such, breadth first searches are often used for path-finding. Below are some simple examples.</p>
-            <br />
-            <div class="choices">
-                <ul>
-                    <li class="selected">Java</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <div style="clear:both;" ></div>
-                </ul>
-            <pre class="code choice" choice="Java">Node breadthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
+                        <text x="396" y="45" fill="white">1</text>
+                        <text x="246" y="105" fill="white">2</text>
+                        <text x="346" y="105" fill="white">3</text>
+                        <text x="446" y="105" fill="white">4</text>
+                        <text x="296" y="165" fill="white">5</text>
+                        <text x="396" y="165" fill="white">6</text>
+                        <text x="496" y="165" fill="white">7</text>
+                        <text x="246" y="225" fill="white">8</text>
+                        <text x="446" y="225" fill="white">9</text>
+                        <text x="542" y="225" fill="white">10</text>
+
+                        <text x="192" y="285" fill="white">11</text>
+                        <text x="292" y="285" fill="white">12</text>
+                        <text x="392" y="285" fill="white">13</text>
+                        <text x="492" y="285" fill="white">14</text>
+                        You are using an awful browser and it does not support inline SVG.
+                    </svg>
+                </div>
+            </section>
+
+            <section>
+                <h2>Breadth First Search</h2>
+                <p>Running a breadth first search is the opposite approach to searching depth first. When you search breadth first you check all nearby nodes first
+                    before wandering off down any particular path. Where a depth first search goes as far as it can away from your starting position before coming back to check a
+                    different path, a breadth first search checks everything close by first before moving onto nodes that are farther away.</p>
+                <br />
+                <p>There is also an interesting and useful side effect of a breadth first search. It can be used to identify the shortest path from your starting position (or root
+                    node), to the node you are looking for. As such, breadth first searches are often used for path-finding. Below are some simple examples.</p>
+                <br />
+                <div class="choices">
+                    <ul>
+                        <li class="selected">Java</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <div style="clear:both;" ></div>
+                    </ul>
+
+                <pre class="code choice" choice="Java">Node breadthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
     Queue&lt;Node&gt; <span class="green">queue</span> = <span class="orange">new</span> LinkedList&lt;Node&gt;();
     Set&lt;Node&gt; <span class="green">visited</span> = <span class="orange">new</span> HashSet&lt;Node&gt;();
     <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>) <span class="orange">return</span> <span class="green">root</span>;
@@ -211,7 +223,7 @@
     }
     <span class="orange">return null</span>;
 }</pre>
-            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
+                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
     <span class="orange">var</span> <span class="green">queue</span> = [];
     <span class="orange">var</span> <span class="green">visited</span> = {};
     <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> === <span class="green">value</span>) return <span class="green">root</span>;
@@ -230,7 +242,7 @@
     }
     <span class="orange">return null</span>;
 }</pre>
-            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
+                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
     <span class="green">queue</span> = Queue.Queue()
     <span class="green">visited</span> = set()
     <span class="orange">if</span> <span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>:
@@ -248,70 +260,73 @@
                 <span class="green">visited</span>.add(<span class="green">child</span>)
 
     <span class="orange">return null</span>
-            </pre>
-            </div>
-            <aside>Note: The JavaScript implementation of Breadth First Search above is not efficient. The use of the <i>.shift()</i> method is slow ( <i>O(n)</i> rather
-                than <i>O(1)</i> ). I have used a JavaScript array for brevity but I suggest finding a correct queue implementation for your own code.</aside>
-            <br />
-            <p>If you were paying attention to the above examples you may have noticed that they look almost exactly the same. That's because they
-                <b>are</b> almost exactly the same. The only difference in the implementation is that the breadth first search uses a queue instead of a stack for storing nodes to
-                visit next. This way the first nodes you check get visited next (fist-in-first-out) and so you always search by spreading out from where you started. This is
-                ultimately what it means to search <b>breadth first</b>. There is another graphic below demonstrating this. Try searching for a number.</p>
-            <br />
-            <div class="container">
-                <input type="number" class="search-for" name="bf-search-for" />
-                <input type="button" class="search-go" value="Search" name="bf-search-go" />
-                <svg class="graph" id="breadth-graph" viewBox="0 0 800 320">
-                    <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="100" x2="500" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="350" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="500" y1="160" x2="450" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="500" y1="160" x2="550" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="300" y1="160" x2="250" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="220" x2="400" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="450" y1="220" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="400" y1="280" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="220" x2="200" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
-                    <line x1="250" y1="220" x2="300" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                </pre>
 
-                    <circle class="root" cx="400" cy="40" r="20" stroke="black" stroke-width="4" fill="#333333" ></circle>
-                    <circle class="node2" cx="250" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node3" cx="350" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node4" cx="450" cy="100" r="20" fill="#333333" ></circle>
-                    <circle class="node5" cx="300" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node7" cx="500" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node6" cx="400" cy="160" r="20" fill="#333333" ></circle>
-                    <circle class="node10" cx="550" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node9" cx="450" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node8" cx="250" cy="220" r="20" fill="#333333" ></circle>
-                    <circle class="node11" cx="200" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node12" cx="300" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node13" cx="400" cy="280" r="20" fill="#333333" ></circle>
-                    <circle class="node14" cx="500" cy="280" r="20" fill="#333333" ></circle>
+                </div>
+                <aside>Note: The JavaScript implementation of Breadth First Search above is not efficient. The use of the <i>.shift()</i> method is slow ( <i>O(n)</i> rather
+                    than <i>O(1)</i> ). I have used a JavaScript array for brevity but I suggest finding a correct queue implementation for your own code.</aside>
+                <br />
+                <p>If you were paying attention to the above examples you may have noticed that they look almost exactly the same. That's because they
+                    <b>are</b> almost exactly the same. The only difference in the implementation is that the breadth first search uses a queue instead of a stack for storing nodes to
+                    visit next. This way the first nodes you check get visited next (fist-in-first-out) and so you always search by spreading out from where you started. This is
+                    ultimately what it means to search <b>breadth first</b>. There is another graphic below demonstrating this. Try searching for a number.</p>
+                <br />
+                <div class="container">
+                    <input type="number" class="search-for" name="bf-search-for" />
+                    <input type="button" class="search-go" value="Search" name="bf-search-go" />
+                    <svg class="graph" id="breadth-graph" viewBox="0 0 800 320">
+                        <line x1="400" y1="40" x2="350" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="400" y1="40" x2="450" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="100" x2="500" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="100" x2="300" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="350" y1="100" x2="400" y2="160" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="500" y1="160" x2="450" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="500" y1="160" x2="550" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="300" y1="160" x2="250" y2="220" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="220" x2="400" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="450" y1="220" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="400" y1="280" x2="500" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="220" x2="200" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+                        <line x1="250" y1="220" x2="300" y2="280" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
 
-                    <text x="396" y="45" fill="white">1</text>
-                    <text x="246" y="105" fill="white">2</text>
-                    <text x="346" y="105" fill="white">3</text>
-                    <text x="446" y="105" fill="white">4</text>
-                    <text x="296" y="165" fill="white">5</text>
-                    <text x="396" y="165" fill="white">6</text>
-                    <text x="496" y="165" fill="white">7</text>
-                    <text x="246" y="225" fill="white">8</text>
-                    <text x="446" y="225" fill="white">9</text>
-                    <text x="542" y="225" fill="white">10</text>
+                        <circle class="root" cx="400" cy="40" r="20" stroke="black" stroke-width="4" fill="#333333" ></circle>
+                        <circle class="node2" cx="250" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node3" cx="350" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node4" cx="450" cy="100" r="20" fill="#333333" ></circle>
+                        <circle class="node5" cx="300" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node7" cx="500" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node6" cx="400" cy="160" r="20" fill="#333333" ></circle>
+                        <circle class="node10" cx="550" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node9" cx="450" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node8" cx="250" cy="220" r="20" fill="#333333" ></circle>
+                        <circle class="node11" cx="200" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node12" cx="300" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node13" cx="400" cy="280" r="20" fill="#333333" ></circle>
+                        <circle class="node14" cx="500" cy="280" r="20" fill="#333333" ></circle>
 
-                    <text x="192" y="285" fill="white">11</text>
-                    <text x="292" y="285" fill="white">12</text>
-                    <text x="392" y="285" fill="white">13</text>
-                    <text x="492" y="285" fill="white">14</text>
-                    You are using an awful browser and it does not support inline SVG.
-                </svg>
-            </div>
+                        <text x="396" y="45" fill="white">1</text>
+                        <text x="246" y="105" fill="white">2</text>
+                        <text x="346" y="105" fill="white">3</text>
+                        <text x="446" y="105" fill="white">4</text>
+                        <text x="296" y="165" fill="white">5</text>
+                        <text x="396" y="165" fill="white">6</text>
+                        <text x="496" y="165" fill="white">7</text>
+                        <text x="246" y="225" fill="white">8</text>
+                        <text x="446" y="225" fill="white">9</text>
+                        <text x="542" y="225" fill="white">10</text>
+
+                        <text x="192" y="285" fill="white">11</text>
+                        <text x="292" y="285" fill="white">12</text>
+                        <text x="392" y="285" fill="white">13</text>
+                        <text x="492" y="285" fill="white">14</text>
+                        You are using an awful browser and it does not support inline SVG.
+                    </svg>
+                </div>
+            </section>
+
             <h2>Which One Should We Use?</h2>
             <p>Determining whether you want to use a depth first or breadth first search depends on the nature of your data as well as the kind of
                 information you want to find. Imagine a family tree expressed as a graph with yourself as the root. If you wanted to perform a search for a living but distant relative
