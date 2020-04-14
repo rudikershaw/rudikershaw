@@ -1,6 +1,6 @@
 <head class="head" th:fragment="head" xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8" />
-    <title th:text="${article.name}">Code Nerd</title>
+    <title th:text="${article.name + ' - by Rudi Kershaw'}">Rudi Kershaw</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" th:attr="content=${article.description != null ? article.description : 'This is just somewhere for me to jot down my ideas, show off recent work, rant about injustices, make notes on stuff, and just generally ramble about geeky things'}" />
     <meta name="author" content="Rudi Kershaw" />
