@@ -10,7 +10,7 @@
 			</div>
 			<h1 th:text="${article.name}">Defining an Algorithm</h1>
 			<hr />
-			<img class="coverimg" src="/images/taocp_text.jpg" alt="Let us formally define a computational method" />
+			<img class="coverimg" src="/images/taocp_text.jpg" alt="Text from a page of a book: 'Let us formally define a computational method'" />
 			<br />
 
 			<p>Working your way through the volumes of The Art of Computer Programming is a fairly challenging
@@ -58,9 +58,9 @@
 				as follows:     <var>x<sub>0</sub></var> = <var>x</var>     and    <var>x<sub>k+1</sub></var> = <var>f(x<sub>k</sub>)</var>    for <var>k</var> ≥ 0.</blockquote>
 
 			<p>I wrestled with the above lines for some time, and had to ask the opinion of a friend with a maths degree what he thought about it before
-				securely arriving at a consensus. My first thought was to think that each <var>x</var> (or each element) in the set of all inputs ( <var>I</var> ), <var>was</var> a sequence.
+				securely arriving at a consensus. My first thought was to think that each <var>x</var> (or each element) in the set of all inputs ( <var>I</var> ), <em>was</em> a sequence.
 				But when Knuth says "Each input x in the set I defines a ... sequence", that is not what he appears to mean. The only interpretation that
-				makes sense here is that for each <var>x</var> in the set of all inputs <var>there exists</var> a corresponding sequence in which the first state in the sequence
+				makes sense here is that for each <var>x</var> in the set of all inputs <em>there exists</em> a corresponding sequence in which the first state in the sequence
 				is <var>x<sub>0</sub></var> and that this first state is the raw input. Hence, <var>x<sub>0</sub></var> = <var>x</var>. When he says that <var>x<sub>k+1</sub></var> = <var>f(x<sub>k</sub>)</var>    for <var>k</var> ≥ 0 he's saying that for every state
 				in the sequence that has an index of <var>0</var> or more we can get the next state in the sequence by putting it through a function <var>f(x<sub>k</sub>)</var>. So, if you
 				put <var>x<sub>1</sub></var> into the function, you get <var>x<sub>2</sub></var> out (assuming of course that <var>x<sub>1</sub></var> is not the final state. We'll come to that later) <var>f(x<sub>1</sub>)</var> = <var>x<sub>2</sub></var>. That way,

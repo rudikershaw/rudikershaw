@@ -6,11 +6,11 @@
         <article>
             <div class="text-container">
                 <p class="date">05/05/2016</p>
-                <p class="views"><span th:text="${article.views}"></span> views</p>
+                <p class="views"><span th:text="${article.views}">1</span> views</p>
             </div>
             <h1>Event Driven Development in Java EE7</h1>
             <hr />
-            <img class="coverimg" src="/images/events-banner.jpg" alt="Java EE7 Essentials Cover Image" />
+            <img class="coverimg" src="/images/events-banner.jpg" alt="Two gold rings resting one against the other" />
             <br />
 
             <p>I recently finished reading Arun Gupta's Java EE7 Essentials and I was struck by how many features of Java EE there are that I had no idea existed. Not
@@ -18,8 +18,8 @@
                 had I known these features existed. As such, I thought I should spread the wealth and share what I have learnt.</p>
             <br />
             <p>A first class example of where these annotations could be extremely useful is in <a href="https://en.wikipedia.org/wiki/Enterprise_JavaBeans" target="blank_">EJBs</a>. Session
-                beans can have <span class="italic">@AroundConstruct</span>, <span class="italic">@PostConstruct</span>, <span class="italic">@PreDestroy</span>, <span class="italic">@PostActivate</span>,
-                and <span class="italic">@PrePassivate</span> annotations that mark a method to be called at certain stages of an EJBs <a href="https://docs.oracle.com/javaee/6/tutorial/doc/giplj.html" target="black_">life-cycle</a>.
+                beans can have <i><code>@AroundConstruct</code></i>, <i><code>@PostConstruct</code></i>, <i><code>@PreDestroy</code></i>, <i><code>@PostActivate</code></i>,
+                and <i><code>@PrePassivate</code></i> annotations that mark a method to be called at certain stages of an EJBs <a href="https://docs.oracle.com/javaee/6/tutorial/doc/giplj.html" target="black_">life-cycle</a>.
                 Simply annotate a method in the bean with one of these and it will get called during the associated life-cycle event. Marvelous.</p>
             <br />
             <br />
@@ -41,19 +41,19 @@
             <br />
             <br />
 
-            <p><span class="italic">@PostActivate</span> and <span class="italic">@PrePassivate</span> can only be used by <a href="https://en.wikipedia.org/wiki/Enterprise_JavaBeans#Stateful_Session_Beans" target="blank_">stateful session beans</a>.
+            <p><i><code>@PostActivate</code></i> and <i><code>@PrePassivate</code></i> can only be used by <a href="https://en.wikipedia.org/wiki/Enterprise_JavaBeans#Stateful_Session_Beans" target="blank_">stateful session beans</a>.
                 Stateful EJBs can be passivated when memory needs freeing up and can then be activated again when they are needed.</p>
             <br />
             <p>So what kind of problem can be solved by these annotations? Well, imagine you have a stateful bean that needs some initialisation before it's ready
                 to use. Normally your constructor does this, but imagine you need to use some injected beans to initialise that content. Now you have a problem, because
-                content isn't injected until after the constructor runs. Well, that's where <span class="italic">@PostConstruct</span> saves the day. Put your initialisation in there and it runs
+                content isn't injected until after the constructor runs. Well, that's where <i><code>@PostConstruct</code></i> saves the day. Put your initialisation in there and it runs
                 after the constructor and after injected objects are instantiated.</p>
             <br />
             <p>Seeing as I wasn't previously aware of event based annotations, I thought those were pretty cool. But what I thought were even cooler were the event callback
-                annotations for <a href="https://en.wikipedia.org/wiki/Java_Persistence_API" target="blank_">JPA</a> Entity objects. <span class="italic">@PostLoad</span>,
-                <span class="italic">@PrePersist</span>, <span class="italic">@PostPersist</span>, <span class="italic">@PreUpdate</span>, <span class="italic">@PostUpdate</span>,
-                and <span class="italic">@PreRemove</span> can be added to an entity method to be called when those events are fired. Want a document to always be sent off for indexing
-                after it's been created? No problem, just add a method annotated <span class="italic">@PostPersist</span> and put your logic there to run after the entity is persisted.</p>
+                annotations for <a href="https://en.wikipedia.org/wiki/Java_Persistence_API" target="blank_">JPA</a> Entity objects. <i><code>@PostLoad</code></i>,
+                <i><code>@PrePersist</code></i>, <i><code>@PostPersist</code></i>, <i><code>@PreUpdate</code></i>, <i><code>@PostUpdate</code></i>,
+                and <i>@PreRemove</i> can be added to an entity method to be called when those events are fired. Want a document to always be sent off for indexing
+                after it's been created? No problem, just add a method annotated <i>@PostPersist</i> and put your logic there to run after the entity is persisted.</p>
             <br />
             <br />
 
@@ -137,9 +137,9 @@
             <br />
             <br />
 
-            <p>You can even change the relationship that this receiving method has with the transaction of the method that fired the event. You can declare your <span class="italic">@Observer</span> annotation with
-                a small hand full of parameters such as <span class="italic bold">@Observer(during = TransactionPhase.AFTER_SUCCESS)</span>. This example specifies that the method should fire after the transaction of the firing method has
-                completed successfully without rolling back. The default is <span class="italic bold">@Observer(during = TransactionPhase.IN_PROGRESS)</span> which causes the method to run immediately after the event has
+            <p>You can even change the relationship that this receiving method has with the transaction of the method that fired the event. You can declare your <i>@Observer</i> annotation with
+                a small hand full of parameters such as <b><code>@Observer(during = TransactionPhase.AFTER_SUCCESS)</code></b>. This example specifies that the method should fire after the transaction of the firing method has
+                completed successfully without rolling back. The default is <b><code>@Observer(during = TransactionPhase.IN_PROGRESS)</code></b> which causes the method to run immediately after the event has
                 fired during the transaction.</p>
             <br />
             <p>Events in Java EE seem really useful and I will be looking forward to putting them to use. I hope this article has helped or given you some ideas for how you can put them to use yourself. If you

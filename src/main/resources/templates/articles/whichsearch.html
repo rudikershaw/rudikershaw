@@ -6,13 +6,13 @@
         <article>
             <div class="text-container">
                 <p class="date">21/09/2015</p>
-                <p class="views"><span th:text="${article.views}"></span> views</p>
+                <p class="views"><span th:text="${article.views}">1</span> views</p>
             </div>
 
             <section>
                 <h1>Which Search Algorithm? - Part 1</h1>
                 <hr />
-                <img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
+                <img class="coverimg" src="/images/searchbanner.jpg" alt="The words 'Here I am!' written on a piece of paper amongst some colourful clutter" />
                 <br />
                 <p>Searching is an enormous topic, so I am not even going to attempt to cover everything there is to cover. This article will be the
                     first in a two part article that will focus on the four most talked about search algorithms, what they are for, when we should
@@ -40,8 +40,8 @@
                 <p>An exhaustive search has another, less flattering, name; a <b>brute-force</b> search. If you’re a programmer of any description chances are
                     you have used an exhaustive search whether you knew it or not. That’s because an exhaustive search is simply the process of checking
                     one element of a collection at a time for an element that meets a certain criteria. This means that an exhaustive search may potentially
-                    have to check <b>every single</b> element in a collection to find what it is looking for. We say that an exhaustive search has a time
-                    complexity of <b>O(n)</b>, which means that the worst case time required for an exhaustive search scales directly with the size of the
+                    have to check <em>every single</em> element in a collection to find what it is looking for. We say that an exhaustive search has a time
+                    complexity of <var>O(n)</var>, which means that the worst case time required for an exhaustive search scales directly with the size of the
                     collection. As such they can become unmanageably slow when working with very large collections. Below are some examples of simple
                     functions demonstrating exhaustive searches that check for the presence of an integer in an array.</p>
                 <br /><br />
@@ -109,11 +109,11 @@
                 <h2>Binary Search</h2>
                 <p>The binary search is the big daddy of search. Unfortunately we can only use a binary search in very specific circumstances. What is it that
                     we need? An ordered, sorted collection. That ordered collection can be an array list (afraid a linked list just won't cut it), a binary
-                    tree, or a few other niche data types. We often say that a binary search is a <b>divide and conquer</b> approach. What we mean by this is that we
+                    tree, or a few other niche data types. We often say that a binary search is a <em>divide and conquer</em> approach. What we mean by this is that we
                     start our search in the middle of the collection (or the root of a binary tree) and we check there. Because the collection is ordered we
                     can now determine something very important. Is our first check greater, or less than the value we are looking for? If it's greater, we know
                     that the value must be on the side of the collection that contains the lesser values (or vice versa) thereby excluding the other half from
-                    the rest of the search. So we've only made one <b>actual</b> check but effectively checked half of the whole collection. Fantastic. Now all we do
+                    the rest of the search. So we've only made one <em>actual</em> check but effectively checked half of the whole collection. Fantastic. Now all we do
                     is repeat this process with the next half to check, and keep going until we find what we're looking for or we've run out of elements to
                     check. As before, here are some working examples of functions that perform a binary search on lists.</p>
                 <br /><br />
@@ -176,10 +176,10 @@
                     might be surprised how many fringe cases, complications and logical issues there are to account for. I'm not going to lie, my binary
                     search examples took me some time.</p>
                 <br />
-                <p>How great <b>exactly</b> is a binary search compared to a brute-force search? Remember we said a brute-force search has a complexity of
-                    <b>O(n)</b>? Well, a binary search has a complexity of <b>O(log<sub>2</sub>n)</b>. What this means is that we'll only have to perform as many checks
-                    as times you can half the size the collection. To get a real appreciation of what this means, we could search a collection of <b>one
-                        million</b> in <b>twenty checks</b> and a collection of <b>one billion</b> in <b>thirty checks</b> in the worst cases. Pretty fast right?
+                <p>How great <em>exactly</em> is a binary search compared to a brute-force search? Remember we said a brute-force search has a complexity of
+                    <var>O(n)</var>? Well, a binary search has a complexity of <b>O(log<sub>2</sub>n)</b>. What this means is that we'll only have to perform as many checks
+                    as times you can half the size the collection. To get a real appreciation of what this means, we could search a collection of <em>one
+                    million</em> in <em>twenty checks</em> and a collection of <em>one billion</em> in <em>thirty checks</em> in the worst cases. Pretty fast right?
                     There is a disadvantage of course, we need to be using ordered collections. Adding and removing elements from ordered collections is slow,
                     so you only want to be using binary searches on data that either doesn't change regularly, or can be updated asynchronously by another thread.
                     As before there are working graphical examples to try below;</p>

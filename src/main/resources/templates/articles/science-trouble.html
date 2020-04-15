@@ -6,16 +6,16 @@
 		<article>
 			<div class="text-container">
 				<p class="date">20/05/2016</p>
-				<p class="views"><span th:text="${article.views}"></span> views</p>
+				<p class="views"><span th:text="${article.views}">1</span> views</p>
 			</div>
 
 			<section>
 				<h1>The Trouble with Science</h1>
 				<hr />
-				<img class="coverimg" src="/images/science-trouble-banner.jpg" alt="The Trouble with Science Cover Image" />
+				<img class="coverimg" src="/images/science-trouble-banner.jpg" alt="Close up shot of the glowing filaments of an elaborate edison bulb" />
 				<br />
 				<p>Science is how we know stuff. It's not a body of facts, some government controlled institution, or a belief system. Science is a process in which we demand evidence, question that evidence,
-					stay skeptical, and keep trying to prove other people's research wrong. The ideas that survive this process get to be called <span class="bold">The Truth</span>, at least until some better research comes out showing
+					stay skeptical, and keep trying to prove other people's research wrong. The ideas that survive this process get to be called <em>The Truth</em>, at least until some better research comes out showing
 					us that we were wrong all along.</p>
 				<br />
 				<p>This process we call science has given us almost everything that we now take for granted. Cultivated food, medicine, transport, communication, education, entertainment, as well as long, healthy, safe,
@@ -24,7 +24,7 @@
 				<p>So what's the problem? In August of 2015 a <a href="http://science.sciencemag.org/content/349/6251/aac4716">single study</a><sup><a href="#ref-1">1</a></sup>, by Brian Nosek PhD and colleagues, was performed that shook the very
 					bedrock of science itself. They took 100 pieces of original (not performed before) psychology research and tried to reproduce their results by replicating
 					the research exactly. Only a third of these studies could be successfully reproduced with significant results and almost all of the studies produced weaker results than the first time. To
-					radically over-simplify that, two thirds of those studies were <span class="bold">wrong</span>.</p>
+					radically over-simplify that, two thirds of those studies were <em>wrong</em>.</p>
 				<br />
 				<p>Not all science has this problem, right? Well... apparently it does. The same year <a href="http://circres.ahajournals.org/content/116/1/116.full">a review</a><sup><a href="#ref-2">2</a></sup> published in the
 					American Heart Association's journal Circulation Research highlighted the exact same sentiment. As it turns out this has been a problem for some time in pharmacology<sup><a href="#ref-3">3</a>,<a href="#ref-4">4</a>,<a href="#ref-5">5</a></sup>,
@@ -32,10 +32,10 @@
 					and most thorough in a long string of researchers trying to point this out. As a personal observation, the sciences that study people seem to have been hit hardest by this
 					phenomenon. Psychology, medicine, sociology, and economics.</p>
 				<br />
-				<p>So what the hell is going on? How is this happening? If you were inclined to split things into arbitrary sections then you might just say <span class="bold">Poor Research Quality</span>,
-					<span class="bold">Inevitability</span>, and <span class="bold">Publication Bias</span>. To get to grips with the problem we need to do a flash tour of research methodology.</p>
+				<p>So what the hell is going on? How is this happening? If you were inclined to split things into arbitrary sections then you might just say <b>Poor Research Quality</b>,
+					<b>Inevitability</b>, and <b>Publication Bias</b>. To get to grips with the problem we need to do a flash tour of research methodology.</p>
 				<br />
-				<div class="code bold">
+				<div class="code">
 					<h3><span class="green">• </span>Poor Research Quality</h3><br />
 					<h3><span class="green">• </span>Inevitability</h3><br />
 					<h3><span class="green">• </span>Publication Bias</h3>
@@ -52,7 +52,7 @@
 					and the researchers <a href="https://en.wikipedia.org/wiki/Blind_experiment#Double-blind_trials">double-blinded</a>.</p>
 				<br />
 				<p>Any research where you are studying the effects of something needs a <a href="https://en.wikipedia.org/wiki/Scientific_control">control group</a>. If you give some ill people
-					a drug and they all get better what have we learnt? <span class="bold">Nothing</span>. Ill people get better most of the time. You would have to compare the group getting the drug to some
+					a drug and they all get better what have we learnt? <em>Nothing</em>. Ill people get better most of the time. You would have to compare the group getting the drug to some
 					other group who didn't. This second group is the control group. Remember what we said about participants being biased? To stop our control group from knowing
 					that they're not getting treated we give them a placebo so they think they're getting treated too. This is an even better control called a <a href="https://en.wikipedia.org/wiki/Placebo-controlled_study">placebo control</a>.
 					Lots of interventions can't be placebo controlled, but there are clever tricks that can be used to work out whether the participants' biases affected the results.</p>
@@ -78,15 +78,15 @@
 					our studies a value to indicate how likely it is that they were just luck. We call this a <a href="https://en.wikipedia.org/wiki/P-value">p-value</a>. This doesn't take
 					into account any biases, but never mind.</p>
 				<br />
-				<p>We say that a piece of research is <span class="bold">significant</span> if it has a p-value of less than 0.05, which is to say that there is less than a 1 in 20 chance of the results being
+				<p>We say that a piece of research is <b>significant</b> if it has a p-value of less than 0.05, which is to say that there is less than a 1 in 20 chance of the results being
 					a fluke. Without even taking into account the biases in all research, you could say that if you do 20 studies you get at least one who's results are just due to chance.</p>
 				<br />
 				<p>Let's do a little thought experiment. Imagine that you want to determine whether a coin is biased, and use a p-value to determine if your results are significant. All you
 					would have to do is flip the coin on the same side enough times in a row. If the coin landed on heads 4 times in a row you wouldn't have a small enough p-value because the chance of that is only
-					1 in 16 or <span class="italic bold">(0.5)<sup>4</sup></span>. But if it landed heads 5 times in a row then that's a 1 in 32 chance or <span class="italic bold">(0.5)<sup>5</sup></span> of being a fluke.
+					1 in 16 or <em>(0.5)<sup>4</sup></em>. But if it landed heads 5 times in a row then that's a 1 in 32 chance or <em>(0.5)<sup>5</sup></em> of being a fluke.
 					That would be enough to say you had a significant result showing that the coin was bias. But what if more than one person was studying this coin? What if you had 32 people
-					doing research and each person flipped the coin five times? Well the chances of one of those 32 people getting heads five times in a row is <span class="italic bold">(0.5)<sup>5</sup> x 32 = 1</span>.
-					Do you see the problem? If 32 people study this coin the same way, on average one of them will determine that the coin is biased, <span class="bold">even if it isn't!</span></p>
+					doing research and each person flipped the coin five times? Well the chances of one of those 32 people getting heads five times in a row is <em>(0.5)<sup>5</sup> x 32 = 1</em>.
+					Do you see the problem? If 32 people study this coin the same way, on average one of them will determine that the coin is biased, <em>even if it isn't!</em></p>
 				<br />
 				<p>Dodgy results are inevitable. Using p-values is a good way to prevent so many from slipping through the cracks, but we need to be aware that it wont stop all the flukes getting through. When a
 					study has a very low p-value it is much more likely to be the real deal. The lower the p-value of a piece of research the more likely someone can reproduce your results<sup><a href="#ref-1">1</a></sup>.</p>
@@ -105,7 +105,7 @@
 					have higher standards than others. This way people pay more attention to the research published in these high standard (or <a href="https://en.wikipedia.org/wiki/Impact_factor">high impact</a>) journals.</p>
 				<br />
 				<p>This all sounds very positive, so where is the problem? If you were reading carefully you may have spotted it. Journals weed out boring results. In some fields significant positive results are published almost
-					<span class="bold">ten times more</span><sup><a href="#ref-11">11</a></sup> than negative or insignificant results. On top of this, researchers often don't even bother trying to publish negative results<sup><a href="#ref-12">12</a></sup>. Think
+					<strong>ten times more</strong><sup><a href="#ref-11">11</a></sup> than negative or insignificant results. On top of this, researchers often don't even bother trying to publish negative results<sup><a href="#ref-12">12</a></sup>. Think
 					back to our 32 coin flipping researchers.</p>
 				<br />
 				<p>Image that most of our coin flipping researchers didn't bother to try and publish their negative results, and that only a small handful of those people tried to get their work published. It's very likely that our
@@ -136,18 +136,18 @@
 			</section>
 
 			<h2>References</h2>
-			<p class="reference" id="ref-1"><span class="bold">1.</span> Nosek et al. Estimating the reproducibility of psychological science. Science 2015 349: 6251</p>
-			<p class="reference" id="ref-2"><span class="bold">2.</span> C G Begley. Reproducibility in Science. Circulation Res 2015 116: 116-126</p>
-			<p class="reference" id="ref-3"><span class="bold">3.</span> F Prinz, T Schlange, K Asadullah. Believe it or not. Nat Rev Drug Discov 2011 10: 712</p>
-			<p class="reference" id="ref-4"><span class="bold">4.</span> C G Begley, L Ellis. Drug development: raise standards for preclinical research. Nature 2012 483: 531–533</p>
-			<p class="reference" id="ref-5"><span class="bold">5.</span> I S Peers, P R Ceuppens, C Harbron. In search of preclinical robustness. Nat Rev Drug Discov 2012 11: 733–734</p>
-			<p class="reference" id="ref-6"><span class="bold">6.</span> I Chalmers, P Glasziou. Avoidable Waste in the Production and Reporting of Research Evidence. Obst &amp; Gyn 2009 114: 6</p>
-			<p class="reference" id="ref-7"><span class="bold">7.</span> S S Young, H I Miller. Are Medical Articles True on Health, Disease? Genetic Eng &amp; Biotech 2014 34: 9</p>
-			<p class="reference" id="ref-8"><span class="bold">8.</span> S S Young, A Karr. Deming, data and observational studies. Significance 2011 8: 3</p>
-			<p class="reference" id="ref-9"><span class="bold">9.</span> I Chalmers et al. Empirical evidence of bias. JAMA 1995 273: 408–12</p>
-			<p class="reference" id="ref-10"><span class="bold">10.</span> L L Gluud. Bias in Clinical Intervention Research. Am J Epidemiol 2011 8: 3</p>
-			<p class="reference" id="ref-11"><span class="bold">11.</span> J A Berlin et al. Publication bias in clinical research. The Lancet 1991 337: 8746</p>
-			<p class="reference" id="ref-12"><span class="bold">12.</span> J D Scargle. Publication bias (The “File-Drawer Problem”) in scientific inference. ArXiv Physics 1999 9909033</p>
+			<p class="reference" id="ref-1"><b>1.</b> Nosek et al. Estimating the reproducibility of psychological science. Science 2015 349: 6251</p>
+			<p class="reference" id="ref-2"><b>2.</b> C G Begley. Reproducibility in Science. Circulation Res 2015 116: 116-126</p>
+			<p class="reference" id="ref-3"><b>3.</b> F Prinz, T Schlange, K Asadullah. Believe it or not. Nat Rev Drug Discov 2011 10: 712</p>
+			<p class="reference" id="ref-4"><b>4.</b> C G Begley, L Ellis. Drug development: raise standards for preclinical research. Nature 2012 483: 531–533</p>
+			<p class="reference" id="ref-5"><b>5.</b> I S Peers, P R Ceuppens, C Harbron. In search of preclinical robustness. Nat Rev Drug Discov 2012 11: 733–734</p>
+			<p class="reference" id="ref-6"><b>6.</b> I Chalmers, P Glasziou. Avoidable Waste in the Production and Reporting of Research Evidence. Obst &amp; Gyn 2009 114: 6</p>
+			<p class="reference" id="ref-7"><b>7.</b> S S Young, H I Miller. Are Medical Articles True on Health, Disease? Genetic Eng &amp; Biotech 2014 34: 9</p>
+			<p class="reference" id="ref-8"><b>8.</b> S S Young, A Karr. Deming, data and observational studies. Significance 2011 8: 3</p>
+			<p class="reference" id="ref-9"><b>9.</b> I Chalmers et al. Empirical evidence of bias. JAMA 1995 273: 408–12</p>
+			<p class="reference" id="ref-10"><b>10.</b> L L Gluud. Bias in Clinical Intervention Research. Am J Epidemiol 2011 8: 3</p>
+			<p class="reference" id="ref-11"><b>11.</b> J A Berlin et al. Publication bias in clinical research. The Lancet 1991 337: 8746</p>
+			<p class="reference" id="ref-12"><b>12.</b> J D Scargle. Publication bias (The “File-Drawer Problem”) in scientific inference. ArXiv Physics 1999 9909033</p>
 		</article>
 		<hr />
 

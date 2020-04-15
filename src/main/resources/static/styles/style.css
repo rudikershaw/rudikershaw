@@ -64,6 +64,14 @@ var {
 	font-weight: bold;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
 a {
 	color: #ED5900;
 } a:hover{
@@ -71,10 +79,6 @@ a {
 } a:hover div img {
 	filter: alpha(opacity=100);
     opacity: 1;
-}
-
-.bold {
-	font-weight: bold;
 }
 
 .code-inline {
@@ -87,10 +91,6 @@ a {
 
 .center {
 	text-align: center;
-}
-
-.nowrap {
-	white-space: nowrap;
 }
 
 figure {
@@ -718,15 +718,6 @@ p.reference {
 	margin: 2px auto;
 }
 
-a.close-link {
-	background-image: url('/images/cross.png');
-	background-size: cover;
-	display: block;
-	height: 29px;
-	width: 29px;
-	float: right;
-}
-
 a.stack-overflow-link {
 	overflow: hidden;
 	float: right;
@@ -847,3 +838,4 @@ div.whichpet div.popup { display: none; background: rgba(34,34,34,0.9); position
 div.whichpet div.popup div.box { width: 600px; margin: auto; background: white; padding: 20px 20px; text-align: center;}
 div.whichpet #click-for-more a { text-decoration: underline; cursor: pointer; color: white; }
 div.whichpet #they-clicked-for-more { padding: 30px; color: black; max-width: 800px; margin: auto; border-radius: 10px; background: white; }
+div.whichpet a.close-link {background-image: url('/images/cross.png');background-size: cover;display: block;height: 29px;width: 29px;float: right;}

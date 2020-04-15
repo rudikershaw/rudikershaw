@@ -6,13 +6,13 @@
         <article>
             <div class="text-container">
                 <p class="date">01/05/2017</p>
-                <p class="views"><span th:text="${article.views}"></span> views</p>
+                <p class="views"><span th:text="${article.views}">1</span> views</p>
             </div>
 
             <section>
                 <h1 th:text="${article.name}">Anomaly Detection</h1>
                 <hr />
-                <img class="coverimg" src="/images/anomaly-detection-banner.jpg" alt="Visual Agnosia" />
+                <img class="coverimg" src="/images/anomaly-detection-banner.jpg" alt="A small orange lacquered pair of binoculars on a white background" />
                 <br />
                 <p>In one of my previous articles, <a href="tour-of-ai">A Tour of AI</a>, I promised to go over some examples of specific machine learning
                     algorithms. I recently had the opportunity to add an anomaly detection system to the <a href="http://www.cognitran.com/">Cognitran</a> service monitoring suite.
@@ -36,7 +36,7 @@
 
             <section>
                 <h2>When to Use Anomaly Detection.</h2>
-                <p>Anomaly detection is especially useful when we have <b>few or no examples</b> of the kind of anomalies you are trying to detect in advance. It also
+                <p>Anomaly detection is especially useful when we have <em>few or no examples</em> of the kind of anomalies you are trying to detect in advance. It also
                     has the advantage that the anomalies we are looking for can be <b>loosely defined</b>. This means that anomaly detection will find all manner of
                     unusual results, not just highly specific circumstances. By contrast if you have access to positive and negatives examples and you are looking
                     for something very specific, then <a href="tour-of-ai#supervised-v-unsupervised">Supervised Learning</a> techniques are generally more useful.</p>
@@ -44,8 +44,8 @@
 
             <section>
                 <h2>Means and Variances.</h2>
-                <p>Before we describe an implementation of Gaussian distribution we should cover the basics quickly. The <b>mean</b> (&mu;) of our values is the sum
-                    of all our values divided by the total number of values. The <b>variance</b> (&delta;<sup>2</sup>) of our values is the sum of the squared difference between each
+                <p>Before we describe an implementation of Gaussian distribution we should cover the basics quickly. The <b>mean</b> (<var>&mu;</var>) of our values is the sum
+                    of all our values divided by the total number of values. The <b>variance</b> (<var>&delta;<sup>2</sup></var>) of our values is the sum of the squared difference between each
                     value and the mean, divided by the total number of values. If you have more than one variable we simply work out the mean and variance for each
                     variable separately. Below are some example methods for calculating the means and variances of a list of data with any number of variables for
                     each entry. For brevity I have not included any validation for null / number type / zero values or inconsistent array sizing, but please remember to add
@@ -130,7 +130,7 @@
                 <br />
                 <p>Now we have our means and variances for each of our variables. We can now set a threshold for determining whether future data is anomalous.
                     Unlike in our graphs we wont be determining where our threshold sits by physically drawing a line in geometric space. Instead we
-                    will be estimating the <b>probability</b> of a given example using a method called <b>Density Estimation</b>. Then our threshold simply
+                    will be estimating the <em>probability</em> of a given example using a method called <b>Density Estimation</b>. Then our threshold simply
                     becomes a probability. Future examples who's probability falls below our threshold can be determined anomalous.</p>
             </section>
 

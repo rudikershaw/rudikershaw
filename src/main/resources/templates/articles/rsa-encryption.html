@@ -6,18 +6,18 @@
 		<article>
 			<div class="text-container">
 				<p class="date">08/06/2017</p>
-				<p class="views"><span th:text="${article.views}"></span> views</p>
+				<p class="views"><span th:text="${article.views}">1</span> views</p>
 			</div>
 
 			<section>
 				<h1 th:text="${article.name}">Grokking RSA Encryption</h1>
 				<hr />
-				<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="RSA Encryption" />
+				<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="Section of a rusty old lock on a shed door" />
 				<br />
 				<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
 					and is used for things like validating certificates in HTTPS requests, moving credit card information over the internet, and
 					encrypting messages in secure chat applications. This article is my attempt to put together a single source that describes
-					everything you need to know to <b>really</b> understand it.</p>
+					everything you need to know to <em>really</em> understand it.</p>
 				<br />
 				<p>We're going to start with a high level example where we
 					<b class="has-title" title="Convert (information or data) into a code, especially to prevent unauthorized access. - Oxford Living Dictionary"><span class="green">encrypt</span></b>
@@ -101,7 +101,7 @@
 			<section>
 				<h2>Euler's Totient</h2>
 				<p>A number's <b>totient</b> is the number of whole positive numbers below it that do not share any prime factors. In other words
-					the totient of a number is the number of coprimes below its value. The totient of a number <b>n</b> is often written <b>&Phi;(n)</b>.
+					the totient of a number is the number of coprimes below its value. The totient of a number <var>n</var> is often written <var>&Phi;(n)</var>.
 					Working out a number's totient is a hard problem, but in RSA encryption we rely on two quirks to make it easy for us. The totient
 					of a prime number is always just the prime number minus one. As described earlier all numbers below a prime are coprimes with it.
 					Also, the results of totient calculations are multiplicative, which means that:</p>

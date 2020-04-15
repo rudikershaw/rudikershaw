@@ -10,7 +10,7 @@
             </div>
             <h1>Defining an Algorithm - Part 3</h1>
             <hr />
-            <img class="coverimg" src="/images/taocp_text3.jpg" alt="Let us formally define a computational method" />
+            <img class="coverimg" src="/images/taocp_text3.jpg" alt="Text from a page of a book: 'If alpha is the shortest possible string for which'" />
             <br />
 
             <p>This is Part 3, the last instalment, on the Algorithms section at the beginning of the Basic Concepts chapter in the first volume of
@@ -21,8 +21,8 @@
                 whilst keeping the defined computational method effective.</p>
             <br />
             <p>It's worth mentioning at this point that this whole example makes significantly more sense if you know what a
-                <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> actually <b>is</b>. A Markov algorithm is a procedure for taking
-                a string of letters and converting them to a different string of letters using an <b>ordered</b> list of rules. Each rule looks for a specific series
+                <a href="https://en.wikipedia.org/wiki/Markov_algorithm">Markov Algorithm</a> actually <em>is</em>. A Markov algorithm is a procedure for taking
+                a string of letters and converting them to a different string of letters using an <em>ordered</em> list of rules. Each rule looks for a specific series
                 of letters and replaces them with another. We start at the top of our list of rules and work our way down. If we find one that applies we use it to
                 change some letters and move back to the top of the list of rules to go again. If we don't find one, we keep moving down the list until we either
                 find one or get to the end of the list. If you reach the bottom of the list of rules without applying any, your process is finished.  That's it.
@@ -44,7 +44,7 @@
 <span class="orange"> 2 - </span>"dop"
 <span class="orange"> 3 - </span>"down"</pre>
             <br />
-            <p>Remember how I emphasised that the <b>order</b> of the rules mattered? Well, if we were to re-arrange our rules and swap rules 1 and 3 we would end up
+            <p>Remember how I emphasised that the <em>order</em> of the rules mattered? Well, if we were to re-arrange our rules and swap rules 1 and 3 we would end up
                 with the word <b>"error"</b> instead. Knuth's algorithm actually varies slightly from a traditional Markov algorithm, and we'll see how later. Now,
                 let's get back to the book and see how Knuth plans to ensure our new algorithm definition is effective.</p>
             <br />

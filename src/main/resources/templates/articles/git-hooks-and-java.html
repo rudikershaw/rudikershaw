@@ -6,7 +6,7 @@
 		<article>
 			<div class="text-container">
 				<p class="date">17/11/2019</p>
-				<p class="views"><span th:text="${article.views}"></span> views</p>
+				<p class="views"><span th:text="${article.views}">1</span> views</p>
 			</div>
 
 			<section>
@@ -14,7 +14,7 @@
 				<hr />
 				<img class="coverimg" src="/images/git-hooks-banner.jpg" alt="Picture of a close up section of an old fishing hook" />
 				<br />
-				<p>I hope that reading this piece will convince you, not just to use Git hooks, but also <strong class="bold">how and why</strong>
+				<p>I hope that reading this piece will convince you, not just to use Git hooks, but also <em>how and why</em>
 					we should use them in our projects. I've tried to find best practices for using git hooks in our projects, but the only place this kind of
 					information can be found is in dribs and drabs scattered across <a href="https://stackoverflow.com/q/427207/2182928">Stackoverflow questions</a>.
 					I hope that this can serve as a starting point, for a more comprehensive view on the subject.</p>
@@ -57,7 +57,7 @@
 					<a href="https://github.com/rudikershaw/client-git-hooks">client side git hooks</a>.</p>
 				<br />
 				<aside>If you have your git hooks in a separate repository there is a good chance you will want your hooks to work in subtly different ways
-					in each of your projects. A good way of handling this is to have your hooks take configuration from the <span class="code-inline">git config</span> of your
+					in each of your projects. A good way of handling this is to have your hooks take configuration from the <code class="code-inline">git config</code> of your
 					local repository. You can set this config in your build differently for each project.</aside>
 				<br />
 				<p>Next we need to store, and make available, releasable versions of our hooks. If your hooks are managed in a Maven project you could deploy them
@@ -67,7 +67,7 @@
 				<br />
 				<p>Now we need to get a particular release of our hooks into our project. We want it to do this during our build. As we just have a URL,
 					we can use the <a href="https://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a> to download and unpack our hooks.
-					Here's our plugin definition from our <span class="code-inline">pom.xml</span>.</p>
+					Here's our plugin definition from our <code class="code-inline">pom.xml</code>.</p>
 				<br />
 				<pre class="code">
 <span class="orange">&lt;plugin&gt;</span>
@@ -112,20 +112,20 @@
 				<p>With the above, we download and unzip the archive into a directory and then give the
 					files the appropriate permissions to allow Git to run them. We also create a version file in the directory we move the hooks to. That way we
 					can check if we have the correct version already and then skip the process if it has already been done. By checking the version like this
-					it will work as you would expect if you change the <span class="code-inline">${git.hooks.version}</span> property declared at the top of our
-					<span class="code-inline">pom.xml</span> (not shown).</p>
+					it will work as you would expect if you change the <code class="code-inline">${git.hooks.version}</code> property declared at the top of our
+					<code class="code-inline">pom.xml</code> (not shown).</p>
 				<br />
-				<p>I have chosen to put our hooks directory into the <span class="code-inline">etc/</span> directory in our project. Initially it might seem
-					<span class="code-inline">target/</span> is a better place to put them, as they are effectively temporary files downloaded in the build. But
-					we don't really want these files cleared away if someone runs <span class="code-inline">mvn clean</span>.</p>
+				<p>I have chosen to put our hooks directory into the <code class="code-inline">etc/</code> directory in our project. Initially it might seem
+					<code class="code-inline">target/</code> is a better place to put them, as they are effectively temporary files downloaded in the build. But
+					we don't really want these files cleared away if someone runs <code class="code-inline">mvn clean</code>.</p>
 				<br />
-				<aside>There are four standard ways of telling git to use your hooks; move them into the <span class="code-inline">.git/hooks/</span>
-					directory, symlink another directory to <span class="code-inline">.git/hooks/</span>, add <span class="code-inline">core.hooksPath</span> config,
-					or use a <span class="code-inline">git init</span> template directory.</aside>
+				<aside>There are four standard ways of telling git to use your hooks; move them into the <code class="code-inline">.git/hooks/</code>
+					directory, symlink another directory to <code class="code-inline">.git/hooks/</code>, add <code class="code-inline">core.hooksPath</code> config,
+					or use a <code class="code-inline">git init</code> template directory.</aside>
 				<br />
 				<p>We have our hooks in our project, but we still need to tell git to use them. To do this, we are going to use a feature of git that has been
-					available since version 2.9. We can tell git to use a different folder to read its hooks from by setting the git config <span class="code-inline">core.hooksPath</span> to
-					our directory. But we also want to do this in our build. There shouldn't be any manual steps. Let's add another plugin to our <span class="code-inline">pom.xml</span>.</p>
+					available since version 2.9. We can tell git to use a different folder to read its hooks from by setting the git config <code class="code-inline">core.hooksPath</code> to
+					our directory. But we also want to do this in our build. There shouldn't be any manual steps. Let's add another plugin to our <code class="code-inline">pom.xml</code>.</p>
 				<br />
 				<pre class="code">
 <span class="orange">&lt;plugin&gt;</span>
@@ -150,8 +150,8 @@
 				<br />
 				<p>This is the <a href="https://github.com/rudikershaw/git-build-hook">git-build-hook-maven-plugin</a> (my precious).
 					It is designed to manage your developer's local git from your build, and have changes applied when the build is run. In this
-					case we are initializing a git repo if one does not already exist, setting the <span class="code-inline">core.hooksPath</span>
-					config to point to our git hooks folder, and setting some custom git config (<span class="code-inline">hooks.commitmsgregex</span>)
+					case we are initializing a git repo if one does not already exist, setting the <code class="code-inline">core.hooksPath</code>
+					config to point to our git hooks folder, and setting some custom git config (<code class="code-inline">hooks.commitmsgregex</code>)
 					to set a regex to use to validate our commit messages.</p>
 				<br />
 				<p>Once we run the build with these plugins, our hooks should be ready to go. So let's try and commit the changes with a commit message

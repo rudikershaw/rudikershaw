@@ -6,11 +6,11 @@
 		<article>
             <div class="text-container">
                 <p class="date">22/08/2015</p>
-                <p class="views"><span th:text="${article.views}"></span> views</p>
+                <p class="views"><span th:text="${article.views}">1</span> views</p>
             </div>
             <h1>Upgrading This Website</h1>
             <hr />
-            <img class="coverimg" src="/images/upgradecover.jpg" alt="Upgrading to JavaEE - Spring Boot" />
+            <img class="coverimg" src="/images/upgradecover.jpg" alt="One small leaf stands out brightly amongst all the leaves in a bush" />
             <br />
 
             <p>In the unlikely event someone were actually following my ramblings, they would have noticed that I've not written anything
@@ -68,7 +68,7 @@
 <span class="orange">&lt;/div&gt;</span></pre>
             <br />
             <p>... and then you can refer back to this on another page without having to repeat all the details. Notice, in the html above the
-                <i><span class="purple">th</span>:fragment=<span class="jade">"header"</span></i>.</p>
+                <b><code><span class="purple">th</span>:fragment=<span class="jade">"header"</span></code></b>.</p>
             <br />
             <pre class="code">
 <span class="orange">&lt;div</span> class=<span class="jade">"header"</span> <span class="purple">th</span>:replace=<span class="jade">"/index :: header"</span><span class="orange">&gt;&lt;/div&gt;</span></pre>

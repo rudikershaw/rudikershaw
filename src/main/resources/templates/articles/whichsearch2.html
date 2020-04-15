@@ -6,13 +6,13 @@
         <article>
             <div class="text-container">
                 <p class="date">03/07/2016</p>
-                <p class="views"><span th:text="${article.views}"></span> views</p>
+                <p class="views"><span th:text="${article.views}">1</span> views</p>
             </div>
 
             <section>
                 <h1>Which Search Algorithm? - Part 2</h1>
                 <hr />
-                <img class="coverimg" src="/images/searchbanner.jpg" alt="Which search algorithm to use?" />
+                <img class="coverimg" src="/images/searchbanner.jpg" alt="The words 'Here I am!' written on a piece of paper amongst some colourful clutter" />
                 <br />
                 <p>In the <a href="whichsearch">first installation of Which Search Algorithm</a>, I covered exhaustive and binary searches. I also briefly
                     went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth
@@ -21,7 +21,7 @@
                 <p>Depth and breadth first searches are performed on <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">graph</a>
                     structures. For this article I am going to assume we are dealing with an undirected graph in it's most abstract sense. We wont assume that we are using
                     a graph of any specific type. As an example, if we assumed we were only dealing with trees we could make assumptions about not having to deal
-                    with cyclic paths. By assuming that <b>anything goes</b> in our graph we can theoretically write searches that will work on more varieties of graph.</p>
+                    with cyclic paths. By assuming that <em>anything goes</em> in our graph we can theoretically write searches that will work on more varieties of graph.</p>
                 <br />
                 <p>Before we talk about both searches we had better define our nodes so that we know what we are dealing with. I will leave out getters and setters
                     for brevity (please remember <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulation</a> in your own code),
@@ -263,11 +263,11 @@
                 </pre>
 
                 </div>
-                <aside>Note: The JavaScript implementation of Breadth First Search above is not efficient. The use of the <i>.shift()</i> method is slow ( <i>O(n)</i> rather
+                <aside>Note: The JavaScript implementation of Breadth First Search above is not efficient. The use of the <i><code>.shift()</code></i> method is slow ( <i>O(n)</i> rather
                     than <i>O(1)</i> ). I have used a JavaScript array for brevity but I suggest finding a correct queue implementation for your own code.</aside>
                 <br />
                 <p>If you were paying attention to the above examples you may have noticed that they look almost exactly the same. That's because they
-                    <b>are</b> almost exactly the same. The only difference in the implementation is that the breadth first search uses a queue instead of a stack for storing nodes to
+                    <em>are</em> almost exactly the same. The only difference in the implementation is that the breadth first search uses a queue instead of a stack for storing nodes to
                     visit next. This way the first nodes you check get visited next (fist-in-first-out) and so you always search by spreading out from where you started. This is
                     ultimately what it means to search <b>breadth first</b>. There is another graphic below demonstrating this. Try searching for a number.</p>
                 <br />
@@ -334,7 +334,7 @@
                 years ago a depth first search makes much more sense.</p>
             <br />
             <p>If you have completely unstructured data with no pattern to the depth or breadth it doesn't make a great deal of difference which search type you choose
-                (both have a complexity of <b>O(n+e)</b> where <b>n</b> is the number of nodes and <b>e</b> is the number of edges/connections). Conversely, knowing a
+                (both have a complexity of <b>O(n+e)</b> where <var>n</var> is the number of nodes and <var>e</var> is the number of edges/connections). Conversely, knowing a
                 little about the structure of your graph can tell you how you should be searching it. There is no hard and fast rules for choosing, it is about knowing
                 your data, and knowing what you are looking for. <a href="http://stackoverflow.com/a/3332994/2182928">This stackoverflow answer</a> offers
                 some good rules of thumb.</p>
