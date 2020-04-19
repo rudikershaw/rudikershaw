@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/article/head :: head"></head>
+	<head>
+        <link th:replace="fragments/article/head :: head">
+		<link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
 		<article>
@@ -29,9 +32,10 @@
 				to request text from a web server and have that server send the correct text back to the client.
 				Alright, no problem; create a request with the salient details in it.</p>
 			<br />
-			<pre class="code">
-GET /index.html HTTP/1.1
-Host: www.rudikershaw.com</pre>
+
+<pre><code class="language-http">GET /index.html HTTP/1.1
+Host: www.rudikershaw.com</code></pre>
+
 			<br />
 			<p>And now we have an HTTP Request. It's just a <b>first line</b> which says what we want to do (i.e.
 				GET the /index.html document), and a single <b>header</b> labelled Host which is the domain we want to
@@ -41,8 +45,8 @@ Host: www.rudikershaw.com</pre>
 				but there are many others. Once the host server has received this HTTP request it sends us a
 				response.</p>
 			<br />
-			<pre class="code">
-HTTP/1.1 200 OK
+
+<pre><code class="language-http">HTTP/1.1 200 OK
 Date: Mon, 29 Feb 2015 20:09:12 GMT
 Content-Length: 77
 
@@ -53,7 +57,8 @@ Content-Length: 77
 &lt;body&gt;
     ....
 &lt;/body&gt;
-&lt;html&gt;</pre>
+&lt;html&gt;</code></pre>
+
 			<br />
 			<p>The above is an incredibly simple HTTP Response. It has a <b>first line</b> which, aside from
 				'HTTP/1.1', has the <b>status code</b> 200 followed by OK. The status codes are essentially the web
@@ -69,28 +74,30 @@ Content-Length: 77
 				<b>POST</b>. That's because the form submits this data to the next page using an HTTP Request with one
 				of those methods. So, what's the difference?</p>
 			<br />
-			<pre class="code">
-&lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"GET"</span>&gt;
-&lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"POST"</span>&gt;</pre>
+
+<pre><code class="language-html">&lt;form action="page.php" method="GET"&gt;
+&lt;form action="page.php" method="POST"&gt;</code></pre>
+
 			<br />
 			<p>Okay. Let's first start with our GET method and imagine that we have the following basic HTML
 			form.</p>
 			<br />
-			<pre class="code">
-&lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"GET"</span>&gt;
-    &lt;<span class="purple">input</span> <span class="orange">type</span>=<span class="jade">"text"</span> <span class="orange">name</span>=<span class="jade">"data"</span> /&gt;
-    &lt;<span class="purple">input</span> <span class="orange">type</span>=<span class="jade">"submit"</span> <span class="orange">value</span>=<span class="jade">"Submit"</span> /&gt;
-&lt;<span class="purple">form</span>/&gt;
-</pre>
+
+<pre><code class="language-html">&lt;form action="page.php" method="GET"&gt;
+    &lt;input type="text" name="data" /&gt;
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;form/&gt;</code></pre>
+
 			<br />
 			<p>When we hit the submit button the value in our data text input is sent to the web server that
 				we are requesting the page.php document from. It's sent in our HTTP Request using the GET method.
 				But the GET method is for GETting stuff, so how does it send data? Well it already sends some
 				data, the location of our requested document. So that's where the data goes. In the URL.</p>
 			<br />
-			<pre class="code">
-GET /page.php?data=yourdata HTTP/1.1
-Host: www.rudikershaw.com</pre>
+
+<pre><code class="language-http">GET /page.php?data=yourdata HTTP/1.1
+Host: www.rudikershaw.com</code></pre>
+
 			<br />
 			<p>This means that the data we're sending is plainly visible in the URL, in the address bar of
 				our browser. It's also stored in your history as well as your browser cache and probably the logs
@@ -106,23 +113,24 @@ Host: www.rudikershaw.com</pre>
 			<br />
 			<p>Now let's submit the same HTML form but change the method to an HTTP POST Request instead.</p>
 			<br />
-			<pre class="code">
-&lt;<span class="purple">form</span> <span class="orange">action</span>=<span class="jade">"page.php"</span> <span class="orange">method</span>=<span class="jade">"POST"</span>&gt;
-    &lt;<span class="purple">input</span> <span class="orange">type</span>=<span class="jade">"text"</span> <span class="orange">name</span>=<span class="jade">"data"</span> /&gt;
-    &lt;<span class="purple">input</span> <span class="orange">type</span>=<span class="jade">"submit"</span> <span class="orange">value</span>=<span class="jade">"Submit"</span> /&gt;
-&lt;<span class="purple">form</span>/&gt;
-</pre>
+
+<pre><code class="language-html">&lt;form action="page.php" method="POST"&gt;
+    &lt;input type="text" name="data" /&gt;
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;form/&gt;</code></pre>
+
 			<br />
 			<p>This time we submit our data to the web server using the POST method, which is specifically
 				for sending data to your recipient. So what's the difference? Well, this time our data is not
 				transferred in the URL. This time our data has a designated space in the <b>body</b> of the HTTP
 				Request, two new lines below the last header.</p>
 			<br />
-			<pre class="code">
-POST /page.php HTTP/1.1
+
+<pre><code class="language-http">POST /page.php HTTP/1.1
 Host: www.rudikershaw.com
 
-data=yourdata</pre>
+data=yourdata</code></pre>
+
 			<br />
 			<p>So what's so great about this? Well your data doesn't get logged anywhere. Not in the browsers
 				history, cache or bookmarks, and not on any web server. Plus, it doesn't show up in the URL. As
@@ -144,6 +152,8 @@ data=yourdata</pre>
 		<hr />
 
 		<div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+		<script src="/scripts/vendor/prism.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">

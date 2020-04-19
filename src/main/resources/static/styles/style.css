@@ -525,6 +525,11 @@ p.views {
     counter-reset: item;
 }
 
+.code ul > li:before {
+	content: "• ";
+	color: #347B34;
+}
+
 .code ol > li:before {
     content: counter(item) ". ";
     counter-increment: item;
@@ -541,7 +546,7 @@ aside {
 }
 
 .choices {
-	background-color: #333333;
+	background-color: #2D2D2D;
     clear: both;
 }
 .choices li {

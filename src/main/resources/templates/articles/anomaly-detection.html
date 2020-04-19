@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/article/head :: head"></head>
+	<head>
+        <link th:replace="fragments/article/head :: head">
+        <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
         <article>
@@ -58,74 +61,90 @@
                         <li>Octave</li>
                         <div style="clear:both;"></div>
                     </ul>
-            <pre class="code choice" choice="Java" xml:space="preserve"><span class="orange">public double</span>[] means(List&lt;<span class="orange">double</span>[]&gt; <span class="green">entries</span>) {
-    <span class="orange">int</span> <span class="green">variables</span> = <span class="green">entries</span>.get(<span class="jade">0</span>).<span class="green">length</span>;
-    <span class="orange">double</span>[] <span class="green">means</span> = <span class="orange">new double</span>[<span class="green">variables</span>];
-    <span class="orange">for</span> (<span class="orange">int</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">variables</span>; <span class="green">i</span>++) {
-        <span class="orange">double</span> <span class="green">sum</span> = <span class="jade">0</span>;
-        <span class="orange">for</span> (<span class="orange">double</span>[] <span class="green">entry</span> : <span class="green">entries</span>) {
-            <span class="green">sum</span> += <span class="green">entry</span>[<span class="green">i</span>];
+
+<pre class="choice" choice="Java" xml:space="preserve"><code class="language-java">public double[] means(List&lt;double[]&gt; entries) {
+    int variables = entries.get(0).length;
+    double[] means = new double[variables];
+    for (int i = 0; i &lt; variables; i++) {
+        double sum = 0;
+        for (double[] entry : entries) {
+            sum += entry[i];
         }
-        <span class="green">means</span>[<span class="green">i</span>] = <span class="green">sum</span> / <span class="green">entries</span>.size();
+        means[i] = sum / entries.size();
     }
-    <span class="orange">return</span> <span class="green">means</span>;
+    return means;
 }
 
-<span class="orange">public double</span>[] variances(List&lt;<span class="orange">double</span>[]&gt; <span class="green">entries</span>, <span class="orange">double</span>[] <span class="green">means</span>) {
-    <span class="orange">int</span> <span class="green">variables</span> = <span class="green">entries</span>.get(<span class="jade">0</span>).<span class="green">length</span>;
-    <span class="orange">double</span>[] <span class="green">variances</span> = <span class="orange">new double</span>[<span class="green">variables</span>];
-    <span class="orange">for</span> (<span class="orange">int</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">variables</span>; <span class="green">i</span>++) {
-        <span class="orange">double</span> <span class="green">sum</span> = <span class="jade">0</span>;
-        <span class="orange">for</span> (<span class="orange">double</span>[] <span class="green">entry</span> : <span class="green">entries</span>) {
-            <span class="orange">double</span> <span class="green">dif</span> = <span class="green">entry</span>[<span class="green">i</span>] - <span class="green">means</span>[<span class="green">i</span>];
-            <span class="green">sum</span> += <span class="green">dif</span> * <span class="green">dif</span>;
+public double[] variances(List&lt;double[]&gt; entries, double[] means) {
+    int variables = entries.get(0).length;
+    double[] variances = new double[variables];
+    for (int i = 0; i &lt; variables; i++) {
+        double sum = 0;
+        for (double[] entry : entries) {
+            double dif = entry[i] - means[i];
+            sum += dif * dif;
         }
-        <span class="green">variances</span>[<span class="green">i</span>] = <span class="green">sum</span> / (<span class="green">entries</span>.size() - <span class="jade">1</span>);
+        variances[i] = sum / (entries.size() - 1);
     }
-    <span class="orange">return</span> <span class="green">variances</span>;
-}</pre>
-            <pre class="code choice" choice="Python" style="display:none;" xml:space="preserve"><span class="orange">def</span> means(<span class="green">self</span>, <span class="green">entries</span>):
-    <span class="green">variables</span> = len(<span class="green">entries</span>[<span class="jade">0</span>])
-    <span class="green">means</span> = []
-    <span class="orange">for</span> <span class="green">i</span> <span class="orange">in</span> range(<span class="jade">0</span>, <span class="green">variables</span>):
-        <span class="green">sum</span> = <span class="jade">0</span>
-        <span class="orange">for</span> <span class="green">entry</span> <span class="orange">in</span> <span class="green">entries</span>:
-            <span class="green">sum</span> += <span class="green">entry</span>[<span class="green">i</span>]
+    return variances;
+}</code></pre>
 
-        <span class="green">means</span>.append(<span class="green">sum</span> / len(<span class="green">entries</span>))
+<pre class="choice" choice="Python" style="display:none;" xml:space="preserve"><code class="language-python">def means(self, entries):
+    variables = len(entries[0])
+    means = []
+    for i in range(0, variables):
+        sum = 0
+        for entry in entries:
+            sum += entry[i]
 
-    <span class="orange">return</span> <span class="green">means</span>
+        means.append(sum / len(entries))
+
+    return means
 
 
-<span class="orange">def</span> variances(<span class="green">self</span>, <span class="green">entries</span>, <span class="green">means</span>):
-    <span class="green">variables</span> = len(<span class="green">entries</span>[<span class="jade">0</span>])
-    <span class="green">variances</span> = []
-    <span class="orange">for</span> <span class="green">i</span> <span class="orange">in</span> range(<span class="jade">0</span>, <span class="green">variables</span>):
-        <span class="green">sum</span> = <span class="jade">0</span>
-        <span class="orange">for</span> <span class="green">entry</span> <span class="orange">in</span> <span class="green">entries</span>:
-            <span class="green">dif</span> = <span class="green">entry</span>[<span class="green">i</span>] - <span class="green">means</span>[<span class="green">i</span>]
-            <span class="green">sum</span> += <span class="green">dif</span>**<span class="jade">2</span>
+def variances(self, entries, means):
+    variables = len(entries[0])
+    variances = []
+    for i in range(0, variables):
+        sum = 0
+        for entry in entries:
+            dif = entry[i] - means[i]
+            sum += dif**2
 
-        <span class="green">variances</span>.append(<span class="green">sum</span> / (len(<span class="green">entries</span>) - <span class="jade">1</span>))
+        variances.append(sum / (len(entries) - 1))
 
-    <span class="orange">return</span> <span class="green">variances</span>
-</pre>
-            <pre class="code choice" choice="Octave" style="display:none;" xml:space="preserve"># In octave the means and variances can be calculated with existing
+    return variances
+
+</code></pre>
+
+<pre class="choice" choice="Octave" style="display:none;" xml:space="preserve"><code class="language-octave"># In octave the means and variances can be calculated with existing
 # standard methods.
 
 # In this example `entries` is a matrix where each row is an entry and
 # the columns are the variables. But entries could be any tensor value.
 # Similarly the TensorFlow library can be used in python to do just this.
 
-<span class="green">mu</span> = mean(<span class="green">entries</span>);
-<span class="green">variances</span> = var(<span class="green">entries</span>);
+mu = mean(entries);
+variances = var(entries);
 
 # Octave is extremely useful for prototyping machine learning algorithms
 # because it allows you to play around with ideas in its command line,
 # as well as quickly visualise data in graphs / charts.
 
 # The 2D/3D bell curves above were generated using octave.
-</pre>
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
                 </div>
                 <br />
                 <p>Now we have our means and variances for each of our variables. We can now set a threshold for determining whether future data is anomalous.
@@ -146,32 +165,39 @@
                         <li>Octave</li>
                         <div style="clear:both;"></div>
                     </ul>
-            <pre class="code choice" choice="Java" xml:space="preserve"><span class="orange">public double</span> estimate(<span class="orange">double</span>[] <span class="green">e</span>, <span class="orange">double</span>[] <span class="green">means</span>, <span class="orange">double</span>[] <span class="green">variance</span>) {
-    <span class="orange">double</span> <span class="green">density</span> = <span class="jade">1</span>;
-    <span class="orange">for</span> (<span class="orange">int</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">e</span>.<span class="green">length</span>; <span class="green">i</span>++) {
-        <span class="orange">double</span> <span class="green">tmp</span> = <span class="jade">1</span>/Math.sqrt(<span class="jade">2</span> * Math.<span class="green">PI</span> * Math.sqrt(<span class="green">variance</span>[<span class="green">i</span>]));
-        <span class="orange">double</span> <span class="green">delta</span> = Math.pow(<span class="green">e</span>[<span class="green">i</span>] - <span class="green">means</span>[<span class="green">i</span>], <span class="jade">2</span>);
-        <span class="green">density</span> *=  <span class="green">tmp</span> * Math.exp(-(<span class="green">delta</span> / (<span class="jade">2</span> * <span class="green">variance</span>[<span class="green">i</span>])));
-    }
-    <span class="orange">return</span> <span class="green">density</span>;
-}</pre>
-            <pre class="code choice" choice="Python" style="display:none;" xml:space="preserve"><span class="orange">def</span> estimate(<span class="green">self</span>, <span class="green">e</span>, <span class="green">means</span>, <span class="green">variance</span>):
-    <span class="green">density</span> = <span class="jade">1</span>
-    <span class="orange">for</span> <span class="green">i</span> <span class="orange">in</span> range(<span class="jade">0</span>, len(<span class="green">e</span>)):
-        <span class="green">tmp</span> = <span class="jade">1</span>/math.sqrt(<span class="jade">2</span> * math.<span class="green">pi</span> * math.sqrt(<span class="green">variance</span>[<span class="green">i</span>]))
-        <span class="green">delta</span> = math.pow(<span class="green">e</span>[<span class="green">i</span>] - <span class="green">means</span>[<span class="green">i</span>], <span class="jade">2</span>)
-        <span class="green">density</span> *= <span class="green">tmp</span> * math.exp(-(<span class="green">delta</span> / (<span class="jade">2</span> * <span class="green">variance</span>[<span class="green">i</span>])))
 
-    <span class="orange">return</span> <span class="green">density</span>
-</pre>
-            <pre class="code choice" choice="Octave" style="display:none;" xml:space="preserve"><span class="orange">function</span> <span class="green">p</span> = estimate(<span class="green">entry</span>, <span class="green">mu</span>, <span class="green">variance</span>)
-    <span class="green">p</span> = <span class="jade">1</span>;
-    <span class="orange">for</span> <span class="green">i</span> = <span class="jade">1</span>:size(<span class="green">mu</span>, <span class="jade">2</span>)
-        <span class="green">tmp</span> = <span class="jade">1</span>/sqrt(<span class="jade">2</span> * <span class="green">pi</span> * sqrt(<span class="green">variance</span>(<span class="green">i</span>)));
-        <span class="green">delta</span> = (<span class="green">entry</span>(<span class="green">i</span>) - <span class="green">mu</span>(<span class="green">i</span>))^<span class="jade">2</span>;
-        <span class="green">p</span> = <span class="green">p</span> * <span class="green">tmp</span> * exp(-(<span class="green">delta</span> / (<span class="jade">2</span> * <span class="green">variance</span>(<span class="green">i</span>))));
-    <span class="orange">end</span>
-<span class="orange">end</span></pre>
+<pre class="choice" choice="Java" xml:space="preserve"><code class="language-java">public double estimate(double[] e, double[] means, double[] variance) {
+    double density = 1;
+    for (int i = 0; i &lt; e.length; i++) {
+        double tmp = 1/Math.sqrt(2 * Math.PI * Math.sqrt(variance[i]));
+        double delta = Math.pow(e[i] - means[i], 2);
+        density *=  tmp * Math.exp(-(delta / (2 * variance[i])));
+    }
+    return density;
+}</code></pre>
+
+<pre class="choice" choice="Python" style="display:none;" xml:space="preserve"><code class="language-python">def estimate(self, e, means, variance):
+    density = 1
+    for i in range(0, len(e)):
+        tmp = 1/math.sqrt(2 * math.pi * math.sqrt(variance[i]))
+        delta = math.pow(e[i] - means[i], 2)
+        density *= tmp * math.exp(-(delta / (2 * variance[i])))
+
+    return density
+
+</code></pre>
+
+<pre class="choice" choice="Octave" style="display:none;" xml:space="preserve"><code class="language-octave">function p = estimate(entry, mu, variance)
+    p = 1;
+    for i = 1:size(mu, 2)
+        tmp = 1/sqrt(2 * pi * sqrt(variance(i)));
+        delta = (entry(i) - mu(i))^2;
+        p = p * tmp * exp(-(delta / (2 * variance(i))));
+    end
+end
+
+</code></pre>
+
                 </div>
                 <br />
                 <p>The astute amongst you will be wondering what this equation is doing that makes it approximately equivalent to finding an entry's
@@ -181,7 +207,7 @@
                     density.</p>
                 <figure>
                     <img class="coverimg" src="/images/density-estimation.jpg" width="600"  alt="The formula for density estimation"/>
-                    <figcaption class="dark">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
+                    <figcaption class="code">Above: The formula for density estimation as described by Andrew Ng in his Machine Learning
                         <a href="https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm">course on Coursera</a> by Stanford University.
                     </figcaption>
                 </figure>
@@ -207,40 +233,48 @@
                         <li>Octave</li>
                         <div style="clear:both;"></div>
                     </ul>
-            <pre class="code choice" choice="Java" xml:space="preserve">List&lt;<span class="orange">double</span>[]&gt; <span class="green">entries</span> =
-               Arrays.asList(<span class="orange">new double</span>[]{<span class="jade">2</span>,<span class="jade">1</span>,<span class="jade">28</span>}, <span class="orange">new double</span>[]{<span class="jade">1</span>,<span class="jade">0</span>,<span class="jade">12</span>},
-                             <span class="orange">new double</span>[]{<span class="jade">4</span>,<span class="jade">1</span>,<span class="jade">21</span>}, <span class="orange">new double</span>[]{<span class="jade">1</span>,<span class="jade">2</span>,<span class="jade">9</span>});
 
-NormalDistribution <span class="green">norm</span> = <span class="orange">new</span> NormalDistribution();
+<pre class="choice" choice="Java" xml:space="preserve"><code class="language-java">List&lt;double[]&gt; entries = Arrays.asList(new double[]{2,1,28}, new double[]{1,0,12},
+                                       new double[]{4,1,21}, new double[]{1,2,9});
+
+NormalDistribution norm = new NormalDistribution();
 // Means - [2.0, 1.0, 17.5]
-<span class="orange">double</span>[] <span class="green">means</span> = <span class="green">norm</span>.mean(<span class="green">entries</span>);
+double[] means = norm.mean(entries);
 // Variances - [2.0, 0.66, 75.0]
-<span class="orange">double</span>[] <span class="green">variances</span> = <span class="green">norm</span>.variances(<span class="green">entries</span>, <span class="green">means</span>);
+double[] variances = norm.variances(entries, means);
 // Estimate - 0.004563000749514625
-<span class="green">norm</span>.estimate(<span class="orange">new double</span>[]{<span class="jade">1</span>,<span class="jade">0</span>,<span class="jade">9</span>}, <span class="green">means</span>, <span class="green">variances</span>);
+norm.estimate(new double[]{1,0,9}, means, variances);
 // Estimate - 8.608462007644988e-59
-<span class="green">norm</span>.estimate(<span class="orange">new double</span>[]{<span class="jade">0</span>,<span class="jade">14</span>,<span class="jade">0</span>}, <span class="green">means</span>, <span class="green">variances</span>);</pre>
-            <pre class="code choice" choice="Python" style="display:none;" xml:space="preserve"><span class="green">entries</span> = [[<span class="jade">2.0</span>,<span class="jade">1.0</span>,<span class="jade">28.0</span>],[<span class="jade">1.0</span>,<span class="jade">0.0</span>,<span class="jade">12.0</span>],[<span class="jade">4.0</span>,<span class="jade">1.0</span>,<span class="jade">21.0</span>],[<span class="jade">1.0</span>,<span class="jade">2.0</span>,<span class="jade">9.0</span>]]
+norm.estimate(new double[]{0,14,0}, means, variances);</code></pre>
 
-<span class="green">norm</span> = NormalDistribution()
-# Means - [2.0, 1.0, 17.5]
-<span class="green">means</span> = <span class="green">norm</span>.means(<span class="green">entries</span>)
-# Variances - [2.0, 0.66, 75.0]
-<span class="green">variances</span> = <span class="green">norm</span>.variances(<span class="green">entries</span>, <span class="green">means</span>)
-# Estimate - 0.004563000749514625
-<span class="green">norm</span>.estimate([<span class="jade">1.0</span>, <span class="jade">0.0</span>, <span class="jade">9.0</span>], <span class="green">means</span>, <span class="green">variances</span>)
-# Estimate - 8.608462007644988e-59
-<span class="green">norm</span>.estimate([<span class="jade">0.0</span>, <span class="jade">14.0</span>, <span class="jade">0.0</span>], <span class="green">means</span>, <span class="green">variances</span>)</pre>
-            <pre class="code choice" choice="Octave" style="display:none;" xml:space="preserve"><span class="green">entries</span> = [[<span class="jade">2</span>,<span class="jade">1</span>,<span class="jade">28</span>];[<span class="jade">1</span>,<span class="jade">0</span>,<span class="jade">12</span>];[<span class="jade">4</span>,<span class="jade">1</span>,<span class="jade">21]</span>;[<span class="jade">1</span>,<span class="jade">2</span>,<span class="jade">9</span>]];
+<pre class="choice" choice="Python" style="display:none;" xml:space="preserve"><code class="language-python">entries = &#91;&#91;2.0,1.0,28.0],&#91;1.0,0.0,12.0],&#91;4.0,1.0,21.0],&#91;1.0,2.0,9.0]]
 
-# Means - [2.0, 1.0, 17.5]
-<span class="green">mu</span> = mean(<span class="green">entries</span>);
-# Variances - [2.0, 0.66, 75.0]
-<span class="green">variances</span> = var(<span class="green">entries</span>);
+norm = NormalDistribution()
+# Means - &#91;2.0, 1.0, 17.5]
+means = norm.means(entries)
+# Variances - &#91;2.0, 0.66, 75.0]
+variances = norm.variances(entries, means)
 # Estimate - 0.004563000749514625
-estimate([<span class="jade">1</span>, <span class="jade">0</span>, <span class="jade">9</span>], <span class="green">mu</span>, <span class="green">variances</span>);
+norm.estimate(&#91;1.0, 0.0, 9.0], means, variances)
 # Estimate - 8.608462007644988e-59
-estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class="jade">0</span>], <span class="green">mu</span>, <span class="green">variances</span>);</pre>
+norm.estimate(&#91;0.0, 14.0, 0.0], means, variances)
+
+</code></pre>
+
+<pre class="choice" choice="Octave" style="display:none;" xml:space="preserve"><code class="language-octave">entries = &#91;&#91;2,1,28];&#91;1,0,12];&#91;4,1,21];&#91;1,2,9]];
+
+# Means - &#91;2.0, 1.0, 17.5]
+mu = mean(entries);
+# Variances - &#91;2.0, 0.66, 75.0]
+variances = var(entries);
+# Estimate - 0.004563000749514625
+estimate(&#91;1, 0, 9], mu, variances);
+# Estimate - 8.608462007644988e-59
+estimate(&#91;0, 14, 0], mu, variances);
+
+
+</code></pre>
+
                 </div>
                 <br />
                 <p>First we create our data. We work out the means and variances, which we use to estimate two new examples. The first new entry is a user who
@@ -294,6 +328,7 @@ estimate([<span class="jade">0</span>, <span class="jade">14</span>, <span class
         <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
 
         <script src="/scripts/vendor/jquery-1.7.min.js"></script>
+        <script src="/scripts/vendor/prism.min.js"></script>
         <script src="/scripts/choices.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/article/head :: head"></head>
+    <head>
+        <link th:replace="fragments/article/head :: head">
+        <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
         <article>
@@ -35,18 +38,21 @@
                         <div style="clear:both;" ></div>
                     </ul>
 
-            <pre class="code choice" choice="Java"><span class="orange">public class</span> Node {
-    <span class="orange">public</span> <span class="orange">int</span> <span class="green">value</span>;
-    <span class="orange">public</span> Set&lt;Node&gt; <span class="green">connections</span> = <span class="orange">new</span> HashSet&lt;&gt;();
-}</pre>
-            <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> Node() {
-    <span class="orange">this</span>.<span class="green">value</span> = <span class="jade">0</span>;
-    <span class="orange">this</span>.<span class="green">connections</span> = [];
-}</pre>
-            <pre class="code choice" choice="Python" style="display:none;"><span class="orange">class</span> Node(object):
-    <span class="green">value</span> = <span class="jade">0</span>
-    <span class="green">connections</span> = []
- </pre>
+<pre class="choice" choice="Java"><code class="language-java">public class Node {
+    public int value;
+    public Set&lt;Node&gt; connections = new HashSet&lt;&gt;();
+}</code></pre>
+
+<pre class="choice" choice="JavaScript" style="display:none;"><code class="language-javascript">function Node() {
+    this.value = 0;
+    this.connections = [];
+}</code></pre>
+
+<pre class="choice" choice="Python" style="display:none;"><code class="language-python">class Node(object):
+    value = 0
+    connections = []
+
+</code></pre>
 
                 </div>
                 <br />
@@ -66,63 +72,66 @@
                         <div style="clear:both;" ></div>
                     </ul>
 
-                <pre class="code choice" choice="Java">Node depthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
-    Stack&lt;Node&gt; <span class="green">stack</span> = <span class="orange">new</span> Stack&lt;Node&gt;();
-    Set&lt;Node&gt; <span class="green">visited</span> = <span class="orange">new</span> HashSet&lt;Node&gt;();
-    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>) <span class="orange">return</span> <span class="green">root</span>;
-    <span class="green">visited</span>.add(<span class="green">root</span>);
-    <span class="green">stack</span>.add(<span class="green">root</span>);
-    <span class="orange">while</span>(!<span class="green">stack</span>.isEmpty()){
-        Node <span class="green">node</span> = <span class="green">stack</span>.pop();
-        <span class="orange">for</span>(Node <span class="green">child</span> : <span class="green">node</span>.<span class="green">connections</span>){
-            <span class="orange">if</span>(<span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>){
-                <span class="orange">return</span> <span class="green">child</span>;
-            } <span class="orange">else if</span>(!<span class="green">visited</span>.contains(<span class="green">child</span>)){
-                <span class="green">stack</span>.add(<span class="green">child</span>);
-                <span class="green">visited</span>.add(<span class="green">child</span>);
+<pre class="choice" choice="Java"><code class="language-java">Node depthFirstSearch(Node root, int value){
+    Stack&lt;Node&gt; stack = new Stack&lt;Node&gt;();
+    Set&lt;Node&gt; visited = new HashSet&lt;Node&gt;();
+    if(root.value == value) return root;
+    visited.add(root);
+    stack.add(root);
+    while(!stack.isEmpty()){
+        Node node = stack.pop();
+        for(Node child : node.connections){
+            if(child.value == value){
+                return child;
+            } else if(!visited.contains(child)){
+                stack.add(child);
+                visited.add(child);
             }
         }
     }
-    <span class="orange">return null</span>;
-}</pre>
-                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
-    <span class="orange">var</span> <span class="green">stack</span> = [];
-    <span class="orange">var</span> <span class="green">visited</span> = {};
-    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> === <span class="green">value</span>) return <span class="green">root</span>;
-    <span class="green">visited</span>[<span class="green">root</span>];
-    <span class="green">stack</span>.push(<span class="green">root</span>);
-    <span class="orange">while</span>(<span class="green">stack</span>.length &gt; <span class="jade">0</span>){
-        <span class="orange">var</span> <span class="green">node</span> = <span class="green">stack</span>.pop();
-        <span class="orange">for</span>(var <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">node</span>.<span class="green">connections</span>.<span class="green">length</span>; <span class="green">i</span>++){
-            <span class="orange">if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>].<span class="green">value</span> === <span class="green">value</span>){
-                <span class="orange">return</span> <span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>];
-            } <span class="orange">else if</span>(!(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>)){
-                <span class="green">stack</span>.push(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]);
-                <span class="green">visited</span>[<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]];
+    return null;
+}</code></pre>
+
+<pre class="choice" choice="JavaScript" style="display:none;"><code class="language-javascript">function depthFirstSearch(root, value){
+    var stack = [];
+    var visited = {};
+    if(root.value === value) return root;
+    visited[root];
+    stack.push(root);
+    while(stack.length &gt; 0){
+        var node = stack.pop();
+        for(var i = 0; i &lt; node.connections.length; i++){
+            if(node.connections[i].value === value){
+                return node.connections[i];
+            } else if(!(node.connections[i] in visited)){
+                stack.push(node.connections[i]);
+                visited[node.connections[i]];
             }
         }
     }
-    <span class="orange">return null</span>;
-}</pre>
-                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> depthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
-    <span class="green">stack</span> = []
-    <span class="green">visited</span> = set()
-    <span class="orange">if</span> <span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>:
-        <span class="orange">return</span> <span class="green">root</span>
-    <span class="green">visited</span>.add(<span class="green">root</span>)
-    <span class="green">stack</span>.append(<span class="green">root</span>)
+    return null;
+}</code></pre>
 
-    <span class="orange">while</span> <span class="green">stack</span>:
-        <span class="green">node</span> = <span class="green">stack</span>.pop()
-        <span class="orange">for</span> <span class="green">child</span> <span class="orange">in</span> <span class="green">node</span>.<span class="green">connections</span>:
-            <span class="orange">if</span> <span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>:
-                <span class="orange">return</span> <span class="green">child</span>
-            <span class="orange">elif</span> <span class="green">child</span> <span class="orange">not in</span> <span class="green">visited</span>:
-                <span class="green">stack</span>.append(<span class="green">child</span>)
-                <span class="green">visited</span>.add(<span class="green">child</span>)
+<pre class="choice" choice="Python" style="display:none;"><code class="language-python">def depthFirstSearch(root, value):
+    stack = []
+    visited = set()
+    if root.value == value:
+        return root
+    visited.add(root)
+    stack.append(root)
 
-    <span class="orange">return null</span>
-                </pre>
+    while stack:
+        node = stack.pop()
+        for child in node.connections:
+            if child.value == value:
+                return child
+            elif child not in visited:
+                stack.append(child)
+                visited.add(child)
+
+    return null
+
+</code></pre>
 
                 </div>
                 <br />
@@ -204,63 +213,65 @@
                         <div style="clear:both;" ></div>
                     </ul>
 
-                <pre class="code choice" choice="Java">Node breadthFirstSearch(Node <span class="green">root</span>, <span class="orange">int</span> <span class="green">value</span>){
-    Queue&lt;Node&gt; <span class="green">queue</span> = <span class="orange">new</span> LinkedList&lt;Node&gt;();
-    Set&lt;Node&gt; <span class="green">visited</span> = <span class="orange">new</span> HashSet&lt;Node&gt;();
-    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>) <span class="orange">return</span> <span class="green">root</span>;
-    <span class="green">visited</span>.add(<span class="green">root</span>);
-    <span class="green">queue</span>.add(<span class="green">root</span>);
-    <span class="orange">while</span>(!<span class="green">queue</span>.isEmpty()){
-        Node <span class="green">node</span> = <span class="green">queue</span>.poll();
-        <span class="orange">for</span>(Node <span class="green">child</span> : <span class="green">node</span>.<span class="green">connections</span>){
-            <span class="orange">if</span>(<span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>){
-                <span class="orange">return</span> <span class="green">child</span>;
-            } <span class="orange">else if</span>(!<span class="green">visited</span>.contains(<span class="green">child</span>)){
-                <span class="green">queue</span>.add(<span class="green">child</span>);
-                <span class="green">visited</span>.add(<span class="green">child</span>);
+<pre class="choice" choice="Java"><code class="language-java">Node breadthFirstSearch(Node root, int value){
+    Queue&lt;Node&gt; queue = new LinkedList&lt;Node&gt;();
+    Set&lt;Node&gt; visited = new HashSet&lt;Node&gt;();
+    if(root.value == value) return root;
+    visited.add(root);
+    queue.add(root);
+    while(!queue.isEmpty()){
+        Node node = queue.poll();
+        for(Node child : node.connections){
+            if(child.value == value){
+                return child;
+            } else if(!visited.contains(child)){
+                queue.add(child);
+                visited.add(child);
             }
         }
     }
-    <span class="orange">return null</span>;
-}</pre>
-                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>){
-    <span class="orange">var</span> <span class="green">queue</span> = [];
-    <span class="orange">var</span> <span class="green">visited</span> = {};
-    <span class="orange">if</span>(<span class="green">root</span>.<span class="green">value</span> === <span class="green">value</span>) return <span class="green">root</span>;
-    <span class="green">visited</span>[<span class="green">root</span>];
-    <span class="green">queue</span>.push(<span class="green">root</span>);
-    <span class="orange">while</span>(<span class="green">queue</span>.length &gt; <span class="jade">0</span>){
-        <span class="orange">var</span> <span class="green">node</span> = <span class="green">queue</span>.shift();
-        <span class="orange">for</span>(var <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">node</span>.<span class="green">connections</span>.<span class="green">length</span>; <span class="green">i</span>++){
-            <span class="orange">if</span>(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>].<span class="green">value</span> === <span class="green">value</span>){
-                <span class="orange">return</span> <span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>];
-            } <span class="orange">else if</span>(!(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>] in <span class="green">visited</span>)){
-                <span class="green">queue</span>.push(<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]);
-                <span class="green">visited</span>[<span class="green">node</span>.<span class="green">connections</span>[<span class="green">i</span>]];
+    return null;
+}</code></pre>
+
+<pre class="choice" choice="JavaScript" style="display:none;"><code class="language-javascript">function breadthFirstSearch(root, value){
+    var queue = [];
+    var visited = {};
+    if(root.value === value) return root;
+    visited[root];
+    queue.push(root);
+    while(queue.length &gt; 0){
+        var node = queue.shift();
+        for(var i = 0; i &lt; node.connections.length; i++){
+            if(node.connections[i].value === value){
+                return node.connections[i];
+            } else if(!(node.connections[i] in visited)){
+                queue.push(node.connections[i]);
+                visited[node.connections[i]];
             }
         }
     }
-    <span class="orange">return null</span>;
-}</pre>
-                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> breadthFirstSearch(<span class="green">root</span>, <span class="green">value</span>):
-    <span class="green">queue</span> = Queue.Queue()
-    <span class="green">visited</span> = set()
-    <span class="orange">if</span> <span class="green">root</span>.<span class="green">value</span> == <span class="green">value</span>:
-        <span class="orange">return</span> <span class="green">root</span>
-    <span class="green">visited</span>.add(<span class="green">root</span>)
-    <span class="green">queue</span>.put(<span class="green">root</span>)
+    return null;
+}</code></pre>
 
-    <span class="orange">while</span> <span class="green">queue</span>:
-        <span class="green">node</span> = <span class="green">queue</span>.get()
-        <span class="orange">for</span> <span class="green">child</span> <span class="orange">in</span> <span class="green">node</span>.<span class="green">connections</span>:
-            <span class="orange">if</span> <span class="green">child</span>.<span class="green">value</span> == <span class="green">value</span>:
-                <span class="orange">return</span> <span class="green">child</span>
-            <span class="orange">elif</span> <span class="green">child</span> <span class="orange">not in</span> <span class="green">visited</span>:
-                <span class="green">queue</span>.put(<span class="green">child</span>)
-                <span class="green">visited</span>.add(<span class="green">child</span>)
+<pre class="choice" choice="Python" style="display:none;"><code class="language-python">def breadthFirstSearch(root, value):
+    queue = Queue.Queue()
+    visited = set()
+    if root.value == value:
+        return root
+    visited.add(root)
+    queue.put(root)
 
-    <span class="orange">return null</span>
-                </pre>
+    while queue:
+        node = queue.get()
+        for child in node.connections:
+            if child.value == value:
+                return child
+            elif child not in visited:
+                queue.put(child)
+                visited.add(child)
+
+    return null
+</code></pre>
 
                 </div>
                 <aside>Note: The JavaScript implementation of Breadth First Search above is not efficient. The use of the <i><code>.shift()</code></i> method is slow ( <i>O(n)</i> rather
@@ -344,6 +355,7 @@
         <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
 
         <script src="/scripts/vendor/jquery-1.7.min.js"></script>
+        <script src="/scripts/vendor/prism.min.js"></script>
 		<script src="/scripts/choices.min.js"></script>
         <script src="/scripts/search-graphics.min.js"></script>
 

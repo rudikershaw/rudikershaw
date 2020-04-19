@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/article/head :: head"></head>
+    <head>
+        <link th:replace="fragments/article/head :: head">
+        <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
         <article>
@@ -53,24 +56,29 @@
                         <li>Python</li>
                         <div style="clear:both;" />
                     </ul>
-                <pre class="code choice" choice="Java"><span class="orange">boolean</span> exhaustiveSearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">list</span>){
-   <span class="orange">for</span>(<span class="orange">int</span> <span class="green">item</span> : <span class="green">list</span>){
-       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">item</span>) <span class="orange">return true</span>;
+
+<pre class="choice" choice="Java"><code class="language-java">boolean exhaustiveSearch(int find, int[] list){
+   for(int item : list){
+       if(find == item) return true;
    }
-   <span class="orange">return false</span>;
-}</pre>
-                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>){
-   <span class="orange">for</span>(<span class="orange">var</span> <span class="green">i</span> = <span class="jade">0</span>; <span class="green">i</span> &lt; <span class="green">list</span>.length; <span class="green">i</span>++){
-       <span class="orange">if</span>(<span class="green">find</span> == <span class="green">list</span>[<span class="green">i</span>]) <span class="orange">return true</span>;
+   return false;
+}</code></pre>
+
+<pre class="choice" choice="JavaScript" style="display:none;"><code class="language-javascript">function exhaustiveSearch(find, list){
+   for(var i = 0; i &lt; list.length; i++){
+       if(find == list[i]) return true;
    }
-   <span class="orange">return false</span>;
-}</pre>
-                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> exhaustiveSearch(<span class="green">find</span>, <span class="green">list</span>):
-    <span class="orange">for</span> <span class="green">x</span> <span class="orange">in</span> <span class="green">list</span>:
-    <span class="orange">if</span> <span class="green">x</span> == <span class="green">find</span>:
-         <span class="orange">return</span> <span class="jade">True</span>
-    <span class="orange">return</span> <span class="jade">False</span>
-            </pre>
+   return false;
+}</code></pre>
+
+<pre class="choice" choice="Python" style="display:none;"><code class="language-python">def exhaustiveSearch(find, list):
+    for x in list:
+    if x == find:
+         return True
+    return False
+
+</code></pre>
+
                 </div>
 
 
@@ -124,51 +132,56 @@
                         <li>Python</li>
                         <div style="clear:both;" />
                     </ul>
-                <pre class="code choice" choice="Java"><span class="orange">int</span> binarySearch(<span class="orange">int</span> <span class="green">find</span>, <span class="orange">int</span>[] <span class="green">ints</span>){
-   <span class="orange">int</span> <span class="green">bottom</span> = <span class="jade">0</span>;
-   <span class="orange">int</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
-   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
-       <span class="orange">int</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span>;
-       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
-           <span class="orange">return</span> <span class="green">middle</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
-           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
-           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
+
+<pre class="choice" choice="Java"><code class="language-java">int binarySearch(int find, int[] ints){
+   int bottom = 0;
+   int top = ints.length - 1;
+   while(bottom &lt;= top){
+       int middle = (bottom + top)/2;
+       if(ints[middle] == find) {
+           return middle;
+       } else if(ints[middle] &gt; find) {
+           top = middle - 1;
+       } else if(ints[middle] &lt; find) {
+           bottom = middle + 1;
        }
    }
-   <span class="orange">return</span> -<span class="jade">1</span>;
-}</pre>
-                <pre class="code choice" choice="JavaScript" style="display:none;"><span class="orange">function</span> binarySearch(<span class="green">find</span>, <span class="green">ints</span>){
-   <span class="orange">var</span> <span class="green">bottom</span> = <span class="jade">0</span>;
-   <span class="orange">var</span> <span class="green">top</span> = <span class="green">ints</span>.length - <span class="jade">1</span>;
-   <span class="orange">while</span>(<span class="green">bottom</span> &lt;= <span class="green">top</span>){
-       <span class="orange">var</span> <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)/<span class="jade">2</span> | <span class="jade">0</span>;
-       <span class="orange">if</span>(<span class="green">ints</span>[<span class="green">middle</span>] == <span class="green">find</span>) {
-           <span class="orange">return</span> <span class="green">middle</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>) {
-           <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>;
-       } <span class="orange">else if</span>(<span class="green">ints</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>) {
-           <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>;
+   return -1;
+}</code></pre>
+
+<pre class="choice" choice="JavaScript" style="display:none;"><code class="language-javascript">function binarySearch(find, ints){
+   var bottom = 0;
+   var top = ints.length - 1;
+   while(bottom &lt;= top){
+       var middle = (bottom + top)/2 | 0;
+       if(ints[middle] == find) {
+           return middle;
+       } else if(ints[middle] &gt; find) {
+           top = middle - 1;
+       } else if(ints[middle] &lt; find) {
+           bottom = middle + 1;
        }
    }
-   <span class="orange">return</span> -<span class="jade">1</span>;
-}</pre>
-                <pre class="code choice" choice="Python" style="display:none;"><span class="orange">def</span> binarySearch(<span class="green">find</span>, <span class="green">list</span>):
-    <span class="green">bottom</span> = <span class="jade">0</span>
-    <span class="green">top</span> = len(<span class="green">list</span>)-<span class="jade">1</span>
+   return -1;
+}</code></pre>
 
-    <span class="orange">while</span> <span class="green">bottom</span> &lt;= <span class="green">top</span>:
-        <span class="green">middle</span> = (<span class="green">bottom</span> + <span class="green">top</span>)//<span class="jade">2</span>
-        <span class="orange">if</span> <span class="green">list</span>[<span class="green">middle</span>] == <span class="green">find</span>:
-            <span class="orange">return</span> <span class="green">middle</span>
-        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &gt; <span class="green">find</span>:
-            <span class="green">top</span> = <span class="green">middle</span> - <span class="jade">1</span>
-        <span class="orange">elif</span> <span class="green">list</span>[<span class="green">middle</span>] &lt; <span class="green">find</span>:
-            <span class="green">bottom</span> = <span class="green">middle</span> + <span class="jade">1</span>
+<pre class="choice" choice="Python" style="display:none;"><code class="language-python">def binarySearch(find, list):
+    bottom = 0
+    top = len(list)-1
 
-    <span class="orange">return</span> -<span class="jade">1</span>
-            </pre>
+    while bottom &lt;= top:
+        middle = (bottom + top)//2
+        if list[middle] == find:
+            return middle
+        elif list[middle] &gt; find:
+            top = middle - 1
+        elif list[middle] &lt; find:
+            bottom = middle + 1
+
+    return -1
+
+</code></pre>
+
                 </div>
                 <br /><br />
                 <p>Apparently, given an hour, <a href="https://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">only 10% of programmers</a>
@@ -218,6 +231,7 @@
         <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
 
         <script src="/scripts/vendor/jquery-1.7.min.js"></script>
+        <script src="/scripts/vendor/prism.min.js"></script>
 		<script src="/scripts/choices.min.js"></script>
         <script src="/scripts/search-graphics.min.js"></script>
 

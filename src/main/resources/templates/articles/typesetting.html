@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/article/head :: head"></head>
+	<head>
+        <link th:replace="fragments/article/head :: head">
+		<link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
 		<article>
@@ -25,22 +28,21 @@
 			<p>The best place to start, seems to me, is at the end product (for those of you too impatient to read the
 				rest). So, below is what this site uses to declare this font.</p>
 			<br />
-			<pre class="code">
-<span class="green">/* Declare font-face New Haas by Unknown.  */</span>
-<span class="purple">@font-face</span> {
-   <span class="orange">font-family</span>: <span class="jade">"NewHaas"</span>;
-   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.eot"</span>);
-   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.woff2"</span>) format(<span class="jade">"woff2"</span>),
-        url(<span class="jade">"fonts/NewHaas.woff"</span>) format(<span class="jade">"woff"</span>),
-        url(<span class="jade">"fonts/NewHaas.ttf"</span>) format(<span class="jade">"truetype"</span>),
-        url(<span class="jade">"fonts/NewHaas.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
-        url(<span class="jade">"fonts/NewHaas.svg#NewHaas-webfont"</span>) format(<span class="jade">"svg"</span>);
+			<pre><code class="language-css">/* Declare font-face New Haas by Unknown.  */
+@font-face {
+   font-family: "NewHaas";
+   src: url("fonts/NewHaas.eot");
+   src: url("fonts/NewHaas.woff2") format("woff2"),
+        url("fonts/NewHaas.woff") format("woff"),
+        url("fonts/NewHaas.ttf") format("truetype"),
+        url("fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
+        url("fonts/NewHaas.svg#NewHaas-webfont") format("svg");
 }
 
-<span class="purple">html</span> {
-   <span class="orange">font-family</span>: NewHaas, Helvetica, Arial, sans-serif;
-   <span class="orange">text-shadow</span>: 0 0 1px rgba(0,0,0,0.01);
-} 		</pre>
+html {
+   font-family: NewHaas, Helvetica, Arial, sans-serif;
+   text-shadow: 0 0 1px rgba(0,0,0,0.01);
+} 		</code></pre>
 			<br />
 			<p>The above is a subtle alteration on what, on January 12<sup>th</sup> 2015, <a href="http://css-tricks.com/snippets/css/using-font-face/">CSS-TRICKS.com has declared</a>
 				"the deepest support possible right now". But, rather than trying to go into why this format currently
@@ -62,10 +64,9 @@
 				And its the support of those features by different browser versions that dictates the format of our declaration
 				above. So, lets go through this a few lines at a time.</p>
 			<br />
-			<pre class="code">
-<span class="green">/* Declare font-face New Haas by Unknown.  */</span>
-<span class="purple">@font-face</span> {
-   <span class="orange">font-family</span>: <span class="jade">"NewHaas"</span>;</pre>
+			<pre class="code"><code class="language-css">/* Declare font-face New Haas by Unknown.  */
+@font-face {
+	font-family: "NewHaas";</code></pre>
 			<br />
 			<p>First things first, give credit where credits due. If someone painstakingly creates a beautiful font,
 				they deserve the credit. Also, at this point you will want to make sure that you are fulfilling any license
@@ -75,13 +76,12 @@
 				This is the name we will use to reference our <b><code>font-family</code></b> later in our CSS. Skipping a line (we'll come back
 				to that one), we move onto;</p>
 			<br />
-			<pre class="code">
-   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.woff2"</span>) format(<span class="jade">"woff2"</span>),
-        url(<span class="jade">"fonts/NewHaas.woff"</span>) format(<span class="jade">"woff"</span>),
-        url(<span class="jade">"fonts/NewHaas.ttf"</span>) format(<span class="jade">"truetype"</span>),
-        url(<span class="jade">"fonts/NewHaas.eot?#iefix"</span>) format(<span class="jade">"embedded-opentype"</span>),
-        url(<span class="jade">"fonts/NewHaas.svg#NewHaas-webfont"</span>) format(<span class="jade">"svg"</span>);
-}</pre>
+			<pre class="code"><code class="language-css">src: url("fonts/NewHaas.woff2") format("woff2"),
+        url("fonts/NewHaas.woff") format("woff"),
+        url("fonts/NewHaas.ttf") format("truetype"),
+        url("fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
+        url("fonts/NewHaas.svg#NewHaas-webfont") format("svg");
+}</code></pre>
 			<br />
 			<p>The <b><code>src</code></b> descriptor is there to declare where we have stored our fonts. The <a href="http://www.w3.org/TR/css3-fonts/#src-desc">order
 			determines our preference</a>, where the top of the list is our most preferred and the bottom is our least. You
@@ -97,8 +97,7 @@
 			amongst modern browsers. It seemed silly to me to have the <b>.eot</b> file above it, which is a much older
 			file type that misses some font details. So, what about the line we skipped?</p>
 			<br />
-			<pre class="code">
-   <span class="orange">src</span>: url(<span class="jade">"fonts/NewHaas.eot"</span>);</pre>
+			<pre class="code"><code class="language-css">src: url("fonts/NewHaas.eot");</code></pre>
 			<br />
 			<p>So, what exactly is this for? Well, essentially its there to support Internet Explorer 6-8 as well
 			as Compatibility mode. Turns out, that in certain situations, older versions of IE have difficulty going
@@ -120,6 +119,8 @@
 		<hr />
 
 		<div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+		<script src="/scripts/vendor/prism.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">

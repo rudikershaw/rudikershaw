@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/article/head :: head"></head>
+	<head>
+        <link th:replace="fragments/article/head :: head">
+		<link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
 		<article>
@@ -69,45 +72,46 @@
 					we can use the <a href="https://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a> to download and unpack our hooks.
 					Here's our plugin definition from our <code class="code-inline">pom.xml</code>.</p>
 				<br />
-				<pre class="code">
-<span class="orange">&lt;plugin&gt;</span>
-  <span class="orange">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="orange">&lt;/groupId&gt;</span>
-  <span class="orange">&lt;artifactId&gt;</span>maven-antrun-plugin<span class="orange">&lt;/artifactId&gt;</span>
-  <span class="orange">&lt;version&gt;</span>1.8<span class="orange">&lt;/version&gt;</span>
-  <span class="orange">&lt;executions&gt;</span>
-	<span class="orange">&lt;execution&gt;</span>
-	  <span class="orange">&lt;id&gt;</span>download-hooks<span class="orange">&lt;/id&gt;</span>
-	  <span class="orange">&lt;phase&gt;</span>initialize<span class="orange">&lt;/phase&gt;</span>
-	  <span class="orange">&lt;goals&gt;</span>
-		<span class="orange">&lt;goal&gt;</span>run<span class="orange">&lt;/goal&gt;</span>
-	  <span class="orange">&lt;/goals&gt;</span>
-	  <span class="orange">&lt;configuration&gt;</span>
-		<span class="orange">&lt;failOnError&gt;</span>false<span class="orange">&lt;/failOnError&gt;</span>
-		<span class="orange">&lt;target&gt;</span>
-		  <span class="orange">&lt;taskdef</span> resource=&#x22;net/sf/antcontrib/antcontrib.properties&#x22; <span class="orange">/&gt;</span>
-		  <span class="orange">&lt;if&gt;</span>
-			<span class="orange">&lt;available</span> file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; <span class="orange">/&gt;</span>
-			<span class="orange">&lt;else&gt;</span>
-			  <span class="orange">&lt;delete</span> dir=&#x22;${basedir}/etc/git-hooks/&#x22; <span class="orange">/&gt;</span>
-			  <span class="orange">&lt;get</span> src=&#x22;https://github.com/rudikershaw/client-git-hooks/releases/download/${git.hooks.version}/git-hooks.zip&#x22;
-		   dest=&#x22;${project.build.directory}/git-hooks.zip&#x22; <span class="orange">/&gt;</span>
-			  <span class="orange">&lt;unzip</span> src=&#x22;${project.build.directory}/git-hooks.zip&#x22; dest=&#x22;${basedir}/etc&#x22; <span class="orange">/&gt;</span>
-			  <span class="orange">&lt;chmod</span> dir=&#x22;${basedir}/etc/git-hooks/&#x22; includes=&#x22;**/**&#x22; perm=&#x22;700&#x22; <span class="orange">/&gt;</span>
-			  <span class="orange">&lt;touch</span> file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; <span class="orange">/&gt;</span>
-			<span class="orange">&lt;/else&gt;</span>
-		  <span class="orange">&lt;/if&gt;</span>
-		<span class="orange">&lt;/target&gt;</span>
-	  <span class="orange">&lt;/configuration&gt;</span>
-	<span class="orange">&lt;/execution&gt;</span>
-  <span class="orange">&lt;/executions&gt;</span>
-  <span class="orange">&lt;dependencies&gt;</span>
-	<span class="orange">&lt;dependency&gt;</span>
-	  <span class="orange">&lt;groupId&gt;</span>ant-contrib<span class="orange">&lt;/groupId&gt;</span>
-	  <span class="orange">&lt;artifactId&gt;</span>ant-contrib<span class="orange">&lt;/artifactId&gt;</span>
-	  <span class="orange">&lt;version&gt;</span>20020829<span class="orange">&lt;/version&gt;</span>
-	<span class="orange">&lt;/dependency&gt;</span>
-  <span class="orange">&lt;/dependencies&gt;</span>
-<span class="orange">&lt;/plugin&gt;</span></pre>
+
+<pre><code class="language-xml">&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+  &lt;version&gt;1.8&lt;/version&gt;
+  &lt;executions&gt;
+	&lt;execution&gt;
+	  &lt;id&gt;download-hooks&lt;/id&gt;
+	  &lt;phase&gt;initialize&lt;/phase&gt;
+	  &lt;goals&gt;
+		&lt;goal&gt;run&lt;/goal&gt;
+	  &lt;/goals&gt;
+	  &lt;configuration&gt;
+		&lt;failOnError&gt;false&lt;/failOnError&gt;
+		&lt;target&gt;
+		  &lt;taskdef resource=&#x22;net/sf/antcontrib/antcontrib.properties&#x22; /&gt;
+		  &lt;if&gt;
+			&lt;available file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; /&gt;
+			&lt;else&gt;
+			  &lt;delete dir=&#x22;${basedir}/etc/git-hooks/&#x22; /&gt;
+			  &lt;get src=&#x22;https://github.com/rudikershaw/client-git-hooks/releases/download/${git.hooks.version}/git-hooks.zip&#x22;
+		   dest=&#x22;${project.build.directory}/git-hooks.zip&#x22; /&gt;
+			  &lt;unzip src=&#x22;${project.build.directory}/git-hooks.zip&#x22; dest=&#x22;${basedir}/etc&#x22; /&gt;
+			  &lt;chmod dir=&#x22;${basedir}/etc/git-hooks/&#x22; includes=&#x22;**/**&#x22; perm=&#x22;700&#x22; /&gt;
+			  &lt;touch file=&#x22;${basedir}/etc/git-hooks/v${git.hooks.version}&#x22; /&gt;
+			&lt;/else&gt;
+		  &lt;/if&gt;
+		&lt;/target&gt;
+	  &lt;/configuration&gt;
+	&lt;/execution&gt;
+  &lt;/executions&gt;
+  &lt;dependencies&gt;
+	&lt;dependency&gt;
+	  &lt;groupId&gt;ant-contrib&lt;/groupId&gt;
+	  &lt;artifactId&gt;ant-contrib&lt;/artifactId&gt;
+	  &lt;version&gt;20020829&lt;/version&gt;
+	&lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/plugin&gt;</code></pre>
+
 				<br />
 				<p>With the above, we download and unzip the archive into a directory and then give the
 					files the appropriate permissions to allow Git to run them. We also create a version file in the directory we move the hooks to. That way we
@@ -127,26 +131,27 @@
 					available since version 2.9. We can tell git to use a different folder to read its hooks from by setting the git config <code class="code-inline">core.hooksPath</code> to
 					our directory. But we also want to do this in our build. There shouldn't be any manual steps. Let's add another plugin to our <code class="code-inline">pom.xml</code>.</p>
 				<br />
-				<pre class="code">
-<span class="orange">&lt;plugin&gt;</span>
-  <span class="orange">&lt;groupId&gt;</span>com.rudikershaw.gitbuildhook<span class="orange">&lt;/groupId&gt;</span>
-  <span class="orange">&lt;artifactId&gt;</span>git-build-hook-maven-plugin<span class="orange">&lt;/artifactId&gt;</span>
-  <span class="orange">&lt;version&gt;</span>3.0.0<span class="orange">&lt;/version&gt;</span>
-  <span class="orange">&lt;configuration&gt;</span>
-	<span class="orange">&lt;gitConfig&gt;</span>
-	  <span class="orange">&lt;core.hooksPath&gt;</span>etc/git-hooks/<span class="orange">&lt;/core.hooksPath&gt;</span>
-	  <span class="orange">&lt;hooks.commitmsgregex&gt;</span>(\w+\s){3,}(\w+\.)<span class="orange">&lt;/hooks.commitmsgregex&gt;</span>
-	<span class="orange">&lt;/gitConfig&gt;</span>
-  <span class="orange">&lt;/configuration&gt;</span>
-  <span class="orange">&lt;executions&gt;</span>
-	<span class="orange">&lt;execution&gt;</span>
-	  <span class="orange">&lt;goals&gt;</span>
-		<span class="orange">&lt;goal&gt;</span>initialize<span class="orange">&lt;/goal&gt;</span>
-		<span class="orange">&lt;goal&gt;</span>configure<span class="orange">&lt;/goal&gt;</span>
-	  <span class="orange">&lt;/goals&gt;</span>
-	<span class="orange">&lt;/execution&gt;</span>
-  <span class="orange">&lt;/executions&gt;</span>
-<span class="orange">&lt;/plugin&gt;</span></pre>
+
+<pre><code class="language-xml">&lt;plugin&gt;
+  &lt;groupId&gt;com.rudikershaw.gitbuildhook&lt;/groupId&gt;
+  &lt;artifactId&gt;git-build-hook-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;3.0.0&lt;/version&gt;
+  &lt;configuration&gt;
+	&lt;gitConfig&gt;
+	  &lt;core.hooksPath&gt;etc/git-hooks/&lt;/core.hooksPath&gt;
+	  &lt;hooks.commitmsgregex&gt;(\w+\s){3,}(\w+\.)&lt;/hooks.commitmsgregex&gt;
+	&lt;/gitConfig&gt;
+  &lt;/configuration&gt;
+  &lt;executions&gt;
+	&lt;execution&gt;
+	  &lt;goals&gt;
+		&lt;goal&gt;initialize&lt;/goal&gt;
+		&lt;goal&gt;configure&lt;/goal&gt;
+	  &lt;/goals&gt;
+	&lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;</code></pre>
+
 				<br />
 				<p>This is the <a href="https://github.com/rudikershaw/git-build-hook">git-build-hook-maven-plugin</a> (my precious).
 					It is designed to manage your developer's local git from your build, and have changes applied when the build is run. In this
@@ -157,11 +162,12 @@
 				<p>Once we run the build with these plugins, our hooks should be ready to go. So let's try and commit the changes with a commit message
 					that our regex wouldn't match.</p>
 				<br />
-				<pre class="code">
-<span class="green">rudi@XPS</span>:<span class="jade">~/projects/rudikershaw.com$</span> git add .
-<span class="green">rudi@XPS</span>:<span class="jade">~/projects/rudikershaw.com$</span> git commit -m "wat"
+
+<pre><code class="language-terminal">rudi@XPS:~/projects/rudikershaw.com$ git add .
+rudi@XPS:~/projects/rudikershaw.com$ git commit -m "wat"
 Commit message does not adhere to '(\w+\s){3,}(\w+\.)', try again.
-<span class="green">rudi@XPS</span>:<span class="jade">~/projects/rudikershaw.com$</span></pre>
+rudi@XPS:~/projects/rudikershaw.com$</code></pre>
+
 			</section>
 
 			<section>
@@ -179,6 +185,8 @@ Commit message does not adhere to '(\w+\s){3,}(\w+\.)', try again.
 		<hr />
 
 		<div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+		<script src="/scripts/vendor/prism.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/article/head :: head"></head>
+    <head>
+        <link th:replace="fragments/article/head :: head">
+        <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
+    </head>
 	<body>
 		<header th:replace="index :: header"></header>
         <article>
@@ -24,20 +27,19 @@
             <br />
             <br />
 
-            <div class="choices">
-            <pre class="code choice" choice="Java"><span class="yellow">@Stateless</span>
-<span class="purple">public</span> <span class="orange">class</span> YourStatelessSessionBean {
-    <span class="yellow">@PostConstruct</span>
-    <span class="purple">public</span> <span class="orange">void</span> foo(){
+<pre><code class="language-java">@Stateless
+public class YourStatelessSessionBean {
+    @PostConstruct
+    public void foo(){
         // Called after the bean is constructed and
         // all its dependencies are injected.
     }
-    <span class="yellow">@PreDestroy</span>
-    <span class="purple">public</span> <span class="orange">void</span> bar(){
+    @PreDestroy
+    public void bar(){
         // Called when the container removes this bean.
     }
-}</pre>
-            </div>
+}</code></pre>
+
             <br />
             <br />
 
@@ -57,22 +59,21 @@
             <br />
             <br />
 
-            <div class="choices">
-            <pre class="code choice" choice="Java"><span class="yellow">@Entity</span>
-<span class="purple">public</span> <span class="orange">class</span> YourDocumentEntity {
-    <span class="yellow">@Id</span>
-    <span class="purple">private</span> <span class="orange">long</span> id;
+<pre><code class="language-java">@Entity
+public class YourDocumentEntity {
+    @Id
+    private long id;
     // Getters and setters etc here.
-    <span class="yellow">@PostPersist</span>
-    <span class="purple">public</span> <span class="orange">void</span> sendForIndexing(){
+    @PostPersist
+    public void sendForIndexing(){
         // Called after your entity is persisted.
     }
-    <span class="yellow">@PreRemove</span>
-    <span class="purple">public</span> <span class="orange">void</span> removeFromIndex(){
+    @PreRemove
+    public void removeFromIndex(){
         // Called just before removing this entity from the database.
     }
-}</pre>
-            </div>
+}</code></pre>
+
             <br />
             <br />
 
@@ -82,15 +83,15 @@
 
             <br />
             <br />
-            <div class="choices">
-            <pre class="code choice" choice="Java"><span class="yellow">@Entity</span>
-<span class="yellow">@EntityListeners</span>(YourClassWithTheAnnotations.<span class="orange">class</span>)
-<span class="purple">public</span> <span class="orange">class</span> YourDocumentEntity {
-    <span class="yellow">@Id</span>
-    <span class="purple">private</span> <span class="orange">long</span> id;
+
+<pre><code class="language-java">@Entity
+@EntityListeners(YourClassWithTheAnnotations.class)
+public class YourDocumentEntity {
+    @Id
+    private long id;
     // Getters and setters etc here.
-}</pre>
-            </div>
+}</code></pre>
+
             <br />
             <br />
 
@@ -101,24 +102,24 @@
 
             <br />
             <br />
-            <div class="choices">
-            <pre class="code choice" choice="Java"><span class="yellow">@Stateless</span>
-<span class="purple">public</span> <span class="orange">class</span> EventFiringBean {
-    <span class="yellow">@Inject</span>
-    <span class="purple">private</span> <span class="orange">Event</span>&lt;<span class="orange">YourEvent</span>&gt; event;
-    <span class="purple">public</span> <span class="orange">void</span> doStuff(){
-        event.fire(new <span class="orange">YourEvent</span>(<span class="jade">"Your event fired!"</span>));
+
+<pre><code class="language-java">@Stateless
+public class EventFiringBean {
+    @Inject
+    private Event&lt;YourEvent&gt; event;
+    public void doStuff(){
+        event.fire(new YourEvent("Your event fired!"));
     }
 }
 
-<span class="orange">class</span> YourEvent {
-    <span class="purple">private</span> <span class="orange">String</span> message;
-    <span class="purple">public</span> YourEvent(<span class="orange">String</span> message){
+class YourEvent {
+    private String message;
+    public YourEvent(String message){
         this.message = message;
     }
     // Getters and setters go here!
-}</pre>
-            </div>
+}</code></pre>
+
             <br />
             <br />
 
@@ -129,11 +130,11 @@
 
             <br />
             <br />
-            <div class="choices">
-            <pre class="code choice" choice="Java"><span class="purple">public</span> <span class="orange">void</span> beanMethod(<span class="yellow">@Observes</span> YourEvent even) {
+
+<pre><code class="language-java">public void beanMethod(@Observes YourEvent even) {
     // Called when a YourEvent event is fired.
-}</pre>
-            </div>
+}</code></pre>
+
             <br />
             <br />
 
@@ -148,6 +149,8 @@
 		<hr />
 
         <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+        <script src="/scripts/vendor/prism.min.js"></script>
 
 		<div class="text-container"><div id="disqus_thread"></div></div>
 		<script type="text/javascript">
