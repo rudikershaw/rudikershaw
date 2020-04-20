@@ -793,7 +793,7 @@ a.stack-overflow-link > img {
 		margin: 80px auto 50px auto;
 	}
 
-	.code {
+	.code, pre > code {
 		font-size: 12px;
 	}
 }
