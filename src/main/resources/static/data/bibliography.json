@@ -3,37 +3,114 @@
     {
       "title": "How To Invent Everything",
       "author": "Adam North",
-      "data-finished": "2020-04-27",
+      "date-finished": "2020-04-27",
       "blerb": "The instructions for re-inventing civilization if you happen to be stranded back in time and your time machine is broken.",
       "review": "I've not finished reading it yet. Watch this space."
     },
     {
       "title": "Statistics Without Tears: An Introduction for Non-Mathematicians",
       "author": "Derek Rowntree",
-      "data-finished": "2020-03-21",
+      "date-finished": "2020-03-21",
       "blerb": "A concise introduction to statistics covering all the basics. Statistics Without Tears avoids focusing on mathematical formula and instead uses good descriptions and examples to impress an intuitive understanding of each concept.",
       "review": "I've encountered almost all the concepts in this book through my professional and academic career, but until reading this I didn't have a good intuitive understanding of what they really meant. A good read."
     },
     {
       "title": "Mythos",
       "author": "Stephen Fry",
-      "data-finished": "2020-03-11",
+      "date-finished": "2020-03-11",
       "blerb": "Mythos tells of the origins and escapades of the Greek Gods and some of their descendants with a little embellishment here and there, as well as smattering of the history of their stories.",
       "review": "Mythos was a wonderful detour from my usual genre of reading. Stephen Fry tells the stories wonderfully while throwing in tid-bits about how the names of various Gods etc relate to modern words. A very enjoyable read."
     },
     {
       "title": "Lifespan: Why We Age - and Why We Don't Have To",
       "author": "David A. Sinclair",
-      "data-finished": "2020-01-21",
+      "date-finished": "2020-01-21",
       "blerb": "A tour of the research into longevity by someone deep in the field of aging. David Sinclair presents an optimistic view of where the research is headed and talks about what that might mean for our future.",
       "review": "I enjoyed the book thoroughly and feel more optimistic now about treating human aging. One thing I will say however is that David Sinclair is not a skeptic. He is very quick to interpret significance to very early research."
     },
     {
       "title": "The Body: A Guide For Occupants",
       "author": "Bill Bryson",
-      "data-finished": "2019-12-31",
+      "date-finished": "2019-12-31",
       "blerb": "Bill Bryson takes us on a tour of the human body. He discusses what we know about each area, as well as how we know it.",
       "review": "I have a medical background myself, with a strong focus on human anatomy. So there were very few surprises when it came to what's where and how it works. I did however derive great enjoyment from hearing about how we discovered everything we know, down to the personal histories of the inventors and discovers in question."
+    },
+    {
+      "title": "Why Buddhism is True",
+      "author": "Robert Wright",
+      "date-finished": "2019-11-19",
+      "blerb": "A scientific justification of the claims of westernized secular Buddhism, looked at through the lenses of neurophysiology and evolutionary psychology.",
+      "review": "The book gets a little weird in places where there are detours into ancient Buddhist texts, but that's because ancient texts tend to be a little bit weird. Over-all it is a good summary of the base concepts underlying Buddhism, as well as some of the more common meditative practices."
+    },
+    {
+      "title": "The Lady of the Lake",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-11-07",
+      "blerb": "The 5th and final book in the The Witcher Saga focusing on the adventures of Geralt of Rivia and Princess Ciri.",
+      "review": "The Witcher books are a stark, depressing, and realistic take on the traditional fairy-tale and fantasy adventure tropes. Don't expect a perfect ending with all the loose ends tied off, because that's not how life works."
+    },
+    {
+      "title": "Thinking About It Only Makes It Worse",
+      "author": "David Mitchell",
+      "date-finished": "2019-10-29",
+      "blerb": "A collection of David Mitchell's articles for various papers and so on.",
+      "review": "I very much enjoy David Mitchell's angry sarcastic humour, but I didn't enjoy this nearly as much as I expected to. I don't really know what I was expecting. It was funny, but I was hoping to learn something. I was probably barking up the wrong tree on that one."
+    },
+    {
+      "title": "The Tower of the Swallow",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-10-11",
+      "blerb": "The 4th book in the The Witcher Saga focusing on the adventures of Geralt of Rivia and Princess Ciri.",
+      "review": "The Witcher books are a stark, depressing, and realistic take on the traditional fairy-tale and fantasy adventure tropes. You can really feel the tension building in this one. It left me eager to read the next."
+    },
+    {
+      "title": "Baptism of Fire",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-10-04",
+      "blerb": "The 3rd book in the The Witcher Saga focusing on the adventures of Geralt of Rivia and Princess Ciri.",
+      "review": "The Witcher books are a stark, depressing, and realistic take on the traditional fairy-tale and fantasy adventure tropes. A phenomenal, raw, and brutal story. Sapkowski's writing style differs at a moment's notice."
+    },
+    {
+      "title": "The Communist Manifesto",
+      "author": "Karl Marx & Friedrich Engels",
+      "date-finished": "2019-09-27",
+      "blerb": "The Communist Manifesto standardized what the world thought of as Communism, and sparked revolutions whose effects are felt all over the world till this day.",
+      "review": "It's 60 pages long, and frankly it is an important historical document. You should read it. Most people's definitions of communism is incoherent at best and it is good to know what Marx thought it meant, which-ever side of the political divide you happen to find yourself on. That said, Marx was not a clear or concise writer and so it might be difficult to work out precisely what he thought."
+    },
+    {
+      "title": "Time of Contempt",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-09-14",
+      "blerb": "The 2rd book in the The Witcher Saga focusing on the adventures of Geralt of Rivia and Princess Ciri.",
+      "review": "The Witcher books are a stark, depressing, and realistic take on the traditional fairy-tale and fantasy adventure tropes. The story kicks up a gear in this book, but there are no satisfying conclusions and you have to pick up the next book immediately to find out what happens."
+    },
+    {
+      "title": "Blood of Elves",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-09-06",
+      "blerb": "The start of The Witcher Saga focusing on the adventures of Geralt of Rivia and Princess Ciri.",
+      "review": "The Witcher books are a stark, depressing, and realistic take on the traditional fairy-tale and fantasy adventure tropes. Enjoyable as usual. Although it sometimes feel like something has been lost between it's translation and the original Polish."
+    },
+    {
+      "title": "End This Depression Now",
+      "author": "Paul Krugman",
+      "date-finished": "2019-08-26",
+      "blerb": "Nobel prize winning economist Paul Krugman sets out what ought to have been done to put an end to the global economic depression that started in 2010.",
+      "review": "Clear and articulate for such a complicated subject. The book focuses on what the US did to try and pull through, but has occasional special mentions for the UK (because of how ridiculous our ultimate strategy was). An important and enlightening read."
+    },
+    {
+      "title": "Sword of Destiny",
+      "author": "Andrej Sapkowski",
+      "date-finished": "2019-08-12",
+      "blerb": "A series of short stories in a stark, depressing, and realistic fairy-tale world, focusing on the adventures of the Witcher Geralt of Rivia.",
+      "review": "The Witcher short stories are very refreshing and different in the fantasy adventure scene. This book convinced me to pick up the five book saga that follows."
+    },
+    {
+      "title": "Basic Economics",
+      "author": "Thomas Sowell",
+      "date-finished": "2019-08-07",
+      "blerb": "\"A Common Sense Guide to the Economy\". Thomas Sowell cover all the basic concepts of economics without relying on mathematic formula. He uses descriptions and examples to explain.",
+      "review": "I am glad I read Basic Economics. I definitely learned a great deal. I do however have a few complaints. Thomas Sowell is very extremely libertarian, and he's quite pushy about it throughout the book. I would also describe his work as extremely reductionist. I'll just leave it at that."
     }
   ]
 }
