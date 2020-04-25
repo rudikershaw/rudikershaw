@@ -1,0 +1,39 @@
+{
+  "bibliography": [
+    {
+      "title": "How To Invent Everything",
+      "author": "Adam North",
+      "data-finished": "2020-04-27",
+      "blerb": "The instructions for re-inventing civilization if you happen to be stranded back in time and your time machine is broken.",
+      "review": "I've not finished reading it yet. Watch this space."
+    },
+    {
+      "title": "Statistics Without Tears: An Introduction for Non-Mathematicians",
+      "author": "Derek Rowntree",
+      "data-finished": "2020-03-21",
+      "blerb": "A concise introduction to statistics covering all the basics. Statistics Without Tears avoids focusing on mathematical formula and instead uses good descriptions and examples to impress an intuitive understanding of each concept.",
+      "review": "I've encountered almost all the concepts in this book through my professional and academic career, but until reading this I didn't have a good intuitive understanding of what they really meant. A good read."
+    },
+    {
+      "title": "Mythos",
+      "author": "Stephen Fry",
+      "data-finished": "2020-03-11",
+      "blerb": "Mythos tells of the origins and escapades of the Greek Gods and some of their descendants with a little embellishment here and there, as well as smattering of the history of their stories.",
+      "review": "Mythos was a wonderful detour from my usual genre of reading. Stephen Fry tells the stories wonderfully while throwing in tid-bits about how the names of various Gods etc relate to modern words. A very enjoyable read."
+    },
+    {
+      "title": "Lifespan: Why We Age - and Why We Don't Have To",
+      "author": "David A. Sinclair",
+      "data-finished": "2020-01-21",
+      "blerb": "A tour of the research into longevity by someone deep in the field of aging. David Sinclair presents an optimistic view of where the research is headed and talks about what that might mean for our future.",
+      "review": "I enjoyed the book thoroughly and feel more optimistic now about treating human aging. One thing I will say however is that David Sinclair is not a skeptic. He is very quick to interpret significance to very early research."
+    },
+    {
+      "title": "The Body: A Guide For Occupants",
+      "author": "Bill Bryson",
+      "data-finished": "2019-12-31",
+      "blerb": "Bill Bryson takes us on a tour of the human body. He discusses what we know about each area, as well as how we know it.",
+      "review": "I have a medical background myself, with a strong focus on human anatomy. So there were very few surprises when it came to what's where and how it works. I did however derive great enjoyment from hearing about how we discovered everything we know, down to the personal histories of the inventors and discovers in question."
+    }
+  ]
+}
