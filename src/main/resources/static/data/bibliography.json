@@ -237,6 +237,90 @@
       "date-finished": "2017-11-19",
       "summary": "A few radical sounding ideas for improving society, all of which might not be as far fetched as they seem.",
       "review": "I very much enjoyed this book, and it has changed the way I think about what society could be. In particular Bregmen is known for his advocacy of basic universal income, and he is very convincing. It is absolutely worth a read."
+    },
+    {
+      "title": "XSLT Quickly",
+      "author": "Bob DuCharme",
+      "date-finished": "2017-11-13",
+      "summary": "A concise user guide to using XSLT.",
+      "review": "XSLT Quickly got me up to speed in only a few days. I was already using XSLT from time to time professionally, but this book took me from bumbling through to really knowing what I was doing."
+    },
+    {
+      "title": "Do Androids Dream of Electric Sheep?",
+      "author": "Philip K. Dick",
+      "date-finished": "2017-08-06",
+      "summary": "A bounty hunter needs to catch enough escaped androids so that he can buy a real animal.",
+      "review": "The book bears a passing resemblance to the Bladerunner movie, but it is much more. Psychedelic, strange, and mind-bending. It features a crazy new religion, and an unusual fascination with keeping real animals. Fun, interesting, and strange."
+    },
+    {
+      "title": "The Moral Landscape: How Science Can Determine Human Values",
+      "author": "Sam Harris",
+      "date-finished": "2017-07-31",
+      "summary": "Sam Harris convincingly argues for a science based pseudo-utilitarian view on morality.",
+      "review": "I've always been a philosophical utilitarian. Utilitarianism has always made sense to me. So there is definitely a degree of confirmation bias contributing to my enjoyment of this book. That said, Sam gives this debate much more clarity and nuance than you will usually find,"
+    },
+    {
+      "title": "The Voyage of a Naturalist",
+      "author": "Charles Darwin",
+      "date-finished": "2017-06-26",
+      "summary": "The journal of Charles Darwin on his voyage on the HMS Beagle.",
+      "review": "Darwin didn't write his journal with the goal of writing a breath-taking adventure story, so there are whole chapters dedicated to the appearance of crustaceans and rock formations. That said, his journey was very definitely an adventure and Darwin is a good and clear writer. His journal was a joy to read, and even occasionally thrilling."
+    },
+    {
+      "title": "Changing Faces",
+      "author": "James Partridge",
+      "date-finished": "2017-06-14",
+      "summary": "A semi-autobiographical work about what it is like to live with facial disfigurement.",
+      "review": "Changing Faces isn't a light hearted read. It can be difficult to step into the shoes of someone who has gone through something quite as traumatic as significant facial injuries. Being forced to empathise in this way is good for the soul."
+    },
+    {
+      "title": "Stranger in a Strange Land",
+      "author": "Robert A. Heinlein",
+      "date-finished": "2017-05-29",
+      "summary": "A human child raised by a mysterious Martian species returns to Earth, and causes a scene.",
+      "review": "People claim that this book heavily shaped popular culture in the 60s, and it's easy to see why. A psychic human child reared by incomprehensible Martians becomes a cult leader and preaches selflessness, free love, communes, etc. A very different read to what I was expecting. It was good."
+    },
+    {
+      "title": "Spring Boot in Action",
+      "author": "Craig Walls",
+      "date-finished": "2017-05-12",
+      "summary": "A guide to the features of Spring Boot.",
+      "review": "I had already been using Spring Boot for a number of projects both professionally and as a hobby and was hoping to learn a thing or two. I did learn plenty, especially about the pre-configured starter dependencies, but I guess I was expecting a bit more."
+    },
+    {
+      "title": "The Complete Robot",
+      "author": "Isaac Asimov",
+      "date-finished": "2017-04-17",
+      "summary": "A compilation of robot related short stories by Isaac Asimov.",
+      "review": "All of Asimov's stories are great. It's also incredibly interesting reading his vision of the future, in particular what he didn't see coming. This collection includes a few of the classics, for example the bicentennial man. A great read."
+    },
+    {
+      "title": "The Lean Startup",
+      "author": "Eric Ries",
+      "date-finished": "2017-04-08",
+      "summary": "An instruction manual for running a business in an uncertain market using a cyclic scientific method.",
+      "review": "I've not really been involved much with the startup culture, but this books gets you up to speed with a lot of the better ideas in the scene. Well written, interesting, and useful. Would recommend."
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "date-finished": "2017-03-06",
+      "summary": "A series of dramas in love and a misunderstanding in early 19th century England.",
+      "review": "This is my wife's favourite book, and so I had to read it eventually. I enjoyed it much more than I am willing to admit. In addition to enjoying it greatly, Austen's work is an important part of the history of literature as well as women's rights."
+    },
+    {
+      "title": "Driverless",
+      "author": "Hod Lipson and Melba Kurman",
+      "date-finished": "2017-02-18",
+      "summary": "The history, current state, and future predictions for driverless car technology.",
+      "review": "Speculative, but very interesting. They make few bets on when fully autonomous vehicles will be on the road, but make some interesting predictions for when they do. Cars as a service, fewer car parks, and a complete reshaping of the automotive industry as we know it."
+    },
+    {
+      "title": "Feersum Endjinn",
+      "author": "Iain M. Banks",
+      "date-finished": "2017-02-04",
+      "summary": "Political intrigue, simulated dream-like afterlives, lived out in an unknowably large mega-structure.",
+      "review": "Confusing, mysterious, fast paced, and dream like. A disorienting roller coaster of a story. Iain M. Banks writes a wonderful story. There's not much more to say except read all his books."
     }
   ]
 }
