@@ -36,6 +36,13 @@
       "review": "I have a medical background myself, with a strong focus on human anatomy. So there were very few surprises when it came to what's where and how it works. I did however derive great enjoyment from hearing about how we discovered everything we know, down to the personal histories of the inventors and discovers in question."
     },
     {
+      "title": "Enlightenment Now",
+      "author": "Steven Pinker",
+      "date-finished": "2019-11-29",
+      "summary": "Why the enlightenment was so important, and why everything is much better than the news tends to mention.",
+      "review": "A truly uplifting read. Pinker talks us through the data and the world is more peaceful, healthy, happy, and prosperous than it has ever been. There are still problems and occasional bumps in the road, but generally things are pretty rosy. Don't believe it? Read the book."
+    },
+    {
       "title": "Why Buddhism is True",
       "author": "Robert Wright",
       "date-finished": "2019-11-19",
@@ -321,6 +328,41 @@
       "date-finished": "2017-02-04",
       "summary": "Political intrigue, simulated dream-like afterlives, lived out in an unknowably large mega-structure.",
       "review": "Confusing, mysterious, fast paced, and dream like. A disorienting roller coaster of a story. Iain M. Banks writes a wonderful story. There's not much more to say except read all his books."
+    },
+    {
+      "title": "Free Will",
+      "author": "Sam Harris",
+      "date-finished": "2016-12-27",
+      "summary": "What is \"free will\" anyway? Does it even make any sense?.",
+      "review": "A clear and concise argument for why \"free will\", or what people typically consider that to be, is a kind of myth left over from dualism. The book is only 70 pages long and gets right to the heart of the argument quickly. It even finds time to consider some of the traditional counter-arguments. You should read it. It is very short, easy to read, and likely to change the way you look at the world."
+    },
+    {
+      "title": "Homo Deus",
+      "author": "Yuval Noah Harari",
+      "date-finished": "2016-12-21",
+      "summary": "A short catch-up on how far humankind has come, and a speculative explorations of where we might end up.",
+      "review": "Harari makes interesting predictions for where humankind is headed, with an emphasis on ideology and technology. More than the predictions, I particularly enjoyed the historical recap, covering ideologies as well a political and economic systems,"
+    },
+    {
+      "title": "Inversions",
+      "author": "Iain M. Banks",
+      "date-finished": "2016-10-30",
+      "summary": "Two mysteriously capable advisors to competing rulers are more than they seem.",
+      "review": "Political intrigue and machiavellian plots. Smart, funny, tense, with believable and relatable characters. If I were to recommend this one, I would recommend you read other books in the Iain M. Banks culture series first. I feel I enjoyed this more because I was able to speculate about who the main characters really were."
+    },
+    {
+      "title": "The Magic of Reality",
+      "author": "Richard Dawkins",
+      "date-finished": "2016-10-26",
+      "summary": "An elegant introduction to the questions inquisitive young minds ask.",
+      "review": "I'm not sure I would recommend this one to the type of people who are looking for book recommendations. The content is a little too simple. That said, if you have a young child or relation who is asking these kinds of questions it might be good to read, just so questions like \"why is the sky blue?\" don't trip you up."
+    },
+    {
+      "title": "God is Not Great",
+      "author": "Christopher Hitchens",
+      "date-finished": "2016-09-27",
+      "summary": "An elegant introduction to the questions inquisitive young minds ask.",
+      "review": "I'm not sure I would recommend this one to the type of people who are looking for book recommendations. The content is a little too simple. That said, if you have a young child or relation who is asking these kinds of questions it might be good to read, just so questions like \"why is the sky blue?\" don't trip you up."
     }
   ]
 }
