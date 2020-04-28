@@ -363,6 +363,41 @@
       "date-finished": "2016-09-27",
       "summary": "Christopher Hitchens makes the case against organized religion.",
       "review": "If Richard Dawkins's The God Delusion is a cool, rational, and scientific argument against the existence of God, this work is an angry and impassioned stand against the evils of organized religion. Hitchens has a wicked sharp wit and wields his angry and powerful arguments like a precision weapon."
+    },
+    {
+      "title": "The Trouble With Physics",
+      "author": "Lee Smolin",
+      "date-finished": "2016-09-21",
+      "summary": "A layman's explanation of where physics is at, our struggle with unifying physics, and why string theory is bad.",
+      "review": "Smolin lays into string theory and complains about the way academic science is organised. From what little I know about both areas, I am fully with him. String theory reeks of pre-Copernican models of the world. More than anything, it was interesting reading about internal conflicts in academic physics and the kinds of things physicists probably gossip about."
+    },
+    {
+      "title": "Excession",
+      "author": "Iain M. Banks",
+      "date-finished": "2016-08-19",
+      "summary": "A super futuristic society find an object that transcends all their understanding of what is possible.",
+      "review": "Every Banks book is a classic. If you're a fan of the super-intelligent AIs from the other books you'll love this one. A lot of the dialog occurs between them, trying to work what ought to be done, and whether to approach this paradigm shattering object."
+    },
+    {
+      "title": "Elements of Computer Systems",
+      "author": "Noam Nisan and Shimon Schocken",
+      "date-finished": "2016-08-06",
+      "summary": "Building a modern computer from first principles.",
+      "review": "Strictly speaking this is a text book, for a course commonly called \"From Nand to Tetris\", but it is a much more pleasant read than most. If you want to know how to literally build a computer from nothing, and then simulate doing just that, then this book will talk you through it. I didn't think that knowledge could be available so precisely. This book is a modern marvel. I love it."
+    },
+    {
+      "title": "Look to Windward",
+      "author": "Iain M. Banks",
+      "date-finished": "2016-07-17",
+      "summary": "A terrorist plot, a bigger political feud, and every-day life on a synthetic planet.",
+      "review": "Look to Windward is a more quiet and thoughtful piece than most of the other Culture series books. As a long time follower of the Culture series books it is nice to see more regular citizens and environments. A relaxing and satisfying read."
+    },
+    {
+      "title": "Seven Brief Lessons on Physics",
+      "author": "Carlo Rovelli",
+      "date-finished": "2016-06-26",
+      "summary": "It does what it says on the tin. Seven brief lessons in physics.",
+      "review": "This book is as much a work of poetry as it is a work of physics. Beautiful and elegant prose."
     }
   ]
 }
