@@ -389,7 +389,7 @@
       "title": "Look to Windward",
       "author": "Iain M. Banks",
       "date-finished": "2016-07-17",
-      "summary": "A terrorist plot, a bigger political feud, and every-day life on a synthetic planet.",
+      "summary": "A terrorist plot, a bigger political feud, and every-day life on an orbital class spacecraft.",
       "review": "Look to Windward is a more quiet and thoughtful piece than most of the other Culture series books. As a long time follower of the Culture series books it is nice to see more regular citizens and environments. A relaxing and satisfying read."
     },
     {
@@ -398,6 +398,41 @@
       "date-finished": "2016-06-26",
       "summary": "It does what it says on the tin. Seven brief lessons in physics.",
       "review": "This book is as much a work of poetry as it is a work of physics. Beautiful and elegant prose."
+    },
+    {
+      "title": "Elon Musk",
+      "author": "Ashlee Vance",
+      "date-finished": "2016-06-25",
+      "summary": "A more-or-less-authorised biography of Elon Musk.",
+      "review": "Most entrepreneurs are enormously lucky, but Ashley Vance paints a quite different picture for Elon Musk. Even with survivor bias it is difficult to imagine someone being this reliably lucky with industries that don't rely on catching a trend or new discovery. The anecdotal study of the very successful is fascinating at the best of times, and Elon Musk is a special case."
+    },
+    {
+      "title": "Pro Git",
+      "author": "Scott Chacon and Ben Straub",
+      "date-finished": "2016-06-12",
+      "summary": "\"Everything you need to know about Git\"",
+      "review": "With Git, many just learn the basics and then search online to solve problems later. Reading this has resulted in my being known as the \"Pro Git\" around the office. I will occasionally hear the phrase \"sounds like you might need to ask the Pro Git\" from the other side of the office, and know to expect a visit shortly. A very worth-while read. And it's free online."
+    },
+    {
+      "title": "Becoming a Better Programmer",
+      "author": "Pete Goodliffe",
+      "date-finished": "2016-05-15",
+      "summary": "Tip and advice for people who care about being the best programmer they can be.",
+      "review": "Light hearted and easy to read. It covers the basics for a lot of reasonably modern industry best practices, which is a life-saver for anyone starting out in the trade. I would recommend it all new programmers."
+    },
+    {
+      "title": "Java EE 7 Essentials",
+      "author": "Arun Gupta",
+      "date-finished": "2015-10-25",
+      "summary": "A run down on some of the new features in Java EE 7.",
+      "review": "This turns out to not have been so relevant to my working life. Additionally, Arun Gupta's writing style is really really dry. Lots of useful information, but it was difficult to keep motivated enough to finish it."
+    },
+    {
+      "title": "The Intelligent Web",
+      "author": "Gautam Shroff",
+      "date-finished": "2015-10-01",
+      "summary": "A run down on some of the new features in Java EE 7.",
+      "review": "This turns out to not have been so relevant to my working life. Additionally, Arun Gupta's writing style is really really dry. Lots of useful information, but it was difficult to keep motivated enough to finish it."
     }
   ]
 }
