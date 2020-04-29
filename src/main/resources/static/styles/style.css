@@ -456,6 +456,31 @@ img.coverimg {
 	font-size: 14px;
 }
 
+.book-details {
+	border-left: 5px solid #272727;
+	max-width:670px;
+}
+
+.book-details > div {
+	border: 1px solid #DDD;
+	padding:20px 40px;
+}
+
+.book-details h4 {
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+
+.book-details .author {
+	font-size: 18px;
+}
+
+.book-details .review-paragraph i {
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 0;
+}
+
 div.calendar div.position-relative {
 	padding: 20px;
 }
