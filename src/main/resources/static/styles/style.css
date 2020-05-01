@@ -457,13 +457,13 @@ img.coverimg {
 }
 
 .book-details {
-	border-left: 5px solid #272727;
+	border-top: 5px solid #272727;
 	max-width:670px;
 }
 
 .book-details > div {
 	border: 1px solid #DDD;
-	border-left-width: 0;
+	border-top-width: 0;
 	padding:20px 40px;
 }
 
@@ -474,6 +474,10 @@ img.coverimg {
 
 .book-details .author {
 	font-size: 18px;
+}
+
+.book-details .review-paragraph {
+	font-style: italic;
 }
 
 .book-details .review-paragraph i {
