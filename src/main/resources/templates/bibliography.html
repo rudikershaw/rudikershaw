@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 	<head>
-        <link th:replace="fragments/article/head :: head">
+		<meta charset="UTF-8" />
+		<title>Rudi Kershaw's Bibliography</title>
+		<meta name="description" content="." />
+		<meta name="author" content="Rudi Kershaw" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="/styles/style.min.css?v=3" />
+		<link rel="shortcut icon" href="/images/RK.ico" />
+		<link href="https://designers.hubspot.com/hs-fs/hub/327485/file-2054199286-css/font-awesome.min.css" rel="stylesheet" />
     </head>
 	<body>
 		<header th:replace="index :: header"></header>
 
+		<section class="view-height">
+			<div class="container off-centre">
+				<h1 class="my-name">Rudi Kershaw</h1>
+				<h2 class="my-summary">My Bibliography</h2>
+				<p class="my-description">I enjoy a good read, and a few years or so back I started keeping track of most of what I read, when I
+					finished reading it, and what I thought of it. I decided I ought to put this information somewhere more accessible, and what
+					better place than on my website? A lot of these books have shaped the way I think about the world. So, if you want to know a
+					little bit about how I think you can start at the bottom and work your way through.
+				</p>
+			</div>
+			<a class="theres-more" href="#bibliography-start"><i class="fa fa-chevron-down"></i></a>
+		</section>
+
+		<section>
+			<h1 id="bibliography-start">Bibliography</h1>
+
+			<ol id="bibliography-list">
+				<li id="bibliography-item-template" style="display: none">
+					<cite></cite> - <span class="author"></span>
+				</li>
+			</ol>
+		</section>
+
+		<footer th:replace="index :: footer"></footer>
+		<script async src="/scripts/bibliography.min.js"></script>
 	</body>
 </html>
