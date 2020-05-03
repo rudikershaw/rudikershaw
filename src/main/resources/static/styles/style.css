@@ -879,6 +879,11 @@ ol#bibliography-list:after {
 	content:"";
 }
 
+ol#bibliography-list > li {
+	text-indent: -2em;
+	margin-left: 2em;
+}
+
 ol#bibliography-list > li:before {
 	position: relative;
 	font-size: 41px;
@@ -888,18 +893,19 @@ ol#bibliography-list > li:before {
 }
 
 ol#bibliography-list .synopsis {
-	margin-left: 50px;
 	text-indent: 0;
 }
 
 ol#bibliography-list > .date-divider {
 	position: relative;
 	font-style: italic;
-	right: 60px
+	right: 60px;
+	margin: 0;
 }
 
 @media (max-width: 960px) {
 	ol#bibliography-list > .date-divider {
+		margin-top: 20px;
 		right: auto;
 		left: 30px
 	}
