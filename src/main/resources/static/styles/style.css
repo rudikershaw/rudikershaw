@@ -863,7 +863,7 @@ a.stack-overflow-link > img {
 /* Feature - Bibliography list */
 
 #bibliography-start {
-	margin-top: 150px;
+	margin: 100px 0 0 10px;
 }
 
 ol#bibliography-list {
