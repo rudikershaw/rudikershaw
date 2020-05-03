@@ -214,7 +214,7 @@ div.entries.container {
     text-align: center;
 } a.entry-card {
 	text-decoration: none;
-}div.entry {
+} div.entry {
 	margin: 50px 50px 0 50px;
     border-color: #DDDDDD;
 	border-top-color: #ED5900;
@@ -551,7 +551,7 @@ p.views {
 	margin: 0;
 }
 
-.code ol {
+ol {
     counter-reset: item;
 }
 
@@ -560,7 +560,7 @@ p.views {
 	color: #347B34;
 }
 
-.code ol > li:before {
+ol > li:before {
     content: counter(item) ". ";
     counter-increment: item;
     color: #347B34;
@@ -857,6 +857,51 @@ a.stack-overflow-link > img {
 
 	a.theres-more {
 		display: none;
+	}
+}
+
+/* Feature - Bibliography list */
+
+#bibliography-start {
+	margin-top: 150px;
+}
+
+ol#bibliography-list {
+	position:relative;
+	font-size: 18px;
+	padding: 10px;
+}
+
+ol#bibliography-list:after {
+	border-left: 2px solid #347B34;
+	top: 0; bottom: 0; left: 21px;
+	position: absolute;
+	content:"";
+}
+
+ol#bibliography-list > li:before {
+	position: relative;
+	font-size: 41px;
+	content: "• ";
+	z-index: -1;
+	top: 5px;
+}
+
+ol#bibliography-list .synopsis {
+	margin-left: 50px;
+	text-indent: 0;
+}
+
+ol#bibliography-list > .date-divider {
+	position: relative;
+	font-style: italic;
+	right: 60px
+}
+
+@media (max-width: 960px) {
+	ol#bibliography-list > .date-divider {
+		right: auto;
+		left: 30px
 	}
 }
 
