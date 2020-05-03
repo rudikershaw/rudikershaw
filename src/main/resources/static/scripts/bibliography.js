@@ -51,4 +51,5 @@
         }
     };
     request.send();
+    $('div.faded-background-cover').fadeOut(1600);
 })();
