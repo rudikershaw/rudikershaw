@@ -1,0 +1,8 @@
+<FindBugsFilter>
+    <Match>
+        <!-- False positives -->
+        <Class name="main.dynamics.entities.Article" />
+        <Method name="getLargeImagePath" />
+        <Bug code="NP,RCN" />
+    </Match>
+</FindBugsFilter>

@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<git.hooks.version>1.0.4</git.hooks.version>
 	</properties>
 
@@ -74,6 +74,11 @@
             <artifactId>twitter4j-core</artifactId>
             <version>[4.0,)</version>
         </dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>2.3.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -141,7 +146,10 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>3.1.6</version>
+				<version>4.0.0</version>
+				<configuration>
+					<excludeFilterFile>/etc/spotbugs/exclude-filter.xml</excludeFilterFile>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
