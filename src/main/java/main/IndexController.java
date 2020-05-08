@@ -5,7 +5,7 @@ import static main.articles.DefaultArticleController.ARTICLES;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import main.dynamics.ArticleService;
 import main.twitter.TwitterService;
@@ -45,7 +45,7 @@ public class IndexController {
      * @param model The model injected by Spring.
      * @return the path to the view template.
      */
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index(final Model model) {
         model.addAttribute("all", ARTICLES);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
@@ -59,7 +59,7 @@ public class IndexController {
      * @param model the model injected by Spring.
      * @return the path to the latest tweet fragment.
      */
-    @RequestMapping("/latest-tweet")
+    @GetMapping("/latest-tweet")
     public String latestTweet(final Model model) {
         model.addAttribute("tweet", twitterService.getMyLatestTweet());
         return TWEET_PATH;

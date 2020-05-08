@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import main.dynamics.ArticleService;
 import main.dynamics.entities.Article;
@@ -79,7 +79,7 @@ public class DefaultArticleController {
      * @param request the request.
      * @return the path to the view template.
      */
-    @RequestMapping("articles/{path}")
+    @GetMapping("articles/{path}")
     public String article(@PathVariable final String path, final Model model, final HttpServletRequest request) {
         // Retrieve article from list.
         final Article a = ARTICLES.stream().filter(art -> art.getPath().equals("articles/" + path)).findAny()

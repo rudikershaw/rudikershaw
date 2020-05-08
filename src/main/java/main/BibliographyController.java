@@ -1,7 +1,7 @@
 package main;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /** Controller for the bibliography page. */
 @Controller
@@ -15,7 +15,7 @@ public class BibliographyController {
      *
      * @return the path to the view template.
      */
-    @RequestMapping("/bibliography")
+    @GetMapping("/bibliography")
     public String index() {
         return PATH;
     }

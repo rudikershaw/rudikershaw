@@ -11,7 +11,7 @@ class GitBuildHookController {
     /**
      * Request mapping for redirecting from Group ID to the GitHub project.
      *
-     * @return a retidrect path to the git build hook project.
+     * @return a redirect path to the git build hook project.
      */
     @RequestMapping(value = "/gitbuildhook", method = {RequestMethod.GET, RequestMethod.POST})
     public String redirectToProject() {

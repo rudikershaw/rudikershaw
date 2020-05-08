@@ -51,7 +51,7 @@ public class TwitterFollowService {
      * @return get the latest follow.
      */
     public TwitterFollow getLatestFollow() {
-        final List<TwitterFollow> follows = repository.findAllByDisabledFalseOrderByDateDesc(new PageRequest(0, 1));
+        final List<TwitterFollow> follows = repository.findAllByDisabledFalseOrderByDateDesc(PageRequest.of(0, 1));
         return follows.isEmpty() ? null : follows.get(0);
     }
 

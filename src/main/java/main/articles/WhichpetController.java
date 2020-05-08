@@ -1,16 +1,19 @@
 package main.articles;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
-import main.dynamics.WhichpetService;
-import main.dynamics.entities.WhichpetDatum;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import main.dynamics.WhichpetService;
+import main.dynamics.entities.WhichpetDatum;
 
 /** Controller for the Machine Learning Basics article. */
 @Controller
@@ -50,7 +53,7 @@ class WhichpetController {
      * @param request injected request.
      * @return the path to the view template.
      */
-    @RequestMapping(PATH)
+    @GetMapping(PATH)
     public String article(final Model model, final HttpServletRequest request) {
         request.getSession().setAttribute("whichpet-viewer", Boolean.TRUE);
         return articleController.article("whichpet", model, request);
@@ -63,9 +66,9 @@ class WhichpetController {
      * @param request injected request.
      * @return the path to the fragment template.
      */
-    @RequestMapping(WHICHPET_DATA_PATH)
+    @GetMapping(WHICHPET_DATA_PATH)
     public String getWhichpetData(final Model model, final HttpServletRequest request) {
-        final List<WhichpetDatum> pets = whichpetService.getAllData(new PageRequest(0, 100000), request);
+        final List<WhichpetDatum> pets = whichpetService.getAllData(PageRequest.of(0, 100000), request);
         final WhichpetDatum[] array = pets.toArray(new WhichpetDatum[0]);
         model.addAttribute("pets", array);
         return WHICHPET_DATA_PATH;
@@ -80,7 +83,7 @@ class WhichpetController {
      * @return success.
      */
     @ResponseBody
-    @RequestMapping(WHICHPET_ADD_PATH)
+    @GetMapping(WHICHPET_ADD_PATH)
     public String addWhichpetData(final HttpServletRequest request, @RequestParam(value = "label") final String label,
                                   @RequestParam(value = "description") final String description) {
         final String referer = request.getHeader("referer");
