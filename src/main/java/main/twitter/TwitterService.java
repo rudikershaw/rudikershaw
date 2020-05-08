@@ -5,8 +5,8 @@ import static org.springframework.http.MediaType.IMAGE_GIF;
 import static org.springframework.http.MediaType.IMAGE_JPEG;
 import static org.springframework.http.MediaType.IMAGE_PNG;
 
-import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -46,7 +46,7 @@ public class TwitterService {
      */
     @Autowired
     public TwitterService(final AuthDetailsProvider authDetailsProvider) {
-        final TwitterFactory factory = new TwitterFactory();
+        final var factory = new TwitterFactory();
         twitter = factory.getInstance();
         final AccessToken accessToken = authDetailsProvider.getAccessToken();
         authDetailsProvider.setOAuthConsumer(twitter);
@@ -102,8 +102,8 @@ public class TwitterService {
      * @return a base 64 String or null.
      */
     private String getBase64ImageString(final String url) {
-        final HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(IMAGE_GIF, IMAGE_JPEG, IMAGE_PNG));
+        final var headers = new HttpHeaders();
+        headers.setAccept(List.of(IMAGE_GIF, IMAGE_JPEG, IMAGE_PNG));
         HttpEntity<String> entity = new HttpEntity<>("", headers);
         final ResponseEntity<byte[]> response = new RestTemplate().exchange(url, GET, entity, byte[].class);
 
@@ -124,7 +124,7 @@ public class TwitterService {
         if (entities != null) {
             String text = tweet.getText();
             for (URLEntity entity : entities) {
-                text = text.replace(entity.getURL(), entity.getDisplayURL()).trim();
+                text = text.replace(entity.getURL(), entity.getDisplayURL()).strip();
             }
             tweet.setText(text);
         }
@@ -140,7 +140,7 @@ public class TwitterService {
         if (entities != null) {
             String text = tweet.getText();
             for (MediaEntity entity : entities) {
-                text = text.replace(entity.getURL(), "").trim();
+                text = text.replace(entity.getURL(), "").strip();
             }
             tweet.setText(text);
         }
@@ -158,7 +158,7 @@ public class TwitterService {
             while (startsWithAReply(text, mentionEntities)) {
                 for (UserMentionEntity mention : mentionEntities) {
                     if (text.startsWith("@" + mention.getScreenName())) {
-                        text = text.replace("@" + mention.getScreenName(), "").trim();
+                        text = text.replace("@" + mention.getScreenName(), "").strip();
                         tweet.getInReplyTo().add(mention.getScreenName());
                     }
                 }

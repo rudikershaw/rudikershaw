@@ -141,7 +141,7 @@ class Prosperity {
      * @return a date in the past.
      */
     private Date getXDaysAgo(final int daysAgo) {
-        final Calendar calendar = Calendar.getInstance();
+        final var calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -daysAgo);
         return calendar.getTime();
     }

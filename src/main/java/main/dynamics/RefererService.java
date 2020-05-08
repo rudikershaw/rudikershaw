@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +48,7 @@ public class RefererService {
      */
     public void processReferer(final HttpServletRequest request, final Article article) {
         final String referer = request.getHeader("Referer");
-        if (referer != null && !referer.isEmpty()) {
+        if (Strings.isBlank(referer)) {
             final Referer entity = repository.findByRefererIdentityRefererAndRefererIdentityArticleId(referer, article.getId());
             if (entity == null) {
                 repository.save(new Referer(new RefererIdentity(article, referer)));
