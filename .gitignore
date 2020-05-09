@@ -2,3 +2,5 @@
 /target
 *.iml
 /etc/git-hooks
+/node_modules
+/node
