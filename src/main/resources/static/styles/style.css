@@ -834,6 +834,10 @@ a.stack-overflow-link > img {
         margin: auto;
         float: none;
     }
+
+	.tweet .tweet-body {
+		max-width: 90vw;
+	}
 }
 
 @media (max-width: 850px) {
