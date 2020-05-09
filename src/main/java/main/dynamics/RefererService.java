@@ -48,7 +48,7 @@ public class RefererService {
      */
     public void processReferer(final HttpServletRequest request, final Article article) {
         final String referer = request.getHeader("Referer");
-        if (Strings.isBlank(referer)) {
+        if (!Strings.isBlank(referer)) {
             final Referer entity = repository.findByRefererIdentityRefererAndRefererIdentityArticleId(referer, article.getId());
             if (entity == null) {
                 repository.save(new Referer(new RefererIdentity(article, referer)));
