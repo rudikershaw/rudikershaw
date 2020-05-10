@@ -1,9 +1,11 @@
-var choiceButtons = $('.choices li');
+import $ from 'jquery';
+
+const choiceButtons = $('.choices li');
 
 $(document).ready(function(){
 
     $('div.choices').each(function(){
-        var tallest = 0;
+        let tallest = 0;
         $(this).find('pre.code.choice').each(function(){
               var height = $(this).height();
               if (height > tallest) {
@@ -14,14 +16,15 @@ $(document).ready(function(){
     });
 
     choiceButtons.click(function(){
-        var thisButton = $(this);
+        const thisButton = $(this);
+        const choices = thisButton.parents('.choices').children('.choice');
+
         thisButton.parent().children().removeClass('selected');
         thisButton.addClass('selected');
 
-        var choices = thisButton.parents('.choices').children('.choice');
         choices.hide();
         choices.each(function(){
-            thisChoice = $(this);
+            const thisChoice = $(this);
             if(thisChoice.attr('choice') === thisButton.text()){
                 thisChoice.show();
             }

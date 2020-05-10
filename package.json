@@ -1,0 +1,37 @@
+{
+  "name": "rudikershaw.com",
+  "version": "1.0.0",
+  "description": "This project is the code base for my personal blog and website. It is a web application written\r in Java using Spring Boot, Thymeleaf, and Maven for dependencies. It is designed to be run and\r hosted using Heroku.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Warning: no test specified\"",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudikershaw/rudikershaw.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rudikershaw/rudikershaw.com/issues"
+  },
+  "homepage": "https://www.rudikershaw.com",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "whichx": "^2.1.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
