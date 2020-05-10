@@ -2,6 +2,7 @@ const path = require('path');
 const scriptsPath = './src/main/resources/static/scripts/';
 
 module.exports = {
+    devtool: 'source-map',
     entry: {
         'bibliography': scriptsPath + 'bibliography.js',
         'choices': scriptsPath +'choices.js',
