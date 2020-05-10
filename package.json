@@ -26,6 +26,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "whichx": "^2.1.2"
   },
   "babel": {

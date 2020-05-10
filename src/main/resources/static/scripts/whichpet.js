@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Whichpet from 'whichx';
 
 // UI Setup for the Whichpet article.

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(document).ready(function(){
     $('.container input[name="e-search-go"]').click(function(){
         const button = $(this);

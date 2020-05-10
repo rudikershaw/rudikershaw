@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 (function() {
     const template = document.querySelector('#bibliography-item-template');
     const list = document.querySelector('#bibliography-list');

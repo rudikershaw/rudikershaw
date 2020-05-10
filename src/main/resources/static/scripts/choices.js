@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const choiceButtons = $('.choices li');
 
 $(document).ready(function(){
