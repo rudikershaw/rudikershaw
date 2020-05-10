@@ -33,8 +33,8 @@ import twitter4j.auth.AccessToken;
 @Service
 public class TwitterService {
 
-    /** One minute as a number of milliseconds. */
-    private static final int ONE_MINUTE = 60000;
+    /** Two minute as a number of milliseconds. */
+    private static final int TWO_MINUTES = 120000;
 
     /** Twitter object for access to Twitter4j API. */
     private final Twitter twitter;
@@ -88,9 +88,9 @@ public class TwitterService {
         }
     }
 
-    /** Evict entries from the Latest Tweet cache every 60 seconds. */
+    /** Evict entries from the Latest Tweet cache every 120 seconds. */
     @CacheEvict(allEntries = true, cacheNames = { "latest-tweet" })
-    @Scheduled(fixedDelay = ONE_MINUTE)
+    @Scheduled(fixedDelay = TWO_MINUTES)
     public void invalidateCache() {
         // The effect of this method is purely in the annotations.
     }

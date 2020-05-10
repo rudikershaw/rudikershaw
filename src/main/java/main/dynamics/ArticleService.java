@@ -3,6 +3,7 @@ package main.dynamics;
 import main.dynamics.entities.Article;
 import main.dynamics.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +69,7 @@ public class ArticleService {
      * Get the article which has been viewed most this week or a default if none have been viewed.
      * @return the article which has been viewed most this week or a default if none have been viewed.
      */
+    @Cacheable("most-viewed-article")
     public Article getMostViewedThisWeek() {
         final Integer id = articleSessionService.getMostSessionsThisWeekByArticleId();
         if (id == null) {
