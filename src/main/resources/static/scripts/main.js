@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     $.ajax({ url: '/data/bibliography.json' }).done(function(data){
-        var latestRead = data.bibliography[0];
+        const latestRead = data.bibliography[0];
         $('#latest-read .title').text(latestRead.title);
         $('#latest-read .author').text('by ' + latestRead.author);
         $('#latest-read .synopsis').text(latestRead.synopsis);

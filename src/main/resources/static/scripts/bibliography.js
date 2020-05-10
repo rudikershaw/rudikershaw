@@ -1,7 +1,7 @@
 (function() {
-    var template = document.querySelector('#bibliography-item-template');
-    var list = document.querySelector('#bibliography-list');
-    var request = new XMLHttpRequest();
+    const template = document.querySelector('#bibliography-item-template');
+    const list = document.querySelector('#bibliography-list');
+    const request = new XMLHttpRequest();
 
     function daysBetweenDates(date1, date2) {
         const oneDayInMiliseconds = 24 * 60 * 60 * 1000;
@@ -9,10 +9,10 @@
     }
 
     function populatePageWithBibliography(response) {
-        var newEntry;
-        var newDateDividor;
-        var currentFinishedDate;
-        var previousFinishedDate = new Date();
+        let newEntry;
+        let newDateDividor;
+        let currentFinishedDate;
+        let previousFinishedDate = new Date();
 
         if (response && response.bibliography) {
             response.bibliography.forEach(function (item){

@@ -5,7 +5,7 @@ $(document).ready(function(){
     // Set up toggle for reading how it works.
     $('#click-for-more a').click(function(){
         $('#they-clicked-for-more').slideToggle();
-        var caret = $('#click-for-more span');
+        const caret = $('#click-for-more span');
         if(caret.text() === String.fromCharCode(9658)){
             caret.html('&#9660;');
         } else {
@@ -16,12 +16,12 @@ $(document).ready(function(){
     $.ajax({ url: '/fragments/whichpet' }).done(function(data){
         $('#whichpet-target').html(data);
         // Create the Whichpet object.
-        var whichpet = new Whichpet();
+        const whichpet = new Whichpet();
         // Define details of popup. If classifier guesses right, re-inforce data,
         // otherwise ask while label to add description to.
         $('#input input[type="button"]').click(function(){
-            var label = $('#input').find('select option:selected').val();
-            var description = $('#which-pet').find('textarea').val();
+            const label = $('#input').find('select option:selected').val();
+            const description = $('#which-pet').find('textarea').val();
             whichpet.addData(label, description);
             $.ajax({ url: '/fragments/whichpet/add?label='+encodeURIComponent(label)+'&description='+encodeURIComponent(description) }).done(function(data){
                 console.log(data);
@@ -33,8 +33,8 @@ $(document).ready(function(){
         });
         $('.whichpet input[name="yes"]').click(function(){
             $('.whichpet div.popup').fadeOut();
-            var description = $('#which-pet').find('textarea').val();
-            var label = whichpet.classify(description);
+            const description = $('#which-pet').find('textarea').val();
+            const label = whichpet.classify(description);
             whichpet.addData(label, description);
             $.ajax({ url: '/fragments/whichpet/add?label='+encodeURIComponent(label)+'&description='+encodeURIComponent(description) }).done(function(data){
                 console.log(data);
@@ -46,7 +46,7 @@ $(document).ready(function(){
         });
         // Set up Whichpet to try and guess animal label.
         $('#which-pet input[type="button"]').click(function(){
-            var description = $('#which-pet').find('textarea').val();
+            const description = $('#which-pet').find('textarea').val();
             $('.whichpet div.popup h3').text('Are you describing a ' + whichpet.classify(description) + '?');
             $('.whichpet div.popup').fadeIn();
         });
@@ -57,10 +57,10 @@ $(document).ready(function(){
             });
         });
         // Load labels into data set.
-        var labels = ["cat","dog","fish","horse","bird","reptile"];
+        const labels = ["cat", "dog", "fish", "horse", "bird", "reptile"];
         whichpet.addLabels(labels);
         // Load training set which should be pulled in with the fragment.
-        for(var i = 0; i < pets.length; i++){
+        for(let i = 0; i < pets.length; i++){
             whichpet.addData(pets[i].label, pets[i].description);
         }
     });
