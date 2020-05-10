@@ -1,18 +1,21 @@
-import $ from 'jquery';
+import 'vanilla-fade/dist/esm/fadeOut';
 
-$(document).ready(function() {
-    $('div.faded-background-cover').fadeOut(1600);
+(() => {
+    const curtain = document.querySelector('div.faded-background-cover');
+    curtain.fadeOut(1600, 'linear', () => curtain.style.display = 'none');
 
-    $.ajax({ url: '/latest-tweet' }).done(function(data){
-        $('#latest-tweet').replaceWith(data);
+    fetch('/latest-tweet').then((data) => data.text()).then((text) => {
+        const placeholder = document.querySelector('#latest-tweet');
+        const body = new DOMParser().parseFromString(text, 'text/html').body.childNodes[0];
+        placeholder.parentNode.replaceChild(body, placeholder);
     });
 
-    $.ajax({ url: '/data/bibliography.json' }).done(function(data){
-        const latestRead = data.bibliography[0];
-        $('#latest-read .title').text(latestRead.title);
-        $('#latest-read .author').text('by ' + latestRead.author);
-        $('#latest-read .synopsis').text(latestRead.synopsis);
-        $('#latest-read .review').text(latestRead.review);
-        $('#latest-read').show();
+    fetch('/data/bibliography.json').then((data) => data.json()).then((json) => {
+        const latestRead = json.bibliography[0];
+        document.querySelector('#latest-read .title').textContent = latestRead.title;
+        document.querySelector('#latest-read .author').textContent = 'by ' + latestRead.author;
+        document.querySelector('#latest-read .synopsis').textContent = latestRead.synopsis;
+        document.querySelector('#latest-read .review').textContent = latestRead.review;
+        document.querySelector('#latest-read').style.display = null;
     });
-});
+})();

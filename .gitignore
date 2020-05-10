@@ -4,3 +4,4 @@
 /etc/git-hooks
 /node_modules
 /node
+/npm-debug.log

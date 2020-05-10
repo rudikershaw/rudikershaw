@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
+    "vanilla-fade": "^1.1.0",
     "whichx": "^2.1.2"
   },
   "babel": {

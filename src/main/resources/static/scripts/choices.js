@@ -1,33 +1,19 @@
-import $ from 'jquery';
+(() => {
+    document.querySelectorAll('.choices li').forEach((button) => {
+        const choices = button.closest('.choices').querySelectorAll('.choice');
+        const siblingButtons = button.parentNode.querySelectorAll('li');
 
-const choiceButtons = $('.choices li');
+        button.onclick = () => {
+            siblingButtons.forEach((li) => li.classList.remove('selected'));
+            button.classList.add('selected');
 
-$(document).ready(function(){
-
-    $('div.choices').each(function(){
-        let tallest = 0;
-        $(this).find('pre.code.choice').each(function(){
-              var height = $(this).height();
-              if (height > tallest) {
-                tallest = height;
-              }
-        });
-        $(this).find('pre.code.choice').height(tallest);
+            choices.forEach((choice) => {
+                if (choice.getAttribute('choice') === button.textContent) {
+                    choice.style.display = null;
+                } else {
+                    choice.style.display = 'none';
+                }
+            });
+        };
     });
-
-    choiceButtons.click(function(){
-        const thisButton = $(this);
-        const choices = thisButton.parents('.choices').children('.choice');
-
-        thisButton.parent().children().removeClass('selected');
-        thisButton.addClass('selected');
-
-        choices.hide();
-        choices.each(function(){
-            const thisChoice = $(this);
-            if(thisChoice.attr('choice') === thisButton.text()){
-                thisChoice.show();
-            }
-        });
-    });
-});
+})();

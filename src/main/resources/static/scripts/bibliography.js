@@ -1,9 +1,8 @@
-import $ from 'jquery';
+import 'vanilla-fade/dist/esm/fadeOut';
 
 (function() {
     const template = document.querySelector('#bibliography-item-template');
     const list = document.querySelector('#bibliography-list');
-    const request = new XMLHttpRequest();
 
     function daysBetweenDates(date1, date2) {
         const oneDayInMiliseconds = 24 * 60 * 60 * 1000;
@@ -45,13 +44,10 @@ import $ from 'jquery';
         }
     }
 
-    request.open("GET", "/data/bibliography.json", true);
-    request.setRequestHeader('Accept', 'application/json');
-    request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-            populatePageWithBibliography(JSON.parse(request.responseText));
-        }
-    };
-    request.send();
-    $('div.faded-background-cover').fadeOut(1600);
+    fetch('/data/bibliography.json', { headers: { 'Content-Type': 'application/json'} })
+        .then((data) => data.json())
+        .then((json) => populatePageWithBibliography(json));
+
+    const curtain = document.querySelector('div.faded-background-cover');
+    curtain.fadeOut(1600, 'linear', () => curtain.style.display = 'none');
 })();
