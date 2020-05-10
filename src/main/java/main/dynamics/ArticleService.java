@@ -3,8 +3,10 @@ package main.dynamics;
 import main.dynamics.entities.Article;
 import main.dynamics.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,9 @@ import java.util.List;
 /** Article service. */
 @Service
 public class ArticleService {
+
+    /** 2 hours as a number of milliseconds. */
+    private static final int TWO_HOURS = 72000000;
 
     /** Article repo. */
     private final ArticleRepository articleRepository;
@@ -78,5 +83,12 @@ public class ArticleService {
         } else {
             return articleRepository.findById(id).orElse(null);
         }
+    }
+
+    /** Evict entries from the Latest Tweet cache every 2 hours. */
+    @CacheEvict(allEntries = true, cacheNames = { "most-viewed-article" })
+    @Scheduled(fixedDelay = TWO_HOURS)
+    public void invalidateCache() {
+        // The effect of this method is purely in the annotations.
     }
 }
