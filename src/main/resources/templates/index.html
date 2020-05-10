@@ -95,7 +95,7 @@
 				<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
 					<div class="entry">
 						<h4 th:text="${article.name}">Article Title</h4>
-						<img th:src="${article.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
+						<img th:src="${article.imagePath}" loading="lazy" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
 						<p th:text="${article.description}">Article Description</p>
 					</div>
 				</a>
