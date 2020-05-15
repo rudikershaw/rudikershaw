@@ -45,8 +45,8 @@ import 'vanilla-fade/dist/esm/fadeOut';
     }
 
     fetch('/data/bibliography.json', { headers: { 'Content-Type': 'application/json'} })
-        .then((data) => data.json())
-        .then((json) => populatePageWithBibliography(json));
+        .then(data => data.json())
+        .then(json => populatePageWithBibliography(json));
 
     const curtain = document.querySelector('div.faded-background-cover');
     curtain.fadeOut(1600, 'linear', () => curtain.style.display = 'none');
