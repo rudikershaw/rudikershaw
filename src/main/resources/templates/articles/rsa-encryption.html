@@ -29,15 +29,15 @@
 					language helpful. By the time you have finished reading this article you should have the understanding required to perform your own
 					encryption using RSA.</p>
 				<br />
-				<div class="code">
-					<span class="green">• </span>High Level Overview<br />
-					<span class="green">• </span>One Way Functions<br />
-					<span class="green">• </span>Prime Factorisation<br />
-					<span class="green">• </span>Coprimes<br />
-					<span class="green">• </span>Euler's Totient<br />
-					<span class="green">• </span>Euler's Theorum<br />
-					<span class="green">• </span>Generating Our Keys
-				</div>
+				<ol class="dark">
+					<li>High Level Overview</li>
+					<li>One Way Functions</li>
+					<li>Prime Factorisation</li>
+					<li>Coprimes</li>
+					<li>Euler's Totient</li>
+					<li>Euler's Theorum</li>
+					<li>Generating Our Keys</li>
+				</ol>
 			</section>
 
 			<section>
@@ -75,7 +75,7 @@
 					its single unique combination of primes is simply itself. We call this unique combination a numbers
 					<a href="https://en.wikipedia.org/wiki/Prime_factor">prime factors</a>. Below are a few examples:</p>
 				<br />
-				<div class="code">
+				<div class="dark">
 					<span class="orange"> 4 = </span>2 &times; 2<br />
 					<span class="orange"> 5 = </span>5<br />
 					<span class="orange"> 6 = </span>2 &times; 3<br />
@@ -113,7 +113,7 @@
 				<p>By knowing the prime factors of a part of our keys in advance we can easily work out its totient value. This is extremely useful
 					for us when we generate our public and private keys.</p>
 				<br />
-				<div class="code">
+				<div class="dark">
 					The totient of 12 is the number of numbers below 12 that are <span class="orange">coprime</span>.<br />
 					<span class="orange">11</span>, 10, 9, 8, <span class="orange">7</span>, 6, <span class="orange">5</span>, 4, 3, 2, <span class="orange">1</span><br />
 					The totient of 12 is 4.<br />
@@ -155,7 +155,7 @@
 					<b>d</b>. Although you can find it manually you will want to use one of these algorithms, for example the
 					<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a>.</p>
 				<br />
-				<div class="code">
+				<div class="dark">
 					<span class="orange"> p</span>, <span class="orange">q</span> = 2 large primes<br />
 					<span class="orange"> n </span>= pq<br />
 					<span class="orange"> &Phi;(n)</span> = (p - 1)(q - 1)<br />
