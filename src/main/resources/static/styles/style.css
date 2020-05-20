@@ -378,7 +378,7 @@ img.coverimg {
 
 .flex-row > div {
 	text-align: center;
-	margin: 30px 10px;
+	margin: 30px 25px;
 }
 
 .flex-row > div .entry {
@@ -825,6 +825,10 @@ a.stack-overflow-link > img {
 
 	.code, pre > code {
 		font-size: 12px;
+	}
+
+	.flex-row > div {
+		margin: 30px 10px;
 	}
 }
 
