@@ -53,6 +53,7 @@ h3 {
 
 h4 {
 	font-size: 18px;
+	margin: 15px 0 5px;
 }
 
 p {
@@ -232,10 +233,11 @@ div.entries.container {
 	white-space: nowrap;
 	text-align: center;
 	overflow: hidden;
+	max-width: 280px;
 	font-size: 20px;
 	padding: 5px;
 	color: white;
-	max-width: 280px;
+	margin: 0;
 } div.entry > img {
     transition: all 0.2s 0.1s;
     filter: alpha(opacity=80);
@@ -469,7 +471,7 @@ img.coverimg {
 
 .book-details h4 {
 	font-size: 20px;
-	margin-bottom: 4px;
+	margin: 0 0 4px 0;
 }
 
 .book-details .author {

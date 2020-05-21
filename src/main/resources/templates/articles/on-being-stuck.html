@@ -58,8 +58,8 @@
 				<h3>Task Estimates</h3>
 				<p>If you look back to our definition, you'll noticed we used the ambiguous phrase <q>"for a significant time"</q>. That's because what we consider
 					<i>significant</i> depends on our context. If you're looking for a proof that <var>P</var> ≠ <var>NP</var> then not making progress for a couple
-					of days (or weeks or years) doesn't mean you're stuck, in fact it is expected. If on the other hand you're fixing a simple UI bug on a web
-					application then you are well, truly, and extremely stuck.</p>
+					of days (or weeks or years) doesn't mean you're stuck, in fact it is expected. If on the other hand you're fixing a simple
+					<abbr title="User Interface">UI</abbr> bug on a web application then you are well, truly, and extremely stuck.</p>
 				<br/>
 				<p>You need to know how long the problem is expected to take. Which is why you should always have an estimate of the time it will take to complete
 					your current task, even if you make that estimate yourself.</p>
@@ -102,7 +102,7 @@
 				</ul>
 				<br />
 				<p>Let's go through these, one at a time, and discuss the kinds of problems we can fall into. And more importantly, what we should be doing about them. If
-					you're stuck at any stage it's best to go through all of these. Even if only to double check that you understand each correctly.</p>
+					you're stuck at any stage it's best to go through all of these. If only to double check that you understand each correctly.</p>
 				<h3>Requirements</h3>
 				<p>Getting stuck here is easy and common. When programmers think about tough problems they think about choosing the right search algorithm for
 					unusual data structures, identifying race conditions in heavily asynchronous systems, tracking down memory leaks, or other such technical tasks. But
@@ -112,10 +112,40 @@
 					path and straight to a dead end. That means understanding how the system operates <em>now</em>, and how we intend it to work <em>after</em> your task
 					is complete.</p>
 				<br />
-				<p>Software developers have a tendency to want to avoid communicated with other people. <em>Don't avoid talking to people</em>. Make a list of <em>any</em>
+				<p>Software developers have a tendency to avoid communicating with other people. <em>Don't avoid talking to people</em>. Make a list of <em>any</em>
 					questions, or <em>any</em> assumptions, and go check with an appropriate stake-holder. That could be the project owner, the technical lead, or the
 					customer directly. Once you have your answers, update your task to include the new details so you're not the only one to benefit from the clearer
 					requirements.</p>
+				<h3>Issue Reproduction</h3>
+				<p>To understand an issue you need to be able to reproduce the non-ideal situation. Especially if that situation is a bug. Getting stuck here is more simple.
+					If you can't reproduce the problem, go ask the person who had it. It might be that something specific about their situation hasn't been mentioned.</p>
+				<br />
+				<p>If there <em>is</em> something very specific that is required to reproduce their issue, and you have identified what it is, then congratulations. You now have
+					a valuable clue.</p>
+				<h3>Identifying The Source</h3>
+				<p>Now it is time to work out where in the code we have to make some changes. For bugs this is about finding the root cause. For new features or improvements this
+					is a question of understanding the architecture as a whole, and finding the cleanest place to refactor, add, or delete logic. If you're stuck here it is because
+					your search has come to a dead end, or you don't even know what you're looking for. What should we do about this?</p>
+				<br />
+				<ul class="dark">
+					<li>Find an entry point.</li>
+					<li>Do a human binary search.</li>
+					<li><em>READ THE CODE</em>.</li>
+					<li>Refactor.</li>
+					<li>Experiment with changes.</li>
+					<li>RTFM.</li>
+				</ul>
+				<h4>Find an Entry Point</h4>
+				<p>If your project has strong naming conventions, and you have good domain knowledge, you may be able to just search for the name of a file you think is affected.
+					But in most cases you will need somewhere to start your search. Usually that place is where we interact with your application. This might be a web service, a user
+					interface, or in the console.</p>
+				<br />
+				<p>For web applications this might be a controller, <abbr title="Representational state transfer">REST</abbr> end-point, or an <abbr title="HyperText Markup Language">HTML</abbr>
+					file, that maps to the <abbr title="Uniform Resource Locator">URL</abbr> we are visiting when the problem occurs. For scheduled jobs this might be the logs, or an applications
+				    command line interface. Either way, identifying the location of code responsible for the interface is simpler. Simply search in your project for parts of the
+					<abbr title="Uniform Resource Locator">URL</abbr>, command, log messages, etc that identify that interface. The searching capabilities of your favorite tools are your
+					friend here. Once we've found this code, we have a starting point.</p>
+				<br />
 			</section>
 
 		</article>
