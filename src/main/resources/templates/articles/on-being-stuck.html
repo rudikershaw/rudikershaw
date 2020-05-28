@@ -158,11 +158,14 @@
 					what you are working on. When we're just skipping around we might find a way to fix the issue but it might just be a hack. If our software is to stay maintainable we need
 					to fix the root problem rather than adding work-arounds who might themselves break at a later date.</p>
 				<br />
+				<p>Being good at reading code is easily one of the most important skills software developers can have. Whole books could be written on doing it well, and I encourage
+					you to find ways of improving. Aside from just practicing, there are tool that can help. Modern <abbr title="Integrated Development Environment">IDE</abbr>s
+					come with a whole host of features that can help; syntax highlighting, code inspection shortcuts, debuggers, usage finders, and search. Use these features. They're great.</p>
+				<br />
 				<aside>As with normal reading, if you come across a word or phrase (function, syntax, expression, etc) you don't understand, stop and look it up. People with larger vocabularies read
 					<a href="https://www.tandfonline.com/doi/abs/10.1080/0958822042000319674">faster, comprehend more</a>, think with a greater number of abstract concepts, and are
 					<a href="http://reading.uoregon.edu/big_ideas/voc/voc_what.php">generally more successful</a>. Other than looking things up each time, there is another guaranteed way of expanding
 					your vocabulary. More reading.</aside>
-
 				<h4>Refactor</h4>
 				<p>If we come to some code that is incomprehensible, we still need to understand it. So let's refactor it. Start with variable names. Change the variable names to more precisely
 					describe what they are, and once we're done move onto functions. If a function's purpose is unclear then pull out segments that are clear and give them precise concise names.
@@ -178,11 +181,30 @@
 					feedback as quickly as possible. If you have to wait 20 minutes for a build to check if our assumption was correct, you will forget why you were testing it, and what you were going to try next.</p>
 				<h4>RTFM</h4>
 				<p><abbr title="Read The F****** Manual">RTFM</abbr> stands for Read The Manual (what about the F?), which is sometimes precisely what we need to do. Occasionally reading the code line by line, and
-					searching for what they mean, just won't be enough to understand. This usually happens when we're using some kind of framework or library that we require some high level knowledge of.</p>
+					searching for what they mean, just won't be enough to understand. This usually happens when using some kind of framework or library that we need some high level knowledge of.</p>
 				<br />
-				<p>When this happens it is important to focus some time on simply learning the concepts, life-cycles, etc that a framework deals with. Be kind to yourself and take a day to read through a quick-start
-					tutorial, guide, book, and/or the official documentation. The sooner you do this the better. It is easy to convince yourself that this is a waste of time when you're in a rush. But if you delay,
+				<p>When this happens it's important to spend some time on learning the concepts, life-cycles, etc that a framework defines. Be kind to yourself and take a day to read through quick-start
+					tutorials, guides, books, and/or the official documentation. The sooner you do this the better. It's easy to tell yourself that this is a waste of time. But if you delay,
 					you will get stuck frequently until you learn more.</p>
+
+				<h3>Doing Something About It</h3>
+				<p>You're most of the way there. You <a href="https://en.wikipedia.org/wiki/Grok#In_computer_programmer_culture">grok</a> the requirements, you <em>get</em> the interface's involvement, and you've
+					found the exact spot in the code that needs changes. If you're stuck now, it's because it isn't clear what to do about it.</p>
+				<br />
+				<p>Sometimes being stuck here means you haven't fully understood everything that comes before. For example if you don't know how the software should act once a bug is fixed,
+					then you don't <em>really</em> understand the requirements. But let's assume you understand all that. So what's left to know?</p>
+				<br />
+				<p>What lines of code do I write to implement our requirements. How should our classes, structures, etc be architected. You'll notice those questions are rhetorical. They are specific to your
+					particular circumstance, and different for every language, framework, or technology. But there are ways to make it clearer, that are general enough for most situations.</p>
+				<br />
+				<ul class="dark">
+					<li>Write a test.</li>
+					<li>Articulate the steps.</li>
+					<li>Make it simpler.</li>
+					<li>Learn your tech's features.</li>
+				</ul>
+				<h4>Write A Test</h4>
+				<p></p>
 			</section>
 
 		</article>
