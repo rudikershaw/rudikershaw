@@ -178,7 +178,7 @@
 					Even if we jump straight to experimenting with changes and find a solution immediately, there's a pretty good chance our solution is awful.</p>
 				<br />
 				<p>Experimenting with changes should be something we do only after we have a reasonable understanding of a problem and we want to test our assumptions. As with all changes, find a way to get
-					feedback as quickly as possible. If you have to wait 20 minutes for a build to check if our assumption was correct, you will forget why you were testing it, and what you were going to try next.</p>
+					feedback as quickly as possible (write a test!). If you have to wait 20 minutes for a build to check if our assumption was correct, you will forget why you were testing it, and what you were going to try next.</p>
 				<h4>RTFM</h4>
 				<p><abbr title="Read The F****** Manual">RTFM</abbr> stands for Read The Manual (what about the F?), which is sometimes precisely what we need to do. Occasionally reading the code line by line, and
 					searching for what they mean, just won't be enough to understand. This usually happens when using some kind of framework or library that we need some high level knowledge of.</p>
@@ -204,7 +204,32 @@
 					<li>Learn your tech's features.</li>
 				</ul>
 				<h4>Write A Test</h4>
-				<p></p>
+				<p>Not everyone is sold on <a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a>, and the research is
+					<a href="https://dev.to/ruairitobrien/does-test-driven-development-work-p54">poor and varied</a>. But some conclusions on <abbr title="Test Driven Development">TDD</abbr> do appear to
+					be consistent. It frequently results in <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.9412&rep=rep1&type=pdf">higher quality code</a>, and
+					<a href="https://collaboration.csc.ncsu.edu/laurie/Papers/TDDpaperv8.pdf">better test coverage</a>. And, importantly in our case, it is a great way to speed up your feedback loop.
+					You learn faster when you get quick consistent feedback from your actions. So write a test, and run it every time you change something.</p>
+				<br />
+				<p>Anecdotally, you are more likely to get (or stay) stuck if there are long waits or pauses where you can loose your train of thought. Writing tests first gets you the feedback you need as <em>quickly</em> as possible.
+					And getting <em>reliable consistent</em> feedback means you can make decisions with less fear of going down the wrong path. Testing you assumptions as you go along means that each subsequent decision
+					is made with fewer assumptions. Assumptions are bad, and tests are the good.</p>
+				<br />
+				<h4>Articulate The Steps</h4>
+				<p>When writing code, it is easy to find ourselves focusing on writing the <em>next</em> line, and forgetting about the big picture. This is particularly important if we are stuck <em>and</em> have an
+					<a href="https://en.wikipedia.org/wiki/XY_problem">XY problem</a>. Being stuck trying to do <var>Y</var> is no good, especially when it isn't the right way to go about solving <var>X</var>. As a
+					fix for this particular problem, we ought to make sure we can articulate our full solution before we start implementing bits.</p>
+				<br />
+				<p>Simply list each of the steps in your solution in plain text. You can draw a flow chart, or write pseudo-code if you want. You might get to the end
+					and realise that a middle step isn't going to work, or it is not essential, in which case it's a good job you weren't trying to implement that step. You don't want to be stuck working
+					on something you don't need to be doing.</p>
+				<br />
+				<h4>Make It Simpler</h4>
+				<p>Articulating your intended solution is great, but you will probably want to ensure that solution is okay. Go through your steps, check if any of them can be generalised, simplified, or removed
+					entirely. If you have a solution, but it is complicated, there is a fair to decent chance you can make it simpler. Dedicate some time to seeing whether you can. This idea is best described by example.</p>
+				<br />
+				<p>I had a variable length series of drop-down selections in a form, and when you filled the last one you could then submit the form. This was an <abbr title="HyperText Markup Language">HTML</abbr> form,
+					and only the last <code>select</code> could have a <code>name</code> attribute. We only cared about the last selected value. A new feature threw a spanner in the works. Some items, once selected,
+					should allow you to immediately submit the form without continuing further. Now I had to work out where the name attribute should be in the form on the fly every time someone changed a drop down.</p>
 			</section>
 
 		</article>
