@@ -25,6 +25,7 @@ public class DefaultArticleController {
      * Order of the list determines the order of the articles on the site.
      */
     public static final List<Article> ARTICLES = List.of(
+        new Article("On Being Stuck", "articles/on-being-stuck", "images/on-being-stuck.jpg", "How we programmers get ourselves out of a rut isn't just a useful skill. It defines how product we are at the highest level."),
         new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe we can do better."),
         new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."),
         new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."),

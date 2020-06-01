@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+        <link th:replace="fragments/article/head :: head">
+    </head>
+	<body>
+		<header th:replace="index :: header"></header>
+		<article>
+			<div class="text-container">
+				<p class="date">18/05/2020</p>
+				<p class="views"><span th:text="${article.views}">1</span> views</p>
+			</div>
+
+			<section>
+				<h1 th:text="${article.name}">On Being Stuck</h1>
+				<hr />
+				<img class="coverimg" src="/images/on-being-stuck-banner.jpg" alt="A brown orange teddy bear stuck in a tree" />
+				<br />
+				<p>Every programmer gets stuck. We might be working on a tricky bug, or in a domain we are unfamiliar with, and all of a
+					sudden we are hit by an awful feeling. A exasperating feeling that can be summed up in the phrase "I have no idea where to go from here".
+					Being able to break out of that rut is an important skill.</p>
+				<br />
+				<p>So what should a software developer do when they get stuck? We'll get to that. But first, what <em>precisely</em> is <b>being stuck</b>?</p>
+			</section>
+
+			<section>
+				<h2>What Is <i>Being Stuck</i>?</h2>
+				<p>First things first, what do the dictionaries say? The most appropriate definition I can find for being stuck is from the
+					<cite><a href="https://www.thefreedictionary.com/being+stuck">Cambridge Dictionary</a></cite> and it says:</p>
+				<blockquote>
+					<span class="green">"</span>not able to continue reading, answering questions, etc. because something is too difficult<span class="green">"</span>
+				</blockquote>
+				<p>Not bad, but we can do better. Saying something is too difficult is unhelpful and imprecise. It is tempting to just take that off the end of the
+					definition. But if you're not able to continue because you're playing computer games then you're not stuck, you're procrastinating. So what
+					differentiates someone who is procrastinating from someone who is genuinely stuck? Knowing the next step.</p>
+				<br />
+				<p>We're almost there with a precise enough definition, but something is missing. If I'm working and suddenly don't know how to proceed, am I
+					immediately stuck? It's tempting to say yes. But if I realise what to do two seconds later, was I stuck in hind-sight? Not really. Now we can put
+					together a more precise definition to work with.</p>
+				<blockquote>
+					<span class="green">"</span>Being stuck is not being able to continue with a given task, for a significant time, because we cannot work out how to proceed.<span class="green">"</span>
+					<footer>- Me, <cite>just now</cite></footer>
+				</blockquote>
+			</section>
+
+			<section>
+				<h2>Time Management</h2>
+				<p>Being stuck is like alcoholism<sup>(it isn't)</sup>. To fix it you must first recognise that you have a problem. The sooner we can see that we're
+					stuck or floundering the quicker we can get back on track. How can we ensure we're aware as soon as we can be? By using some common time management
+					techniques.</p>
+				<br />
+				<ul class="dark">
+					<li>Task estimates.</li>
+					<li>Time trackers.</li>
+					<li>Timeboxing.</li>
+					<li>Pomodoro technique.</li>
+				</ul>
+				<h3>Task Estimates</h3>
+				<p>If we look back at our definition, you'll notice we used the ambiguous phrase <q>"for a significant time"</q>. That's because what we consider <i>significant</i> depends on our context.
+					If you're looking for a proof that <a href="https://en.wikipedia.org/wiki/P_versus_NP_problem"><var>P</var> ≠ <var>NP</var></a> then not making progress for a couple of days (or weeks or
+					months) doesn't mean you're stuck. If, on the other hand, you're fixing a simple <abbr title="User Interface">UI</abbr> bug on a web application then you are well and truly stuck.</p>
+				<br/>
+				<p>We need to know how long the problem is expected to take. Which is why we should always have an estimate of the time it will take to complete, even if we make that estimate ourselves.</p>
+				<h3>Time Trackers</h3>
+				<p>Knowing how long we can expect a task to take is great, but if we don't know how long we've been working on it how will we know that we're
+					struggling? Tracking our time can be as simple as making a note of the time we started, or using an actual timer that runs while we work.</p>
+				<h3>Timeboxing</h3>
+				<p>Timeboxing simply means setting a time we'll be done by and sticking to it. We can use our original estimate, or some other upper limit. As
+					this final time grows closer you will be more aware of any impediments to reaching your goal. You can also use it once you realise you are stuck,
+					so that you can say <q>"if working this way doesn't bear fruit in the next hour, I need to rethink my approach"</q>.</p>
+				<h3>Pomodoro Technique</h3>
+				<p>The <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro technique</a> is a time management technique that combines elements of the
+					others above. It can be approximately summed up as;</p>
+				<br />
+				<ol class="dark">
+					<li>Set a timer for <var>x</var> minutes.</li>
+					<li>Work exclusively on your task.</li>
+					<li>When the timer goes off tally a mark on a piece of paper.</li>
+					<li>If you have less than four marks take a 5 minute break and goto 1.</li>
+					<li>After 4 marks take a longer break and start again.</li>
+				</ol>
+				<br />
+				<p>As well as being a productive way to work, the timer gives us an easy way to be sure when we're stuck. If you're having trouble when it goes off
+					then you take your break and start again. If you're still stuck the next time the timer goes off, then you know you need to try something different.</p>
+			</section>
+
+			<section>
+				<h2>How To Proceed</h2>
+				<p>So you're stuck. Probably the most important part of our definition is that <q>"we cannot work out how to proceed"</q>. Not knowing how
+					to move forward is fundamentally a lack of information. That leads us neatly to what we have to do now: information gathering.</p>
+				<br />
+				<p>Most software development tasks follow a pretty standard story. We can get stuck in any part of this story, or we can be stuck further along in the story because
+					of misunderstandings brought forward from an earlier step. It's important, when stuck, to make sure we have the information we need from each step.</p>
+				<br />
+				<ul class="dark">
+					<li>Requirements.</li>
+					<li>Issue reproduction.</li>
+					<li>Identifying the source.</li>
+					<li>Doing something about it.</li>
+				</ul>
+				<br />
+				<p>Let's go through these, one at a time, and discuss the kinds of problems we can fall into. And more importantly, what we should be doing about them. If
+					we're stuck at any stage it's best to go through all of these. If only to double check that we understand each correctly.</p>
+
+				<h3>Requirements</h3>
+				<p>Getting stuck here is easy and common. When programmers think about tough problems they think about choosing the right search algorithm for
+					unusual data structures, identifying race conditions in heavily asynchronous systems, tracking down memory leaks, or other such technical tasks. But
+					in my experience that is not where we spend most of our time stuck.</p>
+				<br />
+				<p>First things first, make sure you understand the requirements. Not just at a cursory glance either. A bad assumption here can lead us down the wrong
+					path and straight to a dead end. That means understanding how the system operates <em>now</em>, and how we intend it to work <em>after</em> our task
+					is complete.</p>
+				<br />
+				<p>Software developers have a tendency to avoid communicating with other people. <em>Don't avoid talking to people</em>. Make a list of <em>any</em>
+					questions, or <em>any</em> assumptions, and go check with an appropriate stake-holder. That could be the project owner, the technical lead, or the
+					customer directly. Once you have your answers, update your task to include the new details so you're not the only one to benefit from the clearer
+					requirements.</p>
+
+				<h3>Issue Reproduction</h3>
+				<p>To understand an issue we need to be able to reproduce the non-ideal situation. Especially if that situation is a bug. Getting stuck here is more simple.
+					If you can't reproduce the problem, go ask the person who had it. It might be that something specific about their situation hasn't been mentioned.</p>
+				<br />
+				<p>If there <em>is</em> something very specific that is required to reproduce their issue, and you have identified what it is, then congratulations. You now have
+					a valuable clue.</p>
+
+				<h3>Identifying The Source</h3>
+				<p>Now it is time to work out where in the code we have to make some changes. For bugs this is about finding the root cause. For new features or improvements this
+					is a question of understanding the architecture as a whole, and finding the cleanest place to refactor, add, or delete logic. If you're stuck here it is because
+					your search has come to a dead end, or you don't even know what you're looking for. What should we do about this?</p>
+				<br />
+				<ul class="dark">
+					<li>Find an entry point.</li>
+					<li><em>READ THE CODE</em>.</li>
+					<li>Refactor.</li>
+					<li>Experiment with changes.</li>
+					<li>RTFM.</li>
+				</ul>
+				<h4>Find an Entry Point</h4>
+				<p>If your project has strong naming conventions, and you have good domain knowledge, you may be able to just search for the name of a file you think is affected.
+					But in most cases you will need somewhere to start your search. Usually that place is where we interact with your application. This might be a web service, a user
+					interface, or in the console.</p>
+				<br />
+				<p>For web applications this might be a controller, <abbr title="Representational state transfer">REST</abbr> end-point, or an <abbr title="HyperText Markup Language">HTML</abbr>
+					file, that maps to the <abbr title="Uniform Resource Locator">URL</abbr> we are visiting when the problem occurs. For scheduled jobs this might be the logs, or an applications
+				    command line interface. Either way, identifying the location of code responsible for the interface is simpler. Simply search in your project for parts of the
+					<abbr title="Uniform Resource Locator">URL</abbr>, command, log messages, etc that identify that interface. The searching capabilities of your favorite tools are your
+					friend here. Once we've found this code, we have a starting point.</p>
+				<br />
+				<h4>Read The Code</h4>
+				<p>Once you have found an entry point, start reading. Yes, that's right, from the beginning. Occasionally I suggest this and get incredulous looks. "<i>Wait, what? All of it?</i>".
+					More or less, yeah. Trying to skip through it for an area that <em>looks right</em> isn't likely to find the root of the problem. You'll spend more time meandering around the code
+					gathering an <em>intuition</em> until you eventually make a good enough guess to change it. We don't want an <em>intuition</em>, we want to <em>know</em> how it works. We don't
+					want to be <em>guessing</em>, we want <em>informed decisions</em>.</p>
+				<br />
+				<p>This gets easier the more you do it. You'll build domain knowledge faster if you actually understand what you are working on. When we're just skipping around we might find a way
+					to fix the issue but it might just be a hack. If we want our software to be maintainable we need to fix the root problem rather than adding work-arounds.</p>
+				<br />
+				<p>Being good at reading code is easily one of the most important skills software developers can have. Whole books could be written on doing it well, and I encourage
+					you to find ways of improving. Aside from just practicing, there are tool that can help. Modern <abbr title="Integrated Development Environment">IDE</abbr>s
+					come with a whole host of features that can help; syntax highlighting, code inspection shortcuts, debuggers, usage finders, and search. Use these features. They're great.</p>
+				<br />
+				<aside>As with normal reading, if you come across a word or phrase (function, syntax, expression, etc) you don't understand, stop and look it up. People with larger vocabularies read
+					<a href="https://www.tandfonline.com/doi/abs/10.1080/0958822042000319674">faster, comprehend more</a>, think with a greater number of abstract concepts, and are
+					<a href="http://reading.uoregon.edu/big_ideas/voc/voc_what.php">generally more successful</a>. Other than looking things up each time, there is another guaranteed way of expanding
+					your vocabulary. More reading.</aside>
+				<h4>Refactor</h4>
+				<p>If we come to some code that is incomprehensible, we still need to understand it. So let's refactor it. Start with variable names. Change the variable names to more precisely
+					describe what they are, and once we're done move onto functions. If a function's purpose is unclear then pull out segments that are clear and give them precise concise names.
+					The terrible method should eventually read like a clear list of things done, and once that is the case it should be absolutely clear what it does. Once it's clear, rename the top function.</p>
+				<br />
+				<p>Errors should be much more obvious after refactoring to smaller, clearer, and better named functions. Additionally, you will develop a good understanding of
+					this code, which may give clues to how other relevant areas ought to be interacting with it. If you can't read it, refactor it.</p>
+				<h4>Experiment with changes</h4>
+				<p>When we're in a rush, pressured for time, feeling blasé, or just lazy this is the step we jump to without going through any of the previous ones. Doing that is rarely the right thing to do.
+					Even if we jump straight to experimenting with changes and find a solution immediately, there's a pretty good chance our solution is awful.</p>
+				<br />
+				<p>Experimenting with changes should be something we do only after we have a reasonable understanding of a problem and we want to test our assumptions. As with all changes, find a way to get
+					feedback as quickly as possible (write a test!). If we have to wait 20 minutes for a build to check if our assumption was correct, we will forget why we were testing it, and what we were going to try next.</p>
+				<h4>RTFM</h4>
+				<p><abbr title="Read The F****** Manual">RTFM</abbr> stands for Read The Manual (what about the F?), which is sometimes precisely what we need to do. Occasionally reading the code line by line, and
+					searching for what they mean, just won't be enough to understand. This usually happens when using some kind of framework or library that we need some high level knowledge of.</p>
+				<br />
+				<p>When this happens it's important to spend some time on learning the concepts, life-cycles, etc that a framework defines. Be kind to yourself and take a day to read through quick-start
+					tutorials, guides, books, and/or the official documentation. The sooner you do this the better. It's easy to tell yourself that this is a waste of time. But if you delay,
+					you will get stuck frequently until you learn more.</p>
+
+				<h3>Doing Something About It</h3>
+				<p>You're most of the way there. You <a href="https://en.wikipedia.org/wiki/Grok#In_computer_programmer_culture">grok</a> the requirements, you <em>get</em> the interface's involvement, and you've
+					found the exact spot in the code that needs changes. If you're stuck now, it's because it isn't clear what to do about it.</p>
+				<br />
+				<p>Sometimes being stuck here means you haven't fully understood everything that comes before. For example if you don't know how the software should act once a bug is fixed,
+					then you don't <em>really</em> understand the requirements. But let's assume you understand all that. So what's left to know?</p>
+				<br />
+				<p>What lines of code do I write to implement our requirements. How should our classes, structures, etc be architected. You'll notice those questions are rhetorical. They are specific to your
+					particular circumstance, and different for every language, framework, or technology. But there are ways to make it clearer, that are general enough for most situations.</p>
+				<br />
+				<ul class="dark">
+					<li>Write a test.</li>
+					<li>Articulate the steps.</li>
+					<li>Make it simpler.</li>
+					<li>Learn your tech's features.</li>
+				</ul>
+				<h4>Write A Test</h4>
+				<p>Not everyone is sold on <a href="https://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a>, and the research is
+					<a href="https://dev.to/ruairitobrien/does-test-driven-development-work-p54">poor and varied</a>. But some conclusions on <abbr title="Test Driven Development">TDD</abbr> do appear to
+					be consistent. It frequently results in <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.9412&rep=rep1&type=pdf">higher quality code</a>, and
+					<a href="https://collaboration.csc.ncsu.edu/laurie/Papers/TDDpaperv8.pdf">better test coverage</a>. And, importantly in our case, it is a great way to speed up your feedback loop.
+					You learn faster when you get quick consistent feedback from your actions. So write a test, and run it every time you change something.</p>
+				<br />
+				<p>Anecdotally, you are more likely to get (or stay) stuck if there are long waits or pauses where you can loose your train of thought. Writing tests first gets you the feedback you need as <em>quickly</em> as possible.
+					And getting <em>reliable consistent</em> feedback means you can make decisions with less fear of going down the wrong path. Testing you assumptions as you go along means that each subsequent decision
+					is made with fewer assumptions. Assumptions are bad, and tests are the good.</p>
+				<br />
+				<h4>Articulate The Steps</h4>
+				<p>It is easy to find ourselves focusing on writing the <em>next</em> line, and forgetting about the big picture. This is particularly important if we are stuck <em>and</em> have an
+					<a href="https://en.wikipedia.org/wiki/XY_problem">XY problem</a>. Being stuck trying to do <var>Y</var> is no good, especially when it isn't the right way to go about solving <var>X</var>. As a
+					fix for this particular problem, we ought to make sure we can articulate our full solution before we start implementing bits.</p>
+				<br />
+				<p>Simply list each of the steps in your solution in plain text. You can draw a flow chart, or write pseudo-code if you want. You might get to the end
+					and realise that a middle step isn't going to work, or it is not essential, in which case it's a good job you weren't trying to implement that step. You don't want to be stuck working
+					on something you don't need to be doing.</p>
+				<br />
+				<h4>Make It Simpler</h4>
+				<p>Articulating your solution is great, but you will probably want to ensure it's a quality change. Go through your steps, check if any of them can be generalised, simplified, or removed
+					entirely. If you have a solution, but it is complicated, there is a fair to decent chance you can make it simpler. Dedicate some time to seeing whether you can. This idea is best described by example.</p>
+				<br />
+				<p>I had a variable number of drop-downs in a form, and when you filled the last one you could then submit the form. In this <abbr title="HyperText Markup Language">HTML</abbr> form,
+					only the <em>last</em> <code>select</code> could have a <code>name</code> attribute. We only cared about the last selected value. A new feature threw a spanner in the works. <em>Some</em> items, once selected,
+					should allow you to immediately submit the form without continuing. Now I had to work out where the name attribute should be in the form every time someone changed a drop down.</p>
+				<br />
+				<p>I got stuck 10 levels deep in if statements with various tracking attributes I added to the <code>select</code> elements. Long story short I drew a flow chart, tried to simplify it, and realised
+					that all the conditionals were irrelevant. It would always work if I added the <code>name</code> attribute to the last select changed. Sometimes we get stuck because we're making it more complicated
+					than it needs to be.</p>
+				<br />
+				<h4>Learn Your Tech's Features</h4>
+				<p>This is similar to the <abbr title="Read The F****** Manual">RTFM</abbr> section from earlier. It suffices to say that many frameworks and libraries will have features designed to solve the problems you
+					are having. If you don't know that they have these features then you may get stuck trying to implement solutions to complex problems that are already solved.</p>
+				<br />
+				<p>There are two ways of finding the right feature to solve your problem. Either you have a hunch that your library or framework has solved it, or you have spent some time learning the features and you
+					remember that this problem is solved. I have no advice on the former. The latter is as simple as setting aside the time, and doing some reading.</p>
+			</section>
+
+			<section>
+				<h2>Asking For Help</h2>
+				<p>Sometimes we just need to ask for help. Either you've clarified all that can be made clear and still don't know how to proceed, or the only available option is
+					extremely time consuming and asking will save that time. Occasionally the latter is a cop-out, but you can't always afford to read a whole book in the hope
+					the answer is in there somewhere. But if you are going to ask someone a question, we need to do it right.</p>
+				<br />
+				<p>Draft your question before you ask it. "I need some help" isn't a question. <cite>Stackoverflow</cite> offers wonderful
+					<a href="https://stackoverflow.com/help/how-to-ask">advice on asking questions</a>, and you shouldn't put any less effort into the questions you ask your colleagues. The process of drafting a
+					good question before you ask it often leads to realisations or epiphanies without having to even ask it. This idea is neatly referred to as
+					<a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber ducking</a>.</p>
+				<br />
+				<p>On a loosely related note, when you have a question for someone don't send a greeting first over a messaging app. They will just be sitting there waiting for you to finish typing,
+					which could take some time. This can be incredibly annoying. <a href="https://www.nohello.com/">No hello</a>.</p>
+
+			</section>
+
+			<section>
+				<h2>Summary</h2>
+				<p>Initially I intended this to be a short pithy piece. It turns out to be the longest article I have ever written for this website, and I've barely scratched the surface.</p>
+				<br />
+				<p>I hoped to create a process that we could go through when we're stuck, but my attempt to write a checklist resulted in a list that was insultingly obvious. I now hope, instead, that this
+					article has left you with some new ideas to try. More than that, I hope it has instilled a sense of importance to the basic knowledge gathering skills you might have been taking for granted.</p>
+			</section>
+
+		</article>
+		<hr />
+
+        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+		<div class="text-container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - On Being Stuck';
+			var disqus_title = 'On Being Stuck';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>

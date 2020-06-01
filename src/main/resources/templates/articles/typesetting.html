@@ -64,7 +64,7 @@ html {
 				And its the support of those features by different browser versions that dictates the format of our declaration
 				above. So, lets go through this a few lines at a time.</p>
 			<br />
-			<pre class="code"><code class="language-css">/* Declare font-face New Haas by Unknown.  */
+			<pre class="dark"><code class="language-css">/* Declare font-face New Haas by Unknown.  */
 @font-face {
 	font-family: "NewHaas";</code></pre>
 			<br />
@@ -76,7 +76,7 @@ html {
 				This is the name we will use to reference our <b><code>font-family</code></b> later in our CSS. Skipping a line (we'll come back
 				to that one), we move onto;</p>
 			<br />
-			<pre class="code"><code class="language-css">src: url("fonts/NewHaas.woff2") format("woff2"),
+			<pre class="dark"><code class="language-css">src: url("fonts/NewHaas.woff2") format("woff2"),
         url("fonts/NewHaas.woff") format("woff"),
         url("fonts/NewHaas.ttf") format("truetype"),
         url("fonts/NewHaas.eot?#iefix") format("embedded-opentype"),
@@ -97,7 +97,7 @@ html {
 			amongst modern browsers. It seemed silly to me to have the <b>.eot</b> file above it, which is a much older
 			file type that misses some font details. So, what about the line we skipped?</p>
 			<br />
-			<pre class="code"><code class="language-css">src: url("fonts/NewHaas.eot");</code></pre>
+			<pre class="dark"><code class="language-css">src: url("fonts/NewHaas.eot");</code></pre>
 			<br />
 			<p>So, what exactly is this for? Well, essentially its there to support Internet Explorer 6-8 as well
 			as Compatibility mode. Turns out, that in certain situations, older versions of IE have difficulty going
