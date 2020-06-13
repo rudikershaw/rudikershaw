@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Scrum: The Art of Doing Twice the Work in Half the Time",
+      "author": "Jeff Sutherland",
+      "dateFinished": "2020-06-13",
+      "synopsis": "A collection of anecdotes that explain and justify why Scrum was created.",
+      "review": "The books goes into some of the research that explains the effectiveness of agile practices, but predominantly it focuses on sports, military, and business anecdotes. If you're already sold on agile work practices, you're unlikely to gain much from reading this. If you need convincing though, I suspect this book would do the job."
+    },
+    {
       "title": "Stop Starting, Start Finishing",
       "author": "Arne Roock",
       "dateFinished": "2020-06-07",
