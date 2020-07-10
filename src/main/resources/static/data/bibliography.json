@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "dateFinished": "2020-07-04",
+      "synopsis": "A discussion of what good software craftsmanship really is and how to get there.",
+      "review": "You don't have to agree with every bit of advice. The value comes from gaining an appreciation for carefully considering how our code can be better. A must read, for any software developer that cares about the quality of their work. I suspect the quality of my code has taken a leap simply for having read it."
+    },
+    {
       "title": "Scrum: The Art of Doing Twice the Work in Half the Time",
       "author": "Jeff Sutherland",
       "dateFinished": "2020-06-13",
