@@ -1,5 +1,6 @@
-# Rudi Kershaw Website and Blog
+# Rudi Kershaw
 
-This project is the code base for my personal blog and website. It is a web application written
-in Java using Spring Boot, Thymeleaf, and Maven for dependencies. It is designed to be run and
-hosted using Heroku.
+## Relevant Links
+[My Personal Website and Blog](https://www.rudikershaw.com)
+[My Twitter](https://twitter.com/rudikershaw)
+[My LinkedIn](https://www.linkedin.com/in/rudikershaw/)
