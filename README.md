@@ -1,4 +1,4 @@
-# Rudi Kershaw
+# About Me
 
 I am a software developer at @Cognitran. I work on solutions for authoring and publishing technical documentation predominantly in the automotive industry.
 
