@@ -2,7 +2,7 @@
 
 I am a software developer at @Cognitran. I work on solutions for authoring and publishing technical documentation predominantly in the automotive industry.
 
-In my spare time I [read](https://www.rudikershaw.com/bibliography), write, and maintain a few open-source projects. 
+In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](https://www.rudikershaw.com/#my-articles), and maintain a few open-source projects. 
 
 ## Links
  * [My Website](https://www.rudikershaw.com) 
