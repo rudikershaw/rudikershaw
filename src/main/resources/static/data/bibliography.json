@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Fibonacci's Rabbits",
+      "author": "Adam Hart-Davis",
+      "dateFinished": "2020-08-02",
+      "synopsis": "The history and details of 50 of the most important discoveries in mathematics.",
+      "review": "A wonderful tour of mathematics' most important concepts, and the history of their discovery. I am not generally a \"re-reader\" of books, but I suspect I will be reading this again.\n."
+    },
+    {
       "title": "Clean Code",
       "author": "Robert C. Martin",
       "dateFinished": "2020-07-04",
