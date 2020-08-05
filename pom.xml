@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<git.hooks.version>1.0.4</git.hooks.version>
+		<git.hooks.version>2.0.1</git.hooks.version>
 	</properties>
 
 	<dependencies>
