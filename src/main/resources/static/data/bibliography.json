@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "dateFinished": "2020-08-20",
+      "synopsis": "Victor Frankenstein gives life to his humanoid creation, crafted from the body parts of the deceased.",
+      "review": "Historic, deep, and original. Shelley's writing is poetic and beautiful, and it's safe to say this more nuanced style of writing horror has influenced every writer ever since."
+    },
+    {
       "title": "Fibonacci's Rabbits",
       "author": "Adam Hart-Davis",
       "dateFinished": "2020-08-02",
