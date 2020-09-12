@@ -9,3 +9,7 @@ In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](htt
  * [My Twitter](https://twitter.com/rudikershaw) 
  * [My LinkedIn](https://www.linkedin.com/in/rudikershaw/) 
  * [My Stackoverflow](https://stackoverflow.com/users/2182928/rudi-kershaw)
+
+
+## Stats
+![github stats](https://github-readme-stats.vercel.app/api?username=rudikershaw&show_icons=true)
