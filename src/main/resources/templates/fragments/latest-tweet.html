@@ -1,4 +1,4 @@
-<div xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:if="${tweet != null}" xmlns:th="http://www.w3.org/1999/xhtml">
     <h3>Latest Tweet</h3>
     <a class="tweet" th:href="${'https://twitter.com/RudiKershaw/status/' + tweet.id}">
         <img class="profile-image" th:src="${'data:image/png;base64,' + tweet.author.image}" alt="Twitter profile image"/>
