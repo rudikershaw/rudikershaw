@@ -1,16 +1,15 @@
 package main.dynamics;
 
-import main.dynamics.entities.Article;
-import main.dynamics.repositories.ArticleRepository;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import main.dynamics.entities.Article;
+import main.dynamics.repositories.ArticleRepository;
 
 /** Article service. */
 @Service
@@ -59,15 +58,6 @@ public class ArticleService {
             articleRepository.save(article);
         }
         return article;
-    }
-
-    /**
-     * Get a page of articles.
-     * @param pageable the configuration object specifying page size etc.
-     * @return a page of articles.
-     */
-    public List<Article> getPageOfArticles(final Pageable pageable) {
-        return articleRepository.findAllByOrderByPublishedDesc(pageable);
     }
 
     /**

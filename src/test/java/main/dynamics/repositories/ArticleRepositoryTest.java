@@ -1,6 +1,9 @@
 package main.dynamics.repositories;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.UUID;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +22,16 @@ public class ArticleRepositoryTest {
     @Test
     public void testEntityCrud()
     {
-        final Article article = new Article("Title", "path", "image/path.png", "Description.");
+        final Article article = createArticle();
         articleRepository.save(article);
 
-        final Article loaded = articleRepository.findByPath("path");
+        final Article loaded = articleRepository.findByPath(article.getPath());
 
-        Assertions.assertThat(loaded).isEqualTo(article);
+        assertThat(loaded).isEqualTo(article);
+    }
+
+    private Article createArticle()
+    {
+        return new Article("Title", UUID.randomUUID().toString(), "image/path.png", "Description.");
     }
 }
