@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<git.hooks.version>2.0.1</git.hooks.version>
-		<minimum.test.coverage>0.1</minimum.test.coverage>
+		<minimum.test.coverage>0.16</minimum.test.coverage>
 	</properties>
 
 	<dependencies>
