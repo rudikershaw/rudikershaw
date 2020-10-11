@@ -39,8 +39,10 @@ public class RefererRepositoryTest {
         final Referer referer = createReferer();
         refererRepository.save(referer);
 
+        final Referer loadedReferer = refererRepository.findByRefererIdentityRefererAndRefererIdentityArticleId("weird-device", article.getId());
         final List<Referer> loadedReferers = refererRepository.findAllByRefererIdentityArticleId(article.getId());
 
+        assertThat(loadedReferer).isEqualTo(referer);
         assertThat(loadedReferers).contains(referer);
     }
 
