@@ -1,6 +1,7 @@
 package main.dynamics.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -64,5 +65,21 @@ public class Referer implements Serializable {
      */
     public void setCount(final long requestCount) {
         this.count = requestCount;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        } else if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Referer referer = (Referer) o;
+        return Objects.equals(getRefererIdentity(), referer.getRefererIdentity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRefererIdentity());
     }
 }
