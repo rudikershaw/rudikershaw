@@ -115,7 +115,7 @@ header {
 	background-color: #272727;
 	border-top-color: #ED5900;
 	box-sizing: border-box;
-	border-top-width: 5px;
+	border-top-width: 4px;
 	border-style: solid;
 	position: absolute;
 	padding: 5px 20px;
@@ -267,8 +267,8 @@ h2.my-summary {
 
 p.my-description {
 	margin-bottom: 20px;
-	max-width: 550px;
-	font-size: 20px;
+	max-width: 600px;
+	font-size: 16px;
 }
 
 a.theres-more {
