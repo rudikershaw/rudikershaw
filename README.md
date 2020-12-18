@@ -12,5 +12,5 @@ In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](htt
 
 
 ## Stats
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rudikershaw&langs_count=8&layout=compact&bg_color=69768a&text_color=000000&title_color=000000&hide_border=true&icon_color=04264a)
-![Rudi's github stats](https://github-readme-stats.vercel.app/api?username=rudikershaw&count_private=true&show_icons=true&line_height=24&bg_color=69768a&text_color=000000&title_color=000000&hide_border=true&icon_color=04264a)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rudikershaw&langs_count=8&layout=compact&bg_color=00000000&text_color=58a6ff&title_color=58a6ff&hide_border=true&icon_color=04264a)
+![Rudi's github stats](https://github-readme-stats.vercel.app/api?username=rudikershaw&count_private=true&show_icons=true&line_height=24&bg_color=00000000&text_color=58a6ff&title_color=58a6ff&hide_border=true&icon_color=04264a)
