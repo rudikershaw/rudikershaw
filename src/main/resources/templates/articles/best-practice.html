@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+        <link th:replace="fragments/article/head :: head">
+    </head>
+	<body>
+		<header th:replace="index :: header"></header>
+		<article>
+			<div class="text-container">
+				<p class="date">10/02/2021</p>
+				<p class="views"><span th:text="${article.views}">1</span> views</p>
+			</div>
+
+			<section>
+				<h1 th:text="${article.name}">Software Best Practice?</h1>
+				<hr />
+				<img class="coverimg" src="/images/on-being-stuck-banner.jpg" alt="A brown orange teddy bear stuck in a tree" />
+				<br />
+				<p>Every programmer gets stuck. We might be working on a tricky bug, or in a domain we are unfamiliar with, and all of a
+					sudden we are hit by an awful feeling. A exasperating feeling that can be summed up in the phrase "I have no idea where to go from here".
+					Being able to break out of that rut is an important skill.</p>
+				<br />
+				<p>So what should a software developer do when they get stuck? We'll get to that. But first, what <em>precisely</em> is <b>being stuck</b>?</p>
+			</section>
+
+		</article>
+		<hr />
+
+        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+
+		<div class="text-container"><div id="disqus_thread"></div></div>
+		<script type="text/javascript">
+			/* * * Configure Disqus Variables * * */
+			var disqus_shortname = 'codenerd';
+			var disqus_identifier = '1 - Software Best Practice?';
+			var disqus_title = 'Software Best Practice?';
+
+			/* * * Declare disqus display script * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</body>
+</html>
