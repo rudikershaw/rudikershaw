@@ -247,6 +247,7 @@ div.entries.container {
 } div.entry > p {
 	text-align: center;
 	max-height: 120px;
+	min-height: 76px;
 	overflow: hidden;
 	display: block;
     width: auto;
