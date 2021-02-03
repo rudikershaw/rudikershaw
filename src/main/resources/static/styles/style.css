@@ -112,7 +112,7 @@ figcaption.dark {
 }
 
 header {
-	background-color: #272727;
+	background-color: #222323;
 	border-top-color: #ED5900;
 	box-sizing: border-box;
 	border-top-width: 4px;
@@ -126,7 +126,7 @@ header {
 }
 
 footer.index-footer {
-	background-color: #272727;
+	background-color: #222323;
 	text-align: center;
 	margin-top: 60px;
 	font-size: 24px;
@@ -164,7 +164,7 @@ a.sociallink {
 	margin-left: 8px;
     font-size: 25px;
 	display: block;
-	color: #272727;
+	color: #222323;
 	height: 29px;
 	width: 29px;
 	float: left;
@@ -188,7 +188,7 @@ a.donatelink {
 	padding: 0 5px;
 	line-height: 2;
 	display: block;
-	color: #272727;
+	color: #222323;
 	height: 29px;
 	width: 68px;
 	float: left;
@@ -228,7 +228,7 @@ div.entries.container {
 	min-height: 292px;
 	max-width: 290px;
 } div.entry > h4 {
-	background-color: #272727;
+	background-color: #222323;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-align: center;
@@ -259,6 +259,13 @@ h1.my-name {
 	margin: 0;
 	color: #ED5900;
 	font-size: 80px;
+}
+
+h1.my-name > span.name-stop {
+	font-style: oblique;
+	font-size: 100px;
+	color: #222323;
+	line-height: 0;
 }
 
 h2.my-summary {
@@ -314,7 +321,7 @@ article {
 }
 
 :not(footer) > blockquote {
-	border-left: 4px solid #272727;
+	border-left: 4px solid #222323;
 	background: #f9f9f9;
 	padding: 0.5em 10px;
 	margin: 1.5em 10px;
@@ -328,7 +335,7 @@ h2.my-articles {
 }
 
 div.black-band {
-	background-color: #272727;
+	background-color: #222323;
 	margin: 10px 0 40px 0;
 	text-align: center;
 	padding: 40px;
@@ -460,7 +467,7 @@ img.coverimg {
 }
 
 .book-details {
-	border-top: 5px solid #272727;
+	border-top: 5px solid #222323;
 	max-width:670px;
 }
 
@@ -571,7 +578,7 @@ ol > li:before {
 
 aside {
 	border-radius: 10px;
-	background: #272727;
+	background: #222323;
 	font-size: 14px;
 	margin: 10px 0;
 	padding: 14px;
@@ -583,7 +590,7 @@ aside {
     clear: both;
 }
 .choices li {
- 	background-color: #272727;
+ 	background-color: #222323;
  	text-align: center;
  	margin-left: 2px;
  	font-size: 20px;
@@ -624,7 +631,7 @@ a.home {
 	margin: 20px;
 	float: left;
 } a.home:hover {
-	background-color: #272727;
+	background-color: #222323;
 	text-shadow: none;
 }
 
@@ -638,7 +645,7 @@ a.home-center {
 	width: 160px;
 	color: white;
 } a.home-center:hover {
-	background-color: #272727;
+	background-color: #222323;
 	text-shadow: none;
 }
 
@@ -659,7 +666,7 @@ a.previous {
 	height: 0;
 	width: 0;
 } a.previous:hover {
-	border-color: transparent #272727 transparent transparent;
+	border-color: transparent #222323 transparent transparent;
 }
 a.previous-off { border-color: transparent darkgrey transparent transparent; }
 a.previous-off:hover { border-color: transparent darkgrey transparent transparent; }
@@ -675,7 +682,7 @@ a.next {
 	height: 0;
 	width: 0;
 } a.next:hover {
-	border-color: transparent transparent transparent #272727;
+	border-color: transparent transparent transparent #222323;
 }
 a.next-off { border-color: transparent transparent transparent darkgrey; }
 a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
@@ -747,7 +754,7 @@ svg.graph {
 	border: none;
 	width: 25%;
 } .search-go:hover {
-	background: #272727;
+	background: #222323;
 	cursor: pointer;
 }
 
@@ -762,7 +769,7 @@ a.stack-overflow-link {
 }
 
 a.stack-overflow-link > img {
-	margin: -1px -1px -5px -1px;
+	margin: -3px -3px -5px -3px;
 }
 
 /* Responsive CSS adjustments for mobile devices. */
@@ -928,7 +935,7 @@ div.whichpet h1, div.whichpet h2 { text-align: center; }
 div.whichpet-ui { border-radius: 10px; text-align: center; background: white; margin: 40px auto; padding: 40px; color: black; max-width: 550px; }
 div.whichpet select { font-size: 24px; }
 div.whichpet input[type="button"] { background: #ED5900; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; }
-div.whichpet input[type="button"]:hover { background: #272727; cursor: pointer; color: #ED5900; }
+div.whichpet input[type="button"]:hover { background: #222323; cursor: pointer; color: #ED5900; }
 div.whichpet textarea { font-size: 18px; resize: none; width: 90%; padding: 5px 4px 5px 10px;}
 div.whichpet div.popup { display: none; background: rgba(34,34,34,0.9); position: fixed; width: 100%; height:100%; padding-top: 100px; top: 0; left: 0 }
 div.whichpet div.popup div.box { width: 600px; margin: auto; background: white; padding: 20px 20px; text-align: center;}
