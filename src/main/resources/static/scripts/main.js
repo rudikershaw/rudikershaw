@@ -2,9 +2,16 @@ import 'vanilla-fade/dist/esm/fadeOut';
 
 (() => {
     fetch('/latest-tweet')
-        .then(data => data.text())
-        .then(text => {
+        .then(data => {
+            if (data.ok) {
+                return data.text();
+            } else {
+                throw new Error(data.statusText);
+            }
+        }).then(text => {
             document.querySelector('#latest-tweet').outerHTML = text;
+        }).catch(error => {
+            console.error('The Latest Tweet web service failed to retrieve a tweet.', error);
         });
 
     fetch('/data/bibliography.json')
