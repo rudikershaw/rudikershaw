@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Stream Processing with Apache Flink",
+      "author": "Fabian Hueske & Vasiliki Kalavri",
+      "dateFinished": "2021-09-05",
+      "synopsis": "Fundamentals, Implementation, & Operation of Apache Flink Streaming Applications.",
+      "review": "Modern stream processing feels like a very novel problem space. There are lots of new and interesting problems to think about in place of the old / traditional speed and efficiency issues. An informative read."
+    },
+    {
       "title": "Factfulness",
       "author": "Hans Rosling",
       "dateFinished": "2021-07-20",
