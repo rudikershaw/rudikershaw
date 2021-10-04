@@ -1,5 +1,7 @@
 # About Me
 
+I am a software development engineer at AWS, working on stream processing solutions using Apache Flink.
+
 In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](https://www.rudikershaw.com/#my-articles), and maintain a few open-source projects. 
 
 ## Links
