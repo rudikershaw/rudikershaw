@@ -1,0 +1,23 @@
+name: Look busy.
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow at 8pm UTC every day.
+  schedule: 
+  - cron: "0 21 * * *"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  commit:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Commit maybe
+        run: '[ $[ $RANDOM % 3 ] == 0 ] &&  git config user.email alexander_kershaw@hotmail.co.uk" && git commit --allow-empty -m "Nightly commit trigger." && git push'
