@@ -20,4 +20,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Commit maybe
-        run: '[ $[ $RANDOM % 3 ] == 0 ] && git config user.email "alexander_kershaw@hotmail.co.uk" && git commit --allow-empty -m "Nightly commit action trigger." && git push'
+        run: '[ $[ $RANDOM % 2 ] == 0 ] && git config user.email "alexander_kershaw@hotmail.co.uk" && git config --global user.name "Rudi Kershaw" && git commit --allow-empty -m "Nightly commit action trigger." && git push'
