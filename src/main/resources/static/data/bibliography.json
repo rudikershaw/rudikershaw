@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "What If",
+      "author": "Randall Munroe",
+      "dateFinished": "2022-04-09",
+      "synopsis": "Serious scientific answers to absurd hypothetical questions.",
+      "review": "Incredibly fun, and wonderfully curiosity inspiring. I can't honestly say that I learned anything \"useful\" as such, but frankly that's not the point. Curiosity, and enjoying asking questions, is important."
+    },
+    {
       "title": "Stream Processing with Apache Flink",
       "author": "Fabian Hueske & Vasiliki Kalavri",
       "dateFinished": "2021-09-05",
