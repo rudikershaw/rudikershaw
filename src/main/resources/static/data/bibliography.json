@@ -1,6 +1,20 @@
 {
   "bibliography": [
     {
+      "title": "Homeland",
+      "author": "R.A. Salvatore",
+      "dateFinished": "2022-05-16",
+      "synopsis": "Drizzt D'Urdon struggles with his own good nature, brought up in an innately evil society.",
+      "review": "I've not read this since my early teens. I was surprised by how little of the plot I remembered. I had such a fondness for the Forgotten Realms then. A very nostalgic read, like a portal back to my childhood."
+    },
+    {
+      "title": "The Folly of Reason",
+      "author": "Javier Fresan",
+      "dateFinished": "2022-05-10",
+      "synopsis": "Mathematical logic and its paradoxes.",
+      "review": "It covers Russell's paradox, Hilbert's dreams of a recursive/consistent/complete system of math, Godel's destruction of that dream, the Halting problem, P vs NP, and more. Concise, elegant, and enjoyable."
+    },
+    {
       "title": "What If",
       "author": "Randall Munroe",
       "dateFinished": "2022-04-09",
