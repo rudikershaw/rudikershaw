@@ -190,12 +190,14 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.14.0</version>
 				<configuration>
 					<includeTests>true</includeTests>
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>${java.version}</targetJdk>
 					<failOnViolation>true</failOnViolation>
 					<verbose>true</verbose>
+					<linkXRef>false</linkXRef>
 				</configuration>
 				<executions>
 					<execution>
