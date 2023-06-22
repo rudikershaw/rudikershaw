@@ -1,6 +1,20 @@
 {
   "bibliography": [
     {
+      "title": "The Empyrean Age",
+      "author": "Tony Gonzales",
+      "dateFinished": "2023-06-15",
+      "synopsis": "War, struggle, and political intrigue in a galaxy where immortals rule.",
+      "review": "Although it is based on the fictional universe of the computer game Eve Online, it rivals the works of the other epic space operas. I strongly recommend it to science fiction fans broadly, whether you have heard of the game or not."
+    },
+    {
+      "title": "Noise",
+      "author": "Kahneman, Sibony, & Sunstein",
+      "dateFinished": "2023-06-01",
+      "synopsis": "A Flaw in Human Judgement",
+      "review": "Noise is the spiritual successor to Thinking Fast & Slow by Kahneman. It discusses noise in human decision making, and the punchline is \"wherever there is judgement there is noise, and more of it than you think\". An understanding of noise is just as critical as an understanding human bias."
+    },
+    {
       "title": "Human kind",
       "author": "Rutger Bregman",
       "dateFinished": "2022-12-17",
