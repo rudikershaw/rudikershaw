@@ -148,7 +148,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<nodeVersion>v16.4.1</nodeVersion>
+					<nodeVersion>v18.17.1</nodeVersion>
+					<npmVersion>10.1.0</npmVersion>
 				</configuration>
 			</plugin>
 			<plugin>
