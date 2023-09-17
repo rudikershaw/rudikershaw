@@ -103,7 +103,7 @@
 						<id>default-minify</id>
 						<configuration>
 							<charset>UTF-8</charset>
-							<webappSourceDir>${basedir}/src/main/resources</webappSourceDir>
+							<webappSourceDir>${project.basedir}/src/main/resources</webappSourceDir>
 							<cssSourceDir>static/styles</cssSourceDir>
 							<webappTargetDir>${project.build.outputDirectory}</webappTargetDir>
 							<cssSourceIncludes>
