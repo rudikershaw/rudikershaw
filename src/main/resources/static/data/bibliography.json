@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Conan Doyle",
+      "dateFinished": "2024-01-15",
+      "synopsis": "The third of the Sherlock Holmes novels.",
+      "review": "Even though I have read it before, the twists and turns of The Hound of the Baskervilles never ceases to impress and entertain."
+    },
+    {
       "title": "Seeing Further",
       "author": "Bryson, Gleik, Atwood, et al",
       "dateFinished": "2023-09-22",
