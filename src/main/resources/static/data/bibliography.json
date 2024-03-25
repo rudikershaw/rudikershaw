@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Six Impossible Things",
+      "author": "John Gribbin",
+      "dateFinished": "2024-03-1",
+      "synopsis": "The 'Quanta of Solace' and the Mysteries of the Subatomic World",
+      "review": "A lot of quantum physics boils down to interpretation, and how you interpret it can vastly change how you view the subatomic world. Essential reader for the casual physics lover."
+    },
+    {
       "title": "White Holes",
       "author": "Carlo Rovelli",
       "dateFinished": "2024-02-21",
