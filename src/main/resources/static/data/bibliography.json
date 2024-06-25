@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Persuasion",
+      "author": "Jane Austen",
+      "dateFinished": "2024-05-15",
+      "synopsis": "Having been persuaded to reject the man she loves, Anne Elliot gets a second chance.",
+      "review": "Austen's final novel offers a tender second-chance romance while painting a vivid portrait of Regency England. Anne navigates changing social tides, naval life, and a fading aristocracy."
+    },
+    {
       "title": "At the Mountains of Madness",
       "author": "H.P. Lovecraft",
       "dateFinished": "2024-03-27",
@@ -19,7 +26,7 @@
       "author": "Carlo Rovelli",
       "dateFinished": "2024-02-21",
       "synopsis": "Inside The Horizon.",
-      "review": "Carlo Rovelli explores a possible explaination for what eventually happens to black holes, namely their transformation into white holes."
+      "review": "Carlo Rovelli explores a possible explanation for what eventually happens to black holes, namely their transformation into white holes."
     },
     {
       "title": "The Hound of the Baskervilles",
