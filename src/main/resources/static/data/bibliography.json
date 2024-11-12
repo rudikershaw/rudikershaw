@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "Meditations",
+      "author": "Marcus Aurelius",
+      "dateFinished": "2024-10-16",
+      "synopsis": "The collected notes of Marcus Aurelius: Roman Emperor and Stoic philosopher.",
+      "review": "A very interesting read, particularly if you are interested in Stoicism and the general philosophy of living well. While his notes work with many of the assumptions of the ancient world, which we now view differently, the core ideas remain insightful and thought-provoking."
+    },
+    {
       "title": "Politics On The Edge",
       "author": "Rory Stewart",
       "dateFinished": "2024-09-02",
