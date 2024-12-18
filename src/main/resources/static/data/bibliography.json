@@ -1,6 +1,13 @@
 {
   "bibliography": [
     {
+      "title": "The Art of Happiness",
+      "author": "H.H. The Dalai Lama, & Howard C. Cutler",
+      "dateFinished": "2024-12-04",
+      "synopsis": "A handbook for living, inspired by conversations with the Dalai Lama.",
+      "review": "Howard C. Cutler describes his conversations with the Dalai Lama and explores the sciences and philosophy of being happy. The Buddhist conception of happiness is practical, novel, accurate, and steeped in history."
+    },
+    {
       "title": "Meditations",
       "author": "Marcus Aurelius",
       "dateFinished": "2024-10-16",
@@ -89,7 +96,7 @@
       "author": "Kahneman, Sibony, & Sunstein",
       "dateFinished": "2023-06-01",
       "synopsis": "A Flaw in Human Judgement",
-      "review": "Noise is the spiritual successor to Thinking Fast & Slow by Kahneman. It discusses noise in human decision making, and the punchline is \"wherever there is judgement there is noise, and more of it than you think\". An understanding of noise is just as critical as an understanding human bias."
+      "review": "Noise is the spiritual successor to Thinking Fast & Slow by Kahneman. It discusses noise in human decision making, and the punchline is \"wherever there is judgement there is noise, and more of it than you think\". An understanding of noise is just as critical as an understanding of human bias."
     },
     {
       "title": "Human kind",
