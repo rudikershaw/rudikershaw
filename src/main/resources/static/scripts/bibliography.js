@@ -13,6 +13,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
         const infoIcon = document.createElement('span');
         infoIcon.textContent = '\u2139';
         infoIcon.title = reviewText;
+        return infoIcon;
     }
 
     function populatePageWithBibliography(response) {
