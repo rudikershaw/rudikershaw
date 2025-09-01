@@ -913,6 +913,10 @@ ol#bibliography-list .synopsis {
 	text-indent: 0;
 }
 
+ol#bibliography-list .synopsis span {
+	color: #ed5900;
+}
+
 ol#bibliography-list > .date-divider {
 	position: relative;
 	font-style: italic;

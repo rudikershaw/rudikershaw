@@ -9,6 +9,12 @@ import 'vanilla-fade/dist/esm/fadeOut';
         return Math.round(Math.abs((date1 - date2) / oneDayInMiliseconds));
     }
 
+    function createIcon(reviewText) {
+        const infoIcon = document.createElement('span');
+        infoIcon.textContent = '\u2139';
+        infoIcon.title = reviewText;
+    }
+
     function populatePageWithBibliography(response) {
         let newEntry;
         let newDateDividor;
@@ -22,6 +28,8 @@ import 'vanilla-fade/dist/esm/fadeOut';
                 newEntry.querySelector('cite').textContent = item.title;
                 newEntry.querySelector('.author').textContent = item.author;
                 newEntry.querySelector('.synopsis').textContent = item.synopsis;
+                newEntry.querySelector('.synopsis').appendChild(createIcon(item.review));
+
                 newEntry.removeAttribute('style');
                 newEntry.removeAttribute('id');
 
