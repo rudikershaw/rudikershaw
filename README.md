@@ -6,7 +6,7 @@ In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](htt
 
 ## Links
  * [My Website](https://www.rudikershaw.com) 
- * [My Twitter](https://twitter.com/rudikershaw) 
  * [My LinkedIn](https://www.linkedin.com/in/rudikershaw/) 
  * [My Stackoverflow](https://stackoverflow.com/users/2182928/rudi-kershaw)
+
 
