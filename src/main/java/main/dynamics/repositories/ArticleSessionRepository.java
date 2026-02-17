@@ -42,7 +42,7 @@ public interface ArticleSessionRepository extends CrudRepository<ArticleSession,
      * @return a list of article IDs ordered by most visited first.
      */
     @Query("SELECT articleId FROM ArticleSession "
-            + "WHERE visited > subdate(current_date, 7) GROUP BY articleId "
+            + "WHERE visited > CURRENT_DATE - 7 GROUP BY articleId "
             + "ORDER BY COUNT(*) DESC")
     List<Integer> findMostVisitedThisWeekArticleId();
 }

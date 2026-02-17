@@ -14,6 +14,19 @@ import 'vanilla-fade/dist/esm/fadeOut';
             console.error('The Latest Tweet web service failed to retrieve a tweet.', error);
         });
 
+    fetch('/latest-reddit-post')
+        .then(data => {
+            if (data.ok) {
+                return data.text();
+            } else {
+                throw new Error(data.statusText);
+            }
+        }).then(text => {
+            document.querySelector('#latest-reddit-post').outerHTML = text;
+        }).catch(error => {
+            console.error('The Latest Reddit Post web service failed to retrieve a post.', error);
+        });
+
     fetch('/data/bibliography.json')
         .then(data => data.json())
         .then(json => {

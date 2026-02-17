@@ -1,0 +1,34 @@
+<div th:if="${redditPost != null}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h3>Latest Reddit Post</h3>
+    <a class="reddit-post" th:href="${'https://www.reddit.com' + redditPost.permalink}">
+        <div class="reddit-post-header">
+            <span class="reddit-icon">
+                <i class="fa fa-reddit-alien"></i>
+            </span>
+            <span class="reddit-header-text">
+                <span class="reddit-subreddit" th:text="${redditPost.subreddit}">r/subreddit</span>
+                <span class="reddit-time" th:text="${' · ' + #dates.format(redditPost.created, 'MMM dd')}"></span>
+            </span>
+        </div>
+        <h4 class="reddit-title" th:text="${redditPost.title}">Post Title</h4>
+        <p class="reddit-selftext" th:if="${redditPost.selftext != null}" th:text="${redditPost.selftext}"></p>
+        <div class="reddit-post-image" th:if="${redditPost.thumbnail != null}">
+            <img th:src="${redditPost.thumbnail}" alt="Post image" />
+        </div>
+        <div class="reddit-actions">
+            <span class="reddit-pill reddit-pill-votes">
+                <i class="fa fa-arrow-up"></i>
+                <span th:if="${redditPost.score > 0}" th:text="${redditPost.score}"></span>
+                <i class="fa fa-arrow-down"></i>
+            </span>
+            <span class="reddit-pill">
+                <i class="fa fa-comment-o"></i>
+                <span th:if="${redditPost.numComments > 0}" th:text="${redditPost.numComments}"></span>
+            </span>
+            <span class="reddit-pill">
+                <i class="fa fa-share"></i>
+                Share
+            </span>
+        </div>
+    </a>
+</div>

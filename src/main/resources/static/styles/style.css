@@ -466,6 +466,129 @@ img.coverimg {
 	font-size: 14px;
 }
 
+.reddit-post {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+	display: block;
+	text-decoration: none;
+	color: #1a1a1b;
+	background: #fff;
+	border: 1px solid #edeff1;
+	border-radius: 12px;
+	max-width: 350px;
+	overflow: hidden;
+	padding: 14px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+	transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.reddit-post:hover {
+	border-color: #ccc;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.reddit-post .reddit-post-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 10px;
+}
+
+.reddit-post .reddit-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: #ff4500;
+	color: #fff;
+	font-size: 15px;
+	flex-shrink: 0;
+}
+
+.reddit-post .reddit-header-text {
+	font-size: 12px;
+	color: #787c7e;
+	line-height: 1.3;
+}
+
+.reddit-post .reddit-subreddit {
+	font-weight: 700;
+	color: #1a1a1b;
+}
+
+.reddit-post .reddit-time {
+	color: #787c7e;
+}
+
+.reddit-post .reddit-title {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 0 6px 0;
+	line-height: 1.35;
+	color: #1a1a1b;
+	letter-spacing: -0.01em;
+}
+
+.reddit-post .reddit-selftext {
+	font-size: 13px;
+	color: #4a4a4a;
+	white-space: pre-wrap;
+	max-height: 54px;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+	line-height: 1.45;
+}
+
+.reddit-post .reddit-post-image {
+	margin: 8px -14px;
+	overflow: hidden;
+	background: #1a1a1b;
+}
+
+.reddit-post .reddit-post-image img {
+	width: 100%;
+	display: block;
+	object-fit: contain;
+	max-height: 280px;
+}
+
+.reddit-post .reddit-actions {
+	display: flex;
+	gap: 6px;
+	margin-top: 10px;
+}
+
+.reddit-post .reddit-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	background: #f6f7f8;
+	border-radius: 20px;
+	padding: 5px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #878a8c;
+	transition: background 0.15s ease;
+}
+
+.reddit-post .reddit-pill:hover {
+	background: #edeff1;
+}
+
+.reddit-post .reddit-pill-votes {
+	background: #fff4f1;
+	color: #ff4500;
+}
+
+.reddit-post .reddit-pill-votes:hover {
+	background: #ffe8e0;
+}
+
+.reddit-post .reddit-pill .fa {
+	font-size: 13px;
+}
+
 .book-details {
 	border-top: 5px solid #222323;
 	max-width:670px;
@@ -849,6 +972,10 @@ a.stack-overflow-link > img {
     }
 
 	.tweet .tweet-body {
+		max-width: 90vw;
+	}
+
+	.reddit-post {
 		max-width: 90vw;
 	}
 }
