@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,6 +20,9 @@ import org.springframework.web.client.RestTemplate;
 /** Service for accessing the latest Reddit post for a configured user. */
 @Service
 public class RedditService {
+
+    /** Logger for this class. */
+    private static final Logger LOG = LoggerFactory.getLogger(RedditService.class);
 
     /** Two minutes as a number of milliseconds. */
     private static final int TWO_MINUTES = 120000;
@@ -47,7 +52,7 @@ public class RedditService {
         try {
             final String url = "https://www.reddit.com/user/" + redditUsername + "/submitted.json?limit=1&sort=new";
             final HttpHeaders headers = new HttpHeaders();
-            headers.set("User-Agent", "web:codenerd:v1.0.0");
+            headers.set("User-Agent", "web:codenerd:v1.0.0 (by /u/" + redditUsername + ")");
             final HttpEntity<String> entity = new HttpEntity<>(headers);
             final RestTemplate restTemplate = new RestTemplate();
 
@@ -55,6 +60,7 @@ public class RedditService {
 
             final Map<String, Object> body = response.getBody();
             if (response.getStatusCode().isError() || body == null) {
+                LOG.warn("Reddit API returned status {} for user {}", response.getStatusCode(), redditUsername);
                 return null;
             }
             final Map<String, Object> data = (Map<String, Object>) body.get("data");
@@ -67,6 +73,7 @@ public class RedditService {
             final Map<String, Object> postData = (Map<String, Object>) children.get(0).get("data");
             return mapToLatestRedditPost(postData);
         } catch (Exception e) {
+            LOG.error("Failed to fetch latest Reddit post for user {}", redditUsername, e);
             return null;
         }
     }
