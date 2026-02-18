@@ -83,7 +83,10 @@ public class IndexController {
      */
     @GetMapping("/latest-reddit-post")
     public String latestRedditPost(final Model model) {
-        model.addAttribute("redditPost", redditService.getLatestPost());
+        final var post = redditService.getLatestPost();
+        model.addAttribute("redditPost", post);
+        model.addAttribute("thumbnail", redditService.getThumbnail(post));
+        model.addAttribute("description", redditService.getDescription(post));
         return REDDIT_PATH;
     }
 }

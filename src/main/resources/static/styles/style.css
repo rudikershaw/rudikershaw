@@ -474,9 +474,9 @@ img.coverimg {
 	background: #fff;
 	border: 1px solid #edeff1;
 	border-radius: 12px;
-	max-width: 350px;
+	max-width: 300px;
 	overflow: hidden;
-	padding: 14px;
+	padding: 12px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
 	transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -533,24 +533,28 @@ img.coverimg {
 .reddit-post .reddit-selftext {
 	font-size: 13px;
 	color: #4a4a4a;
-	white-space: pre-wrap;
-	max-height: 54px;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 	overflow: hidden;
+	text-overflow: ellipsis;
 	margin: 0 0 10px 0;
 	line-height: 1.45;
 }
 
 .reddit-post .reddit-post-image {
-	margin: 8px -14px;
+	margin: 14px auto;
 	overflow: hidden;
-	background: #1a1a1b;
+	background: #f6f7f8;
+	border-radius: 8px;
+	max-width: 140px;
 }
 
 .reddit-post .reddit-post-image img {
 	width: 100%;
 	display: block;
-	object-fit: contain;
-	max-height: 280px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 
 .reddit-post .reddit-actions {

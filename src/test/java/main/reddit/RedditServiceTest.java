@@ -26,15 +26,19 @@ public class RedditServiceTest {
     public void testGetLatestPostReturnsNullForInvalidUsername() throws Exception {
         final RedditService service = new RedditService();
         setUsername(service, "this-user-should-not-exist-abc123xyz789");
-        // Should return null gracefully rather than throwing.
         Assert.assertNull(service.getLatestPost());
     }
 
     @Test
     public void testInvalidateCacheDoesNotThrow() {
         final RedditService service = new RedditService();
-        // Should not throw any exceptions.
         service.invalidateCache();
+    }
+
+    @Test
+    public void testGetThumbnailReturnsNullForNullEntry() {
+        final RedditService service = new RedditService();
+        Assert.assertNull(service.getThumbnail(null));
     }
 
     /**

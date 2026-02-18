@@ -1,23 +1,25 @@
 package main.reddit;
 
-import java.util.Date;
+import java.net.URL;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-/** Service for accessing the latest Reddit post for a configured user. */
+import com.rometools.modules.mediarss.MediaEntryModule;
+import com.rometools.modules.mediarss.types.MediaGroup;
+import com.rometools.modules.mediarss.types.Metadata;
+import com.rometools.modules.mediarss.types.Thumbnail;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.io.SyndFeedInput;
+import com.rometools.rome.io.XmlReader;
+
+/** Service for accessing the latest Reddit post via the public RSS feed. */
 @Service
 public class RedditService {
 
@@ -27,140 +29,108 @@ public class RedditService {
     /** Two minutes as a number of milliseconds. */
     private static final int TWO_MINUTES = 120000;
 
-    /** Multiplier to convert Unix epoch seconds to milliseconds. */
-    private static final int MILLIS = 1000;
-
-    /** Maximum length of selftext to display. */
-    private static final int MAX_SELFTEXT_LENGTH = 300;
-
     /** The Reddit username to fetch posts for. */
     @Value("${reddit.username:}")
     private String redditUsername;
 
     /**
-     * Get the latest Reddit post for the configured user.
+     * Get the latest Reddit post for the configured username.
      *
-     * @return the latest Reddit post, or null if unavailable.
+     * @return the latest post as a SyndEntry, or null if unavailable.
      */
     @Cacheable("latest-reddit-post")
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public LatestRedditPost getLatestPost() {
+    public SyndEntry getLatestPost() {
         if (redditUsername == null || redditUsername.isEmpty()) {
+            LOG.warn("Reddit username is not configured.");
             return null;
         }
 
         try {
-            final String url = "https://www.reddit.com/user/" + redditUsername + "/submitted.json?limit=1&sort=new";
-            final HttpHeaders headers = new HttpHeaders();
-            headers.set("User-Agent", "web:codenerd:v1.0.0 (by /u/" + redditUsername + ")");
-            final HttpEntity<String> entity = new HttpEntity<>(headers);
-            final RestTemplate restTemplate = new RestTemplate();
+            final String rssUrl = "https://www.reddit.com/user/"
+                    + redditUsername + "/submitted.rss";
+            final List<SyndEntry> entries = new SyndFeedInput()
+                    .build(new XmlReader(new URL(rssUrl))).getEntries();
 
-            final ResponseEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, entity, Map.class); //NOPMD
-
-            final Map<String, Object> body = response.getBody();
-            if (response.getStatusCode().isError() || body == null) {
-                LOG.warn("Reddit API returned status {} for user {}", response.getStatusCode(), redditUsername);
+            if (entries == null || entries.isEmpty()) {
+                LOG.info("No entries found in Reddit RSS feed.");
                 return null;
             }
-            final Map<String, Object> data = (Map<String, Object>) body.get("data");
-            final List<Map<String, Object>> children = (List<Map<String, Object>>) data.get("children");
-
-            if (children == null || children.isEmpty()) {
-                return null;
-            }
-
-            final Map<String, Object> postData = (Map<String, Object>) children.get(0).get("data");
-            return mapToLatestRedditPost(postData);
+            return entries.get(0);
         } catch (Exception e) {
-            LOG.error("Failed to fetch latest Reddit post for user {}", redditUsername, e);
+            LOG.error("Failed to fetch latest Reddit post.", e);
             return null;
         }
     }
 
     /** Evict entries from the Latest Reddit Post cache every 120 seconds. */
-    @CacheEvict(allEntries = true, cacheNames = {"latest-reddit-post"})
+    @CacheEvict(allEntries = true, cacheNames = { "latest-reddit-post" })
     @Scheduled(fixedDelay = TWO_MINUTES)
     public void invalidateCache() {
         // The effect of this method is purely in the annotations.
     }
 
     /**
-     * Maps the raw Reddit API response data to a LatestRedditPost.
+     * Extract the media:thumbnail URL from a feed entry.
      *
-     * @param postData the post data map from the Reddit API.
-     * @return a populated LatestRedditPost.
+     * @param entry the feed entry.
+     * @return the thumbnail URL, or null.
      */
-    private LatestRedditPost mapToLatestRedditPost(final Map<String, Object> postData) {
-        final LatestRedditPost post = new LatestRedditPost();
-        post.setTitle((String) postData.get("title"));
-        post.setSubreddit((String) postData.get("subreddit_name_prefixed"));
-        post.setAuthor((String) postData.get("author"));
-        post.setPermalink((String) postData.get("permalink"));
-        post.setScore(((Number) postData.get("score")).intValue());
-        post.setNumComments(((Number) postData.get("num_comments")).intValue());
-
-        final Number createdUtc = (Number) postData.get("created_utc");
-        if (createdUtc != null) {
-            post.setCreated(new Date(createdUtc.longValue() * MILLIS));
+    public String getThumbnail(final SyndEntry entry) {
+        if (entry == null) {
+            return null;
         }
-
-        final String selftext = (String) postData.get("selftext");
-        if (selftext != null && !selftext.isEmpty()) {
-            if (selftext.length() > MAX_SELFTEXT_LENGTH) {
-                post.setSelftext(selftext.substring(0, MAX_SELFTEXT_LENGTH) + "...");
-            } else {
-                post.setSelftext(selftext);
+        final MediaEntryModule media = (MediaEntryModule) entry.getModule(
+                MediaEntryModule.URI);
+        if (media != null) {
+            final Thumbnail[] thumbnails = media.getMetadata() != null
+                    ? media.getMetadata().getThumbnail() : null;
+            if (thumbnails != null && thumbnails.length > 0) {
+                return thumbnails[0].getUrl().toString();
+            }
+            for (MediaGroup group : media.getMediaGroups()) {
+                final Metadata groupMeta = group.getMetadata();
+                if (groupMeta != null && groupMeta.getThumbnail().length > 0) {
+                    return groupMeta.getThumbnail()[0].getUrl().toString();
+                }
             }
         }
-
-        final String thumbnail = (String) postData.get("thumbnail");
-        if (thumbnail != null && thumbnail.startsWith("http")) {
-            post.setThumbnail(extractBestImageUrl(postData));
-        }
-
-        return post;
+        return null;
     }
 
     /**
-     * Extracts a suitable image URL from the Reddit post data.
-     * For gallery posts uses gallery_data ordering with media_metadata, otherwise uses the preview object.
+     * Extract plain text description from a feed entry's content.
      *
-     * @param postData the post data map from the Reddit API.
-     * @return a suitable image URL, or null.
+     * @param entry the feed entry.
+     * @return the plain text, or null.
      */
-    @SuppressWarnings("unchecked")
-    private String extractBestImageUrl(final Map<String, Object> postData) {
-        // Gallery posts store images in media_metadata, ordered by gallery_data.
-        final Map<String, Object> galleryData = (Map<String, Object>) postData.get("gallery_data");
-        final Map<String, Map<String, Object>> mediaMeta =
-                (Map<String, Map<String, Object>>) postData.get("media_metadata");
-        if (galleryData != null && mediaMeta != null) {
-            final List<Map<String, Object>> items = (List<Map<String, Object>>) galleryData.get("items");
-            if (items != null && !items.isEmpty()) {
-                final String firstMediaId = (String) items.get(0).get("media_id");
-                final Map<String, Object> firstImage = mediaMeta.get(firstMediaId);
-                if (firstImage != null) {
-                    final Map<String, Object> source = (Map<String, Object>) firstImage.get("s");
-                    if (source != null && source.get("u") != null) {
-                        return ((String) source.get("u")).replace("&amp;", "&");
-                    }
-                }
-            }
+    public String getDescription(final SyndEntry entry) {
+        if (entry == null) {
+            return null;
         }
-
-        // Non-gallery posts with images use the preview object.
-        final Map<String, Object> preview = (Map<String, Object>) postData.get("preview");
-        if (preview != null) {
-            final List<Map<String, Object>> images = (List<Map<String, Object>>) preview.get("images");
-            if (images != null && !images.isEmpty()) {
-                final Map<String, Object> source = (Map<String, Object>) images.get(0).get("source");
-                if (source != null && source.get("url") != null) {
-                    return ((String) source.get("url")).replace("&amp;", "&");
-                }
-            }
+        String html = null;
+        if (entry.getDescription() != null) {
+            html = entry.getDescription().getValue();
+        } else if (entry.getContents() != null && !entry.getContents().isEmpty()) {
+            html = entry.getContents().get(0).getValue();
         }
-
-        return null;
+        if (html == null || html.isEmpty()) {
+            return null;
+        }
+        // Strip HTML tags and clean up.
+        String text = html.replaceAll("<[^>]+>", " ")
+                .replace("&amp;", "&")
+                .replace("&lt;", "<")
+                .replace("&gt;", ">")
+                .replace("&quot;", "\"")
+                .replace("&#39;", "'")
+                .replace("&nbsp;", " ")
+                .replaceAll("\\s+", " ")
+                .trim();
+        // Remove the "submitted by... [link] [comments]" boilerplate.
+        final int submittedIdx = text.indexOf("submitted by");
+        if (submittedIdx > 0) {
+            text = text.substring(0, submittedIdx).trim();
+        }
+        return text.isEmpty() ? null : text;
     }
 }
