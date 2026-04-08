@@ -175,30 +175,6 @@ a.sociallink {
 	top: -5px;
 }
 
-a.donatelink {
-	transition: all .2s .05s;
-	background-color: white;
-	font-family: sans-serif;
-	text-decoration: none;
-	text-align: center;
-	border-radius: 3px;
-	font-weight: bold;
-	margin-top: 28px;
-	margin-left: 8px;
-	padding: 0 5px;
-	line-height: 2;
-	display: block;
-	color: #222323;
-	height: 29px;
-	width: 68px;
-	float: left;
-	top: 0;
-} a.donatelink:hover {
-	position: relative;
-	text-shadow: none;
-	top: -5px;
-}
-
 div.faded-background-cover {
 	background-color: #FFFFFF;
 	box-sizing: border-box;
@@ -824,17 +800,6 @@ a.next-off:hover { border-color: transparent transparent transparent darkgrey; }
 	margin: auto;
 }
 
-.donate {
-	text-align: center;
-	margin: 50px auto;
-	width: 120px;
-} .donate:hover {
-	filter: alpha(opacity=70);
-	opacity: 0.7;
-} .donate img {
-	background-color: black;
-}
-
 ul.search-graphic {
 	margin: 10px 20px;
 }
@@ -935,16 +900,6 @@ a.stack-overflow-link > img {
     a.sociallink {
     	margin-top: 1px;
     } a.sociallink:hover {
-	    top: 0;
-    	text-shadow: 0 0 1px,
-                     0 0 1px,
-                     0 0 1px,
-                     0 0 1px;
-    }
-
-    a.donatelink {
-    	margin-top: 1px;
-    } a.donatelink:hover {
 	    top: 0;
     	text-shadow: 0 0 1px,
                      0 0 1px,
