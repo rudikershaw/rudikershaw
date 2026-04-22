@@ -43,6 +43,9 @@ public class Article implements Serializable {
     /** The article's thumbnail path. */
     private String imagePath;
 
+    /** The article's banner (wide header) image path. May be null if none exists. */
+    private String bannerImagePath;
+
     /** The article's description. */
     private String description;
 
@@ -60,12 +63,14 @@ public class Article implements Serializable {
      * @param articleName the name of the article.
      * @param articlePath the path to the article.
      * @param image the path to the image for this article.
+     * @param banner the path to the banner image for this article, or null if none exists.
      * @param desc short description of the article for summaries etc.
      */
-    public Article(final String articleName, final String articlePath, final String image, final String desc) {
+    public Article(final String articleName, final String articlePath, final String image, final String banner, final String desc) {
         this.name = articleName;
         this.path = articlePath;
         this.imagePath = image;
+        this.bannerImagePath = banner;
         this.description = desc;
         views = 1;
         published = new Date();
@@ -191,6 +196,22 @@ public class Article implements Serializable {
      */
     public void setImagePath(final String image) {
         this.imagePath = image;
+    }
+
+    /**
+     * Get the path to this article's banner image, or null if none exists.
+     * @return the path to this article's banner image, or null.
+     */
+    public String getBannerImagePath() {
+        return bannerImagePath;
+    }
+
+    /**
+     * Set the path to this article's banner image.
+     * @param banner the path to this article's banner image.
+     */
+    public void setBannerImagePath(final String banner) {
+        this.bannerImagePath = banner;
     }
 
     /**

@@ -14,7 +14,7 @@
 			<section>
 				<h1 th:text="${article.name}">On Being Stuck</h1>
 				<hr />
-				<img class="coverimg" src="/images/on-being-stuck-banner.jpg" alt="A brown orange teddy bear stuck in a tree" />
+				<img class="coverimg" th:src="@{'/' + ${article.bannerImagePath}}" alt="A brown orange teddy bear stuck in a tree" />
 				<br />
 				<p>Every programmer gets stuck. We might be working on a tricky bug, or in a domain we are unfamiliar with, and all of a
 					sudden we are hit by an awful feeling. A exasperating feeling that can be summed up in the phrase "I have no idea where to go from here".

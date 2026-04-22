@@ -25,27 +25,27 @@ public class DefaultArticleController {
      * Order of the list determines the order of the articles on the site.
      */
     public static final List<Article> ARTICLES = List.of(
-        new Article("Software Best Practice?", "articles/best-practice", "images/best-practice.jpg", "I spent some time trying to find the evidence that supports best practices in software development. I didn't like what I found."),
-        new Article("On Being Stuck", "articles/on-being-stuck", "images/on-being-stuck.jpg", "How we programmers get ourselves out of a rut isn't just a useful skill. It defines how productive we are at the highest level."),
-        new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe we can do better."),
-        new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."),
-        new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."),
-        new Article("Grokking RSA Encryption", "articles/rsa-encryption", "images/rsa-encryption.jpg", "Finally put in the effort to really understand public key encryption in the form of RSA. Hopefully this helps you too."),
-        new Article("Anomaly Detection", "articles/anomaly-detection", "images/anomaly-detection.jpg", "A machine learning example and explanation of an anomaly detection system for detecting suspicious user activity."),
-        new Article("Visual Agnosia Hypothesis", "articles/visual-agnosia", "images/visual-agnosia.jpg", "Reading Oliver Sacks' on agnosia got me thinking about how artificial neural networks process images."),
-        new Article("A Tour of AI", "articles/tour-of-ai", "images/tour-of-ai.jpg", "It's easy to feel like modern AI is just magic. It isn't, and here is how it works and what all the buzz words mean."),
-        new Article("Nature vs Technology", "articles/nature-vs-technology", "images/nature.jpg", "Is nature really at odds with science and technology? The ramblings of a science enthusiast gone camping."),
-        new Article("Which Search Algorithm? - Part 2", "articles/whichsearch2", "images/search.jpg", "The 2nd of a two part series on searching algorithms. This article covers depth and breadth first searches."),
-        new Article("Whichpet", "articles/whichpet", "images/whichpet-orange.png", "Whichpet is a Javascript library for classifying text descriptions into labels. In this case pet descriptions and the type of pets."),
-        new Article("The Trouble with Science", "articles/science-trouble", "images/science-trouble.jpg", "Science is how we know what is true and what is not. This article covers the biggest problems that science faces right now."),
-        new Article("Event Driven Java EE7", "articles/java-essentials", "images/events.jpg", "After discovering event based annotations I talk through a quick review of the ways to use event driven programming in Java EE7."),
-        new Article("Which Search Algorithm? - Part 1", "articles/whichsearch", "images/search.jpg", "The first of a two part series on searching algorithms. This article covers exhaustive search and binary search."),
-        new Article("Defining an Algorithm 3", "articles/computationalmethod3", "images/taocp.jpg", "The third of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming."),
-        new Article("Upgrading This Website", "articles/website-upgrade", "images/websiteupgrade.jpg", "After months of inactivity I upgraded this site to use JavaEE, Spring boot, as well as a MySQL database for some fun extras."),
-        new Article("Defining an Algorithm 2", "articles/computationalmethod2", "images/taocp.jpg", "The second of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming."),
-        new Article("HTTP Basics", "articles/httpbasics", "images/http.jpg", "Having realised that I didn't know anywhere near enough about HTTP, I put this together as a reference. Have a read."),
-        new Article("Taking Typesetting Seriously", "articles/typesetting", "images/typesetting.jpg", "In 'Taking Typesetting Seriously' I talk about the @font-face css and how you can declare custom fonts for your website."),
-        new Article("Defining an Algorithm", "articles/computationalmethod", "images/taocp.jpg", "The first of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming.")
+        new Article("Software Best Practice?", "articles/best-practice", "images/best-practice.jpg", "images/best-practice-banner.jpg", "I spent some time trying to find the evidence that supports best practices in software development. I didn't like what I found."),
+        new Article("On Being Stuck", "articles/on-being-stuck", "images/on-being-stuck.jpg", "images/on-being-stuck-banner.jpg", "How we programmers get ourselves out of a rut isn't just a useful skill. It defines how productive we are at the highest level."),
+        new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "images/git-hooks-banner.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe we can do better."),
+        new Article("There Is No AI Apocalypse", "articles/ai-doom-isnt-coming", "images/ai-doom-isnt-coming.jpg", "images/ai-doom-isnt-coming-banner.jpg", "A lot of very smart people seem to believe that AI is going to kill us all if we're not careful. Here's why they're wrong."),
+        new Article("A Year & 20 Something Books", "articles/20-something-books", "images/20-something-books.jpg", "images/20-something-books-banner.jpg", "A little over a year ago I set myself the goal of reading a book every 2 weeks, and this is what I learned and how it went."),
+        new Article("Grokking RSA Encryption", "articles/rsa-encryption", "images/rsa-encryption.jpg", "images/rsa-encryption-banner.jpg", "Finally put in the effort to really understand public key encryption in the form of RSA. Hopefully this helps you too."),
+        new Article("Anomaly Detection", "articles/anomaly-detection", "images/anomaly-detection.jpg", "images/anomaly-detection-banner.jpg", "A machine learning example and explanation of an anomaly detection system for detecting suspicious user activity."),
+        new Article("Visual Agnosia Hypothesis", "articles/visual-agnosia", "images/visual-agnosia.jpg", "images/visual-agnosia-banner.jpg", "Reading Oliver Sacks' on agnosia got me thinking about how artificial neural networks process images."),
+        new Article("A Tour of AI", "articles/tour-of-ai", "images/tour-of-ai.jpg", "images/tour-of-ai-banner.jpg", "It's easy to feel like modern AI is just magic. It isn't, and here is how it works and what all the buzz words mean."),
+        new Article("Nature vs Technology", "articles/nature-vs-technology", "images/nature.jpg", "images/nature-banner.jpg", "Is nature really at odds with science and technology? The ramblings of a science enthusiast gone camping."),
+        new Article("Which Search Algorithm? - Part 2", "articles/whichsearch2", "images/search.jpg", "images/searchbanner.jpg", "The 2nd of a two part series on searching algorithms. This article covers depth and breadth first searches."),
+        new Article("Whichpet", "articles/whichpet", "images/whichpet-orange.png", "images/science-trouble-banner.jpg", "Whichpet is a Javascript library for classifying text descriptions into labels. In this case pet descriptions and the type of pets."),
+        new Article("The Trouble with Science", "articles/science-trouble", "images/science-trouble.jpg", "images/science-trouble-banner.jpg", "Science is how we know what is true and what is not. This article covers the biggest problems that science faces right now."),
+        new Article("Event Driven Java EE7", "articles/java-essentials", "images/events.jpg", "images/events-banner.jpg", "After discovering event based annotations I talk through a quick review of the ways to use event driven programming in Java EE7."),
+        new Article("Which Search Algorithm? - Part 1", "articles/whichsearch", "images/search.jpg", "images/searchbanner.jpg", "The first of a two part series on searching algorithms. This article covers exhaustive search and binary search."),
+        new Article("Defining an Algorithm 3", "articles/computationalmethod3", "images/taocp.jpg", "images/taocp_text3.jpg", "The third of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming."),
+        new Article("Upgrading This Website", "articles/website-upgrade", "images/websiteupgrade.jpg", "images/upgradecover.jpg", "After months of inactivity I upgraded this site to use JavaEE, Spring boot, as well as a MySQL database for some fun extras."),
+        new Article("Defining an Algorithm 2", "articles/computationalmethod2", "images/taocp.jpg", "images/taocp_text2.jpg", "The second of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming."),
+        new Article("HTTP Basics", "articles/httpbasics", "images/http.jpg", "images/httptyped.jpg", "Having realised that I didn't know anywhere near enough about HTTP, I put this together as a reference. Have a read."),
+        new Article("Taking Typesetting Seriously", "articles/typesetting", "images/typesetting.jpg", "images/lotsafonts.jpg", "In 'Taking Typesetting Seriously' I talk about the @font-face css and how you can declare custom fonts for your website."),
+        new Article("Defining an Algorithm", "articles/computationalmethod", "images/taocp.jpg", "images/taocp_text.jpg", "The first of a series of posts on interpreting Donald Knuth's famous volumes; The Art of Computer Programming.")
     );
 
     /** Injected article service. */
@@ -77,7 +77,7 @@ public class DefaultArticleController {
         final Article a = ARTICLES.stream().filter(art -> art.getPath().equals("articles/" + path)).findAny()
                                            .orElseThrow(EntityNotFoundException::new);
 
-        final Article article = statisticsService.initialise(a.getPath(), a.getName(), a.getImagePath(), a.getDescription(), request);
+        final Article article = statisticsService.initialise(a.getPath(), a.getName(), a.getImagePath(), a.getBannerImagePath(), a.getDescription(), request);
         // Get next & previous article if any.
         Article next = null;
         Article previous = null;

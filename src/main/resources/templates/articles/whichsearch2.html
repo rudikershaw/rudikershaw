@@ -15,7 +15,7 @@
             <section>
                 <h1>Which Search Algorithm? - Part 2</h1>
                 <hr />
-                <img class="coverimg" src="/images/searchbanner.jpg" alt="The words 'Here I am!' written on a piece of paper amongst some colourful clutter" />
+                <img class="coverimg" th:src="@{'/' + ${article.bannerImagePath}}" alt="The words 'Here I am!' written on a piece of paper amongst some colourful clutter" />
                 <br />
                 <p>In the <a href="whichsearch">first installation of Which Search Algorithm</a>, I covered exhaustive and binary searches. I also briefly
                     went through the required knowledge for getting the best out of these articles. This time I will be covering depth first and breadth

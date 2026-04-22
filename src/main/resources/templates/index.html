@@ -41,67 +41,62 @@
 			<a class="theres-more" href="#my-activity"><i class="fa fa-chevron-down"></i></a>
 		</section>
 
-		<section id="my-activity" class="flex-row">
-			<div class="latest-commits">
-				<h3>Latest Commits</h3>
-				<figure>
-					<img width="100%" src="https://ghchart.rshah.org/rudikershaw" alt="Rudi Kershaw GitHub contributions chart">
-					<figcaption>Summary of GitHub contributions made by <a href="https://github.com/rudikershaw">@rudikershaw</a></figcaption>
-				</figure>
-			</div>
-
-			<div id="latest-tweet"></div>
-
-			<div id="latest-reddit-post"></div>
-
-			<div id="latest-read" style="display:none;">
-				<h3>Latest Read</h3>
-				<div class="book-details">
-					<div>
-						<h4><cite class="title"></cite></h4>
-						<p ><i class="author"></i></p>
-						<br />
-						<p class="synopsis"></p>
-						<br/>
-						<p class="review-paragraph"><i>&ldquo;</i><span class="review"></span><i>&rdquo;</i></p>
-						<br />
-						<a href="/bibliography">My Bibliography</a>
-					</div>
+		<section id="my-activity">
+			<div class="activity-row">
+				<h3 class="activity-label">Latest Commits</h3>
+				<div class="activity-content">
+					<figure>
+						<img width="100%" src="https://ghchart.rshah.org/rudikershaw" alt="Rudi Kershaw GitHub contributions chart">
+						<figcaption>Summary of GitHub contributions made by <a href="https://github.com/rudikershaw">@rudikershaw</a></figcaption>
+					</figure>
 				</div>
 			</div>
 
-			<div>
-				<h3>Latest Article</h3>
-				<a class="entry-card" th:href="${latest.path}">
-					<div class="entry">
-						<h4 th:text="${latest.name}">Article Title</h4>
-						<img th:src="${latest.imagePath}" height="240" width="290" th:alt="'Article thumbnail for \'' + ${latest.name} + '\' by Rudi Kershaw'" />
-						<p th:text="${latest.description}">Article Description</p>
-					</div>
-				</a>
+			<div class="activity-row">
+				<h3 class="activity-label">Latest Reddit Post</h3>
+				<div class="activity-content" id="latest-reddit-post"></div>
+			</div>
+
+			<div class="activity-row" id="latest-read" style="display:none;">
+				<h3 class="activity-label">Latest Read</h3>
+				<div class="activity-content book-details">
+					<h4 class="book-title"><cite class="title"></cite></h4>
+					<p class="book-author">by <span class="author"></span></p>
+					<p class="book-synopsis synopsis"></p>
+					<blockquote class="book-review"><span class="review"></span></blockquote>
+					<a class="book-link" href="/bibliography">My Bibliography &rarr;</a>
+				</div>
 			</div>
 		</section>
 
 		<section id="my-articles">
-			<h2 class="my-articles">My Articles</h2>
-			<div class="black-band">
-				<a th:href="${trending.path}">
-					<img th:src="${trending.largeImagePath}" th:alt="'Article thumbnail for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
-					<h2>Most Viewed - Last 7 Days</h2>
-					<h3 th:text="${trending.name}">Article Title</h3>
-					<p th:text="${trending.description}">Article Description</p>
+			<div class="trending-band">
+				<a class="trending-link" th:href="${trending.path}">
+					<span class="trending-label">Most Read <span class="trending-divider">·</span> Last 7 Days</span>
+					<div class="trending-text">
+						<h3 class="trending-title" th:text="${trending.name}">Article Title</h3>
+						<p class="trending-summary" th:text="${trending.description}">Article Description</p>
+					</div>
+					<img class="trending-thumb" th:src="${trending.imagePath}" loading="lazy" th:alt="'Article thumbnail for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
+					<img class="trending-banner" th:src="${trending.bannerImagePath}" loading="lazy" th:alt="'Article banner for \'' + ${trending.name} + '\' by Rudi Kershaw'" />
 				</a>
 			</div>
 
-			<div id="page" class="entries">
-				<a class="entry-card" th:each="article : ${all}" th:href="${article.path}">
-					<div class="entry">
-						<h4 th:text="${article.name}">Article Title</h4>
-						<img th:src="${article.imagePath}" loading="lazy" height="240" width="290" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
-						<p th:text="${article.description}">Article Description</p>
-					</div>
-				</a>
-			</div>
+			<h2 class="my-articles">My Articles</h2>
+
+			<ul class="article-list">
+				<li class="article-row" th:each="article : ${all}">
+					<a class="article-link" th:href="${article.path}">
+						<time class="article-date" th:text="${#dates.format(article.published, 'MMM yyyy')}">Jan 2025</time>
+						<div class="article-text">
+							<h3 class="article-title" th:text="${article.name}">Article Title</h3>
+							<p class="article-summary" th:text="${article.description}">Article Description</p>
+						</div>
+						<img class="article-thumb" th:src="${article.imagePath}" loading="lazy" th:alt="'Article thumbnail for \'' + ${article.name} + '\' by Rudi Kershaw'" />
+						<img class="article-banner" th:src="${article.bannerImagePath}" loading="lazy" th:alt="'Article banner for \'' + ${article.name} + '\' by Rudi Kershaw'" />
+					</a>
+				</li>
+			</ul>
 		</section>
 
 		<footer class="index-footer" th:fragment="footer">

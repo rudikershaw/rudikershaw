@@ -30,7 +30,7 @@ public class RefererRepositoryTest {
 
     @Before
     public void setup() {
-        article = new Article("Title", UUID.randomUUID().toString(), "image/path.png", "Description.");
+        article = new Article("Title", UUID.randomUUID().toString(), "image/path.png", "image/path.png", "Description.");
         articleRepository.save(article);
     }
 

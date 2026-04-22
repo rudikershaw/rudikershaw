@@ -32,6 +32,6 @@ public class ArticleRepositoryTest {
 
     private Article createArticle()
     {
-        return new Article("Title", UUID.randomUUID().toString(), "image/path.png", "Description.");
+        return new Article("Title", UUID.randomUUID().toString(), "image/path.png", "image/path.png", "Description.");
     }
 }

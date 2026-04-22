@@ -59,7 +59,6 @@ public class IndexController {
     public String index(final Model model) {
         model.addAttribute("all", ARTICLES);
         model.addAttribute("trending", articleService.getMostViewedThisWeek());
-        model.addAttribute("latest", ARTICLES.get(0));
         return PATH;
     }
 

@@ -40,19 +40,21 @@ public class ArticleService {
      * @param articlePath the path of the article.
      * @param articleName the name of the article.
      * @param imagePath the image path of the article.
+     * @param bannerImagePath the banner image path of the article, or null if none exists.
      * @param description the description of the article.
      * @param request the request for this article to check for uniqueness of view.
      * @return the initialised article.
      */
     public Article initialise(final String articlePath, final String articleName, final String imagePath,
-                              final String description, final HttpServletRequest request) {
+                              final String bannerImagePath, final String description, final HttpServletRequest request) {
         Article article = articleRepository.findByPath(articlePath);
         if (article == null) {
-            article = articleRepository.save(new Article(articleName, articlePath, imagePath, description));
+            article = articleRepository.save(new Article(articleName, articlePath, imagePath, bannerImagePath, description));
             articleSessionService.isUniqueSession(request, article);
         } else if (articleSessionService.isUniqueSession(request, article)) {
             article.setName(articleName);
             article.setImagePath(imagePath);
+            article.setBannerImagePath(bannerImagePath);
             article.setDescription(description);
             article.setViews(article.getViews() + 1);
             articleRepository.save(article);
@@ -68,7 +70,7 @@ public class ArticleService {
     public Article getMostViewedThisWeek() {
         final Integer id = articleSessionService.getMostSessionsThisWeekByArticleId();
         if (id == null) {
-            return new Article("No Articles Viewed", "/", "/images/RK.png",
+            return new Article("No Articles Viewed", "/", "/images/RK.png", "/images/RK.png",
                                 "Apparently no one has viewed ANY of my articles over the last 7 days. Come on people!");
         } else {
             return articleRepository.findById(id).orElse(null);

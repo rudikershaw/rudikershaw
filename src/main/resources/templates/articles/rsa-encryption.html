@@ -14,7 +14,7 @@
 			<section>
 				<h1 th:text="${article.name}">Grokking RSA Encryption</h1>
 				<hr />
-				<img class="coverimg" src="/images/rsa-encryption-banner.jpg" alt="Section of a rusty old lock on a shed door" />
+				<img class="coverimg" th:src="@{'/' + ${article.bannerImagePath}}" alt="Section of a rusty old lock on a shed door" />
 				<br />
 				<p>I decided that I really wanted to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> (fully understand) RSA and public key encryption. RSA encryption is enormously important
 					and is used for things like validating certificates in HTTPS requests, moving credit card information over the internet, and

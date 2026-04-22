@@ -1,19 +1,6 @@
 import 'vanilla-fade/dist/esm/fadeOut';
 
 (() => {
-    fetch('/latest-tweet')
-        .then(data => {
-            if (data.ok) {
-                return data.text();
-            } else {
-                throw new Error(data.statusText);
-            }
-        }).then(text => {
-            document.querySelector('#latest-tweet').outerHTML = text;
-        }).catch(error => {
-            console.error('The Latest Tweet web service failed to retrieve a tweet.', error);
-        });
-
     fetch('/latest-reddit-post')
         .then(data => {
             if (data.ok) {
@@ -22,7 +9,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
                 throw new Error(data.statusText);
             }
         }).then(text => {
-            document.querySelector('#latest-reddit-post').outerHTML = text;
+            document.querySelector('#latest-reddit-post').innerHTML = text;
         }).catch(error => {
             console.error('The Latest Reddit Post web service failed to retrieve a post.', error);
         });
@@ -32,7 +19,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
         .then(json => {
             const latestRead = json.bibliography[0];
             document.querySelector('#latest-read .title').textContent = latestRead.title;
-            document.querySelector('#latest-read .author').textContent = 'by ' + latestRead.author;
+            document.querySelector('#latest-read .author').textContent = latestRead.author;
             document.querySelector('#latest-read .synopsis').textContent = latestRead.synopsis;
             document.querySelector('#latest-read .review').textContent = latestRead.review;
             document.querySelector('#latest-read').style.display = null;

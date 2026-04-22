@@ -12,7 +12,7 @@
 			</div>
 			<h1 th:text="${article.name}">Defining an Algorithm</h1>
 			<hr />
-			<img class="coverimg" src="/images/taocp_text.jpg" alt="Text from a page of a book: 'Let us formally define a computational method'" />
+			<img class="coverimg" th:src="@{'/' + ${article.bannerImagePath}}" alt="Text from a page of a book: 'Let us formally define a computational method'" />
 			<br />
 
 			<p>Working your way through the volumes of The Art of Computer Programming is a fairly challenging
