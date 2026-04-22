@@ -197,42 +197,46 @@ div.entries.container {
 	text-decoration: none;
 } div.entry {
 	margin: 50px 50px 0 50px;
-    border-color: #DDDDDD;
-	border-top-color: #ED5900;
-	border-width: 1px;
-	border-top-width: 4px;
-	display: inline-block;
-	padding-bottom: 10px;
-	border-style: solid;
+	border: 1px solid #EEEEEE;
+	border-top: 3px solid #ED5900;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+	display: inline-flex;
+	flex-direction: column;
+	vertical-align: top;
+	padding-bottom: 20px;
 	text-align: center;
 	min-height: 292px;
 	max-width: 290px;
+	background: white;
+} a.entry-card:hover div.entry {
+	box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+	transform: translateY(-2px);
 } div.entry > h4 {
-	background-color: #222323;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-align: center;
-	overflow: hidden;
-	max-width: 280px;
 	font-size: 20px;
-	padding: 5px;
-	color: white;
+	font-weight: bold;
+	text-align: center;
+	color: #222323;
+	padding: 18px 16px 6px;
+	line-height: 1.3;
+	order: 2;
 	margin: 0;
 } div.entry > img {
-    transition: all 0.2s 0.1s;
-    filter: alpha(opacity=80);
-	margin-bottom: 5px;
-	margin-right: 10px;
-	opacity: 0.8;
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	order: 1;
 } div.entry > p {
 	text-align: center;
 	max-height: 120px;
-	min-height: 76px;
+	min-height: 60px;
 	overflow: hidden;
 	display: block;
     width: auto;
-
-    padding: 10px;
+	color: #555555;
+	line-height: 1.45;
+	padding: 0 16px;
+	order: 3;
 }
 
 h1.my-name {
@@ -861,11 +865,15 @@ p.reference {
 
 a.stack-overflow-link {
 	overflow: hidden;
-	float: right;
+	position: absolute;
+	transform: translateY(-50%);
+	right: 20px;
+	top: 50%;
 }
 
 a.stack-overflow-link > img {
-	margin: -3px -3px -5px -3px;
+	margin: -3px;
+	display: block;
 }
 
 /* Responsive CSS adjustments for mobile devices. */
