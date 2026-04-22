@@ -123,6 +123,7 @@ public class RedditService {
                 .replace("&gt;", ">")
                 .replace("&quot;", "\"")
                 .replace("&#39;", "'")
+                .replace("&#32;", "")
                 .replace("&nbsp;", " ")
                 .replaceAll("\\s+", " ")
                 .trim();
