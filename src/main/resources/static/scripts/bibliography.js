@@ -57,6 +57,15 @@ import 'vanilla-fade/dist/esm/fadeOut';
         .then(data => data.json())
         .then(json => populatePageWithBibliography(json));
 
+    fetch('/data/quotes.json')
+        .then(data => data.json())
+        .then(json => {
+            const quote = json.quotes[Math.floor(Math.random() * json.quotes.length)];
+            document.querySelector('#quote-block .quote-text').textContent = '"' + quote.text + '"';
+            document.querySelector('#quote-block .quote-attribution').innerHTML = '- ' + quote.author + ', <cite>' + quote.source + '</cite>';
+            document.querySelector('#quote-block').style.display = null;
+        });
+
     const curtain = document.querySelector('div.faded-background-cover');
     curtain.fadeOut(1600, 'linear', () => curtain.style.display = 'none');
 })();
