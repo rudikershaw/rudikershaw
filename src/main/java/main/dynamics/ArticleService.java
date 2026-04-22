@@ -1,5 +1,7 @@
 package main.dynamics;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +44,16 @@ public class ArticleService {
      * @param imagePath the image path of the article.
      * @param bannerImagePath the banner image path of the article, or null if none exists.
      * @param description the description of the article.
+     * @param publishedDate the publication date to use when first persisting this article; ignored if already present.
      * @param request the request for this article to check for uniqueness of view.
      * @return the initialised article.
      */
     public Article initialise(final String articlePath, final String articleName, final String imagePath,
-                              final String bannerImagePath, final String description, final HttpServletRequest request) {
+                              final String bannerImagePath, final String description, final Date publishedDate,
+                              final HttpServletRequest request) {
         Article article = articleRepository.findByPath(articlePath);
         if (article == null) {
-            article = articleRepository.save(new Article(articleName, articlePath, imagePath, bannerImagePath, description));
+            article = articleRepository.save(new Article(articleName, articlePath, imagePath, bannerImagePath, description, publishedDate));
             articleSessionService.isUniqueSession(request, article);
         } else if (articleSessionService.isUniqueSession(request, article)) {
             article.setName(articleName);
@@ -57,6 +61,7 @@ public class ArticleService {
             article.setBannerImagePath(bannerImagePath);
             article.setDescription(description);
             article.setViews(article.getViews() + 1);
+            article.setPublished(publishedDate);
             articleRepository.save(article);
         }
         return article;

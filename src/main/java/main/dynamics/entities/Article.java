@@ -67,13 +67,26 @@ public class Article implements Serializable {
      * @param desc short description of the article for summaries etc.
      */
     public Article(final String articleName, final String articlePath, final String image, final String banner, final String desc) {
+        this(articleName, articlePath, image, banner, desc, null);
+    }
+
+    /**
+     * Constructor for a new article.
+     * @param articleName the name of the article.
+     * @param articlePath the path to the article.
+     * @param image the path to the image for this article.
+     * @param banner the path to the banner image for this article, or null if none exists.
+     * @param desc short description of the article for summaries etc.
+     * @param publishedDate the date that the article was published to the website.
+     */
+    public Article(final String articleName, final String articlePath, final String image, final String banner, final String desc, final Date publishedDate) {
         this.name = articleName;
         this.path = articlePath;
         this.imagePath = image;
         this.bannerImagePath = banner;
         this.description = desc;
         views = 1;
-        published = new Date();
+        published = publishedDate == null ? new Date() : publishedDate;
     }
 
     /**
