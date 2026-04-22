@@ -11,22 +11,26 @@ blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-co
 @font-face {
 	font-family: "Lato";
 	src: url("../fonts/Lato-Regular.ttf");
+	font-display: swap;
 }
 @font-face {
 	font-family: "Lato";
 	src: url("../fonts/Lato-Bold.ttf");
 	font-weight: bold;
+	font-display: swap;
 }
 @font-face {
 	font-family: "Lato";
 	src: url("../fonts/Lato-Italic.ttf");
 	font-style: italic;
+	font-display: swap;
 }
 @font-face {
 	font-family: "Lato";
 	src: url("../fonts/Lato-BoldItalic.ttf");
 	font-weight: bold;
 	font-style: italic;
+	font-display: swap;
 }
 
 html {
@@ -1003,10 +1007,21 @@ ol#bibliography-list .synopsis span {
 	color: #ed5900;
 }
 
-ol#bibliography-list > .date-divider {
+ol#bibliography-list > li.date-divider {
 	position: relative;
-	font-style: italic;
+	text-indent: 0;
+	margin-left: 0;
 	right: 60px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+ol#bibliography-list > li.date-divider:before {
+	content: none;
+}
+
+ol#bibliography-list > li.date-divider h2 {
+	font-style: italic;
 	margin: 0;
 }
 

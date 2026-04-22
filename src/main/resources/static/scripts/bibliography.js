@@ -36,7 +36,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
 
                 if (previousFinishedDate.getFullYear() !== currentFinishedDate.getFullYear()) {
                     newDateDividor = list.querySelector('.date-divider').cloneNode(true);
-                    newDateDividor.textContent = currentFinishedDate.getFullYear();
+                    newDateDividor.querySelector('h2').textContent = currentFinishedDate.getFullYear();
                     list.appendChild(newDateDividor);
                 }
                 if (previousFinishedDate) {
@@ -48,7 +48,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
             });
 
             newDateDividor = list.querySelector('.date-divider').cloneNode(true);
-            newDateDividor.textContent = 'Etc';
+            newDateDividor.querySelector('h2').textContent = 'Etc';
             list.appendChild(newDateDividor);
         }
     }
