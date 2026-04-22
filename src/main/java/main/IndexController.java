@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dynamics.ArticleService;
+import main.reddit.RedditPost;
 import main.reddit.RedditService;
 import main.twitter.TwitterService;
 
@@ -20,9 +22,6 @@ public class IndexController {
 
     /** The path to the latest tweet fragment. */
     private static final String TWEET_PATH = "fragments/latest-tweet";
-
-    /** The path to the latest reddit post fragment. */
-    private static final String REDDIT_PATH = "fragments/latest-reddit-post";
 
     /** Injected article service. */
     private final ArticleService articleService;
@@ -75,17 +74,14 @@ public class IndexController {
     }
 
     /**
-     * Construct a panel containing the latest Reddit post and return the HTML.
+     * Return the latest Reddit post as JSON. The client renders it using
+     * textContent, keeping the server free of any HTML injection surface.
      *
-     * @param model the model injected by Spring.
-     * @return the path to the latest reddit post fragment.
+     * @return the latest post DTO, or null if unavailable.
      */
     @GetMapping("/latest-reddit-post")
-    public String latestRedditPost(final Model model) {
-        final var post = redditService.getLatestPost();
-        model.addAttribute("redditPost", post);
-        model.addAttribute("thumbnail", redditService.getThumbnail(post));
-        model.addAttribute("description", redditService.getDescription(post));
-        return REDDIT_PATH;
+    @ResponseBody
+    public RedditPost latestRedditPost() {
+        return redditService.getLatestPost();
     }
 }

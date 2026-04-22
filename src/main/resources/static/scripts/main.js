@@ -4,12 +4,32 @@ import 'vanilla-fade/dist/esm/fadeOut';
     fetch('/latest-reddit-post')
         .then(data => {
             if (data.ok) {
-                return data.text();
+                return data.json();
             } else {
                 throw new Error(data.statusText);
             }
-        }).then(text => {
-            document.querySelector('#latest-reddit-post').innerHTML = text;
+        }).then(post => {
+            if (!post || typeof post.link !== 'string' || !post.link.startsWith('https://www.reddit.com/')) {
+                return;
+            }
+            const row = document.querySelector('#latest-reddit-post-row');
+            const subredditEl = row.querySelector('.reddit-subreddit');
+            const dateEl = row.querySelector('.reddit-date');
+            if (post.subreddit) {
+                subredditEl.textContent = 'r/' + post.subreddit;
+            }
+            if (post.published) {
+                dateEl.textContent = (post.subreddit ? ' · ' : '') + post.published;
+            }
+            row.querySelector('.reddit-title').textContent = post.title || '';
+            const body = row.querySelector('.reddit-body');
+            if (post.description) {
+                body.textContent = post.description;
+            } else {
+                body.style.display = 'none';
+            }
+            row.querySelector('.reddit-link').href = post.link;
+            row.style.display = null;
         }).catch(error => {
             console.error('The Latest Reddit Post web service failed to retrieve a post.', error);
         });

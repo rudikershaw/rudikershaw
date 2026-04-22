@@ -704,6 +704,32 @@ img.coverimg {
 	font-size: 14px;
 }
 
+div.reddit-post {
+	display: grid;
+	grid-template-columns: 150px 1fr;
+	gap: 24px;
+	align-items: start;
+}
+
+img.reddit-thumb {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	display: block;
+	opacity: 0.9;
+}
+
+@media (max-width: 580px) {
+	div.reddit-post {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+	img.reddit-thumb {
+		width: 100%;
+		height: auto;
+	}
+}
+
 div.reddit-post p.reddit-meta {
 	color: #777777;
 	font-size: 13px;

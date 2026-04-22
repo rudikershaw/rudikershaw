@@ -1,9 +1,0 @@
-<div th:if="${redditPost != null}" class="reddit-post" xmlns:th="http://www.w3.org/1999/xhtml">
-    <p class="reddit-meta">
-        <span th:if="${not #lists.isEmpty(redditPost.categories)}" th:text="${'r/' + redditPost.categories[0].name}">r/subreddit</span>
-        <span th:if="${redditPost.publishedDate != null}" th:text="${' · ' + #dates.format(redditPost.publishedDate, 'MMM dd')}"></span>
-    </p>
-    <h4 class="reddit-title" th:text="${redditPost.title}">Post Title</h4>
-    <p class="reddit-body" th:if="${description != null}" th:text="${description}"></p>
-    <a class="reddit-link" th:href="${redditPost.link}">View on Reddit &rarr;</a>
-</div>

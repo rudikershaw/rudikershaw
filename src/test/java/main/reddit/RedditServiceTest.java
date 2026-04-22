@@ -36,9 +36,44 @@ public class RedditServiceTest {
     }
 
     @Test
-    public void testGetThumbnailReturnsNullForNullEntry() {
+    public void testToDtoReturnsNullForNullEntry() {
         final RedditService service = new RedditService();
-        Assert.assertNull(service.getThumbnail(null));
+        Assert.assertNull(service.toDto(null));
+    }
+
+    @Test
+    public void testToDtoReturnsNullForUnsafeLinkScheme() {
+        final RedditService service = new RedditService();
+        final com.rometools.rome.feed.synd.SyndEntry entry =
+                new com.rometools.rome.feed.synd.SyndEntryImpl();
+        entry.setTitle("title");
+        entry.setLink("javascript:alert(1)");
+        Assert.assertNull(service.toDto(entry));
+    }
+
+    @Test
+    public void testToDtoReturnsNullForNonRedditLink() {
+        final RedditService service = new RedditService();
+        final com.rometools.rome.feed.synd.SyndEntry entry =
+                new com.rometools.rome.feed.synd.SyndEntryImpl();
+        entry.setTitle("title");
+        entry.setLink("https://evil.example.com/post");
+        Assert.assertNull(service.toDto(entry));
+    }
+
+    @Test
+    public void testToDtoPopulatesFieldsForSafeEntry() {
+        final RedditService service = new RedditService();
+        final com.rometools.rome.feed.synd.SyndEntry entry =
+                new com.rometools.rome.feed.synd.SyndEntryImpl();
+        entry.setTitle("Hello");
+        entry.setLink("https://www.reddit.com/r/test/comments/abc/hello/");
+        final RedditPost dto = service.toDto(entry);
+        Assert.assertNotNull(dto);
+        Assert.assertEquals("Hello", dto.getTitle());
+        Assert.assertEquals("https://www.reddit.com/r/test/comments/abc/hello/",
+                dto.getLink());
+        Assert.assertNull(dto.getThumbnail());
     }
 
     /**
