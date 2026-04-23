@@ -1,77 +1,77 @@
 {
   "method": "trained on synthetic examples (scripts/data/training-examples.jsonl), evaluated on bibliography.json",
-  "trainingSize": 311,
+  "trainingSize": 329,
   "evaluationSize": 117,
-  "accuracy": 0.812,
-  "macroF1": 0.747,
+  "accuracy": 0.872,
+  "macroF1": 0.838,
   "majorityClassBaseline": 0.444,
   "perClass": {
     "fiction": {
       "support": 52,
-      "precision": 0.813,
-      "recall": 1,
-      "f1": 0.897
+      "precision": 0.926,
+      "recall": 0.962,
+      "f1": 0.943
     },
     "science": {
       "support": 21,
-      "precision": 0.857,
-      "recall": 0.571,
-      "f1": 0.686
+      "precision": 0.81,
+      "recall": 0.81,
+      "f1": 0.81
     },
     "history": {
       "support": 14,
-      "precision": 1,
-      "recall": 0.5,
-      "f1": 0.667
+      "precision": 0.786,
+      "recall": 0.786,
+      "f1": 0.786
     },
     "philosophy": {
       "support": 11,
-      "precision": 0.636,
-      "recall": 0.636,
-      "f1": 0.636
+      "precision": 0.818,
+      "recall": 0.818,
+      "f1": 0.818
     },
     "technical": {
       "support": 19,
-      "precision": 0.81,
-      "recall": 0.895,
-      "f1": 0.85
+      "precision": 0.882,
+      "recall": 0.789,
+      "f1": 0.833
     }
   },
   "confusionMatrix": {
     "fiction": {
-      "fiction": 52,
+      "fiction": 50,
       "science": 0,
-      "history": 0,
+      "history": 2,
       "philosophy": 0,
       "technical": 0
     },
     "science": {
-      "fiction": 6,
-      "science": 12,
+      "fiction": 2,
+      "science": 17,
       "history": 0,
-      "philosophy": 2,
+      "philosophy": 1,
       "technical": 1
     },
     "history": {
-      "fiction": 3,
+      "fiction": 1,
       "science": 0,
-      "history": 7,
-      "philosophy": 2,
-      "technical": 2
-    },
-    "philosophy": {
-      "fiction": 2,
-      "science": 1,
-      "history": 0,
-      "philosophy": 7,
+      "history": 11,
+      "philosophy": 1,
       "technical": 1
     },
-    "technical": {
+    "philosophy": {
       "fiction": 1,
       "science": 1,
       "history": 0,
+      "philosophy": 9,
+      "technical": 0
+    },
+    "technical": {
+      "fiction": 0,
+      "science": 3,
+      "history": 1,
       "philosophy": 0,
-      "technical": 17
+      "technical": 15
     }
   }
 }
