@@ -17,13 +17,30 @@
 
 		<section class="container off-centre">
 			<h1 id="bibliography-start">Bibliography</h1>
-			<br /><br />
+
+			<aside id="genre-key" style="display: none">
+				<p class="genre-key-stats">Genres predicted by whichx, my Naive Bayes classifier. The model has never seen these books in training.</p>
+				<p class="genre-key-summary"></p>
+				<table class="genre-key-table">
+					<thead>
+						<tr>
+							<th scope="col">Genre</th>
+							<th scope="col"><span class="long">Precision</span><abbr class="short" title="Precision">P</abbr></th>
+							<th scope="col"><span class="long">Recall</span><abbr class="short" title="Recall">R</abbr></th>
+							<th scope="col">F1</th>
+							<th scope="col"><span class="long">Seen</span><abbr class="short" title="Seen">n</abbr></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</aside>
 
 			<ol id="bibliography-list">
 				<li class="date-divider"><h2>Today</h2></li>
 				<li id="bibliography-item-template" style="display: none">
 					<cite></cite><span class="author-sep"> - </span><i><span class="author"></span></i>
 					<p class="synopsis"></p>
+					<div class="entry-meta"></div>
 					<button type="button" class="review-toggle" aria-expanded="false">
 						<span class="review-toggle-label">Read review</span>
 						<i class="fa fa-chevron-down review-toggle-chevron" aria-hidden="true"></i>

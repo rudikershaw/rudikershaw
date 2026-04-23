@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Warning: no test specified\"",
+    "train": "node scripts/train-classifier.js",
+    "prebuild": "npm run train",
     "build": "webpack"
   },
   "repository": {
@@ -28,7 +30,7 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "vanilla-fade": "^1.1.0",
-    "whichx": "^3.0.1"
+    "whichx": "^3.0.2"
   },
   "babel": {
     "presets": [

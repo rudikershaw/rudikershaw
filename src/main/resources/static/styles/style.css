@@ -1205,6 +1205,190 @@ a.stack-overflow-link > img {
 
 /* Feature - Bibliography list */
 
+.genre-dot {
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: #CCCCCC;
+	vertical-align: middle;
+}
+
+.genre-dot[data-genre="fiction"]    { background: #C23A4B; }
+.genre-dot[data-genre="science"]    { background: #2E86DE; }
+.genre-dot[data-genre="history"]    { background: #8E6E3C; }
+.genre-dot[data-genre="philosophy"] { background: #7A4FBF; }
+.genre-dot[data-genre="technical"]  { background: #2BA86B; }
+
+ol#bibliography-list > li[data-genre="fiction"]:before    { background: #C23A4B; }
+ol#bibliography-list > li[data-genre="science"]:before    { background: #2E86DE; }
+ol#bibliography-list > li[data-genre="history"]:before    { background: #8E6E3C; }
+ol#bibliography-list > li[data-genre="philosophy"]:before { background: #7A4FBF; }
+ol#bibliography-list > li[data-genre="technical"]:before  { background: #2BA86B; }
+
+#genre-key {
+	max-width: 600px;
+	margin: 0 0 32px auto;
+	padding: 16px 20px 0;
+	background: transparent;
+	color: inherit;
+	border-radius: 0;
+}
+
+#genre-key .genre-key-stats {
+	margin: 0 0 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #888888;
+	font-style: italic;
+}
+
+#genre-key .genre-key-summary {
+	margin: 0 0 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #888888;
+	font-style: italic;
+}
+
+#genre-key .genre-key-summary:empty {
+	display: none;
+}
+
+#genre-key .genre-key-summary .num {
+	display: inline-block;
+	min-width: 2.6em;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	font-style: normal;
+}
+
+#genre-key .genre-key-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 11px;
+}
+
+#genre-key .genre-key-table th,
+#genre-key .genre-key-table td {
+	padding: 4px 8px;
+	text-align: left;
+	border-bottom: 1px solid #EEEEEE;
+}
+
+#genre-key .genre-key-table th {
+	font-weight: 600;
+	font-size: 10px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #AAAAAA;
+}
+
+#genre-key .genre-key-table th .short {
+	display: none;
+	text-decoration: none;
+	border: none;
+}
+
+#genre-key .genre-key-table td {
+	color: #777777;
+	font-variant-numeric: tabular-nums;
+}
+
+#genre-key .genre-key-table td:first-child {
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #666666;
+}
+
+#genre-key .genre-key-table td:first-child .genre-dot {
+	margin-right: 6px;
+}
+
+@media (max-width: 860px) {
+	#genre-key {
+		margin-bottom: 24px;
+		padding: 12px 16px 0;
+	}
+	#genre-key .genre-key-table th,
+	#genre-key .genre-key-table td {
+		padding: 4px 6px;
+	}
+	#genre-key .genre-key-table th {
+		font-size: 10px;
+		letter-spacing: 0.04em;
+	}
+	#genre-key .genre-key-table th .long {
+		display: none;
+	}
+	#genre-key .genre-key-table th .short {
+		display: inline;
+	}
+	#genre-key .genre-key-table td:first-child {
+		letter-spacing: 0.02em;
+	}
+	#genre-key .genre-key-table td:first-child .genre-dot {
+		margin-right: 4px;
+	}
+}
+
+ol#bibliography-list .entry-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+}
+
+ol#bibliography-list .genre-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 10px;
+	border-radius: 999px;
+	background: #F2F2F2;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #666666;
+}
+
+ol#bibliography-list .genre-tag .genre-dot {
+	width: 7px;
+	height: 7px;
+}
+
+ol#bibliography-list .genre-tag,
+ol#bibliography-list .genre-correct {
+	opacity: 0;
+	transform: translateY(2px);
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+ol#bibliography-list .genre-tag.is-visible,
+ol#bibliography-list .genre-correct.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+ol#bibliography-list .genre-tag.is-wrong {
+	text-decoration: line-through;
+	color: #999999;
+	opacity: 0.7;
+}
+
+ol#bibliography-list .genre-tag.is-truth {
+	background: #E8F5EE;
+	color: #2BA86B;
+}
+
+ol#bibliography-list .genre-correct {
+	color: #2BA86B;
+	font-size: 13px;
+}
+
 #bibliography-start {
 	max-width: 720px;
 	margin: 120px auto 8px;
