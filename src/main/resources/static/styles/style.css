@@ -37,8 +37,12 @@ body {
 	min-height: 100vh;
 }
 
+body > section {
+	flex: 1 0 auto;
+}
+
 body > footer {
-	margin-top: auto;
+	flex-shrink: 0;
 }
 
 h1 {
