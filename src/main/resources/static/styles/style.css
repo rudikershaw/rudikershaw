@@ -31,6 +31,16 @@ html {
 	font-feature-settings: "cv11", "ss01", "ss03";
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+body > footer {
+	margin-top: auto;
+}
+
 h1 {
 	margin-top: 10px;
 	font-size: 40px;
@@ -1415,6 +1425,13 @@ ol#bibliography-list:before {
 	bottom: 0;
 	width: 1px;
 	background: #E5E5E5;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+ol#bibliography-list.is-ready:before {
+	transform: scaleY(1);
 }
 
 ol#bibliography-list > li {
@@ -1423,6 +1440,14 @@ ol#bibliography-list > li {
 	padding: 14px 0;
 	text-indent: 0;
 	line-height: 1.45;
+	opacity: 0;
+	transform: translateY(6px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+ol#bibliography-list.is-ready > li {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 ol#bibliography-list > li:before {

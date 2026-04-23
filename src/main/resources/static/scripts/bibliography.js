@@ -104,6 +104,14 @@ import WhichX from 'whichx';
         newDateDividor.querySelector('h2').textContent = 'Etc';
         list.appendChild(newDateDividor);
 
+        // Stagger each row's enter transition so items trail the rail falling.
+        const items = list.querySelectorAll(':scope > li');
+        const total = Math.max(items.length - 1, 1);
+        items.forEach((li, i) => {
+            li.style.transitionDelay = (300 + (i / total) * 900).toFixed(0) + 'ms';
+        });
+        requestAnimationFrame(() => requestAnimationFrame(() => list.classList.add('is-ready')));
+
         return nodes;
     }
 
