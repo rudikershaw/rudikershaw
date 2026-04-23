@@ -512,7 +512,6 @@ h1.my-name > span.name-stop {
 h1.my-name > span.name-stop::before {
 	content: "\2022";
 	display: block;
-	font-style: oblique;
 	font-size: 35px;
 	line-height: 1;
 	color: #222323;
@@ -600,6 +599,15 @@ p.my-tagline {
 	padding-left: 2.5em;
 }
 
+p.my-tagline::after {
+	content: "";
+	display: block;
+	width: 50px;
+	height: 1px;
+	background: #ED5900;
+	margin-top: 10px;
+}
+
 p.my-tagline .tagline-sep {
 	color: #ED5900;
 	margin: 0 4px;
@@ -616,6 +624,7 @@ p.my-description {
 }
 
 p.my-description .lead {
+	font-style: italic;
 	font-weight: 400;
 	color: #222323;
 }
