@@ -1277,18 +1277,59 @@ ol#bibliography-list .synopsis {
 	text-indent: 0;
 }
 
-ol#bibliography-list .synopsis span {
-	display: inline-block;
-	margin-left: 6px;
+ol#bibliography-list .review-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 8px;
+	padding: 0;
+	background: none;
+	border: none;
 	color: #ED5900;
+	font: inherit;
 	font-size: 13px;
-	cursor: help;
-	vertical-align: 1px;
-	transition: transform 0.15s ease;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	cursor: pointer;
 }
 
-ol#bibliography-list .synopsis span:hover {
-	transform: translateY(-2px);
+ol#bibliography-list .review-toggle:hover {
+	color: #222323;
+}
+
+ol#bibliography-list .review-toggle-chevron {
+	font-size: 11px;
+	transition: transform 0.2s ease;
+}
+
+ol#bibliography-list .review-toggle[aria-expanded="true"] .review-toggle-chevron {
+	transform: rotate(180deg);
+}
+
+ol#bibliography-list .review-wrapper {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.25s ease;
+}
+
+ol#bibliography-list .review-wrapper.open {
+	grid-template-rows: 1fr;
+}
+
+ol#bibliography-list .review-wrapper > blockquote.review {
+	overflow: hidden;
+	margin: 0;
+	padding: 0 0 0 16px;
+	border-left: 2px solid #ED5900;
+	color: #444444;
+	font-size: 15px;
+	line-height: 1.55;
+	font-style: italic;
+}
+
+ol#bibliography-list .review-wrapper.open > blockquote.review {
+	margin-top: 10px;
 }
 
 ol#bibliography-list > li.date-divider {

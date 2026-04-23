@@ -9,13 +9,6 @@ import 'vanilla-fade/dist/esm/fadeOut';
         return Math.round(Math.abs((date1 - date2) / oneDayInMiliseconds));
     }
 
-    function createIcon(reviewText) {
-        const infoIcon = document.createElement('span');
-        infoIcon.textContent = '\u2139';
-        infoIcon.title = reviewText;
-        return infoIcon;
-    }
-
     function populatePageWithBibliography(response) {
         let newEntry;
         let newDateDividor;
@@ -29,7 +22,23 @@ import 'vanilla-fade/dist/esm/fadeOut';
                 newEntry.querySelector('cite').textContent = item.title;
                 newEntry.querySelector('.author').textContent = item.author;
                 newEntry.querySelector('.synopsis').textContent = item.synopsis;
-                newEntry.querySelector('.synopsis').appendChild(createIcon(item.review));
+
+                const review = newEntry.querySelector('.review');
+                const wrapper = newEntry.querySelector('.review-wrapper');
+                const toggle = newEntry.querySelector('.review-toggle');
+                if (item.review) {
+                    review.textContent = item.review;
+                    toggle.addEventListener('click', () => {
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!expanded));
+                        toggle.querySelector('.review-toggle-label').textContent =
+                            expanded ? 'Read review' : 'Hide review';
+                        wrapper.classList.toggle('open', !expanded);
+                    });
+                } else {
+                    toggle.remove();
+                    wrapper.remove();
+                }
 
                 newEntry.removeAttribute('style');
                 newEntry.removeAttribute('id');
