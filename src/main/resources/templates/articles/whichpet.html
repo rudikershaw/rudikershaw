@@ -5,42 +5,62 @@
     </head>
 	<body>
 		<header th:replace="index :: header"></header>
-		<div class="whichpet">
-			<br />
-			<div class="text-container">
+
+		<section class="container off-centre whichpet">
+			<div class="text-container whichpet-meta">
 				<p class="date">20/05/2016</p>
 				<p class="views"><span th:text="${article.views}">1</span> views</p>
 			</div>
-			<h1>Whichpet</h1>
-			<br />
-			<br />
-			<p class="text-container">Hi I'm Whichpet, a weak AI program that can work out from a description of your pet the kind of animal you are talking about.
-				At the moment I can understand when you're talking about cats, dogs, fish, birds, horses and reptiles. Feel free to describe your
-				pet below and I'll see if I can guess which type of pet it is. If I get it wrong you can tell me what type of pet it was and I can
-				learn from it!</p>
-            <br />
+
+			<h1 id="whichpet-start">Whichpet</h1>
+
+			<div class="text-container whichpet-intro">
+				<p>Hi I'm Whichpet, a weak AI program that can work out from a description of your pet the kind of animal you are talking about.
+					At the moment I can understand when you're talking about cats, dogs, fish, birds, horses and reptiles. Feel free to describe your
+					pet below and I'll see if I can guess which type of pet it is. If I get it wrong you can tell me what type of pet it was and I can
+					learn from it!</p>
+			</div>
+
+			<aside id="pet-key" style="display: none">
+				<p class="pet-key-stats">Training data is crowdsourced from visitors submitting their own pet descriptions, so I can't vouch for the quality of what we're testing with, or against. Accuracy is measured on a 10% holdout shuffled out before the classifier sees any of it, then folded back in once evaluation is done.</p>
+				<p class="pet-key-summary"></p>
+				<table class="pet-key-table">
+					<thead>
+						<tr>
+							<th scope="col">Animal</th>
+							<th scope="col"><span class="long">Precision</span><abbr class="short" title="Precision">P</abbr></th>
+							<th scope="col"><span class="long">Recall</span><abbr class="short" title="Recall">R</abbr></th>
+							<th scope="col">F1</th>
+							<th scope="col"><span class="long">Seen</span><abbr class="short" title="Seen">n</abbr></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</aside>
 
 			<div id="whichpet-target">
-                <img style="background:white; margin: 40px auto; padding: 160px 220px; border-radius: 10px" src="/images/coolloading.gif" alt="Loading..." width="200" height="200" id="waiting" />
+				<div class="whichpet-loading"><img src="/images/coolloading.gif" alt="Loading..." width="120" height="120" /></div>
 			</div>
-            <h2 id="click-for-more"><a>How Does it Work?</a> <span>&#9658;</span></h2>
-			<div id="they-clicked-for-more" style="display: none;">
-				<p>Whichpet is a <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes Classifier</a> written in Javascript. What that means is that it works out the probabilities that you are describing a pet of each
-					type by calculating the probability that you would use certain words. How does it know the probabilities? Well, you provide them.
-					Every time someone describes a pet and tells it which type of pet it was, data is added to a large list which it uses to work out the
-					chances.</p>
-				<br />
-				<p>I created Whichpet because I wanted to create an example of a very simple AI or Machine Learning program. It's easy for machine learning to feel
-					a little like magic, but once you peer beneath the hood machine intelligence is usually just a combination of fairly simple tricks.</p>
-				<br />
-				<p>In a later article I am going to talk about how machine learning and AI needn't feel like magic, and can be simple for everyone to understand.</p>
-				<br />
-				<p>If you would like to see or use the code for Whichpet, you can <a href="https://github.com/rudikershaw/whichpet">view the code on GitHub</a>.</p>
+
+			<div class="text-container whichpet-explainer">
+				<h2 id="click-for-more"><a>How Does it Work?</a> <span>&#9658;</span></h2>
+				<div id="they-clicked-for-more" style="display: none;">
+					<p>Whichpet is a <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes Classifier</a> written in Javascript. What that means is that it works out the probabilities that you are describing a pet of each
+						type by calculating the probability that you would use certain words. How does it know the probabilities? Well, you provide them.
+						Every time someone describes a pet and tells it which type of pet it was, data is added to a large list which it uses to work out the
+						chances.</p>
+					<br />
+					<p>I created Whichpet because I wanted to create an example of a very simple AI or Machine Learning program. It's easy for machine learning to feel
+						a little like magic, but once you peer beneath the hood machine intelligence is usually just a combination of fairly simple tricks.</p>
+					<br />
+					<p>The stats above come from shuffling the full training set, setting aside 10% of examples the classifier never sees during evaluation, then asking it to label each one.
+						Precision, recall, and F1 are reported per animal, alongside overall accuracy and the majority-class baseline for context.
+						Once the evaluation finishes, the holdout is folded back in so the live classifier still benefits from every example.</p>
+					<br />
+					<p>If you would like to see or use the code for Whichpet, you can <a href="https://github.com/rudikershaw/whichpet">view the code on GitHub</a>.</p>
+				</div>
 			</div>
-			<br />
-			<br />
-			<br />
-		</div>
+		</section>
 
 		<div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
 
