@@ -29,6 +29,11 @@ import 'vanilla-fade/dist/esm/fadeOut';
                 body.style.display = 'none';
             }
             row.querySelector('.reddit-link').href = post.link;
+            if (typeof post.thumbnail === 'string' && post.thumbnail.startsWith('https://')) {
+                const thumb = row.querySelector('.reddit-thumb');
+                thumb.src = post.thumbnail;
+                thumb.style.display = null;
+            }
             row.style.display = null;
         }).catch(error => {
             console.error('The Latest Reddit Post web service failed to retrieve a post.', error);

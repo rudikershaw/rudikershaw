@@ -706,8 +706,8 @@ img.coverimg {
 
 div.reddit-post {
 	display: grid;
-	grid-template-columns: 150px 1fr;
-	gap: 24px;
+	grid-template-columns: 1fr 150px;
+	gap: 36px;
 	align-items: start;
 }
 
@@ -721,12 +721,13 @@ img.reddit-thumb {
 
 @media (max-width: 580px) {
 	div.reddit-post {
-		grid-template-columns: 1fr;
-		gap: 12px;
+		grid-template-columns: 110px 1fr;
+		gap: 16px;
 	}
 	img.reddit-thumb {
-		width: 100%;
-		height: auto;
+		width: 110px;
+		height: 110px;
+		order: -1;
 	}
 }
 
