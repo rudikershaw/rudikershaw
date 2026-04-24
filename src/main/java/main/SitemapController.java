@@ -43,16 +43,18 @@ public class SitemapController {
                 .priority(1.0)
                 .build());
 
+        final double secondPriority = 0.8;
+
         generator.addUrl(new WebSitemapUrl.Options(baseUrl + "bibliography")
                 .changeFreq(ChangeFreq.MONTHLY)
-                .priority(0.8)
+                .priority(secondPriority)
                 .build());
 
         for (final Article article : ARTICLES) {
             generator.addUrl(new WebSitemapUrl.Options(baseUrl + article.getPath())
                     .lastMod(article.getPublished())
                     .changeFreq(ChangeFreq.YEARLY)
-                    .priority(0.8)
+                    .priority(secondPriority)
                     .build());
         }
 
