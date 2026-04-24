@@ -3,6 +3,7 @@ package main;
 import static main.articles.DefaultArticleController.ARTICLES;
 
 import java.net.MalformedURLException;
+import java.util.Date;
 
 import com.redfin.sitemapgenerator.ChangeFreq;
 import com.redfin.sitemapgenerator.WebSitemapGenerator;
@@ -37,9 +38,15 @@ public class SitemapController {
         final WebSitemapGenerator generator = new WebSitemapGenerator(baseUrl);
 
         generator.addUrl(new WebSitemapUrl.Options(baseUrl)
-                .changeFreq(ChangeFreq.WEEKLY).priority(1.0).build());
+                .changeFreq(ChangeFreq.DAILY)
+                .lastMod(new Date())
+                .priority(1.0)
+                .build());
+
         generator.addUrl(new WebSitemapUrl.Options(baseUrl + "bibliography")
-                .changeFreq(ChangeFreq.MONTHLY).priority(0.8).build());
+                .changeFreq(ChangeFreq.MONTHLY)
+                .priority(0.8)
+                .build());
 
         for (final Article article : ARTICLES) {
             generator.addUrl(new WebSitemapUrl.Options(baseUrl + article.getPath())
