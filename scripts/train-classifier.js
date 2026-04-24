@@ -7,20 +7,8 @@ const LABELS = ["fiction", "science", "history", "philosophy", "technical"];
 const PATHS = {
     training: path.join(__dirname, "data/training-examples.jsonl"),
     bibliography: path.join(__dirname, "..", "src/main/resources/static/data/bibliography.json"),
-    model: path.join(__dirname, "..", "src/main/resources/static/data/genre-model.json"),
-    stats: path.join(__dirname, "..", "src/main/resources/static/data/genre-stats.json")
+    model: path.join(__dirname, "..", "src/main/resources/static/data/genre-model.json")
 };
-
-// whichx's config replaces its defaults entirely rather than merging, and the
-// defaults are not exported. Extract them from the library source so we can
-// pass a union of (defaults + our extras) without duplicating the default list.
-// Not to self - Update whichx to expose stop-words, and confidence.
-function loadWhichxDefaultStopwords() {
-    const source = fs.readFileSync(require.resolve("whichx/src/index.js"), "utf8");
-    const match = source.match(/DEFAULT_STOPWORDS\s*=\s*\[([\s\S]*?)\]/);
-    if (!match) throw new Error("Could not extract DEFAULT_STOPWORDS from whichx source");
-    return match[1].match(/"([^"]+)"/g).map(s => s.slice(1, -1));
-}
 
 // Stopwords limited to words with no genre signal in a book-review context.
 const EXTRA_STOPWORDS = [
@@ -77,7 +65,7 @@ function validateLabels(items, source) {
 }
 
 function trainClassifier(examples) {
-    const classifier = new WhichX({ stopwords: loadWhichxDefaultStopwords().concat(EXTRA_STOPWORDS) });
+    const classifier = new WhichX({ stopwords: WhichX.getDefaultStopwords().concat(EXTRA_STOPWORDS) });
     classifier.addLabels(LABELS);
     for (const e of examples) classifier.addData(e.genre, buildDoc(e));
     return classifier;
@@ -168,18 +156,6 @@ const accuracy = correct / total;
 const perClass = perClassMetrics(matrix, evalCounts);
 const mF1 = macroF1(perClass);
 const baseline = majorityClassAccuracy(evalCounts, total);
-
-const stats = {
-    method: "trained on synthetic examples (scripts/data/training-examples.jsonl), evaluated on bibliography.json",
-    trainingSize: trainingExamples.length,
-    evaluationSize: total,
-    accuracy: round3(accuracy),
-    macroF1: round3(mF1),
-    majorityClassBaseline: round3(baseline),
-    perClass: perClass,
-    confusionMatrix: matrix
-};
-fs.writeFileSync(PATHS.stats, JSON.stringify(stats, null, 2));
 
 printReport({
     trainingSize: trainingExamples.length,

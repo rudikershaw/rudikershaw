@@ -828,7 +828,6 @@ img.reddit-thumb {
 	height: 150px;
 	object-fit: cover;
 	display: block;
-	opacity: 0.9;
 }
 
 @media (max-width: 580px) {
