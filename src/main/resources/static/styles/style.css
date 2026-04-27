@@ -78,6 +78,13 @@ em {
 	font-style: italic;
 }
 
+abbr[title] {
+	cursor: help;
+	text-decoration: underline dashed #ED5900;
+	text-underline-offset: 0.15em;
+	text-decoration-thickness: 1px;
+}
+
 strong, b {
 	font-weight: 600;
 }

@@ -26,6 +26,7 @@ public class DefaultArticleController {
      * Order of the list determines the order of the articles on the site.
      */
     public static final List<Article> ARTICLES = List.of(
+        new Article("How Fast Does AI Really Make Developers?", "articles/how-much-faster", "images/how-much-faster.jpg", "images/how-much-faster-banner.jpg", "Our industry is convinced AI has transformed developer productivity. If we look at the evidence with a scientific eye, how much faster are engineers really?", date("2026-04-28")),
         new Article("Software Best Practice?", "articles/best-practice", "images/best-practice.jpg", "images/best-practice-banner.jpg", "I spent some time trying to find the evidence that supports best practices in software development. I didn't like what I found.", date("2021-02-01")),
         new Article("On Being Stuck", "articles/on-being-stuck", "images/on-being-stuck.jpg", "images/on-being-stuck-banner.jpg", "How we programmers get ourselves out of a rut isn't just a useful skill. It defines how productive we are at the highest level.", date("2020-05-18")),
         new Article("Git Hooks and Java Projects", "articles/git-hooks-and-java", "images/git-hooks.jpg", "images/git-hooks-banner.jpg", "From hearing about everyone's project setups it seems Git hooks are widely under-utilised. I believe we can do better.", date("2019-11-17")),
