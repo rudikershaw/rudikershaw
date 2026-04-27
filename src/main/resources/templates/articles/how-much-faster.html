@@ -7,7 +7,7 @@
 		<header th:replace="index :: header"></header>
 		<article>
 			<div class="text-container">
-				<p class="date">24/04/2026</p>
+				<p class="date">28/04/2026</p>
 				<p class="views"><span th:text="${article.views}">1</span> views</p>
 			</div>
 
@@ -84,6 +84,7 @@
 
 				<p>This paper has some real problems. Let's go through them, in no particular order.</p><br />
 
+
 				<p>Firstly, the paper claims to be randomised. Except opting into the group getting Copilot was voluntary. The two groups being compared are not the same. We're comparing willing volunteers against everyone
 					else. This is called <em>self</em>-selection bias. To try to fix this, they apply a number of statistical methods to try to account for this bias. But these are patches at best, and worse still, the
 					researchers admit to knowing which group is which when doing the analysis. No blinding on the researcher side means that all their statistical analysis choices are made in full knowledge of what they
@@ -93,6 +94,15 @@
 				<p>There's a lot more, but I'll only cover two. The <em>tasks</em> they reported getting completed at an increase of 26% were pull requests. Not actual units of work. Not even pull requests that got merged,
 					or approved, or anything specific like that. Just... pull requests. Lastly, the increase in tasks completed was almost totally accounted for by the increase amongst junior developers. Senior developers
 					saw no significant increase in task completion rate.</p><br />
+
+				<ul class="dark">
+					<li>Self-selection bias.</li>
+					<li>Unblinded analysis.</li>
+					<li>Post-hoc period selection.</li>
+					<li>Proxy outcome measure.</li>
+					<li>Subgroup effect masking.</li>
+				</ul>
+				<br />
 
 				<p>On the surface this paper has all the rigour of science. All the right words, and even the correct statistical methods. The researchers even openly discuss many of the issues (and more) that I point out
 					myself in their discussion section. But the paper reads like the researchers were actively and desperately looking for a nice figure to report. A figure their sponsor would be happy with.</p>
@@ -121,6 +131,15 @@
 					servers). The developers were asked to estimate the work in the pool, then given a task, and then randomly assigned to using or not-using <abbr title="Artificial Intelligence">AI</abbr>. Their screen was
 					recorded for the duration of their work (and therefore timed). These developers worked on 246 real issues, averaging two hours of work on each issue. After the research was complete, the developers were
 					surveyed to find out how much faster they thought they were working using <abbr title="Artificial Intelligence">AI</abbr> coding assistants.</p><br />
+
+				<ul class="dark">
+					<li>Task-level randomisation.</li>
+					<li>Pre-registered hypothesis.</li>
+					<li>Real repositories, real issues.</li>
+					<li>Screen-recorded timing.</li>
+					<li>Post-study perception survey.</li>
+				</ul>
+				<br />
 
 				<p>So, what did they find? In retrospect, developers thought they were 20% faster using their coding agents. They were actually, on average, 19% <b>slower</b>. Not faster, <em>slower</em>.</p><br />
 
@@ -182,13 +201,24 @@
 					<abbr title="Artificial Intelligence">AI</abbr>) is very high. Secondly, some of their early numbers line up remarkably well with METR's findings (and some earlier papers) despite using a radically
 					different methodology. That kind of convergence between independent groups is hard to write off, even before a paper is published.</p><br />
 
-				<p>So, it is with <em>some trepidation</em> that I present the findings <a href="https://www.youtube.com/watch?v=tbDDYKRFjhk">they have been discussing at conferences</a>. Their early results show that
-					<abbr title="Artificial Intelligence">AI</abbr> use results in roughly 30-40% more code. Of that code, approximately 15-25% is <q>"rework"</q> where the shoddy <abbr title="Artificial Intelligence">AI</abbr>
-					code needed fixing. And that leaves an approximately 15-20% net gain in productive work. Greenfield projects benefited most heavily from <abbr title="Artificial Intelligence">AI</abbr> usage, and
-					<q>"Brownfield"</q> projects... well... not so much. High complexity Brownfield work sees improvements somewhere between 0-10%. Another revealing finding that they are reporting, is that
-					<abbr title="Artificial Intelligence">AI</abbr> productivity is most pronounced in the most popular languages. Even very simple tasks in languages like COBOL, Haskell, and Elixir show nearly no gains at
-					all. High complexity tasks in these languages are roughly 5% <b>slower</b>. Another key finding is that productivity of <abbr title="Artificial Intelligence">AI</abbr> tooling changes drastically on
-					projects with much more code. For projects between 10k and 100k lines of code there is a drastic drop-off in productivity.</p>
+				<p>So, it is with <em>some trepidation</em> that I present some the findings <a href="https://www.youtube.com/watch?v=tbDDYKRFjhk">they have been discussing at conferences</a>.</p><br />
+
+				<p>Their early results show that <abbr title="Artificial Intelligence">AI</abbr> use results in roughly 30-40% more code. Of that code, approximately 15-25% is <q>"rework"</q> where the shoddy
+					<abbr title="Artificial Intelligence">AI</abbr> code needed fixing. And that leaves an approximately 15-20% net gain in productive work. Greenfield projects benefited most heavily from
+					<abbr title="Artificial Intelligence">AI</abbr> usage, and <q>"Brownfield"</q> projects... well... not so much. High complexity Brownfield work sees improvements somewhere between 0-10%. Another
+					revealing finding that they are reporting, is that <abbr title="Artificial Intelligence">AI</abbr> productivity is most pronounced in the most popular languages. Even very simple tasks in languages
+					like COBOL, Haskell, and Elixir show nearly no gains at all. High complexity tasks in these languages are roughly 5% <b>slower</b>. Another key finding is that productivity of
+					<abbr title="Artificial Intelligence">AI</abbr> tooling changes drastically on projects with much more code. For projects between 10k and 100k lines of code there is a drastic drop-off in
+					productivity.</p><br />
+
+				<ul class="dark">
+					<li>30-40% more code produced.</li>
+					<li>15-25% of that code is rework.</li>
+					<li>~15-20% net productivity gain.</li>
+					<li>Greenfield &gt;&gt; Brownfield.</li>
+					<li>Popular languages only — COBOL, Haskell, and Elixir flat or negative.</li>
+					<li>Sharp drop-off on 10k-100k <abbr title="Lines of Code">LOC</abbr> codebases.</li>
+				</ul>
 			</section>
 
 			<section>
