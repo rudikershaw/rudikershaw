@@ -24,7 +24,7 @@ import 'vanilla-fade/dist/esm/fadeOut';
             row.querySelector('.reddit-title').textContent = post.title || '';
             const body = row.querySelector('.reddit-body');
             if (post.description) {
-                body.textContent = post.description;
+                body.textContent = post.description.length > 300 ? post.description.slice(0, 300) + '…' : post.description;
             } else {
                 body.style.display = 'none';
             }
