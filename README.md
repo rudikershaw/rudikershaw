@@ -1,6 +1,6 @@
 # About Me
 
-I am a software development engineer at Amazon Web Services, doing research and development on 'art of the possible' solutions for public sector, scientific, and social good projects.
+I am a software engineer who does research and development, distributed systems, stream processing, applied ML, and more for SaaS, scientific, and social good projects.
 
 In my spare time I [read](https://www.rudikershaw.com/bibliography), [write](https://www.rudikershaw.com/#my-articles), and maintain a few open-source projects. 
 
