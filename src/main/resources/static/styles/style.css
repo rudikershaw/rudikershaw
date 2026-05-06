@@ -32,8 +32,6 @@ html {
 }
 
 body {
-	display: flex;
-	flex-direction: column;
 	min-height: 100vh;
 }
 
@@ -1352,6 +1350,7 @@ a.stack-overflow-link > img {
 .genre-dot[data-genre="philosophy"] { background: #7A4FBF; }
 .genre-dot[data-genre="technical"]  { background: #2BA86B; }
 
+ol#bibliography-list { min-height: 800px; }
 ol#bibliography-list > li[data-genre="fiction"]:before    { background: #C23A4B; }
 ol#bibliography-list > li[data-genre="science"]:before    { background: #2E86DE; }
 ol#bibliography-list > li[data-genre="history"]:before    { background: #8E6E3C; }
