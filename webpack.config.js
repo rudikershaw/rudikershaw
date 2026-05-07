@@ -8,6 +8,7 @@ module.exports = {
         'bibliography': scriptsPath + 'bibliography.js',
         'choices': scriptsPath +'choices.js',
         'main': scriptsPath +'main.js',
+        'quotes': scriptsPath +'quotes.js',
         'search-graphics': scriptsPath +'search-graphics',
         'whichpet': scriptsPath +'whichpet.js',
     },
