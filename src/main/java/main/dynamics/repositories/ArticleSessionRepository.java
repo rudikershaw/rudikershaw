@@ -38,11 +38,12 @@ public interface ArticleSessionRepository extends CrudRepository<ArticleSession,
     Integer deleteOldSessions(Date date);
 
     /**
-     * Find the IDs of articles viewed this week ordered by most visited first.
+     * Find the IDs of articles viewed since the provided date ordered by most visited first.
+     * @param since the earliest visit date to include.
      * @return a list of article IDs ordered by most visited first.
      */
     @Query("SELECT articleId FROM ArticleSession "
-            + "WHERE visited > CURRENT_DATE - 7 GROUP BY articleId "
+            + "WHERE visited > :since GROUP BY articleId "
             + "ORDER BY COUNT(*) DESC")
-    List<Integer> findMostVisitedThisWeekArticleId();
+    List<Integer> findMostVisitedThisWeekArticleIdSince(Date since);
 }

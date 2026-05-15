@@ -29,6 +29,9 @@ public class ArticleSessionService {
     /** Number of times articles can be viewed before we should clean expired sessions from the DB. */
     private static final int ATTEMPTS_BEFORE_CLEAN = 100;
 
+    /** Seven days in milliseconds. */
+    private static final long SEVEN_DAY_MS = 604800000L;
+
     /**
      * Constructor for dependency injection.
      *
@@ -70,7 +73,8 @@ public class ArticleSessionService {
      * @return the ID pf the article most viewed.
      */
     public Integer getMostSessionsThisWeekByArticleId() {
-        final List<Integer> articleIds = sessionRepository.findMostVisitedThisWeekArticleId();
+        final Date since = new Date(System.currentTimeMillis() - SEVEN_DAY_MS);
+        final List<Integer> articleIds = sessionRepository.findMostVisitedThisWeekArticleIdSince(since);
         if (articleIds.isEmpty()) {
             return null;
         } else {
