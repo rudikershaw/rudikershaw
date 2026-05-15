@@ -63,7 +63,7 @@ class Prosperity {
             return;
         }
 
-        final TwitterFactory factory = new TwitterFactory();
+        final var factory = new TwitterFactory();
         final Twitter twitter = factory.getInstance();
         final AccessToken accessToken = provider.getAccessToken();
         provider.setOAuthConsumer(twitter);
@@ -74,7 +74,7 @@ class Prosperity {
         final Date yesterday = getXDaysAgo(1);
         if (latestFollow == null || latestFollow.getDate().before(yesterday)) {
             // Get the retweets from the website owner's timeline.
-            final Paging paging = new Paging();
+            final var paging = new Paging();
             paging.setCount(NO_TWEETS_FROM_TIMELINE);
             List<Status> statuses = twitter.getHomeTimeline(paging);
             statuses = statuses.stream().filter(Status::isRetweet).collect(Collectors.toList());

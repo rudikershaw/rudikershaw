@@ -63,7 +63,7 @@ public class TwitterService {
             final Status status = twitter.getUserTimeline(new Paging(1, tweetsToGet)).stream()
                                               .filter(s -> !s.isRetweet()).findFirst().orElse(null);
             if (status != null) {
-                final LatestTweet latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
+                final var latestTweet = new LatestTweet(status.getCreatedAt(), status.getText(), status.getId());
                 latestTweet.setRetweets(status.getRetweetCount());
                 latestTweet.setLikes(status.getFavoriteCount());
                 latestTweet.setAuthor(setUserDetails(latestTweet.getAuthor(), status.getUser()));
