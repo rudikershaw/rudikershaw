@@ -2,8 +2,8 @@ package main.reddit;
 
 import java.lang.reflect.Field;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /** Tests for the RedditService. */
 public class RedditServiceTest {
@@ -12,21 +12,21 @@ public class RedditServiceTest {
     public void testGetLatestPostReturnsNullWhenUsernameEmpty() throws Exception {
         final RedditService service = new RedditService();
         setUsername(service, "");
-        Assert.assertNull(service.getLatestPost());
+        Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
     public void testGetLatestPostReturnsNullWhenUsernameNull() throws Exception {
         final RedditService service = new RedditService();
         setUsername(service, null);
-        Assert.assertNull(service.getLatestPost());
+        Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
     public void testGetLatestPostReturnsNullForInvalidUsername() throws Exception {
         final RedditService service = new RedditService();
         setUsername(service, "this-user-should-not-exist-abc123xyz789");
-        Assert.assertNull(service.getLatestPost());
+        Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
@@ -38,7 +38,7 @@ public class RedditServiceTest {
     @Test
     public void testToDtoReturnsNullForNullEntry() {
         final RedditService service = new RedditService();
-        Assert.assertNull(service.toDto(null));
+        Assertions.assertThat(service.toDto(null)).isNull();
     }
 
     @Test
@@ -48,7 +48,7 @@ public class RedditServiceTest {
                 new com.rometools.rome.feed.synd.SyndEntryImpl();
         entry.setTitle("title");
         entry.setLink("javascript:alert(1)");
-        Assert.assertNull(service.toDto(entry));
+        Assertions.assertThat(service.toDto(entry)).isNull();
     }
 
     @Test
@@ -58,7 +58,7 @@ public class RedditServiceTest {
                 new com.rometools.rome.feed.synd.SyndEntryImpl();
         entry.setTitle("title");
         entry.setLink("https://evil.example.com/post");
-        Assert.assertNull(service.toDto(entry));
+        Assertions.assertThat(service.toDto(entry)).isNull();
     }
 
     @Test
@@ -69,11 +69,10 @@ public class RedditServiceTest {
         entry.setTitle("Hello");
         entry.setLink("https://www.reddit.com/r/test/comments/abc/hello/");
         final RedditPost dto = service.toDto(entry);
-        Assert.assertNotNull(dto);
-        Assert.assertEquals("Hello", dto.getTitle());
-        Assert.assertEquals("https://www.reddit.com/r/test/comments/abc/hello/",
-                dto.getLink());
-        Assert.assertNull(dto.getThumbnail());
+        Assertions.assertThat(dto).isNotNull();
+        Assertions.assertThat(dto.getTitle()).isEqualTo("Hello");
+        Assertions.assertThat(dto.getLink()).isEqualTo("https://www.reddit.com/r/test/comments/abc/hello/");
+        Assertions.assertThat(dto.getThumbnail()).isNull();
     }
 
     /**
