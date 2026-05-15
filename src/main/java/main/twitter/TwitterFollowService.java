@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import main.dynamics.entities.TwitterFollow;
 import main.dynamics.repositories.TwitterFollowRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ public class TwitterFollowService {
      *
      * @param followRepository injected twitter follow repository.
      */
-    @Autowired
     public TwitterFollowService(final TwitterFollowRepository followRepository) {
        this.repository = followRepository;
     }

@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -46,7 +45,6 @@ class Prosperity {
      * @param twitterFollowService twitter follow service for autowiring.
      * @param authDetailsProvider provider for twitter authentication for autowiring.
      */
-    @Autowired
     Prosperity(final TwitterFollowService twitterFollowService, final AuthDetailsProvider authDetailsProvider) {
         this.service = twitterFollowService;
         this.provider = authDetailsProvider;

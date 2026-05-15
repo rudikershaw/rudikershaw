@@ -5,7 +5,6 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.dynamics.entities.Article;
@@ -24,7 +23,6 @@ public class RefererService {
      * Constructor used for autowiring.
      * @param repository autowired article repo.
      */
-    @Autowired
     public RefererService(final RefererRepository repository) {
        this.repository = repository;
     }

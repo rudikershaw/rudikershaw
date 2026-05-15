@@ -5,7 +5,6 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,6 @@ public class WhichpetService {
      *
      * @param whichpetRepository injected Whichpet repository.
      */
-    @Autowired
     public WhichpetService(final WhichpetRepository whichpetRepository) {
        this.repository = whichpetRepository;
     }

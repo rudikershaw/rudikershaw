@@ -10,40 +10,40 @@ public class RedditServiceTest {
 
     @Test
     public void testGetLatestPostReturnsNullWhenUsernameEmpty() throws Exception {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         setUsername(service, "");
         Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
     public void testGetLatestPostReturnsNullWhenUsernameNull() throws Exception {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         setUsername(service, null);
         Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
     public void testGetLatestPostReturnsNullForInvalidUsername() throws Exception {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         setUsername(service, "this-user-should-not-exist-abc123xyz789");
         Assertions.assertThat(service.getLatestPost()).isNull();
     }
 
     @Test
     public void testInvalidateCacheDoesNotThrow() {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         service.invalidateCache();
     }
 
     @Test
     public void testToDtoReturnsNullForNullEntry() {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         Assertions.assertThat(service.toDto(null)).isNull();
     }
 
     @Test
     public void testToDtoReturnsNullForUnsafeLinkScheme() {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         final com.rometools.rome.feed.synd.SyndEntry entry =
                 new com.rometools.rome.feed.synd.SyndEntryImpl();
         entry.setTitle("title");
@@ -53,7 +53,7 @@ public class RedditServiceTest {
 
     @Test
     public void testToDtoReturnsNullForNonRedditLink() {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         final com.rometools.rome.feed.synd.SyndEntry entry =
                 new com.rometools.rome.feed.synd.SyndEntryImpl();
         entry.setTitle("title");
@@ -63,7 +63,7 @@ public class RedditServiceTest {
 
     @Test
     public void testToDtoPopulatesFieldsForSafeEntry() {
-        final RedditService service = new RedditService();
+        final RedditService service = new RedditService("test-username");
         final com.rometools.rome.feed.synd.SyndEntry entry =
                 new com.rometools.rome.feed.synd.SyndEntryImpl();
         entry.setTitle("Hello");

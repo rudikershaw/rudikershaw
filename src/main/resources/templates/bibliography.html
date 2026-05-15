@@ -14,7 +14,7 @@
     </head>
 	<body>
 		<div class="faded-background-cover"></div>
-		<header th:replace="index :: header"></header>
+		<header th:replace="~{index :: header}"></header>
 
 		<section class="container off-centre">
 			<h1 id="bibliography-start">Bibliography</h1>
@@ -53,7 +53,7 @@
 			</ol>
 		</section>
 
-		<footer th:replace="index :: footer"></footer>
+		<footer th:replace="~{index :: footer}"></footer>
 		<script async src="/scripts/bibliography.min.js"></script>
 	</body>
 </html>

@@ -8,7 +8,6 @@ import static org.springframework.http.MediaType.IMAGE_PNG;
 import java.util.Base64;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpEntity;
@@ -44,7 +43,6 @@ public class TwitterService {
      *
      * @param authDetailsProvider an AuthDetailsProvider.
      */
-    @Autowired
     public TwitterService(final AuthDetailsProvider authDetailsProvider) {
         final var factory = new TwitterFactory();
         twitter = factory.getInstance();

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link th:replace="fragments/article/head :: head">
+        <link th:replace="~{fragments/article/head :: head}">
         <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
     </head>
 	<body>
-		<header th:replace="index :: header"></header>
+		<header th:replace="~{index :: header}"></header>
 		<article>
             <div class="text-container">
                 <p class="date">22/08/2015</p>
@@ -76,7 +76,7 @@
                 <b><code><span class="purple">th</span>:fragment=<span class="jade">"header"</span></code></b>.</p>
             <br />
 
-<pre><code class="language-html">&lt;div class="header" th:replace="/index :: header"&gt;&lt;/div&gt;</code></pre>
+<pre><code class="language-html">&lt;div class="header" th:replace="/~{index :: header}"&gt;&lt;/div&gt;</code></pre>
 
             <br />
             <p>This single line on each page basically translates as "replace this div with a copy of the div marked <i><span class="purple">th</span>:fragment=<span class="jade">'header'</span></i>
@@ -115,7 +115,7 @@
         </article>
         <hr />
 
-        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+        <div class="article-footer" th:replace="~{fragments/article/footer :: article-footer}"></div>
 
         <script src="/scripts/vendor/prism.min.js"></script>
 	</body>

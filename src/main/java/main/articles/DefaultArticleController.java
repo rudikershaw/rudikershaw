@@ -6,7 +6,6 @@ import java.util.List;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,16 +70,16 @@ public class DefaultArticleController {
     private final ArticleService statisticsService;
 
     /** Base URL from the properties file. */
-    @Value("${base.url}")
-    private String baseUrl;
+    private final String baseUrl;
 
     /**
      * Constructor used for autowiring.
      * @param articleService autowired statistics service.
+     * @param baseUrl the base URL.
      */
-    @Autowired
-    public DefaultArticleController(final ArticleService articleService) {
+    public DefaultArticleController(final ArticleService articleService, @Value("${base.url}") final String baseUrl) {
         this.statisticsService = articleService;
+        this.baseUrl = baseUrl;
     }
 
     /**

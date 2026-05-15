@@ -39,8 +39,11 @@ public class RedditService {
     private static final String SAFE_IMAGE_PREFIX = "https://";
 
     /** The Reddit username to fetch posts for. */
-    @Value("${reddit.username:}")
-    private String redditUsername;
+    private final String redditUsername;
+
+    public RedditService(@Value("${reddit.username:}") final String redditUsername) {
+        this.redditUsername = redditUsername;
+    }
 
     /**
      * Get the latest Reddit post for the configured username as a DTO.

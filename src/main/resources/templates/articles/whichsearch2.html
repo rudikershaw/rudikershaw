@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link th:replace="fragments/article/head :: head">
+        <link th:replace="~{fragments/article/head :: head}">
         <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
     </head>
 	<body>
-		<header th:replace="index :: header"></header>
+		<header th:replace="~{index :: header}"></header>
         <article>
             <div class="text-container">
                 <p class="date">03/07/2016</p>
@@ -353,7 +353,7 @@
         </article>
 		<hr />
 
-        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+        <div class="article-footer" th:replace="~{fragments/article/footer :: article-footer}"></div>
 
         <script src="/scripts/vendor/prism.min.js"></script>
 		<script src="/scripts/choices.min.js"></script>

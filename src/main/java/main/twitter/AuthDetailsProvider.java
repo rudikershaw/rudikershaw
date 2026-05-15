@@ -13,20 +13,34 @@ public class AuthDetailsProvider {
     private static final String FALLBACK = "fallback";
 
     /** Twitter API consumer key. */
-    @Value("${twitter.consumer.key}")
-    private String consumerKey;
+    private final String consumerKey;
 
     /** Twitter API consumer secret. */
-    @Value("${twitter.consumer.secret}")
-    private String consumerSecret;
+    private final String consumerSecret;
 
     /** Twitter API access key. */
-    @Value("${twitter.access.key}")
-    private String accessKey;
+    private final String accessKey;
 
     /** Twitter API access secret. */
-    @Value("${twitter.access.secret}")
-    private String accessSecret;
+    private final String accessSecret;
+
+    /**
+     * Provider constructor.
+     *
+     * @param consumerKey the Twitter consumer key
+     * @param consumerSecret the Twitter consumer secret
+     * @param accessKey the Twitter access key
+     * @param accessSecret the Twitter access secret
+     */
+    public AuthDetailsProvider(@Value("${twitter.consumer.key}") final String consumerKey,
+                               @Value("${twitter.consumer.secret}") final String consumerSecret,
+                               @Value("${twitter.access.key}") final String accessKey,
+                               @Value("${twitter.access.secret}") final String accessSecret) {
+        this.consumerKey = consumerKey;
+        this.consumerSecret = consumerSecret;
+        this.accessKey = accessKey;
+        this.accessSecret = accessSecret;
+    }
 
     /**
      * Checks whether details are available for accessing Twitter4j API.

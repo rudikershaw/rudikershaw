@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 	<head>
-        <link th:replace="fragments/article/head :: head">
+        <link th:replace="~{fragments/article/head :: head}">
     </head>
 	<body>
-		<header th:replace="index :: header"></header>
+		<header th:replace="~{index :: header}"></header>
 		<article>
 			<div class="text-container">
 				<p class="date">01/03/2017</p>
@@ -163,7 +163,7 @@
 		</article>
 		<hr />
 
-		<div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+		<div class="article-footer" th:replace="~{fragments/article/footer :: article-footer}"></div>
 
 		<script src="/scripts/vendor/chart.min.js"></script>
 		<script>

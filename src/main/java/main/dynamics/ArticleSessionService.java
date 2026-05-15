@@ -3,7 +3,6 @@ package main.dynamics;
 import main.dynamics.entities.Article;
 import main.dynamics.entities.ArticleSession;
 import main.dynamics.repositories.ArticleSessionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,7 +37,6 @@ public class ArticleSessionService {
      * @param sessionRepository injected article session repository.
      * @param refererService injected referer service.
      */
-    @Autowired
     public ArticleSessionService(final ArticleSessionRepository sessionRepository, final RefererService refererService) {
         this.sessionRepository = sessionRepository;
         this.refererService = refererService;

@@ -4,7 +4,6 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +39,6 @@ class WhichpetController {
      * @param injectedWhichpetService injected whichpet service.
      * @param injectedArticleController injected article controller.
      */
-    @Autowired
     WhichpetController(final WhichpetService injectedWhichpetService, final DefaultArticleController injectedArticleController) {
         this.whichpetService = injectedWhichpetService;
         this.articleController = injectedArticleController;

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 	<head>
-        <link th:replace="fragments/article/head :: head">
+        <link th:replace="~{fragments/article/head :: head}">
         <link rel="stylesheet" type="text/css" href="/styles/vendor/prism.min.css" />
     </head>
 	<body>
-		<header th:replace="index :: header"></header>
+		<header th:replace="~{index :: header}"></header>
         <article>
             <div class="text-container">
                 <p class="date">01/05/2017</p>
@@ -325,7 +325,7 @@ estimate(&#91;0, 14, 0], mu, variances);
         </article>
 		<hr />
 
-        <div class="article-footer" th:replace="fragments/article/footer :: article-footer"></div>
+        <div class="article-footer" th:replace="~{fragments/article/footer :: article-footer}"></div>
 
         <script src="/scripts/vendor/prism.min.js"></script>
         <script src="/scripts/choices.min.js"></script>

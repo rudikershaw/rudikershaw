@@ -4,7 +4,6 @@ import java.util.Date;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -31,7 +30,6 @@ public class ArticleService {
      * @param repository autowired article repo.
      * @param sessionService autowired session service.
      */
-    @Autowired
     public ArticleService(final ArticleRepository repository, final ArticleSessionService sessionService) {
        this.articleRepository = repository;
         this.articleSessionService = sessionService;

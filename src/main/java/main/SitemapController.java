@@ -23,8 +23,11 @@ import main.dynamics.entities.Article;
 public class SitemapController {
 
     /** Base URL from the properties file. */
-    @Value("${base.url}")
-    private String baseUrl;
+    private final  String baseUrl;
+
+    SitemapController(@Value("${base.url}") final String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     /**
      * Generate and return the site's sitemap.xml.

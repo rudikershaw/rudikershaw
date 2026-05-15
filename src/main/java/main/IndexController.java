@@ -2,7 +2,6 @@ package main;
 
 import static main.articles.DefaultArticleController.ARTICLES;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +38,6 @@ public class IndexController {
      * @param injectedTwitterService twitter service to be injected.
      * @param injectedRedditService reddit service to be injected.
      */
-    @Autowired
     public IndexController(final ArticleService injectedArticleService,
                            final TwitterService injectedTwitterService,
                            final RedditService injectedRedditService) {
