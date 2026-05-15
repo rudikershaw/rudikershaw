@@ -3,8 +3,8 @@ package main.dynamics.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.ManyToOne;
 
 /** Represents the composite identity of a Referer entity. */
 @Embeddable

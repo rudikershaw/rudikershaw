@@ -3,8 +3,8 @@ package main.dynamics.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 
 /** Entity representing a unique referer for a particular article. */
 @Entity
