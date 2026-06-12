@@ -17,7 +17,7 @@ import main.dynamics.repositories.ArticleRepository;
 public class ArticleService {
 
     /** 2 hours as a number of milliseconds. */
-    private static final int TWO_HOURS = 72000000;
+    private static final int TWO_HOURS = 7200000;
 
     /** Article repo. */
     private final ArticleRepository articleRepository;
@@ -80,7 +80,7 @@ public class ArticleService {
         }
     }
 
-    /** Evict entries from the Latest Tweet cache every 2 hours. */
+    /** Evict entries from the cache every 2 hours. */
     @CacheEvict(allEntries = true, cacheNames = { "most-viewed-article" })
     @Scheduled(fixedDelay = TWO_HOURS)
     public void invalidateCache() {

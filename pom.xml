@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>25</java.version>
 		<git.hooks.version>2.0.1</git.hooks.version>
-		<minimum.test.coverage>0.16</minimum.test.coverage>
+		<minimum.test.coverage>0.50</minimum.test.coverage>
 	</properties>
 
 	<dependencies>
@@ -310,6 +310,16 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report-verify</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/site/jacoco</outputDirectory>
+						</configuration>
 					</execution>
 					<execution>
 						<id>jacoco-check</id>
