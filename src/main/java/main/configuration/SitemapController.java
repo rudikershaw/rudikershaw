@@ -1,4 +1,4 @@
-package main;
+package main.configuration;
 
 import static main.articles.DefaultArticleController.ARTICLES;
 

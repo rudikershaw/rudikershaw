@@ -1,4 +1,4 @@
-package main;
+package main.configuration;
 
 import java.io.InputStream;
 
@@ -12,6 +12,6 @@ public interface StaticResources {
      * @return the resource as an InputStream.
      */
     static InputStream get(final String path) {
-        return StaticResources.class.getResourceAsStream("../static/" + path);
+        return StaticResources.class.getResourceAsStream("../../static/" + path);
     }
 }

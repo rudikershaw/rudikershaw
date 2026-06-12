@@ -15,10 +15,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
+import main.configuration.StaticResources;
 
 import org.hibernate.annotations.GenericGenerator;
-
-import main.StaticResources;
 
 /** An article entity representing an article and it's url as well as any statistics against it. */
 @Entity
