@@ -978,6 +978,11 @@ div.calendar div.position-relative {
 	left: -100px;
 }
 
+.view-height .top-heavy {
+	position: relative;
+	top: -6%;
+}
+
 .text-container {
 	min-height: 30px;
 	width: 100%;

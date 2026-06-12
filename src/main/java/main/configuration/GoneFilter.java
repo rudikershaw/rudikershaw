@@ -29,8 +29,7 @@ public class GoneFilter extends OncePerRequestFilter {
                                     final HttpServletResponse response,
                                     final FilterChain filterChain) throws ServletException, IOException {
         if (gonePaths.contains(request.getRequestURI())) {
-            response.setStatus(HttpServletResponse.SC_GONE); // 410
-            return;
+            response.sendError(HttpServletResponse.SC_GONE); // 410
         }
         filterChain.doFilter(request, response);
     }
