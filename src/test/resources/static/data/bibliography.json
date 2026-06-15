@@ -1,0 +1,16 @@
+{
+  "bibliography": [
+    {
+      "title": "Test Book One",
+      "author": "Test Author",
+      "dateFinished": "2026-05-07",
+      "genre": "fiction"
+    },
+    {
+      "title": "Test Book Two",
+      "author": "Test Author",
+      "dateFinished": "2025-06-15",
+      "genre": "fiction"
+    }
+  ]
+}
