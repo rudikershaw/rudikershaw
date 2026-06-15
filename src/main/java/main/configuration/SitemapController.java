@@ -1,6 +1,7 @@
 package main.configuration;
 
 import static main.articles.DefaultArticleController.ARTICLES;
+import static main.configuration.BibliographyDateUtils.getLatestDate;
 
 import java.net.MalformedURLException;
 import java.util.Date;
@@ -49,7 +50,8 @@ public class SitemapController {
         final double secondPriority = 0.8;
 
         generator.addUrl(new WebSitemapUrl.Options(baseUrl + "bibliography")
-                .changeFreq(ChangeFreq.MONTHLY)
+                .lastMod(getLatestDate())
+                .changeFreq(ChangeFreq.WEEKLY)
                 .priority(secondPriority)
                 .build());
 
